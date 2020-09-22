@@ -21,6 +21,7 @@ let rectangle1 = {
   speed: -1,
   fill: 255,
   alpha:200
+}
 
 let square1= {
   x:500,
@@ -29,17 +30,16 @@ let square1= {
   speed: 1,
   fill: 255,
   alpha:200
-
-  }
-
-
 }
+
 
 
 // setup()
 //
 // Description of setup() goes here.
 function setup() {
+  createCanvas(500,500)
+  noStroke();
 
 
 
@@ -49,6 +49,8 @@ function setup() {
 //
 // Description of draw() goes here.
 function draw() {
-
+  background(mouseX, mouseY, 0);
+  rectMode(CENTER)
+  rect(250,250,100,100)
 
 }
