@@ -17,7 +17,8 @@ let circle1 = {
 let rectangle1 = {
   x:500,
   y:325,
-  size: 75,
+  width:100,
+  height:250,
   speed: -1,
   fill: 255,
   alpha:150
@@ -65,7 +66,7 @@ rectangle1.x= rectangle1.x + rectangle1.speed;
 rectangle1.x = constrain(rectangle1.x, width/2,width);
 fill(rectangle1.fill, rectangle1.alpha)
 rectMode(CENTER);
-rect(rectangle1.x, rectangle1.y,100, 250)
+rect(rectangle1.x, rectangle1.y,rectangle1.width, rectangle1.height)
 
 
 
