@@ -34,7 +34,7 @@ let square1= {
   r: 255,
   g:102,
   b:178,
-  alpha:255
+
 }
 
 
@@ -75,7 +75,7 @@ fill(rectangle1.fill, rectangle1.alpha)
 rectMode(CENTER);
 rect(rectangle1.x, rectangle1.y,rectangle1.width, rectangle1.height)
 
-//square with mouse
+//Square with mouse
 fill(square1.r, square1.g, square1.b)
 square(mouseX,mouseY,square1.size)
 
