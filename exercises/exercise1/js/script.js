@@ -16,7 +16,7 @@ let circle1 = {
 
 let rectangle1 = {
   x:500,
-  y:250,
+  y:325,
   size: 75,
   speed: -1,
   fill: 255,
@@ -60,9 +60,13 @@ circle1.size = constrain(circle1.size,0,width/4);
 fill(circle1.fill,circle1.alpha)
 ellipse(circle1.x, circle1.y, circle1.size);
 
+//right rectangle
+rectangle1.x= rectangle1.x + rectangle1.speed;
+rectangle1.x = constrain(rectangle1.x, width/2,width);
+fill(rectangle1.fill, rectangle1.alpha)
+rectMode(CENTER);
+rect(rectangle1.x, rectangle1.y,100, 250)
 
 
-  rectMode(CENTER)
-  rect(250,250,100,100)
 
 }
