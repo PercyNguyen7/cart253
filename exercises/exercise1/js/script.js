@@ -30,11 +30,11 @@ let rectangle1 = {
 }
 
 let square1= {
-  x:500,
-  y:250,
   size: 30,
-  fill: 150,
-  alpha:50
+  r: 255,
+  g:102,
+  b:178,
+  alpha:255
 }
 
 
@@ -44,9 +44,8 @@ let square1= {
 // Description of setup() goes here.
 function setup() {
   createCanvas(500,500)
-  noStroke();
-
-
+  stroke(153,0,153)
+  strokeWeight(2)
 
 }
 
@@ -77,10 +76,7 @@ rectMode(CENTER);
 rect(rectangle1.x, rectangle1.y,rectangle1.width, rectangle1.height)
 
 //square with mouse
-fill(square1.fill, square1.alpha)
+fill(square1.r, square1.g, square1.b)
 square(mouseX,mouseY,square1.size)
-
-
-
 
 }
