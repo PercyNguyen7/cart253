@@ -7,10 +7,10 @@ Here is a description of this template p5 project.
 let covid19 = {
   x:0,
   y:250,
-  size:100,
+  size:200,
   vx: 0,
   vy: 0,
-  speed: 20,
+  speed: 40,
   growth: 5,
   fill: {
     r:255,
@@ -30,7 +30,7 @@ let user = {
 
 };
 
-  let numStatic = 5000;
+  let numStatic = 1000;
 // setup()
 //
 // Description of setup() goes here.
@@ -46,13 +46,14 @@ function setup() {
 //
 // Description of draw() goes here.
 function draw() {
-  background(0);
+  background(240,128,128);
 
 // Display static
 for (let i = 0; i < numStatic; i++) {
   let x = random(0,width);
   let y = random (0,height);
-  stroke(255);
+  stroke(0);
+  strokeWeight(3)
   point(x,y);
 }
 // covid 19 movement
@@ -66,11 +67,11 @@ for (let i = 0; i < numStatic; i++) {
 let g = dist(covid19.x,covid19.y,user.x, user.y)
   if (g < covid19.size*2 + user.size*2) {
     covid19.size = covid19.size + covid19.growth
-    covid19.size = constrain(covid19.size,50,150)
+    covid19.size = constrain(covid19.size,150,250)
 }
 else{
   covid19.size = covid19.size - covid19.growth
-  covid19.size = constrain(covid19.size,50,150)
+  covid19.size = constrain(covid19.size,150,250)
 }
 
 
