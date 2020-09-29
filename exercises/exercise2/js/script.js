@@ -22,7 +22,11 @@ let user = {
   x:250,
   y:250,
   size: 100,
-  fill:255
+  vx:0,
+  vy:0,
+  speed:5,
+  fill:255,
+  
 };
 
   let numStatic = 5000;
@@ -35,7 +39,6 @@ function setup() {
   covid19.y = random(0,height);
   covid19.vx = covid19.speed;
 
-noCursor();
 }
 
 // draw()
@@ -61,21 +64,33 @@ for (let i = 0; i < numStatic; i++) {
   }
 
 //user movement
-user.x = mouseX;
-user.y = mouseY;
+  if (mouseX < user.x) {
+    user.vx = -user.speed;
+  }
+  else {
+    user.vx = user.speed;
+  }
 
+  if (mouseY < user.y) {
+    user.vy = -user.speed;
+  }
+  else {
+    user.vy = user.speed;
+  }
 // Check for catching covid19
 let d = dist(user.x, user.y,covid19.x,covid19.y);
 if (d < covid19.size/2 + user.size/2) {
   noLoop();
 }
 
-
 //display covid19
   fill(covid19.fill.r,covid19.fill.g,covid19.fill.b);
   ellipse(covid19.x,covid19.y,covid19.size);
 
 //display user
+user.x = user.x + user.vx;
+user.y = user.y + user.vy;
+
 fill(user.fill);
 ellipse(user.x,user.y,user.size);
 }
