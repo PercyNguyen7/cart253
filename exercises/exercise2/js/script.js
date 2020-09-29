@@ -11,10 +11,11 @@ let covid19 = {
   vx: 0,
   vy: 0,
   speed: 20,
+  growth: 5,
   fill: {
     r:255,
     g:0,
-    b:0
+    b:0,
   }
 };
 
@@ -24,9 +25,9 @@ let user = {
   size: 100,
   vx:0,
   vy:0,
-  speed:5,
+  speed:20,
   fill:255,
-  
+
 };
 
   let numStatic = 5000;
@@ -62,8 +63,18 @@ for (let i = 0; i < numStatic; i++) {
     covid19.x = 0;
     covid19.y = random(0,height);
   }
+let g = dist(covid19.x,covid19.y,user.x, user.y)
+  if (g < covid19.size*2 + user.size*2) {
+    covid19.size = covid19.size + covid19.growth
+    covid19.size = constrain(covid19.size,50,150)
+}
+else{
+  covid19.size = covid19.size - covid19.growth
+  covid19.size = constrain(covid19.size,50,150)
+}
 
-//user movement
+
+// //user movement
   if (mouseX < user.x) {
     user.vx = -user.speed;
   }
