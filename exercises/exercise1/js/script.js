@@ -34,9 +34,7 @@ let square1= {
   r: 255,
   g:102,
   b:178,
-
 }
-
 
 
 // setup()
@@ -46,7 +44,6 @@ function setup() {
   createCanvas(500,500)
   stroke(153,0,153)
   strokeWeight(2)
-
 }
 
 // draw()
