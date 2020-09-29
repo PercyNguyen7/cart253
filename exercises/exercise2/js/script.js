@@ -30,7 +30,7 @@ let user = {
 
 };
 
-  let numStatic = 1000;
+  let numStatic = 100;
 // setup()
 //
 // Description of setup() goes here.
@@ -49,12 +49,16 @@ function draw() {
   background(240,128,128);
 
 // Display static
+
 for (let i = 0; i < numStatic; i++) {
   let x = random(0,width);
   let y = random (0,height);
-  stroke(0);
-  strokeWeight(3)
+  push();
+  stroke(0,255,255);
+  strokeWeight(10);
   point(x,y);
+  pop();
+
 }
 // covid 19 movement
   covid19.x = covid19.x + covid19.vx;
