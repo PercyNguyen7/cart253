@@ -1,20 +1,24 @@
-/**************************************************
-Template p5 project
-Pippin Barr
+let caterpillar = {
+  x: 250,
+  y: 250,
+  size: 100
+}
 
-Here is a description of this template p5 project.
-**************************************************/
-
-// setup()
-//
-// Description of setup() goes here.
 function setup() {
-
+  createCanvas(500,500);
 }
 
-// draw()
-//
-// Description of draw() goes here.
+
 function draw() {
+  background(0);
 
+  circle.x = mouseX;
+  circle.y = mouseY;
+  ellipse(circle.x,circle.y,circle.size)
 }
+
+  function mousePressed() {
+    circle.x = mouseX;
+    circle.y = mouseY;
+
+  }
