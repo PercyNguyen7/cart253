@@ -4,6 +4,18 @@ Pippin Barr
 
 Here is a description of this template p5 project.
 **************************************************/
+let clown1 = {
+  x:500,
+  y:500,
+  size:200,
+  vx:0,
+  vy:0,
+  speed:1200
+}
+
+function preload() {
+clown= loadImage("assets/images/clown.png");
+}
 let covid19 = {
   x:0,
   y:250,
@@ -31,6 +43,8 @@ let user = {
 };
 
   let numStatic = 100;
+
+
 // setup()
 //
 // Description of setup() goes here.
@@ -48,8 +62,11 @@ function setup() {
 function draw() {
   background(240,128,128);
 
-// Display static
+//Display clown
+  imageMode(CENTER)
+    image(clown,mouseX, mouseY,250,100);
 
+// Display static
 for (let i = 0; i < numStatic; i++) {
   let x = random(0,width);
   let y = random (0,height);
@@ -58,9 +75,9 @@ for (let i = 0; i < numStatic; i++) {
   strokeWeight(10);
   point(x,y);
   pop();
-
 }
-// covid 19 movement
+
+// Covid 19 movement
   covid19.x = covid19.x + covid19.vx;
   covid19.y = covid19.y + covid19.vy;
 
