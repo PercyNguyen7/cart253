@@ -75,8 +75,8 @@ for (let i = 0; i < numStatic; i++) {
 }
 
 // Covid 19 movement
-  covid19.x = covid19.x + covid19.vx;
-  covid19.y = covid19.y + covid19.vy;
+  covid19.x += + covid19.vx;
+  covid19.y += + covid19.vy;
 
   if (covid19.x > width) {
     covid19.x = 0;
@@ -92,7 +92,6 @@ else{
   covid19.size = constrain(covid19.size,150,250)
 }
 
-
 // //user movement
   if (mouseX < user.x) {
     user.vx = -user.speed;
@@ -102,7 +101,7 @@ else{
   }
 
   if (mouseY < user.y) {
-    user.vy = -user.speed;
+    user.vy = - user.speed;
   }
   else {
     user.vy = user.speed;
@@ -118,8 +117,8 @@ if (d < covid19.size/2 + user.size/2) {
   ellipse(covid19.x,covid19.y,covid19.size);
 
 //display user
-user.x = user.x + user.vx;
-user.y = user.y + user.vy;
+user.x += + user.vx;
+user.y += + user.vy;
 
 fill(user.fill);
 ellipse(user.x,user.y,user.size);
