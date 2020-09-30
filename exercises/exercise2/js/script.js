@@ -4,17 +4,14 @@ Pippin Barr
 
 Here is a description of this template p5 project.
 **************************************************/
-let clown1 = {
-  x:500,
-  y:500,
-  size:200,
-  vx:0,
-  vy:0,
-  speed:1200
+let clown = {
+  width:250,
+  height: 100,
+  image: undefined,
 }
 
 function preload() {
-clown= loadImage("assets/images/clown.png");
+clown.image = loadImage("assets/images/clown.png");
 }
 let covid19 = {
   x:0,
@@ -37,7 +34,7 @@ let user = {
   size: 100,
   vx:0,
   vy:0,
-  speed:20,
+  speed:15,
   fill:255,
 
 };
@@ -64,7 +61,7 @@ function draw() {
 
 //Display clown
   imageMode(CENTER)
-    image(clown,mouseX, mouseY,250,100);
+    image(clown.image,mouseX, mouseY, clown.width, clown.height);
 
 // Display static
 for (let i = 0; i < numStatic; i++) {
@@ -87,11 +84,11 @@ for (let i = 0; i < numStatic; i++) {
   }
 let g = dist(covid19.x,covid19.y,user.x, user.y)
   if (g < covid19.size*2 + user.size*2) {
-    covid19.size = covid19.size + covid19.growth
+    covid19.size += + covid19.growth
     covid19.size = constrain(covid19.size,150,250)
 }
 else{
-  covid19.size = covid19.size - covid19.growth
+  covid19.size += - covid19.growth
   covid19.size = constrain(covid19.size,150,250)
 }
 
