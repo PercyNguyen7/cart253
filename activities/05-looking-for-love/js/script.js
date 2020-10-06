@@ -106,7 +106,7 @@ function checkOffscreen(){
 }
 
 function isOffscreen(circle) {
-  if (circle1.x <0 || circle1.x > width || circle1.y<0 || circle1.y>height) {
+  if (circle.x <0 || circle.x > width || circle.y<0 || circle.y>height) {
     return true;
   }
   else {
