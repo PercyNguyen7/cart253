@@ -22,24 +22,23 @@ function setup() {
   createCanvas(500,500);
 
   setupCircles();
+  setuprgb();
 }
 
 function setupCircles(){
   //position circles seperated from on another
   circle1.x = width/3;
   circle2.x = 2*width/3;
-
-  //start circles moving in a random direction
-  // circle1.vx = random(-circle1.speed,circle1.speed);
-  // circle2.vx = random(-circle1.speed,circle1.speed);
-  //
-  // circle1.vy = random(-circle1.speed,circle1.speed);
-  // circle2.vy = random(-circle1.speed,circle1.speed);
+}
+function setuprgb(){
+  background.r = random(0,255)
+  background.g = random(0,255)
+  background.b = random (0,255)
 }
 
 
 function draw() {
-  background(0);
+  background(background.r,background.g,background.b);
 
   if (state === `title`){
     title();
