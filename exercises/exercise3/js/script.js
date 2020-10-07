@@ -1,3 +1,8 @@
+let doorImage;
+
+function preload() {
+  doorImage= loadImage("assets/images/door.jpg");
+}
 let circle1 = {
   x:undefined,
   y:250,
@@ -15,6 +20,8 @@ let circle2 = {
   vy:0,
   speed:2,
 };
+
+
 
 let state = `title`;//Can be:title, simulation, love, sadness
 
@@ -64,6 +71,7 @@ function title(){
 }
 
 function simulation() {
+  image(doorImage,0,0,100,100)
   handleInput();
   randommovement();
   checkOffscreen();
@@ -82,10 +90,10 @@ function love(){
 
 function sadness() {
   push();
-  textSize(64)
+  textSize(50)
   fill(150,150,255);
   textAlign(CENTER,CENTER);
-  text(`D:`,width/2,height/2)
+  text(`Run, Forest, RUN!`,width/2,height/2)
   pop();
 }
 
