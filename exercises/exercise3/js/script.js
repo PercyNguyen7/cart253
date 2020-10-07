@@ -67,10 +67,12 @@ function draw() {
 }
 function title(){
   push();
-  textSize(40)
+  textSize(38)
   fill(200,100,100);
   textAlign(CENTER,CENTER);
   text(`Let the game begins!`,width/2,height/2)
+  textSize(30)
+  text(`Press any key...`,width/2,height/2 +50)
   pop();
 }
 
@@ -178,7 +180,7 @@ function display(){
   ellipse(circle2.x, circle2.y, circle2.size);
 }
 
-function mousePressed(){
+function keyPressed(){
   if (state === `title`){
     state = `simulation`;
   }
