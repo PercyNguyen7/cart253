@@ -1,4 +1,6 @@
-let doorImage;
+let doorImage = {
+  size:20,
+}
 
 function preload() {
   doorImage= loadImage("assets/images/door.jpg");
@@ -20,8 +22,6 @@ let circle2 = {
   vy:0,
   speed:2,
 };
-
-
 
 let state = `title`;//Can be:title, simulation, love, sadness
 
@@ -56,35 +56,38 @@ function draw() {
   else if (state ===`love`){
     love();
   }
-  else if (state = `sadness`){
+  else if (state === `sadness`){
     sadness();
   }
+  else if (state ===`single`){
+    single();
+  }
 }
-
 function title(){
   push();
   textSize(64)
   fill(200,100,100);
   textAlign(CENTER,CENTER);
-  text(`LOVE?`,width/2,height/2)
+  text(`Oi is yo soulmate`,width/2,height/2)
   pop();
 }
 
 function simulation() {
-  image(doorImage,0,0,100,100)
+  image(doorImage,0,0,50,100)
   handleInput();
   randommovement();
   checkOffscreen();
   checkOverlap();
   display();
+  reachdoor();
 }
 
 function love(){
   push();
-  textSize(100)
+  textSize(20)
   fill(255,150,150);
   textAlign(CENTER,CENTER);
-  text(`LOVE!`,width/2,height/2);
+  text(`And they lived happily forever after`,width/2,height/2);
   pop();
 }
 
@@ -93,10 +96,18 @@ function sadness() {
   textSize(50)
   fill(150,150,255);
   textAlign(CENTER,CENTER);
-  text(`Run, Forest, RUN!`,width/2,height/2)
+  text(`You think this a game boi?`,width/2,height/2)
   pop();
 }
 
+function single() {
+  push();
+  textSize(30)
+  fill(150,150,255);
+  textAlign(CENTER,CENTER);
+  text(`You just noped outta there!`,width/2,height/2)
+  pop();
+}
 function handleInput(){
     if (keyIsDown(LEFT_ARROW)){
       circle1.vx = -circle1.speed;
@@ -163,5 +174,11 @@ function display(){
 function mousePressed(){
   if (state === `title`){
     state = `simulation`;
+  }
+}
+function reachdoor(){
+  //circle 1 reaches door outcome
+  if (circle1.x < 50 && circle1.y <100){
+    state = `single`;
   }
 }
