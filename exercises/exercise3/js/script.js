@@ -1,14 +1,16 @@
-let doorImage = {
-  size:20,
-}
+let doorImage;
+
+let johnnyImage;
 
 function preload() {
   doorImage= loadImage("assets/images/door.jpg");
+  johnnyImage= loadImage("assets/images/johnny.jpg")
 }
+
 let circle1 = {
   x:undefined,
   y:250,
-  size:100,
+  size:50,
   vx:0,
   vy:0,
   speed:1
@@ -17,7 +19,7 @@ let circle1 = {
 let circle2 = {
   x:undefined,
   y:250,
-  size:100,
+  size:50,
   vx:0,
   vy:0,
   speed:2,
@@ -65,10 +67,10 @@ function draw() {
 }
 function title(){
   push();
-  textSize(64)
+  textSize(40)
   fill(200,100,100);
   textAlign(CENTER,CENTER);
-  text(`Oi is yo soulmate`,width/2,height/2)
+  text(`Let the game begins...`,width/2,height/2)
   pop();
 }
 
@@ -87,26 +89,22 @@ function love(){
   textSize(20)
   fill(255,150,150);
   textAlign(CENTER,CENTER);
-  text(`And they lived happily forever after`,width/2,height/2);
+  text(`And they lived sadly forever after`,width/2,height/2);
   pop();
 }
 
 function sadness() {
   push();
-  textSize(50)
-  fill(150,150,255);
+  textSize(30)
+  fill(0);
   textAlign(CENTER,CENTER);
-  text(`You think this a game boi?`,width/2,height/2)
+  text(`Oi you think this a game?`,width/2,height/2)
   pop();
 }
 
 function single() {
-  push();
-  textSize(30)
-  fill(150,150,255);
-  textAlign(CENTER,CENTER);
-  text(`You just noped outta there!`,width/2,height/2)
-  pop();
+  imageMode(CENTER)
+  image(johnnyImage,width/2,height/2)
 }
 function handleInput(){
     if (keyIsDown(LEFT_ARROW)){
