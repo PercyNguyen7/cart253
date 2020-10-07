@@ -4,7 +4,7 @@ let circle1 = {
   size:100,
   vx:0,
   vy:0,
-  speed:3
+  speed:1
 };
 
 let circle2 = {
@@ -13,7 +13,7 @@ let circle2 = {
   size:100,
   vx:0,
   vy:0,
-  speed:3,
+  speed:2,
 };
 
 let state = `title`;//Can be:title, simulation, love, sadness
@@ -66,6 +66,7 @@ function title(){
 
 function simulation() {
   handleInput();
+  randommovement();
   checkOffscreen();
   checkOverlap();
   display();
@@ -108,7 +109,14 @@ function handleInput(){
     else {
       circle1.vy = 0;
     }
+}
+function randommovement(){
+  let change = random();
 
+  if (change<0.03){
+    circle2.vx=random(-circle2.speed,circle2.speed)
+    circle2.vy=random(-circle2.speed,circle2.speed)
+  }
 }
 
 function checkOffscreen(){
@@ -139,6 +147,8 @@ function display(){
   circle1.x += circle1.vx
   circle1.y += circle1.vy
 
+  circle2.x += circle2.vx
+  circle2.y += circle2.vy
   ellipse(circle1.x, circle1.y, circle1.size);
   ellipse(circle2.x, circle2.y, circle2.size);
 }
