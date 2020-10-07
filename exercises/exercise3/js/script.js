@@ -13,7 +13,7 @@ let circle1 = {
   size:50,
   vx:0,
   vy:0,
-  speed:1
+  speed:1,
 };
 
 let circle2 = {
