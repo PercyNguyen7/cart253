@@ -70,7 +70,7 @@ function title(){
   textSize(40)
   fill(200,100,100);
   textAlign(CENTER,CENTER);
-  text(`Let the game begins...`,width/2,height/2)
+  text(`Let the game begins!`,width/2,height/2)
   pop();
 }
 
@@ -89,7 +89,7 @@ function love(){
   textSize(20)
   fill(255,150,150);
   textAlign(CENTER,CENTER);
-  text(`And they lived sadly forever after`,width/2,height/2);
+  text(`And they lived miserably ever after...`,width/2,height/2);
   pop();
 }
 
@@ -98,13 +98,19 @@ function sadness() {
   textSize(30)
   fill(0);
   textAlign(CENTER,CENTER);
-  text(`Oi you think this a game?`,width/2,height/2)
+  text(`Where ya' runnin' boi?`,width/2,height/2)
   pop();
 }
 
 function single() {
   imageMode(CENTER)
   image(johnnyImage,width/2,height/2)
+  push();
+  textSize(60)
+  fill(255);
+  textAlign(CENTER,CENTER);
+  text(`HERE'S JOHNNY`,width/2,400);
+  pop();
 }
 function handleInput(){
     if (keyIsDown(LEFT_ARROW)){
