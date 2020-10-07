@@ -22,7 +22,7 @@ let circle2 = {
   size:50,
   vx:0,
   vy:0,
-  speed:2,
+  speed:3,
 };
 
 let state = `title`;//Can be:title, simulation, love, sadness
@@ -171,7 +171,10 @@ function display(){
 
   circle2.x += circle2.vx
   circle2.y += circle2.vy
+
+  fill(169,28,18)
   ellipse(circle1.x, circle1.y, circle1.size);
+  fill(255,133,40)
   ellipse(circle2.x, circle2.y, circle2.size);
 }
 
