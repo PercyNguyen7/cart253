@@ -2,12 +2,27 @@ let contextImage;
 let day1Image;
 let avariceImage;
 let caughtendingImage;
+let trafficImage;
+let carImage ={
+  x:0,
+  y:0,
+  vx:0,
+  vy:0,
+  width:100,
+  height:50,
+  speed:0.05,
+  img:undefined
+}
+
+
 function preload(){
   contextImage=loadImage("assets/images/context.jpg")
   day1Image=loadImage("assets/images/day1.jpg")
   avariceImage=loadImage("assets/images/avarice.jpg")
   jewelrystoreImage=loadImage("assets/images/jewelrystore.jpg")
   caughtendingImage=loadImage("assets/images/caughtending.jpg")
+  trafficImage=loadImage("assets/images/traffic.jpg")
+  carImage.img=loadImage("assets/images/car.png")
 }
 let circle1 = {
   x:500,
@@ -18,17 +33,17 @@ let circle1 = {
   speed:4,
 };
 // setup()
-//
-// Description of setup() goes here.
 let state = `title`;
 
 function setup() {
-  createCanvas(1000,600);
+  createCanvas(1000, 600);
 }
 
+  carImage.x=width/2;
+  carImage.y= height/2;
+
 // draw()
-//
-// Description of draw() goes here.
+
 function draw() {
   background(45,21,56)
 
@@ -53,8 +68,9 @@ function draw() {
   else if (state === `home`){
     home();
   }
-
-
+  else if(state === `traffic`){
+    traffic();
+  }
 
 
 }
@@ -99,8 +115,8 @@ function firstday(){
    text(`Buy a RING for the proposal?`, width/2,200);
    textAlign(CENTER,CENTER);
    textSize(40);
-   text(`NAW jus wing it!`, width/3,400);
-   text(`GO for it baby!`,2* width/3,400)
+   text(`NAW jus wing it!`, width/3,2*height/3);
+   text(`GO for it baby!`,2* width/3,2*height/3)
    pop();
 
    display();
@@ -120,9 +136,9 @@ function jewelrystore (){
   fill(255);
   textAlign(CENTER,CENTER);
   textSize(40);
-  text(`80$`, width/4,300);
-  text(`8,000$`,2* width/4,300);
-  text(`8,000,000$`,3*width/4,300);
+  text(`80$`, width/4,height/2);
+  text(`8,000$`,2* width/4,height/2);
+  text(`8,000,000$`,3*width/4,height/2);
   textSize(30);
   text(`Net Worth: -25,000$`,width/6,100)
   textSize(55);
@@ -134,17 +150,13 @@ function jewelrystore (){
 
   buy80$();
   buy8000$();
+  buy8000000$();
 }
 
 function home (){
-  push();
-  image(avariceImage,0,0,1000,600);
-  textSize(50);
-  fill(200,100,100);
-  textAlign(CENTER,CENTER);
-  text(`Freakin' cheapskate!`,width/2,150)
-  pop();
+
 }
+
 
 function avariceending (){
   push();
@@ -168,6 +180,13 @@ function caughtending(){
   text(`My guy. I know you. I'm her sister...`,width/2,200);
   pop();
 }
+
+function traffic(){
+  image(trafficImage,0,0,1000,600);
+  carmove();
+  cardisplays();
+}
+
 
 
 function handleInput(){
@@ -201,27 +220,59 @@ function display(){
 
 }
 
-
 function buyring(){
-  if(circle1.x > 2*width/3 -150 && circle1.x < 2* width/3 +150 && circle1.y < 400+40 && circle1.y >400-40){
+  if(circle1.x > 2*width/3 -150 && circle1.x < 2* width/3 +150 && circle1.y < 2*height/3+40 && circle1.y >2*height/3-40){
     state = `jewelrystore`;
   }
 }
 function dontbuyring(){
-  if (circle1.x > width/3 -150 && circle1.x < width/3 +150 && circle1.y < 400+40 && circle1.y >400-40){
+  if (circle1.x > width/3 -150 && circle1.x < width/3 +150 && circle1.y < 2*height/3+40 && circle1.y >2*height/3-40){
   state = `avariceending`;
   }
 }
 function buy80$(){
-  if(circle1.x > width/4 -110 && circle1.x < width/4 +110 && circle1.y < 300+30 && circle1.y >300-30){
+  if(circle1.x > width/4 -110 && circle1.x < width/4 +110 && circle1.y < height/2+30 && circle1.y >height/2-30){
   state = `caughtending`;
   }
 }
 function buy8000$(){
-  if(circle1.x >2* width/4 -110 && circle1.x < 2*width/4 +110 && circle1.y < 300+30 && circle1.y >300-30){
+  if(circle1.x >2* width/4 -110 && circle1.x < 2*width/4 +110 && circle1.y <height/2+30 && circle1.y >height/2-30){
   state = `home`;
   }
 }
+function buy8000000$(){
+  if(circle1.x >3* width/4 -110 && circle1.x < 3*width/4 +110 && circle1.y <height/2+30 && circle1.y >height/2-30){
+  state = `traffic`;
+  }
+}
+
+function carmove(){
+  if (keyIsDown(LEFT_ARROW)) {
+    carImage.vx += -carImage.speed;
+  }
+  else if (keyIsDown(RIGHT_ARROW)){
+    carImage.vx += carImage.speed;
+  }
+  else {
+    carImage.vx = 0
+  }
+  if (keyIsDown(UP_ARROW)) {
+    carImage.vy += -carImage.speed;
+  }
+  else if (keyIsDown(DOWN_ARROW)){
+    carImage.vy += carImage.speed;
+  }
+  else {
+    carImage.vy = 0
+  }
+}
+function cardisplays(){
+  carImage.x += carImage.vx;
+  carImage.y += carImage.vy;
+  image(carImage.img,carImage.x, carImage.y, carImage.width, carImage.height);
+}
+
+
 function keyPressed(){
   if (state === `title`){
     state = `context`;
