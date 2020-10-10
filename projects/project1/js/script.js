@@ -1,10 +1,11 @@
 let contextImage;
 
 let day1Image;
-
+let avariceImage;
 function preload(){
   contextImage=loadImage("assets/images/context.jpg")
   day1Image=loadImage("assets/images/day1.jpg")
+  avariceImage=loadImage("assets/images/avarice.jpg")
 }
 let circle1 = {
   x:500,
@@ -12,7 +13,7 @@ let circle1 = {
   size:50,
   vx:0,
   vy:0,
-  speed:1,
+  speed:2,
 };
 // setup()
 //
@@ -41,6 +42,9 @@ function draw() {
   else if (state === `avarice`){
     avarice();
   }
+  else if (state === `jewelrystore`){
+    jewelrystore();
+  }
 
 
 
@@ -59,50 +63,55 @@ function title(){
 }
 
 function context(){
-  image(contextImage,0,0,1000,700)
+  image(contextImage,0,0,1000,600)
   push();
   textSize(40)
   fill(200,100,100);
   text(`You're in love, baby!`,30,50)
   textSize(25)
-  text(`Tomorrow will be the day you propose`,30,450)
+  text(`Tomorrow big day for a big boi`,30,450)
   textSize(27)
-  text(`She'll say yes. You assure yourself.`,30,500)
-  textSize(30)
-  text(`Oh joy, I'm your loverboy!`,30, 550)
-
+  text(`"She'll say yes!", you assure yourself.`,30,500)
+  textSize(35)
+  text(`Oh JOY! I'm your LOVERBOY!`,30, 550)
   pop();
 }
 
 function firstday(){
- image(day1Image,0,0,1000,700);
- fill(45,114,178);
- rectMode(CENTER);
- rect(width/3,350,300,80);
- rect(2*width/3,350,300,80);
- textSize(50);
- textAlign(CENTER,CENTER);
- fill(255);
- text(`8AM That DAY, Time to propose!`,width/2,200);
- textSize(40);
- text(`Buy a RING for the proposal?`, width/2,250);
- textAlign(CENTER,CENTER);
- textSize(40);
- text(`NAW jus wing it!`, width/3,350);
- text(`GO for it baby!`,2* width/3,350)
+   image(day1Image,0,0,1000,600);
+   fill(45,114,178);
+   rectMode(CENTER);
+   rect(width/3,350,300,80);
+   rect(2*width/3,350,300,80);
+   textSize(50);
+   textAlign(CENTER,CENTER);
+   fill(255);
+   text(`8AM of that DAY my boi!`,width/2,130);
+   textSize(40);
+   text(`Buy a RING for the proposal?`, width/2,200);
+   textAlign(CENTER,CENTER);
+   textSize(40);
+   text(`NAW jus wing it!`, width/3,350);
+   text(`GO for it baby!`,2* width/3,350)
 
- display();
- handleInput();
- buyring();
+   display();
+   handleInput();
+   dontbuyring();
+   buyring();
+
+}
+function jewelrystore (){
 
 }
 
+
 function avarice (){
   push();
+  image(avariceImage,0,0,1000,600);
   textSize(50);
   fill(200,100,100);
   textAlign(CENTER,CENTER);
-  text(`Freakin' cheapskate!`,width/2,height/2 -50)
+  text(`Freakin' cheapskate!`,width/2,150)
   pop();
 }
 
@@ -136,9 +145,13 @@ function display(){
 
 
 }
-
 function buyring(){
-  if (circle1.x > width/3 -150 && circle1.x < width/3 +150 && circle1.y < 350+40 && circle1.y >350-40){
+  if(circle1.x > 2*width/3 -150 && circle1.x < 2* width/3 +150 && circle1.y < 350+40 && circle1.y >350-40){
+    state = `jewelrystore`;
+  }
+}
+function dontbuyring(){
+  if (circle1.x > 2*width/3 -150 && circle1.x < 2* width/3 +150 && circle1.y < 350+40 && circle1.y >350-40){
   state = `avarice`;
 
   }
@@ -152,6 +165,6 @@ function keyPressed(){
     state = `context`;
   }
   else if (state === `context`){
-    state = 'firstday'
+    state = 'firstday';
   }
 }
