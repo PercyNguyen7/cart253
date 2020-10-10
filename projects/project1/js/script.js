@@ -1,17 +1,18 @@
 let contextImage;
-
 let day1Image;
 let avariceImage;
+let caughtendingImage;
 function preload(){
   contextImage=loadImage("assets/images/context.jpg")
   day1Image=loadImage("assets/images/day1.jpg")
   avariceImage=loadImage("assets/images/avarice.jpg")
   jewelrystoreImage=loadImage("assets/images/jewelrystore.jpg")
+  caughtendingImage=loadImage("assets/images/caughtending.jpg")
 }
 let circle1 = {
   x:500,
   y:550,
-  size:50,
+  size:30,
   vx:0,
   vy:0,
   speed:4,
@@ -46,10 +47,12 @@ function draw() {
   else if (state === `jewelrystore`){
     jewelrystore();
   }
-  else if (state === `sisterending`){
+  else if (state === `caughtending`){
     caughtending();
   }
-
+  else if (state === `home`){
+    home();
+  }
 
 
 
@@ -86,8 +89,8 @@ function firstday(){
    push();
    fill(45,114,178);
    rectMode(CENTER);
-   rect(width/3,350,300,80);
-   rect(2*width/3,350,300,80);
+   rect(width/3,400,300,80);
+   rect(2*width/3,400,300,80);
    textSize(50);
    textAlign(CENTER,CENTER);
    fill(255);
@@ -96,8 +99,8 @@ function firstday(){
    text(`Buy a RING for the proposal?`, width/2,200);
    textAlign(CENTER,CENTER);
    textSize(40);
-   text(`NAW jus wing it!`, width/3,350);
-   text(`GO for it baby!`,2* width/3,350)
+   text(`NAW jus wing it!`, width/3,400);
+   text(`GO for it baby!`,2* width/3,400)
    pop();
 
    display();
@@ -129,9 +132,19 @@ function jewelrystore (){
   display();
   handleInput();
 
-  caughtending();
+  buy80$();
+  buy8000$();
 }
 
+function home (){
+  push();
+  image(avariceImage,0,0,1000,600);
+  textSize(50);
+  fill(200,100,100);
+  textAlign(CENTER,CENTER);
+  text(`Freakin' cheapskate!`,width/2,150)
+  pop();
+}
 
 function avariceending (){
   push();
@@ -144,7 +157,16 @@ function avariceending (){
 }
 
 function caughtending(){
-  //ending
+  push();
+  image(caughtendingImage,0,0,1000,600);
+  textSize(100);
+  fill(50,18,122);
+  textAlign(CENTER,CENTER);
+  text(`WASTED`,width/2,550);
+
+  textSize(50);
+  text(`My guy. I know you. I'm her sister...`,width/2,200);
+  pop();
 }
 
 
@@ -173,33 +195,33 @@ function display(){
   circle1.x += circle1.vx
   circle1.y += circle1.vy
 
-  if (state === `jewelrystore`){
-    circle1.x = 550
-    circle1.y = 550
-  }
-
   fill(255)
   ellipse(circle1.x, circle1.y, circle1.size);
 
 
 }
+
+
 function buyring(){
-  if(circle1.x > 2*width/3 -150 && circle1.x < 2* width/3 +150 && circle1.y < 350+40 && circle1.y >350-40){
+  if(circle1.x > 2*width/3 -150 && circle1.x < 2* width/3 +150 && circle1.y < 400+40 && circle1.y >400-40){
     state = `jewelrystore`;
   }
 }
 function dontbuyring(){
-  if (circle1.x > width/3 -150 && circle1.x < width/3 +150 && circle1.y < 350+40 && circle1.y >350-40){
+  if (circle1.x > width/3 -150 && circle1.x < width/3 +150 && circle1.y < 400+40 && circle1.y >400-40){
   state = `avariceending`;
-
   }
 }
-function caughtending(){
+function buy80$(){
   if(circle1.x > width/4 -110 && circle1.x < width/4 +110 && circle1.y < 300+30 && circle1.y >300-30){
   state = `caughtending`;
   }
 }
-
+function buy8000$(){
+  if(circle1.x >2* width/4 -110 && circle1.x < 2*width/4 +110 && circle1.y < 300+30 && circle1.y >300-30){
+  state = `home`;
+  }
+}
 function keyPressed(){
   if (state === `title`){
     state = `context`;
