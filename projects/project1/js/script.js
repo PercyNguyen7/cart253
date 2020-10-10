@@ -5,15 +5,22 @@ let caughtendingImage;
 let trafficImage;
 let carImage ={
   x:0,
-  y:0,
+  y:100,
   vx:0,
   vy:0,
   width:100,
   height:50,
   speed:0.05,
-  img:undefined
+  img:undefined,
 }
-
+let carpurpleImage ={
+  x:1000,
+  y:0,
+  width:100,
+  height:50,
+  speed:-7,
+  img:undefined,
+}
 
 function preload(){
   contextImage=loadImage("assets/images/context.jpg")
@@ -23,6 +30,7 @@ function preload(){
   caughtendingImage=loadImage("assets/images/caughtending.jpg")
   trafficImage=loadImage("assets/images/traffic.jpg")
   carImage.img=loadImage("assets/images/car.png")
+  carpurpleImage.img=loadImage("assets/images/carpurple.png")
 }
 let circle1 = {
   x:500,
@@ -39,8 +47,6 @@ function setup() {
   createCanvas(1000, 600);
 }
 
-  carImage.x=width/2;
-  carImage.y= height/2;
 
 // draw()
 
@@ -116,7 +122,7 @@ function firstday(){
    textAlign(CENTER,CENTER);
    textSize(40);
    text(`NAW jus wing it!`, width/3,2*height/3);
-   text(`GO for it baby!`,2* width/3,2*height/3)
+   text(`GO for it baby!`,2* width/3,2*height/3);
    pop();
 
    display();
@@ -185,6 +191,7 @@ function traffic(){
   image(trafficImage,0,0,1000,600);
   carmove();
   cardisplays();
+  carpurplemovement();
 }
 
 
@@ -270,6 +277,15 @@ function cardisplays(){
   carImage.x += carImage.vx;
   carImage.y += carImage.vy;
   image(carImage.img,carImage.x, carImage.y, carImage.width, carImage.height);
+}
+function carpurplemovement(){
+carpurpleImage.x += carpurpleImage.speed;
+  if (carpurpleImage.x<0){
+  carpurpleImage.x=width;
+  carpurpleImage.y= random(0,600)
+  carpurpleImage.speed=random(-6,-10)
+  }
+  image(carpurpleImage.img,carpurpleImage.x, carpurpleImage.y, carpurpleImage.width, carpurpleImage.height);
 }
 
 
