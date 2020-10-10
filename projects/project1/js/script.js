@@ -1,3 +1,11 @@
+let contextImage;
+
+let day1Image;
+
+function preload(){
+  contextImage=loadImage("assets/images/context.jpg")
+  day1Image=loadImage("assets/images/day1.jpg")
+}
 let circle1 = {
   x:500,
   y:500,
@@ -48,19 +56,40 @@ function title(){
 }
 
 function context(){
+  image(contextImage,0,0,1000,700)
   push();
-  textSize(50)
+  textSize(40)
   fill(200,100,100);
-  textAlign(CENTER,CENTER);
-  text(`testin`,width/2,height/2 -50)
+  text(`You're in love, baby!`,30,50)
+  textSize(25)
+  text(`Tomorrow will be the day you propose`,30,450)
+  textSize(27)
+  text(`She'll say yes. You assure yourself.`,30,500)
   textSize(30)
-  text(`Press any key...`,width/2,height/2 +50)
+  text(`Oh joy, I'm your loverboy!`,30, 550)
+
   pop();
 }
 
 function firstday(){
-  display();
-  handleInput();
+ image(day1Image,0,0,1000,700);
+ fill(45,114,178);
+ rectMode(CENTER);
+ rect(width/3,350,300,80);
+  rect(2*width/3,350,300,80);
+ textSize(50);
+ textAlign(CENTER,CENTER);
+ fill(255);
+ text(`8AM That DAY, Time to propose!`,width/2,200);
+ textSize(40);
+ text(`Buy a RING for the proposal?`, width/2,250);
+ textAlign(CENTER,CENTER);
+ textSize(40);
+ text(`GO for it baby!`, width/3,350);
+ text(`NAW jus wing it!`,2* width/3,350)
+
+ display();
+ handleInput();
 }
 
 
@@ -92,6 +121,8 @@ function display(){
 
   fill(255)
   ellipse(circle1.x, circle1.y, circle1.size);
+
+
 }
 function keyPressed(){
   if (state === `title`){
