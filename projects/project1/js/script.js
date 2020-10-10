@@ -24,6 +24,9 @@ function draw() {
   if (state === `title`){
     title();
   }
+  if (state === `context`){
+    context();
+  }
   else if (state === `firstday`){
     firstday();
   }
@@ -39,6 +42,17 @@ function title(){
   fill(200,100,100);
   textAlign(CENTER,CENTER);
   text(`Propose Day`,width/2,height/2 -50)
+  textSize(30)
+  text(`Press any key...`,width/2,height/2 +50)
+  pop();
+}
+
+function context(){
+  push();
+  textSize(50)
+  fill(200,100,100);
+  textAlign(CENTER,CENTER);
+  text(`testin`,width/2,height/2 -50)
   textSize(30)
   text(`Press any key...`,width/2,height/2 +50)
   pop();
@@ -81,6 +95,9 @@ function display(){
 }
 function keyPressed(){
   if (state === `title`){
-    state = `firstday`;
+    state = `context`;
+  }
+  else if (state === `context`){
+    state = 'firstday'
   }
 }
