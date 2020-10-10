@@ -6,14 +6,15 @@ function preload(){
   contextImage=loadImage("assets/images/context.jpg")
   day1Image=loadImage("assets/images/day1.jpg")
   avariceImage=loadImage("assets/images/avarice.jpg")
+  jewelrystoreImage=loadImage("assets/images/jewelrystore.jpg")
 }
 let circle1 = {
   x:500,
-  y:500,
+  y:550,
   size:50,
   vx:0,
   vy:0,
-  speed:2,
+  speed:4,
 };
 // setup()
 //
@@ -39,18 +40,21 @@ function draw() {
   else if (state === `firstday`){
     firstday();
   }
-  else if (state === `avarice`){
-    avarice();
+  else if (state === `avariceending`){
+    avariceending();
   }
   else if (state === `jewelrystore`){
     jewelrystore();
   }
+  else if (state === `sisterending`){
+    caughtending();
+  }
+
 
 
 
 
 }
-
 function title(){
   push();
   textSize(50)
@@ -79,6 +83,7 @@ function context(){
 
 function firstday(){
    image(day1Image,0,0,1000,600);
+   push();
    fill(45,114,178);
    rectMode(CENTER);
    rect(width/3,350,300,80);
@@ -93,6 +98,7 @@ function firstday(){
    textSize(40);
    text(`NAW jus wing it!`, width/3,350);
    text(`GO for it baby!`,2* width/3,350)
+   pop();
 
    display();
    handleInput();
@@ -101,11 +107,33 @@ function firstday(){
 
 }
 function jewelrystore (){
+  push();
+  image(jewelrystoreImage,0,0,1000,600)
+  fill(45,114,178);
+  rectMode(CENTER);
+  rect(width/4,300,220,60);
+  rect(2*width/4,300,220,60);
+  rect(3*width/4,300,220,60)
+  fill(255);
+  textAlign(CENTER,CENTER);
+  textSize(40);
+  text(`80$`, width/4,300);
+  text(`8,000$`,2* width/4,300);
+  text(`8,000,000$`,3*width/4,300);
+  textSize(30);
+  text(`Net Worth: -25,000$`,width/6,100)
+  textSize(55);
+  text(`Pick THE ring`, 2*width/4,200)
+  pop();
 
+  display();
+  handleInput();
+
+  caughtending();
 }
 
 
-function avarice (){
+function avariceending (){
   push();
   image(avariceImage,0,0,1000,600);
   textSize(50);
@@ -114,6 +142,11 @@ function avarice (){
   text(`Freakin' cheapskate!`,width/2,150)
   pop();
 }
+
+function caughtending(){
+  //ending
+}
+
 
 function handleInput(){
     if (keyIsDown(LEFT_ARROW)){
@@ -140,6 +173,11 @@ function display(){
   circle1.x += circle1.vx
   circle1.y += circle1.vy
 
+  if (state === `jewelrystore`){
+    circle1.x = 550
+    circle1.y = 550
+  }
+
   fill(255)
   ellipse(circle1.x, circle1.y, circle1.size);
 
@@ -151,14 +189,16 @@ function buyring(){
   }
 }
 function dontbuyring(){
-  if (circle1.x > 2*width/3 -150 && circle1.x < 2* width/3 +150 && circle1.y < 350+40 && circle1.y >350-40){
-  state = `avarice`;
+  if (circle1.x > width/3 -150 && circle1.x < width/3 +150 && circle1.y < 350+40 && circle1.y >350-40){
+  state = `avariceending`;
 
   }
 }
-
-
-
+function caughtending(){
+  if(circle1.x > width/4 -110 && circle1.x < width/4 +110 && circle1.y < 300+30 && circle1.y >300-30){
+  state = `caughtending`;
+  }
+}
 
 function keyPressed(){
   if (state === `title`){
