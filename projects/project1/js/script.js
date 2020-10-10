@@ -5,15 +5,23 @@ let caughtendingImage;
 let trafficImage;
 let carImage ={
   x:0,
-  y:100,
+  y:300,
   vx:0,
   vy:0,
   width:100,
   height:50,
-  speed:0.05,
+  speed:0.03,
   img:undefined,
 }
 let carpurpleImage ={
+  x:1000,
+  y:0,
+  width:100,
+  height:50,
+  speed:-7,
+  img:undefined,
+}
+let carorangeImage ={
   x:1000,
   y:0,
   width:100,
@@ -31,6 +39,7 @@ function preload(){
   trafficImage=loadImage("assets/images/traffic.jpg")
   carImage.img=loadImage("assets/images/car.png")
   carpurpleImage.img=loadImage("assets/images/carpurple.png")
+  carorangeImage.img=loadImage("assets/images/carorange.png")
 }
 let circle1 = {
   x:500,
@@ -189,9 +198,14 @@ function caughtending(){
 
 function traffic(){
   image(trafficImage,0,0,1000,600);
+  textSize(30);
+  textAlign(CENTER,CENTER);
+  text(`Gotta protect this 8 million baby. Not on proposal day.`,width/2,100);
+  text(`Keep goin buddy.`,width/2,50);
   carmove();
   cardisplays();
   carpurplemovement();
+  carorangemovement();
 }
 
 
@@ -277,17 +291,29 @@ function cardisplays(){
   carImage.x += carImage.vx;
   carImage.y += carImage.vy;
   image(carImage.img,carImage.x, carImage.y, carImage.width, carImage.height);
+  image(carpurpleImage.img,carpurpleImage.x, carpurpleImage.y, carpurpleImage.width, carpurpleImage.height);
+  image(carorangeImage.img,carorangeImage.x, carorangeImage.y, carorangeImage.width, carorangeImage.height);
+
 }
+
+
 function carpurplemovement(){
 carpurpleImage.x += carpurpleImage.speed;
   if (carpurpleImage.x<0){
   carpurpleImage.x=width;
-  carpurpleImage.y= random(0,600)
-  carpurpleImage.speed=random(-6,-10)
+  carpurpleImage.y= random(0,600);
+  carpurpleImage.speed=random(-6,-10);
   }
-  image(carpurpleImage.img,carpurpleImage.x, carpurpleImage.y, carpurpleImage.width, carpurpleImage.height);
 }
 
+function carorangemovement(){
+  carorangeImage.x += carorangeImage.speed;
+    if (carorangeImage.x<0){
+    carorangeImage.x=width;
+    carorangeImage.y= random(0,600);
+    carorangeImage.speed=random(-6,-10);
+    }
+}
 
 function keyPressed(){
   if (state === `title`){
