@@ -38,6 +38,9 @@ function draw() {
   else if (state === `firstday`){
     firstday();
   }
+  else if (state === `avarice`){
+    avarice();
+  }
 
 
 
@@ -76,7 +79,7 @@ function firstday(){
  fill(45,114,178);
  rectMode(CENTER);
  rect(width/3,350,300,80);
-  rect(2*width/3,350,300,80);
+ rect(2*width/3,350,300,80);
  textSize(50);
  textAlign(CENTER,CENTER);
  fill(255);
@@ -85,14 +88,23 @@ function firstday(){
  text(`Buy a RING for the proposal?`, width/2,250);
  textAlign(CENTER,CENTER);
  textSize(40);
- text(`GO for it baby!`, width/3,350);
- text(`NAW jus wing it!`,2* width/3,350)
+ text(`NAW jus wing it!`, width/3,350);
+ text(`GO for it baby!`,2* width/3,350)
 
  display();
  handleInput();
+ buyring();
+
 }
 
-
+function avarice (){
+  push();
+  textSize(50);
+  fill(200,100,100);
+  textAlign(CENTER,CENTER);
+  text(`Freakin' cheapskate!`,width/2,height/2 -50)
+  pop();
+}
 
 function handleInput(){
     if (keyIsDown(LEFT_ARROW)){
@@ -124,6 +136,17 @@ function display(){
 
 
 }
+
+function buyring(){
+  if (circle1.x > width/3 -150 && circle1.x < width/3 +150 && circle1.y < 350+40 && circle1.y >350-40){
+  state = `avarice`;
+
+  }
+}
+
+
+
+
 function keyPressed(){
   if (state === `title`){
     state = `context`;
