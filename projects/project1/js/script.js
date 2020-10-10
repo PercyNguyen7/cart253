@@ -2,7 +2,8 @@ let contextImage;
 let day1Image;
 let avariceImage;
 let caughtendingImage;
-let trafficImage;
+let trafficfastImage;
+let trafficslowImage;
 let carImage ={
   x:0,
   y:300,
@@ -10,36 +11,40 @@ let carImage ={
   vy:0,
   width:100,
   height:50,
-  speed:0.03,
+  speed:0.015,
   img:undefined,
 }
 let carpurpleImage ={
   x:1000,
-  y:0,
+  y:200,
   width:100,
   height:50,
-  speed:-7,
+  speed:-15,
   img:undefined,
 }
 let carorangeImage ={
   x:1000,
-  y:0,
+  y:400,
   width:100,
   height:50,
-  speed:-7,
+  speed:-15,
   img:undefined,
 }
-
+let inloveImage;
+let indebtImage;
 function preload(){
   contextImage=loadImage("assets/images/context.jpg")
   day1Image=loadImage("assets/images/day1.jpg")
   avariceImage=loadImage("assets/images/avarice.jpg")
   jewelrystoreImage=loadImage("assets/images/jewelrystore.jpg")
   caughtendingImage=loadImage("assets/images/caughtending.jpg")
-  trafficImage=loadImage("assets/images/traffic.jpg")
+  trafficfastImage=loadImage("assets/images/trafficfast.jpg")
+  trafficslowImage=loadImage("assets/images/trafficslow.jpg")
   carImage.img=loadImage("assets/images/car.png")
   carpurpleImage.img=loadImage("assets/images/carpurple.png")
   carorangeImage.img=loadImage("assets/images/carorange.png")
+  inloveImage=loadImage("assets/images/inlove.jpg")
+  indebtImage=loadImage("assets/images/indebt.jpg")
 }
 let circle1 = {
   x:500,
@@ -80,11 +85,17 @@ function draw() {
   else if (state === `caughtending`){
     caughtending();
   }
-  else if (state === `home`){
-    home();
+  else if (state ===`lowdebt`){
+    lowdebt();
   }
-  else if(state === `traffic`){
-    traffic();
+  else if (state === `highdebt`){
+    highdebt();
+  }
+  else if(state === `trafficfast`){
+    trafficfast();
+  }
+  else if(state===`trafficslow`){
+    trafficslow();
   }
 
 
@@ -105,7 +116,7 @@ function context(){
   push();
   textSize(40)
   fill(200,100,100);
-  text(`You're in love, baby!`,30,50)
+  text(`You're IN LOVE, babyyyy!`,30,50)
   textSize(25)
   text(`Tomorrow big day for a big boi`,30,450)
   textSize(27)
@@ -125,7 +136,7 @@ function firstday(){
    textSize(50);
    textAlign(CENTER,CENTER);
    fill(255);
-   text(`8AM of that DAY my boi!`,width/2,130);
+   text(`8AM that DAY my BOIII!`,width/2,130);
    textSize(40);
    text(`Buy a RING for the proposal?`, width/2,200);
    textAlign(CENTER,CENTER);
@@ -151,7 +162,7 @@ function jewelrystore (){
   fill(255);
   textAlign(CENTER,CENTER);
   textSize(40);
-  text(`80$`, width/4,height/2);
+  text(`8$`, width/4,height/2);
   text(`8,000$`,2* width/4,height/2);
   text(`8,000,000$`,3*width/4,height/2);
   textSize(30);
@@ -163,15 +174,47 @@ function jewelrystore (){
   display();
   handleInput();
 
-  buy80$();
+  buy8$();
   buy8000$();
   buy8000000$();
 }
-
-function home (){
-
+function lowdebt(){
+  push();
+  image(inloveImage,0,0,1000,600);
+  fill(219,73,172);
+  textAlign(CENTER,CENTER);
+  textSize(40);
+  text(`Now you're 33,000$ in debt.`, width/2,height/2 - 50);
+  textSize(20);
+  text(`But you know what. You'll freakin' do it again.`, width/2,height/2+50);
+  text(`You areeee my fireeee My one desireee`, width/2,height/2+100);
+  textSize(25)
+  text(`Believe when I sayyyy`, width/2,height/2+150);
+  textSize(30)
+  text(`I want it THAT WAYYY`, width/2,height/2+200);
+  pop();
+}
+function highdebt(){
+  image(indebtImage,0,0,1000,600);
 }
 
+function trafficfast (){
+  image(trafficfastImage,0,0,1000,600);
+  carmove();
+  cardisplays();
+  carsmovement();
+}
+
+function trafficslow(){
+  image(trafficslowImage,0,0,1000,600);
+  textSize(30);
+  textAlign(CENTER,CENTER);
+  text(`Gotta protect this 8 million baby. Not on proposal day.`,width/2,100);
+  text(`Keep goin buddy.`,width/2,50);
+  carmove();
+  cardisplays();
+  carsmovement();
+}
 
 function avariceending (){
   push();
@@ -196,17 +239,7 @@ function caughtending(){
   pop();
 }
 
-function traffic(){
-  image(trafficImage,0,0,1000,600);
-  textSize(30);
-  textAlign(CENTER,CENTER);
-  text(`Gotta protect this 8 million baby. Not on proposal day.`,width/2,100);
-  text(`Keep goin buddy.`,width/2,50);
-  carmove();
-  cardisplays();
-  carpurplemovement();
-  carorangemovement();
-}
+
 
 
 
@@ -251,23 +284,26 @@ function dontbuyring(){
   state = `avariceending`;
   }
 }
-function buy80$(){
+function buy8$(){
   if(circle1.x > width/4 -110 && circle1.x < width/4 +110 && circle1.y < height/2+30 && circle1.y >height/2-30){
   state = `caughtending`;
   }
 }
 function buy8000$(){
   if(circle1.x >2* width/4 -110 && circle1.x < 2*width/4 +110 && circle1.y <height/2+30 && circle1.y >height/2-30){
-  state = `home`;
+  state = `lowdebt`;
   }
 }
 function buy8000000$(){
   if(circle1.x >3* width/4 -110 && circle1.x < 3*width/4 +110 && circle1.y <height/2+30 && circle1.y >height/2-30){
-  state = `traffic`;
+  state = `highdebt`;
   }
 }
 
 function carmove(){
+  if (state === `trafficfast`){
+    carImage.speed+= 0.005;
+  }
   if (keyIsDown(LEFT_ARROW)) {
     carImage.vx += -carImage.speed;
   }
@@ -278,14 +314,15 @@ function carmove(){
     carImage.vx = 0
   }
   if (keyIsDown(UP_ARROW)) {
-    carImage.vy += -carImage.speed;
+    carImage.vy += -3*carImage.speed;
   }
   else if (keyIsDown(DOWN_ARROW)){
-    carImage.vy += carImage.speed;
+    carImage.vy += 3*carImage.speed;
   }
   else {
     carImage.vy = 0
   }
+
 }
 function cardisplays(){
   carImage.x += carImage.vx;
@@ -297,23 +334,30 @@ function cardisplays(){
 }
 
 
-function carpurplemovement(){
+function carsmovement(){
 carpurpleImage.x += carpurpleImage.speed;
   if (carpurpleImage.x<0){
   carpurpleImage.x=width;
   carpurpleImage.y= random(0,600);
-  carpurpleImage.speed=random(-6,-10);
+  carpurpleImage.speed=random(-8,-12);
   }
-}
 
-function carorangemovement(){
   carorangeImage.x += carorangeImage.speed;
     if (carorangeImage.x<0){
     carorangeImage.x=width;
     carorangeImage.y= random(0,600);
-    carorangeImage.speed=random(-6,-10);
+    carorangeImage.speed=random(-8,-12);
+    }
+    if (carorangeImage.y < carpurpleImage.y +50 && carorangeImage.y> carpurpleImage.y -50){
+    carorangeImage.y+= +50;
     }
 }
+
+
+
+
+
+
 
 function keyPressed(){
   if (state === `title`){
@@ -321,5 +365,11 @@ function keyPressed(){
   }
   else if (state === `context`){
     state = 'firstday';
+  }
+  else if (state ===`lowdebt`){
+    state = `trafficfast`;
+  }
+  else if (state === `highdebt`){
+    state = `trafficslow`;
   }
 }
