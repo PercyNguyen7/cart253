@@ -46,14 +46,36 @@ function title(){
 
 function firstday(){
   display();
-
+  handleInput();
 }
 
 
 
-
+function handleInput(){
+    if (keyIsDown(LEFT_ARROW)){
+      circle1.vx = -circle1.speed;
+    }
+    else if (keyIsDown(RIGHT_ARROW)){
+      circle1.vx = circle1.speed;
+    }
+    else{
+        circle1.vx = 0
+    }
+    if (keyIsDown(UP_ARROW)){
+      circle1.vy = -circle1.speed;
+    }
+    else if (keyIsDown(DOWN_ARROW)){
+      circle1.vy = circle1.speed;
+    }
+    else {
+      circle1.vy = 0;
+    }
+}
 
 function display(){
+  circle1.x += circle1.vx
+  circle1.y += circle1.vy
+
   fill(255)
   ellipse(circle1.x, circle1.y, circle1.size);
 }
