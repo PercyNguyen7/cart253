@@ -11,7 +11,7 @@ let carImage ={
   vy:0,
   width:100,
   height:50,
-  speed:0.015,
+  speed:0.5,
   img:undefined,
 }
 let carpurpleImage ={
@@ -34,6 +34,8 @@ let inloveImage;
 let indebtImage;
 let caraccidentImage;
 let runawayendingImage;
+let workinginloveImage;
+let workingtiredImage;
 function preload(){
   contextImage=loadImage("assets/images/context.jpg")
   day1Image=loadImage("assets/images/day1.jpg")
@@ -49,6 +51,8 @@ function preload(){
   indebtImage=loadImage("assets/images/indebt.jpg")
   caraccidentImage=loadImage("assets/images/caraccident.jpg")
   runawayendingImage=loadImage("assets/images/runawayending.jpg")
+  workinginloveImage=loadImage("assets/images/workinginlove.jpg")
+  workingtiredImage=loadImage("assets/images/workingtired.jpg")
 }
 let circle1 = {
   x:500,
@@ -112,7 +116,12 @@ function draw() {
   }
   else if(state===`gothometired`){
     gothometired();
-
+  }
+  else if(state===`workinginlove`){
+    workinginlove();
+  }
+  else if(state === `workingtired`){
+    workingtired();
   }
 }
 function title(){
@@ -211,17 +220,20 @@ function lowdebt(){
 }
 function highdebt(){
   image(indebtImage,0,0,1000,600);
+  push();
   textAlign(CENTER,CENTER);
-  textSize(40);
+  textSize(90);
   fill(242,181,81);
-  text(`-33,000$`, width/2 -150,200);
+  text(`-8,025,000$`, width/2 -100,200);
   textSize(35);
   fill(210,0,40);
   text(`Idk about this one, chief...`, width/2 -250,550);
+  pop();
 }
 
 function trafficfast (){
   image(trafficfastImage,0,0,1000,600);
+  push();
   fill(255)
   textSize(30);
   textAlign(CENTER,CENTER);
@@ -232,10 +244,12 @@ function trafficfast (){
   carsmovement();
   caroverlap();
   caroffscreen();
+  pop();
 }
 
 function trafficslow(){
   image(trafficslowImage,0,0,1000,600);
+  push();
   textSize(30);
   textAlign(CENTER,CENTER);
   text(`SLOWLY. 8 million baby. we aint taking no risk`,width/2,100);
@@ -245,23 +259,53 @@ function trafficslow(){
   carsmovement();
   caroverlap();
   caroffscreen();
+  pop();
 }
 
 function gothome(){
-  //gothome
+  push();
+  background(242,181,81);
+  fill(255);
+  textSize(20);
+  textAlign(CENTER,CENTER);
+  text(`You got home all excited, ready for tonight`,width/2,100);
+  text(`Still, a man's gotta do his job. You sat down and do a bit of coding`,width/2,200);
+  pop();
 }
 
 function gothometired(){
-  //tiredd
+  push();
+  background(0);
+  textSize(20);
+  textAlign(CENTER,CENTER);
+  text(`You got home tired, mentally drained from the thoughts of your massive debt`,width/2,100);
+  text(`Oh god...You still have some coding to do. Tuesday deadline...`,width/2,200);
+  text(`You sit down, exhausted, typing random letters just to pass time.`,width/2,300);
+  pop();
+}
+
+function workinginlove(){
+  image(workinginloveImage,0,0,1000,600);
+  push();
+  textSize(30);
+  textAlign(CENTER,CENTER);
+  text(`You got home tired, drained`,width/2,100);
+  pop();
+}
+
+function workingtired(){
+  image(workingtiredImage,0,0,1000,600);
 }
 
 function avariceending (){
   push();
   image(avariceImage,0,0,1000,600);
-  textSize(50);
+  textSize(60);
   fill(200,100,100);
   textAlign(CENTER,CENTER);
-  text(`Freakin' cheapskate!`,width/2,150)
+  text(`Freakin' cheapskate!`,width/2,100);
+  textSize(25);
+  text(`Tryna propose without a ring big boi? Think again`,width/2,530);
   pop();
 }
 
@@ -302,8 +346,6 @@ function runawayending(){
   text(`You don't deserve her anyway. *******`,width/2,180)
 
 
-
-
 }
 
 
@@ -336,8 +378,6 @@ function display(){
 
   fill(255)
   ellipse(circle1.x, circle1.y, circle1.size);
-
-
 }
 
 function buyring(){
@@ -459,5 +499,11 @@ function keyPressed(){
   }
   else if (state === `highdebt`){
     state = `trafficslow`;
+  }
+  else if (state ===`gothome`){
+    state = `workinginlove`;
+  }
+  else if (state === `gothometired`){
+    state = `workingtired`;
   }
 }
