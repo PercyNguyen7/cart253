@@ -123,6 +123,12 @@ function draw() {
   else if(state === `workingtired`){
     workingtired();
   }
+  else if(state === `sleep`){
+    sleep();
+  }
+  else if(state === `shesaysyes`){
+    shesaysyes();
+  }
 }
 function title(){
   push();
@@ -276,10 +282,10 @@ function gothome(){
 function gothometired(){
   push();
   background(0);
-  textSize(20);
+  textSize(25);
   textAlign(CENTER,CENTER);
-  text(`You got home tired, mentally drained from the thoughts of your massive debt`,width/2,100);
-  text(`Oh god...You still have some coding to do. Tuesday deadline...`,width/2,200);
+  text(`You got home tired, mentally drained from the thoughts of your massive debt`,width/2,200);
+  text(`Oh god...You still have work to do.`,width/2,250);
   text(`You sit down, exhausted, typing random letters just to pass time.`,width/2,300);
   pop();
 }
@@ -289,13 +295,36 @@ function workinginlove(){
   push();
   textSize(30);
   textAlign(CENTER,CENTER);
-  text(`You got home tired, drained`,width/2,100);
+  text(`3PM. You finished a bunch of works!`,width/2,450);
+  text(``,width/2,500);
   pop();
 }
 
 function workingtired(){
   image(workingtiredImage,0,0,1000,600);
+  push();
+  textSize(30);
+  textAlign(CENTER,CENTER);
+  text(`3PM.You're soooooooo sleepy `,width/2,400);
+  text(`You can feel yourself falling asleep... `,width/2,450);
+  pop();
 }
+
+function sleep(){
+background(0);
+textSize(30);
+textAlign(CENTER,CENTER);
+text(`You slept restlessly...`,width/2,400);
+text(`and wake up to a terrifying scream... `,width/2,400);
+
+}
+
+function shesaysyes(){
+
+
+}
+
+
 
 function avariceending (){
   push();
@@ -344,8 +373,6 @@ function runawayending(){
   text(`There's more fishes in the sea`,width/2,140)
   textSize(20)
   text(`You don't deserve her anyway. *******`,width/2,180)
-
-
 }
 
 
@@ -429,6 +456,7 @@ function caroffscreen(){
 }
 
 
+
 function carmove(){
   if (state === `trafficfast`){
     carImage.speed= 0.07;
@@ -465,14 +493,13 @@ carpurpleImage.x += carpurpleImage.speed;
   }
 
   carorangeImage.x += carorangeImage.speed;
-    if (carorangeImage.x<0){
-    carorangeImage.x=width;
-    carorangeImage.y= random(0,600);
-    carorangeImage.speed=random(-8,-12);
-    }
-    if (carorangeImage.y < carpurpleImage.y +50 && carorangeImage.y> carpurpleImage.y -50){
-    carorangeImage.y+= 50;
-    }
+  if (carorangeImage.x<0){
+  carorangeImage.x=width;
+  carorangeImage.y= random(0,600);
+  carorangeImage.speed=random(-8,-12);    }
+  if (carorangeImage.y < carpurpleImage.y +50 && carorangeImage.y> carpurpleImage.y -50){
+  carorangeImage.y+= 50;
+  }
 }
 function cardisplays(){
     carImage.x += carImage.vx;
@@ -506,4 +533,11 @@ function keyPressed(){
   else if (state === `gothometired`){
     state = `workingtired`;
   }
+  else if (state === `workingtired`){
+    state = `sleep`;
+  }
+  else if (state === `sleep`){
+    state = `shesaysyes`;
+  }
+
 }
