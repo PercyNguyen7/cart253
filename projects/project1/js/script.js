@@ -33,6 +33,7 @@ let carorangeImage ={
 let inloveImage;
 let indebtImage;
 let caraccidentImage;
+let runawayendingImage;
 function preload(){
   contextImage=loadImage("assets/images/context.jpg")
   day1Image=loadImage("assets/images/day1.jpg")
@@ -47,6 +48,7 @@ function preload(){
   inloveImage=loadImage("assets/images/inlove.jpg")
   indebtImage=loadImage("assets/images/indebt.jpg")
   caraccidentImage=loadImage("assets/images/caraccident.jpg")
+  runawayendingImage=loadImage("assets/images/runawayending.jpg")
 }
 let circle1 = {
   x:500,
@@ -102,8 +104,16 @@ function draw() {
   else if(state===`accidentending`){
     accidentending();
   }
+  else if(state===`runawayending`){
+    runawayending();
+  }
+  else if(state===`gothome`){
+    gothome();
+  }
+  else if(state===`gothometired`){
+    gothometired();
 
-
+  }
 }
 function title(){
   push();
@@ -192,7 +202,7 @@ function lowdebt(){
   text(`Now you're 33,000$ in debt.`, width/2,height/2 - 50);
   textSize(20);
   text(`But you know what. You'll freakin' do it again.`, width/2,height/2+50);
-  text(`You areeee my fireeee My one desireee`, width/2,height/2+100);
+  text(`You areeee my fireeee...my one desireee...`, width/2,height/2+100);
   textSize(25)
   text(`Believe when I sayyyy`, width/2,height/2+150);
   textSize(30)
@@ -221,6 +231,7 @@ function trafficfast (){
   cardisplays();
   carsmovement();
   caroverlap();
+  caroffscreen();
 }
 
 function trafficslow(){
@@ -233,6 +244,15 @@ function trafficslow(){
   cardisplays();
   carsmovement();
   caroverlap();
+  caroffscreen();
+}
+
+function gothome(){
+  //gothome
+}
+
+function gothometired(){
+  //tiredd
 }
 
 function avariceending (){
@@ -262,14 +282,30 @@ function accidentending(){
   push();
   image(caraccidentImage,0,0,1000,600);
   textSize(80);
-  fill(255);
+  fill(168,26,7);
   textAlign(CENTER,CENTER);
   text(`THE END`,width/3,100);
   textSize(50)
   text(`Can't propose now can you?`,width/3,150)
   pop();
+}
+
+function runawayending(){
+  image(runawayendingImage,0,0,1000,600);
+  textSize(75);
+  fill(168,26,7);
+  textAlign(CENTER,CENTER);
+  text(`The night is still YOUNG`,width/2,75);
+  textSize(50)
+  text(`There's more fishes in the sea`,width/2,140)
+  textSize(20)
+  text(`You don't deserve her anyway. *******`,width/2,180)
+
+
+
 
 }
+
 
 
 
@@ -340,7 +376,17 @@ function caroverlap(){
   }
 }
 
-
+function caroffscreen(){
+  if (carImage.x<0||carImage.y<0||carImage.y>height){
+    state= `runawayending`
+  }
+  else if (carImage.x>width && state === `trafficfast`){
+    state= `gothome`
+  }
+  else if (carImage.x>width && state ===`trafficslow`){
+    state=`gothometired`
+  }
+}
 
 
 function carmove(){
@@ -396,8 +442,6 @@ function cardisplays(){
     image(carorangeImage.img,carorangeImage.x, carorangeImage.y, carorangeImage.width, carorangeImage.height);
 
 }
-
-
 
 
 
