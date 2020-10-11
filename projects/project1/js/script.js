@@ -36,6 +36,7 @@ let caraccidentImage;
 let runawayendingImage;
 let workinginloveImage;
 let workingtiredImage;
+let shesaysyesImage;
 function preload(){
   contextImage=loadImage("assets/images/context.jpg")
   day1Image=loadImage("assets/images/day1.jpg")
@@ -53,6 +54,7 @@ function preload(){
   runawayendingImage=loadImage("assets/images/runawayending.jpg")
   workinginloveImage=loadImage("assets/images/workinginlove.jpg")
   workingtiredImage=loadImage("assets/images/workingtired.jpg")
+  shesaysyesImage=loadImage("assets/images/shesaysyes.jpg")
 }
 let circle1 = {
   x:500,
@@ -314,13 +316,14 @@ function sleep(){
 background(0);
 textSize(30);
 textAlign(CENTER,CENTER);
-text(`You slept restlessly...`,width/2,400);
-text(`and wake up to a terrifying scream... `,width/2,400);
+text(`You slept restlessly...`,width/2,300);
+text(`and wake up to a familiar scream... `,width/2,400);
+text(`YESSSSSSSSSSSSS`,width/2,400);
 
 }
 
 function shesaysyes(){
-
+image(shesaysyesImage,0,0,1000,600);
 
 }
 
