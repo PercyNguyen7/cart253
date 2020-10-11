@@ -37,6 +37,17 @@ let runawayendingImage;
 let workinginloveImage;
 let workingtiredImage;
 let shesaysyesImage;
+let askpriceImage;
+let happypoorendingImage;
+let user = {
+  x:500,
+  y:550,
+  size:30,
+  vx:0,
+  vy:0,
+  speed:4,
+}
+
 function preload(){
   contextImage=loadImage("assets/images/context.jpg")
   day1Image=loadImage("assets/images/day1.jpg")
@@ -55,15 +66,9 @@ function preload(){
   workinginloveImage=loadImage("assets/images/workinginlove.jpg")
   workingtiredImage=loadImage("assets/images/workingtired.jpg")
   shesaysyesImage=loadImage("assets/images/shesaysyes.jpg")
+  askpriceImage=loadImage("assets/images/askprice.jpg")
+  happypoorendingImage=loadImage("assets/images/happypoorending.jpg")
 }
-let circle1 = {
-  x:500,
-  y:550,
-  size:30,
-  vx:0,
-  vy:0,
-  speed:4,
-};
 // setup()
 let state = `title`;
 
@@ -130,6 +135,15 @@ function draw() {
   }
   else if(state === `shesaysyes`){
     shesaysyes();
+  }
+  else if(state === `askprice`){
+    askprice();
+  }
+  else if(state === `happypoorending`){
+    happypoorending();
+  }
+  else if(state ===`divorce`){
+    divorce();
   }
 }
 function title(){
@@ -323,11 +337,38 @@ text(`YESSSSSSSSSSSSS`,width/2,400);
 }
 
 function shesaysyes(){
+push();
 image(shesaysyesImage,0,0,1000,600);
 
+pop();
 }
 
+function askprice(){
+  image(askpriceImage,0,0,1000,600);
+  push();
+  fill(0);
+  stroke(255,0,0);
+  rectMode(CENTER);
+  rect(width/4,500,350,80);
+  rect(3*width/4,500,350,80);
+  fill(255,0,0);
+  textSize(50);
+  textAlign(CENTER,CENTER);
+  textSize(35);
+  text(`TELL the truth`, width/4,500);
+  text(`LIE about the price`,3* width/4,500);
+  pop();
+  handleInput();
+  display();
 
+  telltruth();
+  telllie();
+}
+
+function divorce(){
+  background(200,100,100)
+
+}
 
 function avariceending (){
   push();
@@ -378,60 +419,64 @@ function runawayending(){
   text(`You don't deserve her anyway. *******`,width/2,180)
 }
 
+function happypoorending(){
+  image(happypoorendingImage,0,0,1000,600);
+}
+
 
 
 
 function handleInput(){
     if (keyIsDown(LEFT_ARROW)){
-      circle1.vx = -circle1.speed;
+      user.vx = -user.speed;
     }
     else if (keyIsDown(RIGHT_ARROW)){
-      circle1.vx = circle1.speed;
+      user.vx = user.speed;
     }
     else{
-        circle1.vx = 0
+        user.vx = 0
     }
     if (keyIsDown(UP_ARROW)){
-      circle1.vy = -circle1.speed;
+      user.vy = -user.speed;
     }
     else if (keyIsDown(DOWN_ARROW)){
-      circle1.vy = circle1.speed;
+      user.vy = user.speed;
     }
     else {
-      circle1.vy = 0;
+      user.vy = 0;
     }
 }
 
 function display(){
-  circle1.x += circle1.vx
-  circle1.y += circle1.vy
+  user.x += user.vx
+  user.y += user.vy
 
   fill(255)
-  ellipse(circle1.x, circle1.y, circle1.size);
+  ellipse(user.x, user.y, user.size);
 }
 
 function buyring(){
-  if(circle1.x > 2*width/3 -150 && circle1.x < 2* width/3 +150 && circle1.y < 2*height/3+40 && circle1.y >2*height/3-40){
+  if(user.x > 2*width/3 -150 && user.x < 2* width/3 +150 && user.y < 2*height/3+40 && user.y >2*height/3-40){
     state = `jewelrystore`;
   }
 }
 function dontbuyring(){
-  if (circle1.x > width/3 -150 && circle1.x < width/3 +150 && circle1.y < 2*height/3+40 && circle1.y >2*height/3-40){
+  if (user.x > width/3 -150 && user.x < width/3 +150 && user.y < 2*height/3+40 && user.y >2*height/3-40){
   state = `avariceending`;
   }
 }
 function buy8$(){
-  if(circle1.x > width/4 -110 && circle1.x < width/4 +110 && circle1.y < height/2+30 && circle1.y >height/2-30){
+  if(user.x > width/4 -110 && user.x < width/4 +110 && user.y < height/2+30 && user.y >height/2-30){
   state = `caughtending`;
   }
 }
 function buy8000$(){
-  if(circle1.x >2* width/4 -110 && circle1.x < 2*width/4 +110 && circle1.y <height/2+30 && circle1.y >height/2-30){
+  if(user.x >2* width/4 -110 && user.x < 2*width/4 +110 && user.y <height/2+30 && user.y >height/2-30){
   state = `lowdebt`;
   }
 }
 function buy8000000$(){
-  if(circle1.x >3* width/4 -110 && circle1.x < 3*width/4 +110 && circle1.y <height/2+30 && circle1.y >height/2-30){
+  if(user.x >3* width/4 -110 && user.x < 3*width/4 +110 && user.y <height/2+30 && user.y >height/2-30){
   state = `highdebt`;
   }
 }
@@ -458,7 +503,17 @@ function caroffscreen(){
   }
 }
 
+function telltruth(){
+  if(user.x > width/4 -175 && user.x < width/4 +175 && user.y < 500+40 && user.y >500-40){
+    state = `happypoorending`;
+  }
+}
 
+function telllie (){
+  if(user.x > 3*width/4 -175 && user.x < 3*width/4 +175 && user.y < 500+40 && user.y >500-40){
+    state = `divorce`;
+  }
+}
 
 function carmove(){
   if (state === `trafficfast`){
@@ -482,10 +537,7 @@ function carmove(){
   else {
     carImage.vy = 0
   }
-
 }
-
-
 
 function carsmovement(){
 carpurpleImage.x += carpurpleImage.speed;
@@ -542,5 +594,7 @@ function keyPressed(){
   else if (state === `sleep`){
     state = `shesaysyes`;
   }
-
+  else if (state === `shesaysyes`){
+    state = `askprice`;
+  }
 }
