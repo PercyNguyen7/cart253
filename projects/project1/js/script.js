@@ -32,6 +32,7 @@ let carorangeImage ={
 }
 let inloveImage;
 let indebtImage;
+let caraccidentImage;
 function preload(){
   contextImage=loadImage("assets/images/context.jpg")
   day1Image=loadImage("assets/images/day1.jpg")
@@ -45,6 +46,7 @@ function preload(){
   carorangeImage.img=loadImage("assets/images/carorange.png")
   inloveImage=loadImage("assets/images/inlove.jpg")
   indebtImage=loadImage("assets/images/indebt.jpg")
+  caraccidentImage=loadImage("assets/images/caraccident.jpg")
 }
 let circle1 = {
   x:500,
@@ -96,6 +98,9 @@ function draw() {
   }
   else if(state===`trafficslow`){
     trafficslow();
+  }
+  else if(state===`accidentending`){
+    accidentending();
   }
 
 
@@ -215,6 +220,7 @@ function trafficfast (){
   carmove();
   cardisplays();
   carsmovement();
+  caroverlap();
 }
 
 function trafficslow(){
@@ -226,6 +232,7 @@ function trafficslow(){
   carmove();
   cardisplays();
   carsmovement();
+  caroverlap();
 }
 
 function avariceending (){
@@ -251,7 +258,18 @@ function caughtending(){
   pop();
 }
 
+function accidentending(){
+  push();
+  image(caraccidentImage,0,0,1000,600);
+  textSize(80);
+  fill(255);
+  textAlign(CENTER,CENTER);
+  text(`THE END`,width/3,100);
+  textSize(50)
+  text(`Can't propose now can you?`,width/3,150)
+  pop();
 
+}
 
 
 
@@ -311,6 +329,19 @@ function buy8000000$(){
   state = `highdebt`;
   }
 }
+function caroverlap(){
+  let d = dist(carImage.x, carImage.y, carpurpleImage.x,carpurpleImage.y);
+  if (d <carImage.width/4 + carpurpleImage.width/4 || d<carImage.height/4 + carpurpleImage.height/4){
+    state = `accidentending`
+  }
+  let d2 = dist(carImage.x, carImage.y, carorangeImage.x,carorangeImage.y);
+  if (d2 <carImage.width/4 + carorangeImage.width/4 || d<carImage.height/4 + carorangeImage.height/4){
+    state = `accidentending`
+  }
+}
+
+
+
 
 function carmove(){
   if (state === `trafficfast`){
@@ -336,14 +367,7 @@ function carmove(){
   }
 
 }
-function cardisplays(){
-  carImage.x += carImage.vx;
-  carImage.y += carImage.vy;
-  image(carImage.img,carImage.x, carImage.y, carImage.width, carImage.height);
-  image(carpurpleImage.img,carpurpleImage.x, carpurpleImage.y, carpurpleImage.width, carpurpleImage.height);
-  image(carorangeImage.img,carorangeImage.x, carorangeImage.y, carorangeImage.width, carorangeImage.height);
 
-}
 
 
 function carsmovement(){
@@ -363,6 +387,14 @@ carpurpleImage.x += carpurpleImage.speed;
     if (carorangeImage.y < carpurpleImage.y +50 && carorangeImage.y> carpurpleImage.y -50){
     carorangeImage.y+= 50;
     }
+}
+function cardisplays(){
+    carImage.x += carImage.vx;
+    carImage.y += carImage.vy;
+    image(carImage.img,carImage.x, carImage.y, carImage.width, carImage.height);
+    image(carpurpleImage.img,carpurpleImage.x, carpurpleImage.y, carpurpleImage.width, carpurpleImage.height);
+    image(carorangeImage.img,carorangeImage.x, carorangeImage.y, carorangeImage.width, carorangeImage.height);
+
 }
 
 
