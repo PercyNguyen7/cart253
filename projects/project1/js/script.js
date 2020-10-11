@@ -196,10 +196,22 @@ function lowdebt(){
 }
 function highdebt(){
   image(indebtImage,0,0,1000,600);
+  textAlign(CENTER,CENTER);
+  textSize(40);
+  fill(242,181,81);
+  text(`-33,000$`, width/2 -150,200);
+  textSize(35);
+  fill(210,0,40);
+  text(`Idk about this one, chief...`, width/2 -250,550);
 }
 
 function trafficfast (){
   image(trafficfastImage,0,0,1000,600);
+  fill(255)
+  textSize(30);
+  textAlign(CENTER,CENTER);
+  text(`Gotta safekeep my preciousssss`,width/2,100);
+  text(`Go thru`,width/2,50);
   carmove();
   cardisplays();
   carsmovement();
@@ -209,8 +221,8 @@ function trafficslow(){
   image(trafficslowImage,0,0,1000,600);
   textSize(30);
   textAlign(CENTER,CENTER);
-  text(`Gotta protect this 8 million baby. Not on proposal day.`,width/2,100);
-  text(`Keep goin buddy.`,width/2,50);
+  text(`SLOWLY. 8 million baby. we aint taking no risk`,width/2,100);
+  text(`Go thru`,width/2,50);
   carmove();
   cardisplays();
   carsmovement();
@@ -302,7 +314,7 @@ function buy8000000$(){
 
 function carmove(){
   if (state === `trafficfast`){
-    carImage.speed+= 0.005;
+    carImage.speed= 0.07;
   }
   if (keyIsDown(LEFT_ARROW)) {
     carImage.vx += -carImage.speed;
@@ -349,7 +361,7 @@ carpurpleImage.x += carpurpleImage.speed;
     carorangeImage.speed=random(-8,-12);
     }
     if (carorangeImage.y < carpurpleImage.y +50 && carorangeImage.y> carpurpleImage.y -50){
-    carorangeImage.y+= +50;
+    carorangeImage.y+= 50;
     }
 }
 
