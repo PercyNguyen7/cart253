@@ -5,7 +5,7 @@ let caughtendingImage;
 let trafficfastImage;
 let trafficslowImage;
 let carImage ={
-  x:0,
+  x:50,
   y:300,
   vx:0,
   vy:0,
@@ -144,8 +144,14 @@ function draw() {
   else if(state === `happypoorending`){
     happypoorending();
   }
+  else if(state ===`divorcetext`){
+    divorcetext();
+  }
   else if(state ===`divorce`){
     divorce();
+  }
+  else if(state ===`depression`){
+    depression();
   }
 }
 function title(){
@@ -231,15 +237,15 @@ function lowdebt(){
   image(inloveImage,0,0,1000,600);
   fill(219,73,172);
   textAlign(CENTER,CENTER);
-  textSize(40);
-  text(`Now you're 33,000$ in debt.`, width/2,height/2 - 200);
-  textSize(20);
-  text(`But you know what. You'll freakin' do it again.`, width/2,height/2+50);
-  text(`You areeee my fireeee...my one desireee...`, width/2,height/2+100);
-  textSize(25)
-  text(`Believe when I sayyyy`, width/2,height/2+150);
-  textSize(30)
-  text(`I want it THAT WAYYY`, width/2,height/2+200);
+  textSize(50);
+  text(`Now you're 33,000$ in debt.`, width/2,100);
+  textSize(27);
+  text(`But you know what. You'll freakin' do it again.`, 3*width/4,height/2+50);
+  textSize(22)
+  text(`You areeee my fireeee...my one desireee...`,3*width/4,height/2+100);
+  text(`Believe when I sayyyy`, 3*width/4,height/2+150);
+  textSize(40)
+  text(`I want it THAT WAYYY`, 3*width/4,height/2+200);
   pop();
 }
 function highdebt(){
@@ -290,11 +296,12 @@ function gothome(){
   push();
   background(219,73,172);
   fill(255);
-  textSize(30);
+  textSize(40);
   textAlign(CENTER,CENTER);
-  text(`You got home all excited, ready for tonight`,width/2,100);
+  text(`Got home safely!`,width/2,150);
+  text(`The adrenaline rush kept you vigilant and focused.`,width/2,250);
   textSize(20);
-  text(`Still, a man's gotta do his job. You sat down and do a bit of coding`,width/2,200);
+  text(`Still, a man's gotta do his job. You sit down to work on this bit of coding.`,width/2,350);
   pop();
 }
 
@@ -304,8 +311,9 @@ function gothometired(){
   textSize(25);
   textAlign(CENTER,CENTER);
   text(`You got home tired, mentally drained from the thoughts of your massive debt`,width/2,200);
-  text(`Oh god...You still have work to do.`,width/2,250);
-  text(`You sit down, exhausted, typing random letters just to pass time.`,width/2,300);
+  text(`Well someone's ought to pay the debt.`,width/2,250);
+  text(``,width/2,250);
+  text(`You crashed on the chair, pressing random buttons to pass time.`,width/2,300);
   pop();
 }
 
@@ -324,7 +332,7 @@ function workingtired(){
   push();
   textSize(30);
   textAlign(CENTER,CENTER);
-  text(`3PM.You're soooooooo sleepy `,width/2,400);
+  text(`Soooooooo sleepy `,width/2,400);
   text(`You can feel yourself falling asleep... `,width/2,450);
   pop();
 }
@@ -333,15 +341,19 @@ function sleep(){
 background(0);
 textSize(30);
 textAlign(CENTER,CENTER);
-text(`You slept restlessly...`,width/2,300);
-text(`and wake up to a familiar scream... `,width/2,400);
-text(`YESSSSSSSSSSSSS`,width/2,400);
+text(`You slept restlessly...`,width/2,150);
+text(`and wake up to a familiar scream... `,width/2,200);
+textSize(60)
+text(`YESS. i will i will I WILL AHHHH`,width/2,300);
 
 }
 
 function shesaysyes(){
 push();
 image(shesaysyesImage,0,0,1000,600);
+textSize(30);
+textAlign(CENTER,CENTER);
+text(`she...found the ring`,width/2,450);
 
 pop();
 }
@@ -368,6 +380,22 @@ function askprice(){
   telllie();
 }
 
+function divorcetext(){
+  push();
+  background(214,8,32);
+  textAlign(CENTER,CENTER);
+  fill(255,204,0);
+  textSize(40);
+  text(`She questioned your instant noodle diet`,width/2,150);
+  text(`and McDonald on cheat day...`, width/2, 200);
+  text(`You were broke but you kept it shut`,width/2,250);
+  textSize(70);
+  text(`3 years later`, width/2,350);
+
+
+}
+
+
 function divorce(){
   push();
   image(divorceImage,0,0,1000,600);
@@ -375,12 +403,13 @@ function divorce(){
   textAlign(CENTER,CENTER);
   textSize(40);
   text(`3 years later`,width/3,50);
-  textSize(30);
-  text(`She questioned your instant noodle diet`,width/3,100);
-  text(`and McDonald on a holiday...`, width/3, 150);
   textSize(40);
   text(`She left you heartbroken`, width/3,200);
   pop();
+}
+
+function depression(){
+  //s
 }
 
 function avariceending (){
@@ -428,9 +457,9 @@ function runawayending(){
   textAlign(CENTER,CENTER);
   text(`The night is still YOUNG`,width/2,75);
   textSize(50)
-  text(`There's more fishes in the sea`,width/2,140)
-  textSize(20)
-  text(`You don't deserve her anyway. *******`,width/2,180)
+  text(`Plenty of fish in the sea`,width/2,140)
+  textSize(30)
+  text(`And you don't deserve her anyway`,width/2,180)
   pop();
 }
 
@@ -537,7 +566,7 @@ function telltruth(){
 
 function telllie (){
   if(user.x > 3*width/4 -175 && user.x < 3*width/4 +175 && user.y < 500+40 && user.y >500-40){
-    state = `divorce`;
+    state = `divorcetext`;
   }
 }
 
@@ -592,9 +621,6 @@ function cardisplays(){
 }
 
 
-
-
-
 function keyPressed(){
   if (state === `title`){
     state = `context`;
@@ -623,4 +649,10 @@ function keyPressed(){
   else if (state === `shesaysyes`){
     state = `askprice`;
   }
+  else if (state === `divorcetext`){
+    state = `divorce`;
+}
+  else if (state === `divorce`){
+    state = `depression`;
+}
 }
