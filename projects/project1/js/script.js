@@ -32,7 +32,7 @@ let carorangeImage ={
 }
 let inloveImage;
 let indebtImage;
-let caraccidentImage;
+let caraccidentendingImage;
 let runawayendingImage;
 let workinginloveImage;
 let workingtiredImage;
@@ -40,10 +40,13 @@ let shesaysyesImage;
 let askpriceImage;
 let happypoorendingImage;
 let divorceImage;
+let overdoseendingImage;
+let wildendingImage;
+let russianrImage;
 let user = {
   x:500,
   y:550,
-  size:30,
+  size:20,
   vx:0,
   vy:0,
   speed:4,
@@ -62,7 +65,7 @@ function preload(){
   carorangeImage.img=loadImage("assets/images/carorange.png")
   inloveImage=loadImage("assets/images/inlove.jpg")
   indebtImage=loadImage("assets/images/indebt.jpg")
-  caraccidentImage=loadImage("assets/images/caraccident.jpg")
+  caraccidentendingImage=loadImage("assets/images/caraccidentending.jpg")
   runawayendingImage=loadImage("assets/images/runawayending.jpg")
   workinginloveImage=loadImage("assets/images/workinginlove.jpg")
   workingtiredImage=loadImage("assets/images/workingtired.jpg")
@@ -70,6 +73,9 @@ function preload(){
   askpriceImage=loadImage("assets/images/askprice.jpg")
   happypoorendingImage=loadImage("assets/images/happypoorending.jpg")
   divorceImage=loadImage("assets/images/divorce.jpg")
+  overdoseendingImage=loadImage("assets/images/overdoseending.jpg")
+  wildendingImage=loadImage("assets/images/wildending.jpg")
+  russianrImage=loadImage("assets/images/russianr.jpg")
 }
 // setup()
 let state = `title`;
@@ -153,6 +159,18 @@ function draw() {
   else if(state ===`depression`){
     depression();
   }
+  else if (state === `overdoseending`){
+    overdoseending();
+  }
+  else if (state ===`wildending`){
+    wildending();
+  }
+  else if (state === `overdosetext`){
+    overdosetext();
+  }
+  else if (state === `russianroulette`){
+    russianroulette();
+  }
 }
 function title(){
   push();
@@ -198,7 +216,7 @@ function firstday(){
    pop();
 
    display();
-   handleInput();
+   usercontrol();
    dontbuyring();
    buyring();
 
@@ -224,7 +242,7 @@ function jewelrystore (){
   pop();
 
   display();
-  handleInput();
+  usercontrol();
 
   buy8$();
   buy8000$();
@@ -311,7 +329,7 @@ function gothometired(){
   text(`You got home tired, mentally drained from the thoughts of your massive debt`,width/2,200);
   text(`Well someone's ought to pay the debt.`,width/2,250);
   text(``,width/2,250);
-  text(`You crashed on the chair, pressing random buttons to pass time.`,width/2,300);
+  text(`You crash on the chair, pressing random buttons to pass time.`,width/2,300);
   pop();
 }
 
@@ -320,7 +338,7 @@ function workinginlove(){
   push();
   textSize(30);
   textAlign(CENTER,CENTER);
-  text(`3PM. You finished a bunch of works!`,width/2,450);
+  text(`You finished a bunch of work!`,width/2,450);
   text(``,width/2,500);
   pop();
 }
@@ -331,27 +349,39 @@ function workingtired(){
   textSize(30);
   textAlign(CENTER,CENTER);
   text(`Soooooooo sleepy `,width/2,400);
-  text(`You can feel yourself falling asleep... `,width/2,450);
+  text(`You feel yourself falling aslee... `,width/2,450);
   pop();
 }
 
 function sleep(){
-background(0);
-textSize(30);
-textAlign(CENTER,CENTER);
-text(`You slept restlessly...`,width/2,150);
-text(`and wake up to a familiar scream... `,width/2,200);
-textSize(60)
-text(`YESS. i will i will I WILL AHHHH`,width/2,300);
 
+push();
+
+background(0);
+fill(255);
+textSize(25);
+textAlign(CENTER,CENTER);
+text(`Slept restlesssslyyy...`,width/2,100);
+text(`and wake up to a loud yet familiar scream... `,width/2,150);
+fill(219,73,172);
+textSize(70);
+text(`YESSSSSSSSSSSSS!`,width/2,350);
+textSize(30);
+text(`I WILL I WILL I WILL I WILL!`, width/2,430);
+textSize(100);
+text(`AAAAHHHHHHHHHHH`,width/2,530);
+pop();
 }
 
 function shesaysyes(){
 push();
 image(shesaysyesImage,0,0,1000,600);
-textSize(30);
+fill(255,0,0);
 textAlign(CENTER,CENTER);
-text(`she...found the ring`,width/2,450);
+textSize(80);
+text(`shE- FOUND the RING`,width/2,400);
+textSize(30);
+text(`...you didn't HIDE it you IDIOT!`,width/2,450);
 
 pop();
 }
@@ -365,12 +395,16 @@ function askprice(){
   rect(width/4,550,350,80);
   rect(3*width/4,550,350,80);
   fill(255,0,0);
-  textSize(50);
+  textAlign(CENTER,CENTER);
+  textSize(25);
+  text(`Her smile faded for a moment`, width/2,50);
   textSize(35);
+  text(`But this RING... How much... was it?`,width/2,100);
   text(`TELL the truth`, width/4,550);
   text(`LIE about the price`,3* width/4,550);
   pop();
-  handleInput();
+
+  usercontrol();
   display();
 
   telltruth();
@@ -382,13 +416,15 @@ function divorcetext(){
   background(214,8,32);
   textAlign(CENTER,CENTER);
   fill(255,204,0);
-  textSize(40);
+  textSize(30);
   text(`She questioned your instant noodle diet`,width/2,150);
-  text(`and McDonald on cheat day...`, width/2, 200);
+  text(`and a BigMac on your monthly cheat day...`, width/2, 200);
+  textSize(40);
   text(`You were broke but you kept it shut`,width/2,250);
   textSize(70);
   text(`3 years later`, width/2,350);
   pop();
+
 
 }
 
@@ -399,34 +435,64 @@ function divorce(){
   fill(217,153,1);
   textAlign(CENTER,CENTER);
   textSize(40);
-  text(`3 years later`,width/3,50);
-  textSize(40);
-  text(`She left you heartbroken`, width/3,200);
+  text(`You didn't get any McDonald on that cheat day.`, width/2,70);
+  textSize(50);
+  text(`Instead, you got a McDivorce...`,width/2,120);
   pop();
 }
 
 function depression(){
   push();
   background(0);
-  rectMode(CENTER);
-  rect(200,200,250,60);
-  rect(500,200,250,60);
-  rect(800,200,250,60);
+  stroke(255,0,0);
 
   fill(0);
-  textSize(50);
+  rectMode(CENTER);
+  rect(200,350,250,60);
+  rect(500,350,250,60);
+  rect(800,350,250,60);
+
+  textAlign(CENTER,CENTER);
   textSize(25);
-  text(`Build a time machine`,200,200);
-  text(`Declare bankruptcy`,500,200);
-  text(`Play russian roulette`, 800,200);
+  text(`Build a time machine`,200,350);
+  text(`Move in the forest`,width/2,350);
+  text(`Play russian roulette`, 800,350);
 
-  text(``)
-
+  textSize(60)
+  text(`In debted. Dumped. Depressed.`,width/2, 130)
+  textSize(50)
+  text(`Next move, buddy?`,width/2, 230)
   pop();
 
+  display();
+  usercontrol();
 
+  build();
+  escape();
+  playrussian();
 }
 
+function overdosetext(){
+  push();
+  background(mouseX,mouseY,0)
+  fill(255);
+  textAlign(CENTER,CENTER);
+  textSize(30);
+  text(`Time to build a TIME MACHINE`,width/2,height/2-50);
+  textSize(50);
+  text(`Let your imagination run WILD`,width/2,height/2);
+  textSize(30);
+  text(`Give your mouse a lil shake ;)`,width/2,height/2+50);
+
+  pop();
+}
+
+
+function russianroulette(){
+  image(russianrImage,0,0,1000,600);
+
+  pulltrigger();
+}
 
 function avariceending (){
   push();
@@ -455,7 +521,7 @@ function caughtending(){
 
 function accidentending(){
   push();
-  image(caraccidentImage,0,0,1000,600);
+  image(caraccidentendingImage,0,0,1000,600);
   textSize(80);
   fill(168,26,7);
   textAlign(CENTER,CENTER);
@@ -471,24 +537,49 @@ function runawayending(){
   textSize(75);
   fill(168,26,7);
   textAlign(CENTER,CENTER);
-  text(`The night is still YOUNG`,width/2,75);
-  textSize(50);
-  text(`Plenty of fish in the sea`,width/2,140);
+  text(`YOU RAN AWAY!`,width/2,75);
   textSize(30);
-  text(`And you don't deserve her anyway`,width/2,180);
+  text(`Plenty of fish in the sea!`,width/2,140);
+  textSize(15);
+  text(`And you don't deserve her anyway, *******`,width/2,180);
   pop();
 }
 
 function happypoorending(){
   push();
   image(happypoorendingImage,0,0,1000,600);
-  fill(217,153,1);
-  textSize(30);
-  text(`And they lived happily forever after...in a car`,width/3,50);
-  textSize(20);
-  text(`Had to sell all of your assets to pay back but you know what`, width/3, 100);
-  textSize(30);
-  text(`You'll freakin do it again if given the chance`, width/3,150);
+  textAlign(CENTER,CENTER);
+  fill(230);
+  textSize(44);
+  text(`And they lived happily forever after...in a car`,width/2,50);
+  fill(199,222,236);
+  textSize(25);
+  text(`Had to sell all of your assets to pay back but you know what`, width/2, 520);
+  text(`That ring might be pricey, but she is priceless`, width/2,550);
+  pop();
+}
+
+function overdoseending(){
+  image(overdoseendingImage,0,0,1000,600)
+  push();
+  textAlign(CENTER,CENTER);
+  fill(148,15,16);
+  textSize(80);
+  text(`my time machine...`,width/2,400);
+
+  pop();
+}
+
+function wildending(){
+  image(wildendingImage,0,0,1000,600);
+  push();
+  textAlign(CENTER,CENTER);
+  fill(255);
+  textSize(90);
+  text(`Man Vs WILD `,width/2,450);
+  textSize(40);
+  text(`SPECIAL EDITION`, width/2,550);
+  text(` `,width/2,400);
 
   pop();
 }
@@ -496,7 +587,7 @@ function happypoorending(){
 
 
 
-function handleInput(){
+function usercontrol(){
     if (keyIsDown(LEFT_ARROW)){
       user.vx = -user.speed;
     }
@@ -515,6 +606,8 @@ function handleInput(){
     else {
       user.vy = 0;
     }
+    user.x = constrain(user.x,0,width);
+    user.y = constrain(user.y,0,height);
 }
 
 function display(){
@@ -585,6 +678,32 @@ function telllie (){
   }
 }
 
+function build(){
+  if(user.x > 200-125 && user.x < 200+125 && user.y < 350+30 && user.y >350-30){
+    state = `overdosetext`;
+  }
+}
+function escape(){
+  if(user.x > 500-125 && user.x < 500+125 && user.y < 350+30 && user.y >350-30){
+    state = `wildending`;
+  }
+}
+
+function playrussian(){
+  if(user.x > 800-125 && user.x < 800+125 && user.y < 350+30 && user.y >350-30){
+    state = `russianroulette`;
+  }
+}
+function pulltrigger(){
+  let r = random(1,2);
+  if (r<2){
+    ellipse(50,50,50);
+  }
+  else if (r>1) {
+    ellipse(500,500,50);
+  }
+}
+
 function carmove(){
   if (state === `trafficfast`){
     carImage.speed= 0.07;
@@ -632,7 +751,6 @@ function cardisplays(){
     image(carImage.img,carImage.x, carImage.y, carImage.width, carImage.height);
     image(carpurpleImage.img,carpurpleImage.x, carpurpleImage.y, carpurpleImage.width, carpurpleImage.height);
     image(carorangeImage.img,carorangeImage.x, carorangeImage.y, carorangeImage.width, carorangeImage.height);
-
 }
 
 
@@ -669,5 +787,8 @@ function keyPressed(){
   }
   else if (state === `divorce`){
     state = `depression`;
+  }
+  else if (state ===`overdosetext`){
+    state =`overdoseending`;
   }
 }
