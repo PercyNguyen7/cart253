@@ -159,7 +159,7 @@ function title(){
   textSize(50)
   fill(200,100,100);
   textAlign(CENTER,CENTER);
-  text(`Propose Day`,width/2,height/2 -50)
+  text(`Proposal Day`,width/2,height/2 -50)
   textSize(30)
   text(`Press any key...`,width/2,height/2 +50)
   pop();
@@ -193,8 +193,6 @@ function firstday(){
    text(`8AM that DAY my BOIII!`,width/2,130);
    textSize(40);
    text(`Buy a RING for the proposal?`, width/2,200);
-   textAlign(CENTER,CENTER);
-   textSize(40);
    text(`NAW jus wing it!`, width/3,2*height/3);
    text(`GO for it baby!`,2* width/3,2*height/3);
    pop();
@@ -364,14 +362,13 @@ function askprice(){
   fill(0);
   stroke(255,0,0);
   rectMode(CENTER);
-  rect(width/4,500,350,80);
-  rect(3*width/4,500,350,80);
+  rect(width/4,550,350,80);
+  rect(3*width/4,550,350,80);
   fill(255,0,0);
   textSize(50);
-  textAlign(CENTER,CENTER);
   textSize(35);
-  text(`TELL the truth`, width/4,500);
-  text(`LIE about the price`,3* width/4,500);
+  text(`TELL the truth`, width/4,550);
+  text(`LIE about the price`,3* width/4,550);
   pop();
   handleInput();
   display();
@@ -391,7 +388,7 @@ function divorcetext(){
   text(`You were broke but you kept it shut`,width/2,250);
   textSize(70);
   text(`3 years later`, width/2,350);
-
+  pop();
 
 }
 
@@ -409,8 +406,27 @@ function divorce(){
 }
 
 function depression(){
-  //s
+  push();
+  background(0);
+  rectMode(CENTER);
+  rect(200,200,250,60);
+  rect(500,200,250,60);
+  rect(800,200,250,60);
+
+  fill(0);
+  textSize(50);
+  textSize(25);
+  text(`Build a time machine`,200,200);
+  text(`Declare bankruptcy`,500,200);
+  text(`Play russian roulette`, 800,200);
+
+  text(``)
+
+  pop();
+
+
 }
+
 
 function avariceending (){
   push();
@@ -456,10 +472,10 @@ function runawayending(){
   fill(168,26,7);
   textAlign(CENTER,CENTER);
   text(`The night is still YOUNG`,width/2,75);
-  textSize(50)
-  text(`Plenty of fish in the sea`,width/2,140)
-  textSize(30)
-  text(`And you don't deserve her anyway`,width/2,180)
+  textSize(50);
+  text(`Plenty of fish in the sea`,width/2,140);
+  textSize(30);
+  text(`And you don't deserve her anyway`,width/2,180);
   pop();
 }
 
@@ -473,7 +489,6 @@ function happypoorending(){
   text(`Had to sell all of your assets to pay back but you know what`, width/3, 100);
   textSize(30);
   text(`You'll freakin do it again if given the chance`, width/3,150);
-
 
   pop();
 }
@@ -489,7 +504,7 @@ function handleInput(){
       user.vx = user.speed;
     }
     else{
-        user.vx = 0
+        user.vx = 0;
     }
     if (keyIsDown(UP_ARROW)){
       user.vy = -user.speed;
@@ -503,8 +518,8 @@ function handleInput(){
 }
 
 function display(){
-  user.x += user.vx
-  user.y += user.vy
+  user.x += user.vx;
+  user.y += user.vy;
 
   fill(255)
   ellipse(user.x, user.y, user.size);
@@ -538,34 +553,34 @@ function buy8000000$(){
 function caroverlap(){
   let d = dist(carImage.x, carImage.y, carpurpleImage.x,carpurpleImage.y);
   if (d <carImage.width/4 + carpurpleImage.width/4 || d<carImage.height/4 + carpurpleImage.height/4){
-    state = `accidentending`
+    state = `accidentending`;
   }
   let d2 = dist(carImage.x, carImage.y, carorangeImage.x,carorangeImage.y);
   if (d2 <carImage.width/4 + carorangeImage.width/4 || d<carImage.height/4 + carorangeImage.height/4){
-    state = `accidentending`
+    state = `accidentending`;
   }
 }
 
 function caroffscreen(){
   if (carImage.x<0||carImage.y<0||carImage.y>height){
-    state= `runawayending`
+    state= `runawayending`;
   }
   else if (carImage.x>width && state === `trafficfast`){
-    state= `gothome`
+    state= `gothome`;
   }
   else if (carImage.x>width && state ===`trafficslow`){
-    state=`gothometired`
+    state=`gothometired`;
   }
 }
 
 function telltruth(){
-  if(user.x > width/4 -175 && user.x < width/4 +175 && user.y < 500+40 && user.y >500-40){
+  if(user.x > width/4 -175 && user.x < width/4 +175 && user.y < 550+40 && user.y >550-40){
     state = `happypoorending`;
   }
 }
 
 function telllie (){
-  if(user.x > 3*width/4 -175 && user.x < 3*width/4 +175 && user.y < 500+40 && user.y >500-40){
+  if(user.x > 3*width/4 -175 && user.x < 3*width/4 +175 && user.y < 550+40 && user.y >550-40){
     state = `divorcetext`;
   }
 }
@@ -581,7 +596,7 @@ function carmove(){
     carImage.vx += carImage.speed;
   }
   else {
-    carImage.vx = 0
+    carImage.vx = 0;
   }
   if (keyIsDown(UP_ARROW)) {
     carImage.vy += -3*carImage.speed;
@@ -590,7 +605,7 @@ function carmove(){
     carImage.vy += 3*carImage.speed;
   }
   else {
-    carImage.vy = 0
+    carImage.vy = 0;
   }
 }
 
@@ -651,8 +666,8 @@ function keyPressed(){
   }
   else if (state === `divorcetext`){
     state = `divorce`;
-}
+  }
   else if (state === `divorce`){
     state = `depression`;
-}
+  }
 }
