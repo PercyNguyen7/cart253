@@ -39,6 +39,7 @@ let workingtiredImage;
 let shesaysyesImage;
 let askpriceImage;
 let happypoorendingImage;
+let divorceImage;
 let user = {
   x:500,
   y:550,
@@ -68,6 +69,7 @@ function preload(){
   shesaysyesImage=loadImage("assets/images/shesaysyes.jpg")
   askpriceImage=loadImage("assets/images/askprice.jpg")
   happypoorendingImage=loadImage("assets/images/happypoorending.jpg")
+  divorceImage=loadImage("assets/images/divorce.jpg")
 }
 // setup()
 let state = `title`;
@@ -161,7 +163,7 @@ function context(){
   image(contextImage,0,0,1000,600)
   push();
   textSize(40)
-  fill(200,100,100);
+  fill(254,99,97);
   text(`You're IN LOVE, babyyyy!`,30,50)
   textSize(25)
   text(`Tomorrow big day for a big boi`,30,450)
@@ -230,7 +232,7 @@ function lowdebt(){
   fill(219,73,172);
   textAlign(CENTER,CENTER);
   textSize(40);
-  text(`Now you're 33,000$ in debt.`, width/2,height/2 - 50);
+  text(`Now you're 33,000$ in debt.`, width/2,height/2 - 200);
   textSize(20);
   text(`But you know what. You'll freakin' do it again.`, width/2,height/2+50);
   text(`You areeee my fireeee...my one desireee...`, width/2,height/2+100);
@@ -244,11 +246,11 @@ function highdebt(){
   image(indebtImage,0,0,1000,600);
   push();
   textAlign(CENTER,CENTER);
-  textSize(90);
-  fill(242,181,81);
-  text(`-8,025,000$`, width/2 -100,200);
-  textSize(35);
+  textSize(70);
   fill(210,0,40);
+  text(`-8,025,000$`, width/2 -50,150);
+  textSize(35);
+  fill(242,181,81);
   text(`Idk about this one, chief...`, width/2 -250,550);
   pop();
 }
@@ -286,11 +288,12 @@ function trafficslow(){
 
 function gothome(){
   push();
-  background(242,181,81);
+  background(219,73,172);
   fill(255);
-  textSize(20);
+  textSize(30);
   textAlign(CENTER,CENTER);
   text(`You got home all excited, ready for tonight`,width/2,100);
+  textSize(20);
   text(`Still, a man's gotta do his job. You sat down and do a bit of coding`,width/2,200);
   pop();
 }
@@ -366,8 +369,18 @@ function askprice(){
 }
 
 function divorce(){
-  background(200,100,100)
-
+  push();
+  image(divorceImage,0,0,1000,600);
+  fill(217,153,1);
+  textAlign(CENTER,CENTER);
+  textSize(40);
+  text(`3 years later`,width/3,50);
+  textSize(30);
+  text(`She questioned your instant noodle diet`,width/3,100);
+  text(`and McDonald on a holiday...`, width/3, 150);
+  textSize(40);
+  text(`She left you heartbroken`, width/3,200);
+  pop();
 }
 
 function avariceending (){
@@ -408,6 +421,7 @@ function accidentending(){
 }
 
 function runawayending(){
+  push();
   image(runawayendingImage,0,0,1000,600);
   textSize(75);
   fill(168,26,7);
@@ -417,10 +431,22 @@ function runawayending(){
   text(`There's more fishes in the sea`,width/2,140)
   textSize(20)
   text(`You don't deserve her anyway. *******`,width/2,180)
+  pop();
 }
 
 function happypoorending(){
+  push();
   image(happypoorendingImage,0,0,1000,600);
+  fill(217,153,1);
+  textSize(30);
+  text(`And they lived happily forever after...in a car`,width/3,50);
+  textSize(20);
+  text(`Had to sell all of your assets to pay back but you know what`, width/3, 100);
+  textSize(30);
+  text(`You'll freakin do it again if given the chance`, width/3,150);
+
+
+  pop();
 }
 
 
