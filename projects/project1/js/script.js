@@ -45,6 +45,7 @@ let wildendingImage;
 let russianrImage;
 let rrhitImage;
 let rrmissImage;
+let rraliveendingImage;
 let rrdeadendingImage;
 let user = {
   x:500,
@@ -81,7 +82,9 @@ function preload(){
   russianrImage=loadImage("assets/images/russianr.jpg")
   rrhitImage=loadImage("assets/images/rrhit.jpg")
   rrmissImage=loadImage("assets/images/rrmiss.jpg")
+  rraliveendingImage=loadImage("assets/images/rraliveending.jpg")
   rrdeadendingImage=loadImage("assets/images/rrdeadending.jpg")
+
 }
 // setup()
 let state = `title`;
@@ -177,6 +180,12 @@ function draw() {
   else if (state === `russianroulette`){
     russianroulette();
   }
+  else if (state === `regret`){
+    regret();
+  }
+  else if (state === `pulltrigger`){
+    pulltrigger();
+  }
   else if (state === `rrmiss`){
     rrmiss();
   }
@@ -189,7 +198,11 @@ function draw() {
   else if (state === `rrdeadending`){
     rrdeadending();
   }
+
 }
+
+
+
 function title(){
   push();
   textSize(50)
@@ -316,6 +329,7 @@ function trafficslow(){
   push();
   textSize(30);
   textAlign(CENTER,CENTER);
+  fill(255,0,0);
   text(`SLOWLY. 8 million baby. we aint taking no risk`,width/2,100);
   text(`Go thru`,width/2,50);
   carmove();
@@ -364,10 +378,12 @@ function workinginlove(){
 function workingtired(){
   image(workingtiredImage,0,0,1000,600);
   push();
+  fill(210,0,0);
   textSize(30);
   textAlign(CENTER,CENTER);
-  text(`Soooooooo sleepy `,width/2,400);
-  text(`You feel yourself falling aslee... `,width/2,450);
+  text(`Soooooooo sleepy `,width/2,450);
+  textSize(40);
+  text(`You feel yourself falling aslee... `,width/2,500);
   pop();
 }
 
@@ -376,7 +392,7 @@ function sleep(){
 push();
 
 background(0);
-fill(255);
+fill(170,0,0);
 textSize(25);
 textAlign(CENTER,CENTER);
 text(`Slept restlesssslyyy...`,width/2,100);
@@ -473,7 +489,7 @@ function depression(){
   textAlign(CENTER,CENTER);
   textSize(25);
   text(`Build a time machine`,200,350);
-  text(`Move in the forest`,width/2,350);
+  text(`Abandon society`,width/2,350);
   text(`Play russian roulette`, 800,350);
 
   textSize(60)
@@ -514,21 +530,36 @@ function russianroulette(){
   rectMode(CENTER);
   rect(width/2,500,600,80);
 
-  textSize(60);
+
   textAlign(CENTER,CENTER);
+  textSize(30);
+  text(`Let's roll the dice`,width/2,100);
+  textSize(40);
+  text(`1 out of 6 for fatality`,width/2,150);
+  textSize(60);
   text(`Pull the trigger`,width/2,500);
 
+  pop();
   display();
   usercontrol();
 
   triggerbutton();
 }
-function rrhit(){
-  image(rrhitImage,0,0,1000,600)
 
+function regret(){
+  push();
+  background(255,0,0)
+  textSize(30);
+  textAlign(CENTER,CENTER);
+  text(`You instantly regret as you pull the trigger`,width/2,height/2);
+  pop();
 }
+function rrhit(){
+  image(rrhitImage,0,0,1000,600);
+}
+
 function rrmiss(){
-  image(rrmissImage,0,0,1000,600)
+  image(rrmissImage,0,0,1000,600);
 }
 
 
@@ -601,9 +632,9 @@ function overdoseending(){
   image(overdoseendingImage,0,0,1000,600)
   push();
   textAlign(CENTER,CENTER);
-  fill(148,15,16);
+  fill(200);
   textSize(80);
-  text(`my time machine...`,width/2,400);
+  text(`my time machine...`,width/2,500);
 
   pop();
 }
@@ -623,12 +654,26 @@ function wildending(){
 }
 
 function rraliveending(){
-  background(255)
+  image(rraliveendingImage,0,0,1000,600)
+  push();
+  textAlign(CENTER,CENTER);
+  fill(71,95,96);
+  textSize(50);
+  text(`You dodged a bullet...`,width/2,70);
+  textSize(30);
+  text(`A man with nothing to lose`,width/2,120);
+  text(`should still hold on to his life`,width/2,160);
 
 }
 
 function rrdeadending(){
-  image(rrdeadending,0,0,1000,600)
+  image(rrdeadendingImage,0,0,1000,600)
+  push();
+  textAlign(CENTER,CENTER);
+  fill(114,4,20);
+  textSize(90);
+  text(`...`,2*width/3,500);
+
 }
 
 function usercontrol(){
@@ -739,8 +784,8 @@ function playrussian(){
   }
 }
 function triggerbutton(){
-  if(user.x > width/2-150 && user.x < width/2+150 && user.y < 500+40 && user.y >500-40){
-    pulltrigger();
+  if(user.x > width/2-300 && user.x < width/2+300 && user.y < 500+40 && user.y >500-40){
+    state = `regret`;
   }
 }
 function pulltrigger(){
@@ -841,6 +886,9 @@ function keyPressed(){
   }
   else if (state ===`overdosetext`){
     state =`overdoseending`;
+  }
+  else if (state ===`regret`){
+    state = `pulltrigger`
   }
   else if (state ===`rrmiss`){
     state =`rraliveending`;
