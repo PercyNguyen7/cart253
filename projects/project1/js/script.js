@@ -1,3 +1,4 @@
+let coverImage;
 let contextImage;
 let day1Image;
 let avariceImage;
@@ -47,6 +48,7 @@ let rrhitImage;
 let rrmissImage;
 let rraliveendingImage;
 let rrdeadendingImage;
+let hideorshowerImage;
 let user = {
   x:500,
   y:550,
@@ -57,6 +59,7 @@ let user = {
 }
 
 function preload(){
+  coverImage=loadImage("assets/images/cover.jpg")
   contextImage=loadImage("assets/images/context.jpg")
   day1Image=loadImage("assets/images/day1.jpg")
   avariceImage=loadImage("assets/images/avarice.jpg")
@@ -84,13 +87,14 @@ function preload(){
   rrmissImage=loadImage("assets/images/rrmiss.jpg")
   rraliveendingImage=loadImage("assets/images/rraliveending.jpg")
   rrdeadendingImage=loadImage("assets/images/rrdeadending.jpg")
-
+  hideorshowerImage=loadImage("assets/images/hideorshower.jpg")
 }
 // setup()
 let state = `title`;
 
 function setup() {
   createCanvas(1000, 600);
+
 }
 
 
@@ -101,6 +105,9 @@ function draw() {
 
   if (state === `title`){
     title();
+  }
+  if (state === `instructions`){
+    instructions();
   }
   if (state === `context`){
     context();
@@ -198,33 +205,56 @@ function draw() {
   else if (state === `rrdeadending`){
     rrdeadending();
   }
-
+  //beginning of 8 000$ ring path
+  else if (state ===`doneworking`){
+    doneworking();
+  }
+  else if (state ===`shower`){
+    shower();
+  }
+  else if (state === `hidering`){
+    hidering();
+  }
 }
 
 
 
 function title(){
   push();
-  textSize(50)
-  fill(200,100,100);
+  image(coverImage,0,0,1000,600);
+
+  fill(255);
+  textSize(100)
   textAlign(CENTER,CENTER);
-  text(`Proposal Day`,width/2,height/2 -50)
+  text(`Proposal Day`,width/2, 100)
   textSize(30)
-  text(`Press any key...`,width/2,height/2 +50)
+  text(`Press any key to begin...`,width/2,550)
   pop();
 }
-
+function instructions(){
+  background(22,51,109);
+  textAlign(CENTER,CENTER);
+  fill(251,227,59);
+  textSize(60);
+  text(`Instructions`,width/2, 150);
+  fill(240,240,237);
+  textSize(30);
+  text(`Use arrow keys to play`,width/2,250);
+  text(`Navigate through each page by tapping a key`, width/2,300);
+  text(`There are 9 endings. Try to fetch them all!`, width/2,350)
+}
 function context(){
   image(contextImage,0,0,1000,600)
   push();
-  textSize(40)
+  textAlign(LEFT);
   fill(254,99,97);
+  textSize(40)
   text(`You're IN LOVE, babyyyy!`,30,50)
-  textSize(25)
+  textSize(28)
   text(`Tomorrow big day for a big boi`,30,450)
-  textSize(27)
+  textSize(30)
   text(`"She'll say yes!", you assure yourself.`,30,500)
-  textSize(35)
+  textSize(40)
   text(`Oh JOY! I'm your LOVERBOY!`,30, 550)
   pop();
 }
@@ -239,7 +269,7 @@ function firstday(){
    textSize(50);
    textAlign(CENTER,CENTER);
    fill(255);
-   text(`8AM that DAY my BOIII!`,width/2,130);
+   text(`It is that DAY my BOIII!`,width/2,130);
    textSize(40);
    text(`Buy a RING for the proposal?`, width/2,200);
    text(`NAW jus wing it!`, width/3,2*height/3);
@@ -344,12 +374,14 @@ function gothome(){
   push();
   background(219,73,172);
   fill(255);
-  textSize(40);
+  textSize(50);
   textAlign(CENTER,CENTER);
   text(`Got home safely!`,width/2,150);
+  textSize(40);
   text(`The adrenaline rush kept you vigilant and focused.`,width/2,250);
-  textSize(20);
-  text(`Still, a man's gotta do his job. You sit down to work on this bit of coding.`,width/2,350);
+  textSize(30);
+  text(`Still, a man's gotta do his job.`,width/2,350);
+  text(`You sit down to work on this bit of coding.`,width/2,400)
   pop();
 }
 
@@ -368,13 +400,57 @@ function gothometired(){
 
 function workinginlove(){
   image(workinginloveImage,0,0,1000,600);
+
   push();
-  textSize(30);
   textAlign(CENTER,CENTER);
+  textSize(40);
   text(`You finished a bunch of work!`,width/2,450);
   text(``,width/2,500);
   pop();
 }
+
+function doneworking(){
+  image(hideorshowerImage,0,0,1000,600);
+
+  push();
+  fill(231,140,212);
+  rectMode(CENTER);
+  rect(width/3,500,300,60);
+  rect(2*width/3,500,300,60);
+
+  fill(255);
+  textAlign(CENTER,CENTER);
+  textSize(80);
+  text(`Now what?`,width/2,100);
+  textSize(40);
+  text(`Take a shower`, width/3,500)
+  text(`Hide the ring`, 2*width/3,500)
+  pop();
+
+  usercontrol();
+  display();
+
+  takeashower();
+  hideringaway();
+}
+
+function shower(){
+background(0)
+}
+
+function hidering(){
+  background(255)
+}
+
+
+
+
+
+
+
+
+
+
 
 function workingtired(){
   image(workingtiredImage,0,0,1000,600);
@@ -458,7 +534,6 @@ function divorcetext(){
   textSize(30);
   text(`She questioned your instant noodle diet`,width/2,200);
   text(`and BigMac on a cheatday...`, width/2, 250);
-
   textSize(70);
   text(`3 years later`, width/2,350);
   pop();
@@ -490,8 +565,8 @@ function depression(){
   textAlign(CENTER,CENTER);
   textSize(25);
   text(`Build a time machine!`,200,350);
-  text(`Abandon society.`,width/2,350);
-  text(`Play Russian Roulette...`, 800,350);
+  text(`Abandon society`,width/2,350);
+  text(`Play Russian Roulette`, 800,350);
 
   textSize(60)
   text(`In Debt. Dumped. Depressed.`,width/2, 130)
@@ -530,7 +605,6 @@ function russianroulette(){
   noFill(0);
   rectMode(CENTER);
   rect(width/2,500,600,80);
-
 
   textAlign(CENTER,CENTER);
   textSize(30);
@@ -658,9 +732,10 @@ function rraliveending(){
   image(rraliveendingImage,0,0,1000,600)
   push();
   textAlign(CENTER,CENTER);
-  fill(71,95,96);
+  fill(240);
   textSize(50);
   text(`You dodged a bullet...`,width/2,70);
+  fill(112,141,142);
   textSize(30);
   text(`A man with nothing to lose`,width/2,120);
   text(`should still hold on to his life`,width/2,160);
@@ -801,9 +876,22 @@ function pulltrigger(){
   }
 }
 
+function takeashower(){
+  if(user.x > width/3-150 && user.x < width/3+150 && user.y < 500+30 && user.y >500-30){
+    state = `shower`;
+  }
+}
+
+function hideringaway(){
+  if(user.x > 2*width/3-150 && user.x < 2*width/3+150 && user.y < 500+30 && user.y >500-30){
+    state = `hidering`;
+  }
+}
+
+
 function carmove(){
   if (state === `trafficfast`){
-    carImage.speed= 0.07;
+    carImage.speed= 0.5;
   }
   if (keyIsDown(LEFT_ARROW)) {
     carImage.vx += -carImage.speed;
@@ -853,6 +941,9 @@ function cardisplays(){
 
 function keyPressed(){
   if (state === `title`){
+    state = `instructions`;
+  }
+  else if (state === `instructions`){
     state = `context`;
   }
   else if (state === `context`){
@@ -896,5 +987,8 @@ function keyPressed(){
   }
   else if (state ===`rrhit`){
     state =`rrdeadending`;
+  }
+  else if (state ===`workinginlove`){
+    state =`doneworking`;
   }
 }
