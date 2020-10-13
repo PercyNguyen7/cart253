@@ -61,6 +61,11 @@ let lookatgfImage;
 let torestaurantImage;
 let stareatgfImage;
 let stareendingImage;
+let smoochcarImage;
+let atrestaurantImage;
+let menuImage;
+let chickenwingsImage;
+let wingsendingImage;
 let user = {
   x:500,
   y:550,
@@ -112,7 +117,13 @@ function preload(){
   torestaurantImage=loadImage("assets/images/torestaurant.jpg")
   stareatgfImage=loadImage("assets/images/stareatgf.jpg")
   stareendingImage=loadImage("assets/images/driveandstare.jpg")
+  smoochcarImage=loadImage("assets/images/smooch.jpg")
+  atrestaurantImage=loadImage("assets/images/reachrestaurant.jpg")
+  menuImage=loadImage("assets/images/dinnerchoice.jpg")
+  chickenwingsImage=loadImage("assets/images/chicken.jpg")
+  wingsendingImage=loadImage("assets/images/chokeending.jpg")
 }
+
 // setup()
 let state = `title`;
 
@@ -291,6 +302,33 @@ function draw() {
   }
   else if (state === `stareending`){
     stareending();
+  }
+  else if (state === `smoochcar`){
+    smoochcar();
+  }
+  else if (state === `atrestaurant`){
+    atrestaurant();
+  }
+  else if (state === `mannerstext`){
+    mannerstext();
+  }
+  else if (state === `menu`){
+    menu();
+  }
+  else if (state === `omelettedufromage`){
+    omelettedufromage();
+  }
+  else if (state ===`chickenwingstext`){
+    chickenwingstext();
+  }
+  else if (state === `chickenwings`){
+    chickenwings();
+  }
+  else if (state === `wingsproposetext`){
+    wingsproposetext();
+  }
+  else if (state === `wingsending`){
+    wingsending();
   }
 }
 
@@ -686,17 +724,7 @@ function torestaurant(){
   compliment();
   stare();
 }
-function complimenttext (){
-  background (146,57,123);
 
-  push();
-  fill(255);
-  textAlign(CENTER,CENTER);
-  textSize(35);
-  text(`You told her she looks great`, width/2,250);
-  text(`You can sense the fragrance getting stronger`,width/2,350);
-
-}
 function stareintensely (){
   image(stareatgfImage,0,0,1000,600);
 
@@ -711,6 +739,142 @@ function stareintensely (){
 
   pop();
 }
+
+function complimenttext (){
+  background (146,57,123);
+
+  push();
+  fill(255);
+  textAlign(CENTER,CENTER);
+  textSize(35);
+  text(`You told her she is absolutely stunning and beautiful`, width/2,250);
+  text(`You can sense the fragrance getting stronger`,width/2,350);
+  pop();
+}
+
+function smoochcar(){
+  image(smoochcarImage,0,0,1000,600);
+
+  push();
+  fill(255);
+  textAlign(CENTER,CENTER);
+  textSize(25);
+  text(`*inserts smooch sound effect*`, width/2,50);
+  textSize(70);
+  text(`On cloud 9 BABY!`,width/2,100);
+  pop();
+}
+
+function atrestaurant(){
+  image(atrestaurantImage,0,0,1000,600);
+
+  push();
+  fill(255);
+  textAlign(LEFT,LEFT);
+  textSize(40);
+  text(`There it is.`, width/2,350);
+  textSize(30);
+  text(`Your heart's beating faster by the minute...`,width/2,450);
+  pop();
+}
+
+function mannerstext(){
+  background(195,117,55);
+
+  push();
+  fill(255);
+  textAlign(CENTER,CENTER);
+  textSize(30);
+  text(`You opened the door and pulled out her chair`, width/2,250);
+  text(`"I guess chivalry isn't dead" she murmured while giggling`, width/2,300);
+  text(`"Guess not" you reply and sit down yourself`, width/2,350);
+  pop();
+}
+
+function menu(){
+  image(menuImage,0,0,1000,600);
+
+  push();
+  fill(0);
+  rectMode(CENTER);
+  rect(width/3,500,320,80);
+  rect(2*width/3+25,500,320,80);
+
+
+  fill(255);
+  textAlign(CENTER,CENTER);
+  textSize(50);
+  text(`"May I take your order?"`, width/2,250);
+  fill(255);
+  textSize(30);
+  text(`Omelette du fromage`,width/3,500)
+  text(`Buffalo chicken wings`,2*width/3+25,500)
+
+  pop();
+
+  usercontrol();
+  display();
+
+  omelette();
+  chicken();
+}
+function chickenwingstext(){
+background(195,117,55);
+
+  push();
+  fill(255);
+  textAlign(CENTER,CENTER);
+
+  fill(255);
+  textSize(30);
+  text(`You make small chit chats while sweating like a pig...`,width/2,200)
+  text(`Bloody hell MAN UP big boi`,width/2,250)
+  textSize(20);
+  text(`STOP STMILING AWKWARDLY EVERY 5 SECONDS!`,width/2,300)
+  textSize(35);
+  text(`This anxiety gives you a hard time digesting`, width/2,350);
+
+  pop();
+}
+
+function chickenwings(){
+  image(chickenwingsImage,0,0,1000,600);
+
+  push();
+  fill(255);
+  textSize(30);
+  text(`Enough is enough... you finally gathered enough courage`,width/2,50);
+  text(`Time to PROPOSE!`,width/2,100);
+  pop();
+}
+
+function wingsproposetext(){
+  background(244,170,247)
+
+  push();
+  textAlign(CENTER,CENTER);
+  fill(255);
+  textSize(40);
+  text(`Listen CLOSELY, Here's the plan`,width/2,50);
+  textSize(30);
+  text(`1.You will stand up, grab everyone's attention`,width/2,100);
+  text(`2.Tell her how much she means to you`,width/2,150);
+  text(`3.Step in front of her`,width/2,200);
+  text(`4.Grab her hand`,width/2,250);
+  text(`5.Kneel down`, width/2,300);
+  text(`6.Take out the proposal ring box`, width/2,350)
+  text(`7.Pop it open`, width/2,400);
+  text(`8.Pop the QUESTION`, width/2,450);
+  text(`Easy. Got it?`,width/2,500);
+  text(`alright...1...2...3`, width/2,550);
+  pop();
+
+}
+
+function omelettedufromage(){
+
+}
+
 
 
 
@@ -1087,7 +1251,20 @@ function stareending(){
   text(`THE END`,900,50);
 
   pop();
+}
 
+function wingsending(){
+  image(wingsendingImage,0,0,1000,600);
+
+  push();
+  fill(255);
+  textAlign(CENTER,CENTER);
+  textSize(60);
+  text(`Guess you really choked that proposal...`, width/2,100);
+  textSize(30);
+  text(`Badumtsss`, width/2,500);
+  text(`THE END`,900,50);
+  pop();
 }
 
 function usercontrol(){
@@ -1236,6 +1413,18 @@ function stare(){
     state = `stareintensely`;
   }
 }
+function omelette(){
+    if(user.x > width/3-160 && user.x <width/3+160 && user.y < 500+40 && user.y >500-40){
+      state = `omelettedufromage`;
+    }
+}
+function chicken(){
+    if(user.x > 2*width/3-135 && user.x <2*width/3+185 && user.y < 500+40 && user.y >500-40){
+      state = `chickenwingstext`;
+    }
+}
+
+
 function carmove(){
   if (state === `trafficfast`){
     carImage.speed= 0.5;
@@ -1261,7 +1450,7 @@ function carmove(){
 }
 
 function carsmovement(){
-carpurpleImage.x += carpurpleImage.speed;
+  carpurpleImage.x += carpurpleImage.speed;
   if (carpurpleImage.x<0){
   carpurpleImage.x=width;
   carpurpleImage.y= random(0,600);
@@ -1383,4 +1572,26 @@ function keyPressed(){
   else if (state === `stareintensely`){
     state = `stareending`
   }
+  else if (state === `complimenttext`){
+    state = `smoochcar`
+  }
+  else if (state === `smoochcar`){
+    state = `atrestaurant`
+  }
+  else if (state === `atrestaurant`){
+    state = `mannerstext`
+  }
+  else if (state === `mannerstext`){
+    state = `menu`
+  }
+  else if (state === `chickenwingstext`){
+    state = `chickenwings`
+  }
+  else if (state === `chickenwings`){
+    state = `wingsproposetext`
+  }
+  else if (state === `wingsproposetext`){
+    state = `wingsending`
+  }
+
 }
