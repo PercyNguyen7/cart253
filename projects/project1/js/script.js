@@ -58,6 +58,9 @@ let showerendingImage;
 let showernoringImage;
 let sheshomeImage;
 let lookatgfImage;
+let torestaurantImage;
+let stareatgfImage;
+let stareendingImage;
 let user = {
   x:500,
   y:550,
@@ -106,6 +109,9 @@ function preload(){
   showernoringImage=loadImage("assets/images/showernoring.jpg")
   sheshomeImage=loadImage("assets/images/sheshome.jpg")
   lookatgfImage=loadImage("assets/images/lookatgf.jpg")
+  torestaurantImage=loadImage("assets/images/torestaurant.jpg")
+  stareatgfImage=loadImage("assets/images/stareatgf.jpg")
+  stareendingImage=loadImage("assets/images/driveandstare.jpg")
 }
 // setup()
 let state = `title`;
@@ -274,7 +280,18 @@ function draw() {
   else if (state === `askdinnertext`){
     askdinnertext();
   }
-
+  else if (state === `torestaurant`){
+    torestaurant();
+  }
+  else if (state === `complimenttext`){
+    complimenttext();
+  }
+  else if (state === `stareintensely`){
+    stareintensely();
+  }
+  else if (state === `stareending`){
+    stareending();
+  }
 }
 
 
@@ -456,7 +473,7 @@ function doneworking(){
   fill(255);
   textAlign(CENTER,CENTER);
   textSize(70);
-  text(`Now what?`,width/2,200);
+  text(`Now what?`,width/2,150);
   textSize(40);
   text(`Take a shower`, width/3,500)
   text(`Hide the ring`, 2*width/3,500)
@@ -560,16 +577,7 @@ function showerendingtext(){
   text(`buttnaked...`, width/2,height/2);
   pop();
 }
-function showerending(){
-  image(showerendingImage,0,0,1000,600);
 
-  push();
-  textAlign(CENTER,CENTER);
-  fill(255)
-  textSize(40);
-  text(`WOWWW... AWESOMEEEE`, width/2,550);
-  push();
-}
 //hide ring path
 function hidering(){
   image(hideringImage,0,0,1000,600);
@@ -636,6 +644,7 @@ function lookatgf(){
 
 function askdinnertext(){
   background(244,170,247)
+
   push();
   fill(255);
   textAlign(CENTER,CENTER);
@@ -651,8 +660,57 @@ function askdinnertext(){
   pop();
 }
 
+function torestaurant(){
+  image(torestaurantImage,0,0,1000,600)
 
+  push();
+  fill(255);
+  rectMode(CENTER);
+  rect(width/3,180,300,60);
+  rect(2*width/3,180,300,60);
 
+  fill(255);
+  textAlign(CENTER,CENTER);
+  textSize(45);
+  text(`You can sense her fragrance`, width/2,50);
+  text(`What will you do?`,width/2,100);
+  fill(223,173,100);
+  textSize(35);
+  text(`Stare INTENSELY`, width/3,180);
+  text(`Compliment her`, 2*width/3,180);
+  pop();
+
+  usercontrol();
+  display();
+
+  compliment();
+  stare();
+}
+function complimenttext (){
+  background (146,57,123);
+
+  push();
+  fill(255);
+  textAlign(CENTER,CENTER);
+  textSize(35);
+  text(`You told her she looks great`, width/2,250);
+  text(`You can sense the fragrance getting stronger`,width/2,350);
+
+}
+function stareintensely (){
+  image(stareatgfImage,0,0,1000,600);
+
+  push();
+  fill(247,218,176);
+  textAlign(CENTER,CENTER);
+  textSize(40);
+  text(`There's my wife`, width/2,450);
+  textSize(35);
+  text(`Well not yet... soon to be wife...I can stare all day`, width/2,500);
+  text(`I mean look at her. Look at how pretty she i-`, width/2,550);
+
+  pop();
+}
 
 
 
@@ -757,8 +815,8 @@ function askprice(){
   rectMode(CENTER);
   rect(width/4,550,350,80);
   rect(3*width/4,550,350,80);
-  fill(255,0,0);
 
+  fill(255,0,0);
   textAlign(CENTER,CENTER);
   textSize(25);
   noStroke();
@@ -894,9 +952,9 @@ function avariceending (){
   push();
   image(avariceImage,0,0,1000,600);
   textSize(60);
-  fill(200,100,100);
+  fill(255);
   textAlign(CENTER,CENTER);
-  text(`Freakin' cheapskate!`,width/2,100);
+  text(`FREAKIN' CHEAPSKATE!`,width/2,100);
   textSize(25);
   text(`Tryna propose without a ring big boi? Think again`,width/2,530);
   pop();
@@ -946,8 +1004,8 @@ function happypoorending(){
   image(happypoorendingImage,0,0,1000,600);
   textAlign(CENTER,CENTER);
   fill(230);
-  textSize(44);
-  text(`And they lived happily forever after...in a car`,width/2,50);
+  textSize(40);
+  text(`AND THEY LIVED HAPPILY EVER AFTER...IN A CAR`,width/2,50);
   fill(199,222,236);
   textSize(25);
   text(`Had to sell all of your assets to pay back but you know what`, width/2, 500);
@@ -961,8 +1019,8 @@ function overdoseending(){
   push();
   textAlign(CENTER,CENTER);
   fill(200);
-  textSize(80);
-  text(`my time machine...`,width/2,500);
+  textSize(60);
+  text(`MY TIME MACHINE...`,width/2,500);
 
   pop();
 }
@@ -973,7 +1031,7 @@ function wildending(){
   textAlign(CENTER,CENTER);
   fill(255);
   textSize(90);
-  text(`Man Vs WILD `,width/2,450);
+  text(`MAN VS WILD `,width/2,450);
   textSize(40);
   text(`SPECIAL EDITION`, width/2,550);
 
@@ -985,8 +1043,8 @@ function rraliveending(){
   push();
   textAlign(CENTER,CENTER);
   fill(240);
-  textSize(50);
-  text(`You dodged a bullet...`,width/2,70);
+  textSize(60);
+  text(`YOU DODGED A BULLET...`,width/2,70);
   fill(112,141,142);
   textSize(30);
   text(`A man with nothing to lose`,width/2,120);
@@ -1001,6 +1059,34 @@ function rrdeadending(){
   fill(114,4,20);
   textSize(90);
   text(`...`,2*width/3,500);
+  pop();
+}
+//8000 endings
+function showerending(){
+  image(showerendingImage,0,0,1000,600);
+
+  push();
+  textAlign(CENTER,CENTER);
+  fill(255)
+  textSize(40);
+  text(`WOWWW... AWESOMEEEE`, width/2,550);
+  textSize(30);
+  text(`THE END`,900,50);
+  push();
+}
+
+function stareending(){
+  image(stareendingImage,0,0,1000,600);
+
+  push();
+  fill(223,211,193);
+  textAlign(CENTER,CENTER);
+  textSize(60);
+  text(`DON'T STARE AND DRIVE`, width/2,500);
+  textSize(30);
+  text(`THE END`,900,50);
+
+  pop();
 
 }
 
@@ -1140,7 +1226,16 @@ function hideringaway(){
   }
 }
 
-
+function compliment(){
+  if(user.x > 2*width/3-150 && user.x <2*width/3+150 && user.y < 180+30 && user.y >180-30){
+    state = `complimenttext`;
+  }
+}
+function stare(){
+  if(user.x > width/3-150 && user.x <width/3+150 && user.y < 180+30 && user.y >180-30){
+    state = `stareintensely`;
+  }
+}
 function carmove(){
   if (state === `trafficfast`){
     carImage.speed= 0.5;
@@ -1281,5 +1376,11 @@ function keyPressed(){
   }
   else if (state === `lookatgf`){
     state = `askdinnertext`
+  }
+  else if (state === `askdinnertext`){
+    state = `torestaurant`
+  }
+  else if (state === `stareintensely`){
+    state = `stareending`
   }
 }
