@@ -54,6 +54,7 @@ let hideringImage;
 let showerImage;
 let gfinshowerImage;
 let stunnedshowerImage;
+let showerendingImage;
 let user = {
   x:500,
   y:550,
@@ -98,6 +99,7 @@ function preload(){
   gfinshowerImage=loadImage("assets/images/gfinshower.jpg")
   stunnedshowerImage=loadImage("assets/images/stunnedshower.jpg")
   proposeshowerImage=loadImage("assets/images/proposeshower.jpg")
+  showerendingImage=loadImage("assets/images/showerending.jpg")
 }
 // setup()
 let state = `title`;
@@ -240,7 +242,12 @@ function draw() {
   else if (state === `proposeshower`){
     proposeshower();
   }
-
+  else if (state === `showerendingtext`){
+    showerendingtext();
+  }
+  else if (state === `showerending`){
+    showerending();
+  }
 
 
   else if (state === `hidering`){
@@ -558,8 +565,28 @@ function proposeshower(){
   pop();
 
 }
+function showerendingtext(){
+  background(244,238,212);
 
+  push();
+  textAlign(CENTER,CENTER);
+  textSize(40);
+  fill(216,163,37)
+  text(`So that's how i married your mom`, width/2,height/2-100);
+  textSize(50);
+  text(`buttnaked...`, width/2,height/2);
+  pop();
+}
+function showerending(){
+  image(showerendingImage,0,0,1000,600);
 
+  push();
+  textAlign(CENTER,CENTER);
+  fill(255)
+  textSize(40);
+  text(`WOWWW... AWESOMEEEE`, width/2,500);
+  push();
+}
 
 
 
@@ -1145,6 +1172,12 @@ function keyPressed(){
   }
   else if (state === `stunnedtext`){
     state = `proposeshower`
+  }
+  else if (state === `proposeshower`){
+    state = `showerendingtext`
+  }
+  else if (state ===`showerendingtext`){
+    state = `showerending`
   }
 
 }
