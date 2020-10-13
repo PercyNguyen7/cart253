@@ -55,6 +55,9 @@ let showerImage;
 let gfinshowerImage;
 let stunnedshowerImage;
 let showerendingImage;
+let showernoringImage;
+let sheshomeImage;
+let lookatgfImage;
 let user = {
   x:500,
   y:550,
@@ -100,6 +103,9 @@ function preload(){
   stunnedshowerImage=loadImage("assets/images/stunnedshower.jpg")
   proposeshowerImage=loadImage("assets/images/proposeshower.jpg")
   showerendingImage=loadImage("assets/images/showerending.jpg")
+  showernoringImage=loadImage("assets/images/showernoring.jpg")
+  sheshomeImage=loadImage("assets/images/sheshome.jpg")
+  lookatgfImage=loadImage("assets/images/lookatgf.jpg")
 }
 // setup()
 let state = `title`;
@@ -136,14 +142,8 @@ function draw() {
   else if (state === `caughtending`){
     caughtending();
   }
-  else if (state ===`lowdebt`){
-    lowdebt();
-  }
   else if (state === `highdebt`){
     highdebt();
-  }
-  else if(state === `trafficfast`){
-    trafficfast();
   }
   else if(state===`trafficslow`){
     trafficslow();
@@ -154,14 +154,8 @@ function draw() {
   else if(state===`runawayending`){
     runawayending();
   }
-  else if(state===`gothome`){
-    gothome();
-  }
   else if(state===`gothometired`){
     gothometired();
-  }
-  else if(state===`workinginlove`){
-    workinginlove();
   }
   else if(state === `workingtired`){
     workingtired();
@@ -218,6 +212,19 @@ function draw() {
     rrdeadending();
   }
   //beginning of 8 000$ ring path
+  else if (state ===`lowdebt`){
+    lowdebt();
+  }
+  else if(state === `trafficfast`){
+    trafficfast();
+  }
+  else if(state===`gothome`){
+    gothome();
+  }
+  else if(state===`workinginlove`){
+    workinginlove();
+  }
+
   else if (state ===`tapaway`){
     tapaway();
   }
@@ -249,10 +256,25 @@ function draw() {
     showerending();
   }
 
-
   else if (state === `hidering`){
     hidering();
   }
+  else if (state === `showernoring`){
+    showernoring();
+  }
+  else if (state === `showersingingnr`){
+    showersingingnr();
+  }
+  else if (state === `gfishome`){
+    gfishome();
+  }
+  else if (state === `lookatgf`){
+    lookatgf();
+  }
+  else if (state === `askdinnertext`){
+    askdinnertext();
+  }
+
 }
 
 
@@ -279,7 +301,10 @@ function instructions(){
   textSize(30);
   text(`Use arrow keys to play`,width/2,250);
   text(`Navigate through each page by tapping a key`, width/2,300);
-  text(`There are 9 endings. Try to fetch them all!`, width/2,350)
+  text(`There are 9 endings. Try to fetch them all!`, width/2,350);
+  fill(251,227,59);
+  textSize(40);
+  text(`Rated M: For mature players 17+`,width/2,450);
 }
 function context(){
   image(contextImage,0,0,1000,600)
@@ -355,26 +380,15 @@ function lowdebt(){
   textSize(50);
   text(`Now you're 33,000$ in debt.`, width/2,100);
   textSize(27);
-  text(`But you know what. You'll freakin' do it again.`, 3*width/4,height/2+50);
+  text(`But you know what. You'll freakin' do it again.`, 2*width/4,height/2+50);
   textSize(22)
-  text(`You areeee my fireeee...my one desireee...`,3*width/4,height/2+100);
-  text(`Believe when I sayyyy`, 3*width/4,height/2+150);
+  text(`You areeee my fireeee...my one desireee...`,2*width/4,height/2+100);
+  text(`Believe when I sayyyy`, 2*width/4,height/2+150);
   textSize(40)
-  text(`I want it THAT WAYYY`, 3*width/4,height/2+200);
+  text(`I want it THAT WAYYY`, 2*width/4,height/2+200);
   pop();
 }
-function highdebt(){
-  image(indebtImage,0,0,1000,600);
-  push();
-  textAlign(CENTER,CENTER);
-  textSize(70);
-  fill(210,0,40);
-  text(`-8,025,000$`, width/2 -50,150);
-  textSize(35);
-  fill(242,181,81);
-  text(`Idk about this one, chief...`, width/2 -250,550);
-  pop();
-}
+
 
 function trafficfast (){
   image(trafficfastImage,0,0,1000,600);
@@ -384,24 +398,6 @@ function trafficfast (){
   textAlign(CENTER,CENTER);
   text(`Gotta safekeep my preciousssss`,width/2,100);
   text(`Go thru`,width/2,50);
-  carmove();
-  cardisplays();
-  carsmovement();
-  caroverlap();
-  caroffscreen();
-  pop();
-}
-
-function trafficslow(){
-  image(trafficslowImage,0,0,1000,600);
-  push();
-
-  textAlign(CENTER,CENTER);
-  fill(255,0,0);
-  textSize(40);
-  text(`Go thru s l o w l y`,width/2,50);
-  textSize(30);
-  text(`This tiny gem's worth 160 years of salary`,width/2,100);
   carmove();
   cardisplays();
   carsmovement();
@@ -422,19 +418,6 @@ function gothome(){
   textSize(30);
   text(`Still, a man's gotta do his job.`,width/2,350);
   text(`You sit down to work on this bit of coding.`,width/2,400)
-  pop();
-}
-
-function gothometired(){
-  push();
-  background(0);
-  fill(210,0,0);
-  textSize(25);
-  textAlign(CENTER,CENTER);
-  text(`You got home tired, mentally drained from the thoughts of your massive debt`,width/2,height/2-50);
-  text(`Well someone's ought to pay the debt.`,width/2,height/2 );
-  text(``,width/2,250);
-  text(`You crash on the chair, pressing random buttons to pass time.`,width/2,height/2+50);
   pop();
 }
 
@@ -473,7 +456,7 @@ function doneworking(){
   fill(255);
   textAlign(CENTER,CENTER);
   textSize(70);
-  text(`Now what?`,width/2,100);
+  text(`Now what?`,width/2,200);
   textSize(40);
   text(`Take a shower`, width/3,500)
   text(`Hide the ring`, 2*width/3,500)
@@ -584,22 +567,86 @@ function showerending(){
   textAlign(CENTER,CENTER);
   fill(255)
   textSize(40);
-  text(`WOWWW... AWESOMEEEE`, width/2,500);
+  text(`WOWWW... AWESOMEEEE`, width/2,550);
   push();
 }
-
-
-
-
-
+//hide ring path
 function hidering(){
   image(hideringImage,0,0,1000,600);
+
+  push();
+  fill(244,170,247);
+  textAlign(CENTER,CENTER);
+  textSize(50);
+  text(`RING: stealth mode engaged`, width/2,150)
+  textSize(40);
+  text(`Time for shower`, width/2,200)
+  pop();
+}
+
+function showernoring(){
+  image(showernoringImage,0,0,1000,600);
+
+  push();
+  fill(60,77,87);
+  textAlign(CENTER,CENTER);
+  textSize(45);
+  text(`"City of starsss"`, width/2,480);
+  text(`"Are you shining just for me?"`, width/2,530);
+  pop();
+
+}
+ function showersingingnr(){
+   background(244,170,247)
+
+   push();
+   textAlign(CENTER,CENTER);
+   textSize(30);
+   text(`"City of starsss"`, width/2,height/2-100);
+   text(`"You never shined so brightlyyyy"`, width/2,height/2-50);
+   textSize(50);
+   text(`Andd you're all cleaned!`, width/2,height/2);
+   text(`You step out to see...`, width/2,height/2+50);
+   pop();
+
+ }
+
+function gfishome(){
+  image(sheshomeImage,0,0,1000,600);
+
+  push();
+  fill(255)
+  textAlign(CENTER,CENTER);
+  textSize(50);
+  text(`your girlfriend at the door!`, width/2,500);
+  pop();
+}
+
+function lookatgf(){
+  image(lookatgfImage,0,0,1000,600);
 
   push();
   fill(255);
   textAlign(CENTER,CENTER);
   textSize(50);
-  text(`RING: stealth mode engaged`, width/2,200)
+  text(`"She's my sunshine in the day!"`, width/2,500);
+  text(`"and my moonlight at night..."`, width/2,550);
+  pop();
+}
+
+function askdinnertext(){
+  background(244,170,247)
+  push();
+  fill(255);
+  textAlign(CENTER,CENTER);
+  textSize(35);
+  text(`"Wanna go to A Romantic Restaurant?" you asked`, width/2,150);
+  text(`"Oh heck ye" she replied`, width/2,200);
+  textSize(40);
+  text(`Step 1: ask her out for dinner: COMPLETED`,width/2,300);
+  fill(210,0,0);
+  textSize(60);
+  text(`Do NOT f this up now big boi`, width/2, 400)
 
   pop();
 }
@@ -614,7 +661,48 @@ function hidering(){
 
 
 
+//8 million dollar path
+function highdebt(){
+  image(indebtImage,0,0,1000,600);
+  push();
+  textAlign(CENTER,CENTER);
+  textSize(70);
+  fill(210,0,40);
+  text(`-8,025,000$`, width/2 -50,150);
+  textSize(35);
+  fill(242,181,81);
+  text(`Idk about this one, chief...`, width/2 -250,550);
+  pop();
+}
+function trafficslow(){
+  image(trafficslowImage,0,0,1000,600);
+  push();
 
+  textAlign(CENTER,CENTER);
+  fill(255,0,0);
+  textSize(40);
+  text(`Go thru s l o w l y`,width/2,50);
+  textSize(30);
+  text(`This tiny gem's worth 160 years of salary`,width/2,100);
+  carmove();
+  cardisplays();
+  carsmovement();
+  caroverlap();
+  caroffscreen();
+  pop();
+}
+function gothometired(){
+  push();
+  background(0);
+  fill(210,0,0);
+  textSize(25);
+  textAlign(CENTER,CENTER);
+  text(`You got home tired, mentally drained from the thoughts of your massive debt`,width/2,height/2-50);
+  text(`Well someone's ought to pay the debt.`,width/2,height/2 );
+  text(``,width/2,250);
+  text(`You crash on the chair, pressing random buttons to pass time.`,width/2,height/2+50);
+  pop();
+}
 
 function workingtired(){
   image(workingtiredImage,0,0,1000,600);
@@ -1179,5 +1267,19 @@ function keyPressed(){
   else if (state ===`showerendingtext`){
     state = `showerending`
   }
-
+  else if (state ===`hidering`){
+    state = `showernoring`
+  }
+  else if (state === `showernoring`){
+    state = `showersingingnr`
+  }
+  else if (state === `showersingingnr`){
+    state = `gfishome`
+  }
+  else if (state === `gfishome`){
+    state = `lookatgf`
+  }
+  else if (state === `lookatgf`){
+    state = `askdinnertext`
+  }
 }
