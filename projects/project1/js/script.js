@@ -5,6 +5,7 @@ let avariceImage;
 let caughtendingImage;
 let trafficfastImage;
 let trafficslowImage;
+let proposeshowerImage;
 let carImage ={
   x:50,
   y:300,
@@ -49,6 +50,10 @@ let rrmissImage;
 let rraliveendingImage;
 let rrdeadendingImage;
 let hideorshowerImage;
+let hideringImage;
+let showerImage;
+let gfinshowerImage;
+let stunnedshowerImage;
 let user = {
   x:500,
   y:550,
@@ -88,6 +93,11 @@ function preload(){
   rraliveendingImage=loadImage("assets/images/rraliveending.jpg")
   rrdeadendingImage=loadImage("assets/images/rrdeadending.jpg")
   hideorshowerImage=loadImage("assets/images/hideorshower.jpg")
+  hideringImage=loadImage("assets/images/hidering.jpg")
+  showerImage=loadImage("assets/images/shower.jpg")
+  gfinshowerImage=loadImage("assets/images/gfinshower.jpg")
+  stunnedshowerImage=loadImage("assets/images/stunnedshower.jpg")
+  proposeshowerImage=loadImage("assets/images/proposeshower.jpg")
 }
 // setup()
 let state = `title`;
@@ -206,12 +216,33 @@ function draw() {
     rrdeadending();
   }
   //beginning of 8 000$ ring path
+  else if (state ===`tapaway`){
+    tapaway();
+  }
   else if (state ===`doneworking`){
     doneworking();
   }
   else if (state ===`shower`){
     shower();
   }
+  else if (state === `showersinging`){
+    showersinging();
+  }
+  else if (state === `gfinshower`){
+    gfinshower();
+  }
+  else if (state === `stunnedshower`){
+    stunnedshower();
+  }
+  else if (state === `stunnedtext`){
+    stunnedtext();
+  }
+  else if (state === `proposeshower`){
+    proposeshower();
+  }
+
+
+
   else if (state === `hidering`){
     hidering();
   }
@@ -357,11 +388,13 @@ function trafficfast (){
 function trafficslow(){
   image(trafficslowImage,0,0,1000,600);
   push();
-  textSize(30);
+
   textAlign(CENTER,CENTER);
   fill(255,0,0);
-  text(`SLOWLY. 8 million baby. we aint taking no risk`,width/2,100);
-  text(`Go thru`,width/2,50);
+  textSize(40);
+  text(`Go thru s l o w l y`,width/2,50);
+  textSize(30);
+  text(`This tiny gem's worth 160 years of salary`,width/2,100);
   carmove();
   cardisplays();
   carsmovement();
@@ -404,23 +437,35 @@ function workinginlove(){
   push();
   textAlign(CENTER,CENTER);
   textSize(40);
-  text(`You finished a bunch of work!`,width/2,450);
+  text(`Tap tap tap`,width/2,450);
   text(``,width/2,500);
   pop();
 }
+
+
+function tapaway(){
+  background(219,73,172);
+  fill(255);
+  textSize(30);
+  textAlign(CENTER,CENTER);
+  text(`tap tap tap tap tap`,width/2,height/2-100);
+  textSize(40);
+  text(`andd you're done!`,width/2,height/2);
+}
+
 
 function doneworking(){
   image(hideorshowerImage,0,0,1000,600);
 
   push();
-  fill(231,140,212);
+  fill(219,73,172);
   rectMode(CENTER);
   rect(width/3,500,300,60);
   rect(2*width/3,500,300,60);
 
   fill(255);
   textAlign(CENTER,CENTER);
-  textSize(80);
+  textSize(70);
   text(`Now what?`,width/2,100);
   textSize(40);
   text(`Take a shower`, width/3,500)
@@ -435,12 +480,104 @@ function doneworking(){
 }
 
 function shower(){
-background(0)
+  image(showerImage,0,0,1000,600);
+
+  push();
+  fill(60,77,87);
+  textAlign(CENTER,CENTER);
+  textSize(50);
+  text(`City of starsss`, width/2,480);
+  text(`Are you shining just for meee?`, width/2,530);
+  pop();
 }
 
-function hidering(){
-  background(255)
+function showersinging(){
+  background(102,148,177);
+
+  push();
+  fill(255);
+  textAlign(CENTER,CENTER);
+  textSize(30);
+  text(`"City of starsss"`, width/2,height/2-100);
+  text(`"You never shined so brightlyyyy"`, width/2,height/2-50);
+  textSize(50);
+  text(`The bathroom door slams open!`, width/2,height/2);
+    textSize(50)
+  text(`A familiar face barges in...`,width/2,height/2+50);
+  pop();
 }
+
+function gfinshower(){
+  image(gfinshowerImage,0,0,1000,600);
+  push();
+  fill(60,77,87);
+  textAlign(CENTER,CENTER);
+  textSize(45);
+  text(`Your future fiance...with the RING`, width/2,480);
+  textSize(35);
+  text(`You had ONE JOB...to hide it`, width/2,530);
+  pop();
+}
+function stunnedshower(){
+  image (stunnedshowerImage,0,0,1000,600);
+
+  push();
+  fill(60,77,87);
+  textAlign(CENTER,CENTER);
+  textSize(45);
+  text(`Well this is awkward...`, width/2,480);
+  fill(219,73,172)
+  text(`I'm sorry...I... ruined it.`, width/2,530);
+  pop();
+
+}
+
+function stunnedtext(){
+  background(102,148,177);
+
+  push();
+  fill(255);
+  textAlign(CENTER,CENTER);
+  textSize(30);
+  text(`Your heart's racing`, width/2,height/2-150);
+  text(`Well it is definitely not the ideal way to propose...`, width/2,height/2-100);
+  text(`But if you don't...it'll be really ******* awkward so... `, width/2,height/2-50);
+  textSize(40);
+  text(`You took the ring out of her hand`, width/2,height/2);
+  text(`And kneel down on one knee`, width/2,height/2+50);
+  pop();
+}
+
+function proposeshower(){
+  image(proposeshowerImage,0,0,1000,600);
+  push();
+  fill(60,77,87);
+  textAlign(CENTER,CENTER);
+  textSize(45);
+  text(`Wheel u bee mind?`, width/2,480);
+  pop();
+
+}
+
+
+
+
+
+
+
+function hidering(){
+  image(hideringImage,0,0,1000,600);
+
+  push();
+  fill(255);
+  textAlign(CENTER,CENTER);
+  textSize(50);
+  text(`RING: stealth mode engaged`, width/2,200)
+
+  pop();
+}
+
+
 
 
 
@@ -989,6 +1126,25 @@ function keyPressed(){
     state =`rrdeadending`;
   }
   else if (state ===`workinginlove`){
-    state =`doneworking`;
+    state = `tapaway`;
   }
+  else if (state ===`tapaway`){
+    state = `doneworking`;
+  }
+  else if (state === `shower`){
+    state = `showersinging`;
+  }
+  else if (state ===`showersinging`){
+    state = `gfinshower`;
+  }
+  else if (state ===`gfinshower`){
+    state = `stunnedshower`
+  }
+  else if (state ===`stunnedshower`){
+    state = `stunnedtext`
+  }
+  else if (state === `stunnedtext`){
+    state = `proposeshower`
+  }
+
 }
