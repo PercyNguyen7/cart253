@@ -489,12 +489,12 @@ function depression(){
 
   textAlign(CENTER,CENTER);
   textSize(25);
-  text(`Build a time machine`,200,350);
-  text(`Abandon society`,width/2,350);
-  text(`Play russian roulette`, 800,350);
+  text(`Build a time machine!`,200,350);
+  text(`Abandon society.`,width/2,350);
+  text(`Play Russian Roulette...`, 800,350);
 
   textSize(60)
-  text(`In debt. Dumped. Depressed.`,width/2, 130)
+  text(`In Debt. Dumped. Depressed.`,width/2, 130)
   textSize(50)
   text(`What's your next move, buddy?`,width/2, 230)
   pop();
@@ -624,8 +624,9 @@ function happypoorending(){
   text(`And they lived happily forever after...in a car`,width/2,50);
   fill(199,222,236);
   textSize(25);
-  text(`Had to sell all of your assets to pay back but you know what`, width/2, 520);
-  text(`That ring might have been pricey, but she is priceless`, width/2,550);
+  text(`Had to sell all of your assets to pay back but you know what`, width/2, 500);
+  text(`That ring might have been pricey, but she... `, width/2,530);
+  text(`Well she is priceless :)`,width/2,560)
   pop();
 }
 
