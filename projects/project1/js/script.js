@@ -356,12 +356,13 @@ function gothome(){
 function gothometired(){
   push();
   background(0);
+  fill(210,0,0);
   textSize(25);
   textAlign(CENTER,CENTER);
-  text(`You got home tired, mentally drained from the thoughts of your massive debt`,width/2,200);
-  text(`Well someone's ought to pay the debt.`,width/2,250);
+  text(`You got home tired, mentally drained from the thoughts of your massive debt`,width/2,height/2-50);
+  text(`Well someone's ought to pay the debt.`,width/2,height/2 );
   text(``,width/2,250);
-  text(`You crash on the chair, pressing random buttons to pass time.`,width/2,300);
+  text(`You crash on the chair, pressing random buttons to pass time.`,width/2,height/2+50);
   pop();
 }
 
@@ -392,7 +393,7 @@ function sleep(){
 push();
 
 background(0);
-fill(170,0,0);
+fill(210,0,0);
 textSize(25);
 textAlign(CENTER,CENTER);
 text(`Slept restlesssslyyy...`,width/2,100);
@@ -410,7 +411,7 @@ pop();
 function shesaysyes(){
 push();
 image(shesaysyesImage,0,0,1000,600);
-fill(255,0,0);
+fill(0);
 textAlign(CENTER,CENTER);
 textSize(80);
 text(`shE- FOUND the RING`,width/2,400);
@@ -429,8 +430,10 @@ function askprice(){
   rect(width/4,550,350,80);
   rect(3*width/4,550,350,80);
   fill(255,0,0);
+
   textAlign(CENTER,CENTER);
   textSize(25);
+  noStroke();
   text(`Her smile faded for a moment`, width/2,50);
   textSize(35);
   text(`But this RING... How much... was it?`,width/2,100);
@@ -450,18 +453,16 @@ function divorcetext(){
   background(214,8,32);
   textAlign(CENTER,CENTER);
   fill(255,204,0);
-  textSize(30);
-  text(`She questioned your instant noodle diet`,width/2,150);
-  text(`and a BigMac on your monthly cheat day...`, width/2, 200);
   textSize(40);
-  text(`You were broke but you kept it shut`,width/2,250);
+  text(`You were real broke but you kept it shut`,width/2,150);
+  textSize(30);
+  text(`She questioned your instant noodle diet`,width/2,200);
+  text(`and BigMac on a cheatday...`, width/2, 250);
+
   textSize(70);
   text(`3 years later`, width/2,350);
   pop();
-
-
 }
-
 
 function divorce(){
   push();
@@ -493,9 +494,9 @@ function depression(){
   text(`Play russian roulette`, 800,350);
 
   textSize(60)
-  text(`In debted. Dumped. Depressed.`,width/2, 130)
+  text(`In debt. Dumped. Depressed.`,width/2, 130)
   textSize(50)
-  text(`Next move, buddy?`,width/2, 230)
+  text(`What's your next move, buddy?`,width/2, 230)
   pop();
 
   display();
@@ -592,7 +593,7 @@ function accidentending(){
   push();
   image(caraccidentendingImage,0,0,1000,600);
   textSize(80);
-  fill(168,26,7);
+  fill(213,103,5);
   textAlign(CENTER,CENTER);
   text(`THE END`,width/3,100);
   textSize(50)
@@ -624,7 +625,7 @@ function happypoorending(){
   fill(199,222,236);
   textSize(25);
   text(`Had to sell all of your assets to pay back but you know what`, width/2, 520);
-  text(`That ring might be pricey, but she is priceless`, width/2,550);
+  text(`That ring might have been pricey, but she is priceless`, width/2,550);
   pop();
 }
 
@@ -648,7 +649,6 @@ function wildending(){
   text(`Man Vs WILD `,width/2,450);
   textSize(40);
   text(`SPECIAL EDITION`, width/2,550);
-  text(` `,width/2,400);
 
   pop();
 }
