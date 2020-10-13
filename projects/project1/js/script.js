@@ -43,6 +43,9 @@ let divorceImage;
 let overdoseendingImage;
 let wildendingImage;
 let russianrImage;
+let rrhitImage;
+let rrmissImage;
+let rrdeadendingImage;
 let user = {
   x:500,
   y:550,
@@ -76,6 +79,9 @@ function preload(){
   overdoseendingImage=loadImage("assets/images/overdoseending.jpg")
   wildendingImage=loadImage("assets/images/wildending.jpg")
   russianrImage=loadImage("assets/images/russianr.jpg")
+  rrhitImage=loadImage("assets/images/rrhit.jpg")
+  rrmissImage=loadImage("assets/images/rrmiss.jpg")
+  rrdeadendingImage=loadImage("assets/images/rrdeadending.jpg")
 }
 // setup()
 let state = `title`;
@@ -170,6 +176,18 @@ function draw() {
   }
   else if (state === `russianroulette`){
     russianroulette();
+  }
+  else if (state === `rrmiss`){
+    rrmiss();
+  }
+  else if (state === `rrhit`){
+    rrhit();
+  }
+  else if (state === `rraliveending`){
+    rraliveending();
+  }
+  else if (state === `rrdeadending`){
+    rrdeadending();
   }
 }
 function title(){
@@ -487,12 +505,32 @@ function overdosetext(){
   pop();
 }
 
-
 function russianroulette(){
   image(russianrImage,0,0,1000,600);
+  push();
 
-  pulltrigger();
+  stroke(255,0,0)
+  noFill(0);
+  rectMode(CENTER);
+  rect(width/2,500,600,80);
+
+  textSize(60);
+  textAlign(CENTER,CENTER);
+  text(`Pull the trigger`,width/2,500);
+
+  display();
+  usercontrol();
+
+  triggerbutton();
 }
+function rrhit(){
+  image(rrhitImage,0,0,1000,600)
+
+}
+function rrmiss(){
+  image(rrmissImage,0,0,1000,600)
+}
+
 
 function avariceending (){
   push();
@@ -584,8 +622,14 @@ function wildending(){
   pop();
 }
 
+function rraliveending(){
+  background(255)
 
+}
 
+function rrdeadending(){
+  image(rrdeadending,0,0,1000,600)
+}
 
 function usercontrol(){
     if (keyIsDown(LEFT_ARROW)){
@@ -694,13 +738,20 @@ function playrussian(){
     state = `russianroulette`;
   }
 }
-function pulltrigger(){
-  let r = random(1,2);
-  if (r<2){
-    ellipse(50,50,50);
+function triggerbutton(){
+  if(user.x > width/2-150 && user.x < width/2+150 && user.y < 500+40 && user.y >500-40){
+    pulltrigger();
   }
-  else if (r>1) {
-    ellipse(500,500,50);
+}
+function pulltrigger(){
+  let r = random(1,6);
+  if (r<=5) {
+    print('dodged a bullet' + r);
+    state = `rrmiss`;
+  }
+  else if (r=6) {
+    print(`unfortunate circumstance` + r);
+    state = `rrhit`;
   }
 }
 
@@ -790,5 +841,11 @@ function keyPressed(){
   }
   else if (state ===`overdosetext`){
     state =`overdoseending`;
+  }
+  else if (state ===`rrmiss`){
+    state =`rraliveending`;
+  }
+  else if (state ===`rrhit`){
+    state =`rrdeadending`;
   }
 }
