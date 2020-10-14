@@ -66,6 +66,9 @@ let atrestaurantImage;
 let menuImage;
 let chickenwingsImage;
 let wingsendingImage;
+let omeletteImage;
+let omelettedisasterImage;
+let omeletteendingImage;
 let user = {
   x:500,
   y:550,
@@ -122,6 +125,9 @@ function preload(){
   menuImage=loadImage("assets/images/dinnerchoice.jpg")
   chickenwingsImage=loadImage("assets/images/chicken.jpg")
   wingsendingImage=loadImage("assets/images/chokeending.jpg")
+  omeletteImage=loadImage("assets/images/omelette.jpg")
+  omelettedisasterImage=loadImage("assets/images/preomeletteending.jpg")
+  omeletteendingImage=loadImage("assets/images/omeletteending.jpg")
 }
 
 // setup()
@@ -315,9 +321,6 @@ function draw() {
   else if (state === `menu`){
     menu();
   }
-  else if (state === `omelettedufromage`){
-    omelettedufromage();
-  }
   else if (state ===`chickenwingstext`){
     chickenwingstext();
   }
@@ -329,6 +332,22 @@ function draw() {
   }
   else if (state === `wingsending`){
     wingsending();
+  }
+  else if (state === `omelettedufrtext`){
+    omelettedufrtext();
+  }
+  else if (state ===`omelettedecision`){
+    omelettedecision();
+  }
+  else if (state ===`omelettedisaster`){
+    omelettedisaster();
+  }
+  else if (state ===`omeletteending`){
+    omeletteending();
+  }
+
+  else if (state ===`parkwalk`){
+    parkwalk();
   }
 }
 
@@ -704,8 +723,8 @@ function torestaurant(){
   push();
   fill(255);
   rectMode(CENTER);
-  rect(width/3,180,300,60);
-  rect(2*width/3,180,300,60);
+  rect(width/4,180,300,60);
+  rect(3*width/4,180,300,60);
 
   fill(255);
   textAlign(CENTER,CENTER);
@@ -714,8 +733,8 @@ function torestaurant(){
   text(`What will you do?`,width/2,100);
   fill(223,173,100);
   textSize(35);
-  text(`Stare INTENSELY`, width/3,180);
-  text(`Compliment her`, 2*width/3,180);
+  text(`Stare INTENSELY`, width/4,180);
+  text(`Compliment her`, 3*width/4,180);
   pop();
 
   usercontrol();
@@ -772,9 +791,9 @@ function atrestaurant(){
   fill(255);
   textAlign(LEFT,LEFT);
   textSize(40);
-  text(`There it is.`, width/2,350);
+  text(`There it is.`, 100,300);
   textSize(30);
-  text(`Your heart's beating faster by the minute...`,width/2,450);
+  text(`Your heart's beating faster by the minute...`,100,350);
   pop();
 }
 
@@ -866,17 +885,78 @@ function wingsproposetext(){
   text(`7.Pop it open`, width/2,400);
   text(`8.Pop the QUESTION`, width/2,450);
   text(`Easy. Got it?`,width/2,500);
-  text(`alright...1...2...3`, width/2,550);
+  text(`alright...1...2...cough..cough..`, width/2,550);
   pop();
 
 }
 
-function omelettedufromage(){
+function omelettedufrtext(){
+  background(246,223,116);
 
+    push();
+    textAlign(CENTER,CENTER);
+    fill(255);
+    textSize(30);
+    text(`Mmmm smells bloody delicious`,width/2,250);
+    text(`The taste of the omelette eases your stress`,width/2,300);
+    text(`It gives you strength and strengthens your will`,width/2,350);
+    pop();
+}
+
+function omelettedecision(){
+  image(omeletteImage,0,0,1000,600);
+
+  push();
+  fill(0);
+  rectMode(CENTER);
+  rect(width/4,300,260,80);
+  rect(3*width/4,300,260,80);
+
+
+  textAlign(CENTER,CENTER);
+  fill(255);
+  textSize(30);
+  text(`Plan ahead...Once finished your meal, You will`,width/2,50);
+  text(`Pop the question`,width/4,300);
+  text(`Take her out`,3*width/4,300);
+  pop();
+
+  usercontrol();
+  display();
+
+  popquestion();
+  takeout();
+}
+
+function omelettedisaster(){
+  image(omelettedisasterImage,0,0,1000,600);
+  push();
+  textAlign(CENTER,CENTER);
+  fill(255);
+  textSize(40);
+  text(`The crowd is cheering you on`,width/2,100);
+  textSize(60);
+  text(`You feel CONFIDENT`,width/2,550);
+  pop();
+}
+
+function omeletteending(){
+ image(omeletteendingImage,0,0,1000,600);
+
+ push();
+ textAlign(CENTER,CENTER);
+ fill(255,255,187);
+ textSize(50);
+ text(`PUBLIC PROPOSAL...NOT FOR EVERYONE`,width/2,550);
+ textSize(45);
+ text(`THE END`,width/2,50);
+ pop();
 }
 
 
+function parkwalk(){
 
+}
 
 
 
@@ -1259,10 +1339,12 @@ function wingsending(){
   push();
   fill(255);
   textAlign(CENTER,CENTER);
-  textSize(60);
+  textSize(40);
+  text(`Pick something without bone next time`, width/2,50);
+  textSize(50);
   text(`Guess you really choked that proposal...`, width/2,100);
   textSize(30);
-  text(`Badumtsss`, width/2,500);
+  text(`Badumtsss`, width/2,150);
   text(`THE END`,900,50);
   pop();
 }
@@ -1404,24 +1486,35 @@ function hideringaway(){
 }
 
 function compliment(){
-  if(user.x > 2*width/3-150 && user.x <2*width/3+150 && user.y < 180+30 && user.y >180-30){
+  if(user.x > 3*width/4-150 && user.x <3*width/4+150 && user.y < 180+30 && user.y >180-30){
     state = `complimenttext`;
   }
 }
 function stare(){
-  if(user.x > width/3-150 && user.x <width/3+150 && user.y < 180+30 && user.y >180-30){
+  if(user.x > width/4-150 && user.x <width/4+150 && user.y < 180+30 && user.y >180-30){
     state = `stareintensely`;
   }
 }
 function omelette(){
     if(user.x > width/3-160 && user.x <width/3+160 && user.y < 500+40 && user.y >500-40){
-      state = `omelettedufromage`;
+      state = `omelettedufrtext`;
     }
 }
 function chicken(){
-    if(user.x > 2*width/3-135 && user.x <2*width/3+185 && user.y < 500+40 && user.y >500-40){
+  if(user.x > 2*width/3-135 && user.x <2*width/3+185 && user.y < 500+40 && user.y >500-40){
       state = `chickenwingstext`;
     }
+}
+
+function popquestion(){
+  if(user.x > width/4-130 && user.x < width/4+130 && user.y < 300+40 && user.y >300-40){
+    state = `omelettedisaster`;
+  }
+}
+function takeout(){
+  if(user.x > 3*width/4-130 && user.x < 3*width/4+130 && user.y < 300+40 && user.y >300-40){
+    state = `parkwalk`;
+  }
 }
 
 
@@ -1593,5 +1686,10 @@ function keyPressed(){
   else if (state === `wingsproposetext`){
     state = `wingsending`
   }
-
+  else if (state ===`omelettedufrtext`){
+    state = `omelettedecision`
+  }
+  else if (state ===`omelettedisaster`){
+    state = `omeletteending`
+  }
 }
