@@ -835,9 +835,9 @@ background(195,117,55);
   text(`You make small chit chats while sweating like a pig...`,width/2,200)
   text(`Bloody hell MAN UP big boi`,width/2,250)
   textSize(20);
-  text(`STOP STMILING AWKWARDLY EVERY 5 SECONDS!`,width/2,300)
+  text(`STOP SMILING AWKWARDLY EVERY 5 SECONDS!`,width/2,300)
   textSize(35);
-  text(`This anxiety gives you a hard time digesting`, width/2,350);
+  text(`Your anxiety gives you a hard time digesting`, width/2,350);
 
   pop();
 }
@@ -847,8 +847,8 @@ function chickenwings(){
   push();
   fill(255);
   textSize(30);
-  text(`Enough is enough... you finally gathered enough courage`,width/2,50);
-  text(`Time to PROPOSE!`,width/2,100);
+  text(`Enough is enough... you finally gathered enough courage`,width/2,30);
+  text(`Time to PROPOSE!`,width/2,70);
   pop();
 }
 function wingsproposetext(){
