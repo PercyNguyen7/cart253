@@ -386,7 +386,7 @@ function instructions(){
   text(`Game only ends on page with "THE END"`, width/2,400);
   fill(251,227,59);
   textSize(40);
-  text(`Rated M: For mature players 17+`,width/2,500);
+  text(`Rated M: Mature players 17+`,width/2,500);
 }
 function context(){
   image(contextImage,0,0,1000,600)
@@ -719,7 +719,7 @@ function torestaurant(){
   fill(255);
   textAlign(CENTER,CENTER);
   textSize(45);
-  text(`You can sense her fragrance`, width/2,50);
+  text(`You can smell her fragrance`, width/2,50);
   text(`What will you do?`,width/2,100);
   fill(146,57,123);
   textSize(35);
@@ -756,7 +756,7 @@ function complimenttext (){
   textSize(30);
   text(`"Hey babe just thought I'd remind you of how beautiful you are"`, width/2,250);
   textSize(40);
-  text(`The fragrance ITENSIFIES`,width/2,350);
+  text(`The scent of her perfume coats your nose`,width/2,350);
   pop();
 }
 function smoochcar(){
@@ -1013,7 +1013,7 @@ function gothometired(){
   textSize(25);
   textAlign(CENTER,CENTER);
   text(`You got home tired, mentally drained from the thoughts of your massive debt`,width/2,height/2-50);
-  text(`Well someone's ought to pay the debt.`,width/2,height/2);
+  text(`Well someone ought to pay the debt.`,width/2,height/2);
   text(``,width/2,250);
   text(`You crash on the chair, pressing random buttons to pass time.`,width/2,height/2+50);
   pop();
@@ -1386,9 +1386,11 @@ function trueending(){
   fill(255);
   textSize(80);
   textAlign(CENTER,CENTER);
-  text(`YESSSSSSS`,width/2, 100);
+  text(`YES I WILL!`,width/2, 100);
   textSize(40);
   text(`CONGRATULATIONS, YOU WON (HER)`,width/2, 550);
+  textSize(30);
+  text(`THE END`,width/2, 580);
   pop();
 }
 
