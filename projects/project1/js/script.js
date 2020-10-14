@@ -13,7 +13,7 @@ let carImage ={
   vy:0,
   width:100,
   height:50,
-  speed:0.03,
+  speed:0.02,
   img:undefined,
 }
 let carpurpleImage ={
@@ -996,9 +996,9 @@ function trafficslow(){
   textAlign(CENTER,CENTER);
   fill(255,0,0);
   textSize(40);
-  text(`Go home - s l o w l y`,width/2,50);
+  text(`Go home - S L O W L Y`,width/2,50);
   textSize(30);
-  text(`This tiny gem's worth 160 years of salary`,width/2,100);
+  text(`This bloody thing's worth 160 years of salary`,width/2,100);
   carmove();
   cardisplays();
   carsmovement();
@@ -1013,7 +1013,7 @@ function gothometired(){
   textSize(25);
   textAlign(CENTER,CENTER);
   text(`You got home tired, mentally drained from the thoughts of your massive debt`,width/2,height/2-50);
-  text(`Well someone's ought to pay the debt.`,width/2,height/2 );
+  text(`Well someone's ought to pay the debt.`,width/2,height/2);
   text(``,width/2,250);
   text(`You crash on the chair, pressing random buttons to pass time.`,width/2,height/2+50);
   pop();
@@ -1036,7 +1036,7 @@ function sleep(){
   fill(210,0,0);
   textSize(25);
   textAlign(CENTER,CENTER);
-  text(`Slept restlesssslyyy...`,width/2,100);
+  text(`Slept restlessslyyyy...`,width/2,100);
   text(`and wake up to a loud yet familiar scream... `,width/2,150);
   fill(219,73,172);
   textSize(70);
@@ -1244,7 +1244,7 @@ function runawayending(){
   textSize(30);
   text(`Plenty of fish in the sea!`,width/2,140);
   textSize(15);
-  text(`And you don't deserve her anyway, *******`,width/2,180);
+  text(`Plus you don't deserve her anyway, jack***`,width/2,180);
   textSize(30);
   text(`THE END`,900,550);
   pop();
@@ -1272,7 +1272,7 @@ function overdoseending(){
   image(overdoseendingImage,0,0,1000,600)
   push();
   textAlign(CENTER,CENTER);
-  fill(230);
+  fill(250);
   textSize(60);
   text(`MY TIME MACHINE...`,width/2,500);
   textSize(30);
@@ -1359,11 +1359,11 @@ function wingsending(){
   textAlign(CENTER,CENTER);
   textSize(40);
   text(`Pick something without bone next time`, width/2,50);
-  textSize(50);
-  text(`Guess you really choked that proposal...`, width/2,100);
+  textSize(48);
+  text(`Guess you really... choked... that proposal`, width/2,100);
   textSize(30);
   text(`Badumtsss`, width/2,150);
-  text(`THE END`,900,50);
+  text(`THE END`,900,550);
   pop();
 }
 
