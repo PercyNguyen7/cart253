@@ -385,10 +385,11 @@ function instructions(){
   textSize(30);
   text(`Use arrow keys to play`,width/2,250);
   text(`Navigate through each page by tapping a key`, width/2,300);
-  text(`There are 9 endings. Try to fetch them all!`, width/2,350);
+  text(`There are 14 endings. Try to fetch them all!`, width/2,350);
+  text(`Game only ends on page with "THE END"`, width/2,400);
   fill(251,227,59);
   textSize(40);
-  text(`Rated M: For mature players 17+`,width/2,450);
+  text(`Rated M: For mature players 17+`,width/2,500);
 }
 function context(){
   image(contextImage,0,0,1000,600)
@@ -478,10 +479,10 @@ function trafficfast (){
   image(trafficfastImage,0,0,1000,600);
   push();
   fill(255)
-  textSize(30);
+  textSize(50);
   textAlign(CENTER,CENTER);
   text(`Gotta safekeep my preciousssss`,width/2,100);
-  text(`Go thru`,width/2,50);
+  text(`Go home pal!`,width/2,50);
   carmove();
   cardisplays();
   carsmovement();
@@ -762,8 +763,8 @@ function stareintensely (){
   textSize(40);
   text(`There's my wife`, width/2,450);
   textSize(35);
-  text(`Well not yet... soon to be wife...I can stare all day`, width/2,500);
-  text(`I mean look at her. Look at how pretty she i-`, width/2,550);
+  text(`Well not yet... soon to be wife...I can stare at her all day`, width/2,500);
+  text(`I mean look at her. Look at how stunning she i-`, width/2,550);
 
   pop();
 }
@@ -785,7 +786,7 @@ function smoochcar(){
   image(smoochcarImage,0,0,1000,600);
 
   push();
-  fill(146,57,123);
+  fill(217,45,106);
   textAlign(CENTER,CENTER);
   textSize(25);
   text(`*inserts smooch sound effect*`, width/2,50);
@@ -833,7 +834,7 @@ function menu(){
   fill(255);
   textAlign(CENTER,CENTER);
   textSize(50);
-  text(`"May I take your order?"`, width/2,220);
+  text(`"May I take your orders?"`, width/2,220);
   fill(255);
   textSize(30);
   text(`Omelette du fromage`,width/3,500)
@@ -919,7 +920,7 @@ function omelettedecision(){
   push();
   fill(0);
   rectMode(CENTER);
-  rect(width/4,300,300,80);
+  rect(width/4,300,340,80);
   rect(3*width/4,300,260,80);
 
 
@@ -942,7 +943,7 @@ function omelettedisaster(){
   image(omelettedisasterImage,0,0,1000,600);
   push();
   textAlign(CENTER,CENTER);
-  fill(255);
+  fill(255,255,187);
   textSize(40);
   text(`The crowd is cheering you on`,width/2,100);
   textSize(60);
@@ -957,9 +958,8 @@ function omeletteending(){
  textAlign(CENTER,CENTER);
  fill(255,255,187);
  textSize(40);
- text(`PUBLIC PROPOSAL`,width/2,500);
- textSize(45);
-text(`NOT FOR EVERYONE`,width/2,550);
+ text(`PUBLIC PROPOSAL ISN'T`,width/2,500);
+ text(`EVERYONE'S CUP OF TEA`,width/2,550);
  text(`THE END`,width/2,50);
  pop();
 }
@@ -985,16 +985,14 @@ function finaldecision(){
   rect(3*width/4,450,350,60);
 
   textAlign(CENTER,CENTER);
-  // fill(251,227,59);
   textSize(60);
   text(`THIS IS IT!`,width/2, 200);
   textSize(40);
   text(`You've made it this far!`,width/2, 250);
-  text(`What are your NEXT WORDS`,width/2, 300);
+  text(`What will be your FINAL DECISION?`,width/2, 300);
   textSize(30);
-  fill(255);
   text(`How about that bush over th...`,width/4,450)
-  text(`Will you be my wife`,3*width/4,450)
+  text(`Will you marry me?`,3*width/4,450)
 
   pop();
 
@@ -1004,20 +1002,6 @@ function finaldecision(){
   fun();
   commit();
 }
-function banending(){
-  background(22,51,109);
-
-  push();
-  fill(251,227,59);
-  textAlign(CENTER,CENTER);
-  // fill(251,227,59);
-  textSize(40);
-  text(`You've been permanently banned from this game`,width/2, 250);
-  text(`No refund will be granted`,width/2, 300);
-  text(`For obvious reasons`,width/2, 450);
-  pop();
-}
-
 
 
 
@@ -1046,7 +1030,7 @@ function trafficslow(){
   textAlign(CENTER,CENTER);
   fill(255,0,0);
   textSize(40);
-  text(`Go thru s l o w l y`,width/2,50);
+  text(`Go home - s l o w l y`,width/2,50);
   textSize(30);
   text(`This tiny gem's worth 160 years of salary`,width/2,100);
   carmove();
@@ -1261,9 +1245,11 @@ function avariceending (){
   textSize(60);
   fill(255);
   textAlign(CENTER,CENTER);
-  text(`FREAKIN' CHEAPSKATE!`,width/2,100);
-  textSize(25);
-  text(`Tryna propose without a ring big boi? Think again`,width/2,530);
+  text(`FREAKIN' CHEAPSKATE!`,width/2,50);
+  textSize(30);
+  text(`Tryna propose without a ring big boi? Think again`,width/2,100);
+  textSize(30);
+  text(`THE END`,900,550);
   pop();
 }
 
@@ -1273,8 +1259,7 @@ function caughtending(){
   textSize(100);
   fill(50,18,122);
   textAlign(CENTER,CENTER);
-  text(`WASTED`,width/2,550);
-
+  text(`WASTED (the end)`,width/2,550);
   textSize(50);
   text(`My guy. I know you. I'm her sister...`,width/2,200);
   pop();
@@ -1283,12 +1268,14 @@ function caughtending(){
 function accidentending(){
   push();
   image(caraccidentendingImage,0,0,1000,600);
-  textSize(80);
+  textSize(60);
   fill(213,103,5);
   textAlign(CENTER,CENTER);
-  text(`THE END`,width/3,100);
+  text(`AH AH AH AH STAYIN' ALIVE`,width/2,100);
   textSize(50)
-  text(`Can't propose now can you?`,width/3,150)
+  text(`Can't propose now can you?`,width/2,150)
+  textSize(30);
+  text(`THE END`,900,550);
   pop();
 }
 
@@ -1303,6 +1290,8 @@ function runawayending(){
   text(`Plenty of fish in the sea!`,width/2,140);
   textSize(15);
   text(`And you don't deserve her anyway, *******`,width/2,180);
+  textSize(30);
+  text(`THE END`,900,550);
   pop();
 }
 
@@ -1318,6 +1307,8 @@ function happypoorending(){
   text(`Had to sell all of your assets to pay back but you know what`, width/2, 500);
   text(`That ring might have been pricey, but she... `, width/2,530);
   text(`Well she is priceless :)`,width/2,560)
+  textSize(30);
+  text(`THE END`,900,550);
   pop();
 }
 
@@ -1328,7 +1319,8 @@ function overdoseending(){
   fill(200);
   textSize(60);
   text(`MY TIME MACHINE...`,width/2,500);
-
+  textSize(30);
+  text(`THE END`,900,50);
   pop();
 }
 
@@ -1341,7 +1333,8 @@ function wildending(){
   text(`MAN VS WILD `,width/2,450);
   textSize(40);
   text(`SPECIAL EDITION`, width/2,550);
-
+  textSize(30);
+  text(`THE END`,900,50);
   pop();
 }
 
@@ -1356,6 +1349,9 @@ function rraliveending(){
   textSize(30);
   text(`A man with nothing to lose`,width/2,120);
   text(`should still hold on to his life`,width/2,160);
+  fill(240);
+  textSize(30);
+  text(`THE END`,900,550);
 
 }
 
@@ -1366,6 +1362,8 @@ function rrdeadending(){
   fill(114,4,20);
   textSize(90);
   text(`...`,2*width/3,500);
+  textSize(30);
+  text(`THE END`,900,550);
   pop();
 }
 //8000 endings
@@ -1419,8 +1417,10 @@ function banending(){
   fill(251,227,59);
   textAlign(CENTER,CENTER);
   // fill(251,227,59);
-  textSize(60);
-  text(`You've been permanently banned from this game`,width/2, 300);
+  textSize(30);
+  text(`You've been permanently banned from this game`,width/2, 250);
+  text(`No refund will be granted`,width/2, 300);
+  text(`For obvious reasons...`,width/2, 350);
   pop();
 }
 
@@ -1431,8 +1431,8 @@ function trueending(){
   textSize(80);
   textAlign(CENTER,CENTER);
   text(`YESSSSSSS`,width/2, 100);
-  textSize(60);
-  text(`CONGRATULATIONS, YOU WON (HER)`,width/2, 450);
+  textSize(40);
+  text(`CONGRATULATIONS, YOU WON (HER)`,width/2, 550);
   pop();
 
 }
@@ -1595,7 +1595,7 @@ function chicken(){
 }
 
 function popquestion(){
-  if(user.x > width/4-150 && user.x < width/4+150 && user.y < 300+40 && user.y >300-40){
+  if(user.x > width/4-170 && user.x < width/4+170 && user.y < 300+40 && user.y >300-40){
     state = `omelettedisaster`;
   }
 }
@@ -1663,7 +1663,6 @@ function cardisplays(){
     image(carpurpleImage.img,carpurpleImage.x, carpurpleImage.y, carpurpleImage.width, carpurpleImage.height);
     image(carorangeImage.img,carorangeImage.x, carorangeImage.y, carorangeImage.width, carorangeImage.height);
 }
-
 
 function keyPressed(){
   if (state === `title`){
