@@ -69,6 +69,7 @@ let wingsendingImage;
 let omeletteImage;
 let omelettedisasterImage;
 let omeletteendingImage;
+let parkwalkImage;
 let user = {
   x:500,
   y:550,
@@ -128,6 +129,7 @@ function preload(){
   omeletteImage=loadImage("assets/images/omelette.jpg")
   omelettedisasterImage=loadImage("assets/images/preomeletteending.jpg")
   omeletteendingImage=loadImage("assets/images/omeletteending.jpg")
+  parkwalkImage=loadImage("assets/images/walkingnight.jpg")
 }
 
 // setup()
@@ -345,9 +347,17 @@ function draw() {
   else if (state ===`omeletteending`){
     omeletteending();
   }
-
   else if (state ===`parkwalk`){
     parkwalk();
+  }
+  else if (state ===`finaldecision`){
+    finaldecision();
+  }
+  else if (state ===`banending`){
+    banending();
+  }
+  else if (state ===`trueending`){
+    trueending();
   }
 }
 
@@ -694,7 +704,7 @@ function lookatgf(){
   fill(255);
   textAlign(CENTER,CENTER);
   textSize(50);
-  text(`"She's my sunshine in the day!"`, width/2,500);
+  text(`"She's my sunshine in the day"`, width/2,500);
   text(`"and my moonlight at night..."`, width/2,550);
   pop();
 }
@@ -710,7 +720,6 @@ function askdinnertext(){
   text(`"Oh heck ye" she replied`, width/2,200);
   textSize(40);
   text(`Step 1: ask her out for dinner: COMPLETED`,width/2,300);
-  fill(210,0,0);
   textSize(60);
   text(`Do NOT f this up now big boi`, width/2, 400)
 
@@ -731,7 +740,7 @@ function torestaurant(){
   textSize(45);
   text(`You can sense her fragrance`, width/2,50);
   text(`What will you do?`,width/2,100);
-  fill(223,173,100);
+  fill(146,57,123);
   textSize(35);
   text(`Stare INTENSELY`, width/4,180);
   text(`Compliment her`, 3*width/4,180);
@@ -765,9 +774,10 @@ function complimenttext (){
   push();
   fill(255);
   textAlign(CENTER,CENTER);
-  textSize(35);
-  text(`You told her she is absolutely stunning and beautiful`, width/2,250);
-  text(`You can sense the fragrance getting stronger`,width/2,350);
+  textSize(30);
+  text(`"Hey babe just thought I'd remind you of how beautiful you are"`, width/2,250);
+  textSize(40);
+  text(`The fragrance ITENSIFIES`,width/2,350);
   pop();
 }
 
@@ -775,12 +785,12 @@ function smoochcar(){
   image(smoochcarImage,0,0,1000,600);
 
   push();
-  fill(255);
+  fill(146,57,123);
   textAlign(CENTER,CENTER);
   textSize(25);
   text(`*inserts smooch sound effect*`, width/2,50);
   textSize(70);
-  text(`On cloud 9 BABY!`,width/2,100);
+  text(`You're on CLOUD 9 BABY!`,width/2,100);
   pop();
 }
 
@@ -791,9 +801,9 @@ function atrestaurant(){
   fill(255);
   textAlign(LEFT,LEFT);
   textSize(40);
-  text(`There it is.`, 100,300);
+  text(`There it is.`, 50,300);
   textSize(30);
-  text(`Your heart's beating faster by the minute...`,100,350);
+  text(`Your heart beats faster by the minute`,50,350);
   pop();
 }
 
@@ -805,8 +815,8 @@ function mannerstext(){
   textAlign(CENTER,CENTER);
   textSize(30);
   text(`You opened the door and pulled out her chair`, width/2,250);
-  text(`"I guess chivalry isn't dead" she murmured while giggling`, width/2,300);
-  text(`"Guess not" you reply and sit down yourself`, width/2,350);
+  text(`"I guess chivalry isn't dead yet" she giggled`, width/2,300);
+  text(`"Guess not" you reply and sit down`, width/2,350);
   pop();
 }
 
@@ -823,7 +833,7 @@ function menu(){
   fill(255);
   textAlign(CENTER,CENTER);
   textSize(50);
-  text(`"May I take your order?"`, width/2,250);
+  text(`"May I take your order?"`, width/2,220);
   fill(255);
   textSize(30);
   text(`Omelette du fromage`,width/3,500)
@@ -909,14 +919,14 @@ function omelettedecision(){
   push();
   fill(0);
   rectMode(CENTER);
-  rect(width/4,300,260,80);
+  rect(width/4,300,300,80);
   rect(3*width/4,300,260,80);
 
 
   textAlign(CENTER,CENTER);
   fill(255);
-  textSize(30);
-  text(`Plan ahead...Once finished your meal, You will`,width/2,50);
+  textSize(40);
+  text(`Plan ahead!Once finished with your meal...`,width/2,50);
   text(`Pop the question`,width/4,300);
   text(`Take her out`,3*width/4,300);
   pop();
@@ -946,17 +956,70 @@ function omeletteending(){
  push();
  textAlign(CENTER,CENTER);
  fill(255,255,187);
- textSize(50);
- text(`PUBLIC PROPOSAL...NOT FOR EVERYONE`,width/2,550);
+ textSize(40);
+ text(`PUBLIC PROPOSAL`,width/2,500);
  textSize(45);
+text(`NOT FOR EVERYONE`,width/2,550);
  text(`THE END`,width/2,50);
  pop();
 }
-
-
 function parkwalk(){
+  image(parkwalkImage,0,0,1000,600);
 
+  push();
+  textAlign(LEFT,LEFT);
+  fill(255);
+  textSize(30);
+  text(`The two take a walk in your childhood park`,50,50);
+  text(`It was midnight. No one's to be seen`,50,100);
+  pop();
 }
+function finaldecision(){
+  background(22,51,109);
+
+  push();
+  stroke(251,227,59)
+  noFill()
+  rectMode(CENTER);
+  rect(width/4,450,420,60);
+  rect(3*width/4,450,350,60);
+
+  textAlign(CENTER,CENTER);
+  // fill(251,227,59);
+  textSize(60);
+  text(`THIS IS IT!`,width/2, 200);
+  textSize(40);
+  text(`You've made it this far!`,width/2, 250);
+  text(`What are your NEXT WORDS`,width/2, 300);
+  textSize(30);
+  fill(255);
+  text(`How about that bush over th...`,width/4,450)
+  text(`Will you be my wife`,3*width/4,450)
+
+  pop();
+
+  usercontrol();
+  display();
+
+  fun();
+  commit();
+}
+function banending(){
+  background(22,51,109);
+
+  push();
+  fill(251,227,59);
+  textAlign(CENTER,CENTER);
+  // fill(251,227,59);
+  textSize(40);
+  text(`You've been permanently banned from this game`,width/2, 250);
+  text(`No refund will be granted`,width/2, 300);
+  text(`For obvious reasons`,width/2, 450);
+  pop();
+}
+
+
+
 
 
 
@@ -1087,7 +1150,7 @@ function divorcetext(){
   text(`You were real broke but you kept it shut`,width/2,150);
   textSize(30);
   text(`She questioned your instant noodle diet`,width/2,200);
-  text(`and BigMac on a cheatday...`, width/2, 250);
+  text(`and BigMac on a cheat day...`, width/2, 250);
   textSize(70);
   text(`3 years later`, width/2,350);
   pop();
@@ -1349,6 +1412,31 @@ function wingsending(){
   pop();
 }
 
+function banending(){
+  background(22,51,109);
+
+  push();
+  fill(251,227,59);
+  textAlign(CENTER,CENTER);
+  // fill(251,227,59);
+  textSize(60);
+  text(`You've been permanently banned from this game`,width/2, 300);
+  pop();
+}
+
+function trueending(){
+  image(coverImage,0,0,1000,600);
+  push();
+  fill(255);
+  textSize(80);
+  textAlign(CENTER,CENTER);
+  text(`YESSSSSSS`,width/2, 100);
+  textSize(60);
+  text(`CONGRATULATIONS, YOU WON (HER)`,width/2, 450);
+  pop();
+
+}
+
 function usercontrol(){
     if (keyIsDown(LEFT_ARROW)){
       user.vx = -user.speed;
@@ -1507,7 +1595,7 @@ function chicken(){
 }
 
 function popquestion(){
-  if(user.x > width/4-130 && user.x < width/4+130 && user.y < 300+40 && user.y >300-40){
+  if(user.x > width/4-150 && user.x < width/4+150 && user.y < 300+40 && user.y >300-40){
     state = `omelettedisaster`;
   }
 }
@@ -1517,7 +1605,16 @@ function takeout(){
   }
 }
 
-
+function fun(){
+  if(user.x > width/4-210 && user.x < width/4+210 && user.y < 450+30 && user.y >450-30){
+    state = `banending`;
+  }
+}
+function commit(){
+  if(user.x > 3*width/4-210 && user.x < 3*width/4+210 && user.y < 450+30 && user.y >450-30){
+    state = `trueending`;
+  }
+}
 function carmove(){
   if (state === `trafficfast`){
     carImage.speed= 0.5;
@@ -1630,66 +1727,69 @@ function keyPressed(){
     state = `gfinshower`;
   }
   else if (state ===`gfinshower`){
-    state = `stunnedshower`
+    state = `stunnedshower`;
   }
   else if (state ===`stunnedshower`){
-    state = `stunnedtext`
+    state = `stunnedtext`;
   }
   else if (state === `stunnedtext`){
-    state = `proposeshower`
+    state = `proposeshower`;
   }
   else if (state === `proposeshower`){
-    state = `showerendingtext`
+    state = `showerendingtext`;
   }
   else if (state ===`showerendingtext`){
-    state = `showerending`
+    state = `showerending`;
   }
   else if (state ===`hidering`){
-    state = `showernoring`
+    state = `showernoring`;
   }
   else if (state === `showernoring`){
-    state = `showersingingnr`
+    state = `showersingingnr`;
   }
   else if (state === `showersingingnr`){
-    state = `gfishome`
+    state = `gfishome`;
   }
   else if (state === `gfishome`){
-    state = `lookatgf`
+    state = `lookatgf`;
   }
   else if (state === `lookatgf`){
-    state = `askdinnertext`
+    state = `askdinnertext`;
   }
   else if (state === `askdinnertext`){
-    state = `torestaurant`
+    state = `torestaurant`;
   }
   else if (state === `stareintensely`){
-    state = `stareending`
+    state = `stareending`;
   }
   else if (state === `complimenttext`){
-    state = `smoochcar`
+    state = `smoochcar`;
   }
   else if (state === `smoochcar`){
-    state = `atrestaurant`
+    state = `atrestaurant`;
   }
   else if (state === `atrestaurant`){
-    state = `mannerstext`
+    state = `mannerstext`;
   }
   else if (state === `mannerstext`){
-    state = `menu`
+    state = `menu`;
   }
   else if (state === `chickenwingstext`){
-    state = `chickenwings`
+    state = `chickenwings`;
   }
   else if (state === `chickenwings`){
-    state = `wingsproposetext`
+    state = `wingsproposetext`;
   }
   else if (state === `wingsproposetext`){
-    state = `wingsending`
+    state = `wingsending`;
   }
   else if (state ===`omelettedufrtext`){
-    state = `omelettedecision`
+    state = `omelettedecision`;
   }
   else if (state ===`omelettedisaster`){
-    state = `omeletteending`
+    state = `omeletteending`;
+  }
+  else if (state ===`parkwalk`){
+    state =`finaldecision`;
   }
 }
