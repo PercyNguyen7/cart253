@@ -13,7 +13,7 @@ let carImage ={
   vy:0,
   width:100,
   height:50,
-  speed:0.5,
+  speed:0.03,
   img:undefined,
 }
 let carpurpleImage ={
@@ -142,7 +142,6 @@ function setup() {
 
 
 // draw()
-
 function draw() {
   background(45,21,56)
 
@@ -166,6 +165,7 @@ function draw() {
   }
   else if (state === `caughtending`){
     caughtending();
+    //beginning of 8 000 000$ ring path
   }
   else if (state === `highdebt`){
     highdebt();
@@ -280,7 +280,6 @@ function draw() {
   else if (state === `showerending`){
     showerending();
   }
-
   else if (state === `hidering`){
     hidering();
   }
@@ -361,8 +360,6 @@ function draw() {
   }
 }
 
-
-
 function title(){
   push();
   image(coverImage,0,0,1000,600);
@@ -406,7 +403,6 @@ function context(){
   text(`Oh JOY! I'm your LOVERBOY!`,30, 550)
   pop();
 }
-
 function firstday(){
    image(day1Image,0,0,1000,600);
    push();
@@ -428,7 +424,6 @@ function firstday(){
    usercontrol();
    dontbuyring();
    buyring();
-
 }
 function jewelrystore (){
   push();
@@ -473,8 +468,6 @@ function lowdebt(){
   text(`I want it THAT WAYYY`, 2*width/4,height/2+200);
   pop();
 }
-
-
 function trafficfast (){
   image(trafficfastImage,0,0,1000,600);
   push();
@@ -490,7 +483,6 @@ function trafficfast (){
   caroffscreen();
   pop();
 }
-
 function gothome(){
   push();
   background(219,73,172);
@@ -505,7 +497,6 @@ function gothome(){
   text(`You sit down to work on this bit of coding.`,width/2,400)
   pop();
 }
-
 function workinginlove(){
   image(workinginloveImage,0,0,1000,600);
 
@@ -516,19 +507,18 @@ function workinginlove(){
   text(``,width/2,500);
   pop();
 }
-
-
 function tapaway(){
   background(219,73,172);
+
+  push();
   fill(255);
   textSize(30);
   textAlign(CENTER,CENTER);
   text(`tap tap tap tap tap`,width/2,height/2-100);
   textSize(40);
   text(`andd you're done!`,width/2,height/2);
+  pop();
 }
-
-
 function doneworking(){
   image(hideorshowerImage,0,0,1000,600);
 
@@ -553,7 +543,7 @@ function doneworking(){
   takeashower();
   hideringaway();
 }
-
+//shower path (8000$)
 function shower(){
   image(showerImage,0,0,1000,600);
 
@@ -565,7 +555,6 @@ function shower(){
   text(`Are you shining just for meee?`, width/2,530);
   pop();
 }
-
 function showersinging(){
   background(102,148,177);
 
@@ -578,10 +567,9 @@ function showersinging(){
   textSize(50);
   text(`The bathroom door slams open!`, width/2,height/2);
     textSize(50)
-  text(`A familiar face barges in...`,width/2,height/2+50);
+  text(`A familiar face barges in...`,width/2,height/2+60);
   pop();
 }
-
 function gfinshower(){
   image(gfinshowerImage,0,0,1000,600);
   push();
@@ -606,7 +594,6 @@ function stunnedshower(){
   pop();
 
 }
-
 function stunnedtext(){
   background(102,148,177);
 
@@ -622,7 +609,6 @@ function stunnedtext(){
   text(`And kneel down on one knee`, width/2,height/2+50);
   pop();
 }
-
 function proposeshower(){
   image(proposeshowerImage,0,0,1000,600);
   push();
@@ -645,8 +631,7 @@ function showerendingtext(){
   text(`buttnaked...`, width/2,height/2);
   pop();
 }
-
-//hide ring path
+//hide ring path (8000$)
 function hidering(){
   image(hideringImage,0,0,1000,600);
 
@@ -659,7 +644,6 @@ function hidering(){
   text(`Time for shower`, width/2,200)
   pop();
 }
-
 function showernoring(){
   image(showernoringImage,0,0,1000,600);
 
@@ -686,7 +670,6 @@ function showernoring(){
    pop();
 
  }
-
 function gfishome(){
   image(sheshomeImage,0,0,1000,600);
 
@@ -697,7 +680,6 @@ function gfishome(){
   text(`your girlfriend at the door!`, width/2,500);
   pop();
 }
-
 function lookatgf(){
   image(lookatgfImage,0,0,1000,600);
 
@@ -709,7 +691,6 @@ function lookatgf(){
   text(`"and my moonlight at night..."`, width/2,550);
   pop();
 }
-
 function askdinnertext(){
   background(244,170,247)
 
@@ -726,7 +707,6 @@ function askdinnertext(){
 
   pop();
 }
-
 function torestaurant(){
   image(torestaurantImage,0,0,1000,600)
 
@@ -753,7 +733,6 @@ function torestaurant(){
   compliment();
   stare();
 }
-
 function stareintensely (){
   image(stareatgfImage,0,0,1000,600);
 
@@ -768,7 +747,6 @@ function stareintensely (){
 
   pop();
 }
-
 function complimenttext (){
   background (146,57,123);
 
@@ -781,7 +759,6 @@ function complimenttext (){
   text(`The fragrance ITENSIFIES`,width/2,350);
   pop();
 }
-
 function smoochcar(){
   image(smoochcarImage,0,0,1000,600);
 
@@ -794,7 +771,6 @@ function smoochcar(){
   text(`You're on CLOUD 9 BABY!`,width/2,100);
   pop();
 }
-
 function atrestaurant(){
   image(atrestaurantImage,0,0,1000,600);
 
@@ -807,7 +783,6 @@ function atrestaurant(){
   text(`Your heart beats faster by the minute`,50,350);
   pop();
 }
-
 function mannerstext(){
   background(195,117,55);
 
@@ -820,7 +795,6 @@ function mannerstext(){
   text(`"Guess not" you reply and sit down`, width/2,350);
   pop();
 }
-
 function menu(){
   image(menuImage,0,0,1000,600);
 
@@ -848,6 +822,7 @@ function menu(){
   omelette();
   chicken();
 }
+//chicken wings path (8000$,hide ring)
 function chickenwingstext(){
 background(195,117,55);
 
@@ -866,7 +841,6 @@ background(195,117,55);
 
   pop();
 }
-
 function chickenwings(){
   image(chickenwingsImage,0,0,1000,600);
 
@@ -877,7 +851,6 @@ function chickenwings(){
   text(`Time to PROPOSE!`,width/2,100);
   pop();
 }
-
 function wingsproposetext(){
   background(244,170,247)
 
@@ -900,7 +873,7 @@ function wingsproposetext(){
   pop();
 
 }
-
+//omelette path (8000$,hide ring)
 function omelettedufrtext(){
   background(246,223,116);
 
@@ -938,7 +911,6 @@ function omelettedecision(){
   popquestion();
   takeout();
 }
-
 function omelettedisaster(){
   image(omelettedisasterImage,0,0,1000,600);
   push();
@@ -950,7 +922,6 @@ function omelettedisaster(){
   text(`You feel CONFIDENT`,width/2,550);
   pop();
 }
-
 function omeletteending(){
  image(omeletteendingImage,0,0,1000,600);
 
@@ -1002,11 +973,6 @@ function finaldecision(){
   fun();
   commit();
 }
-
-
-
-
-
 
 
 
@@ -1064,40 +1030,35 @@ function workingtired(){
   text(`You feel yourself falling aslee... `,width/2,500);
   pop();
 }
-
 function sleep(){
-
-push();
-
-background(0);
-fill(210,0,0);
-textSize(25);
-textAlign(CENTER,CENTER);
-text(`Slept restlesssslyyy...`,width/2,100);
-text(`and wake up to a loud yet familiar scream... `,width/2,150);
-fill(219,73,172);
-textSize(70);
-text(`YESSSSSSSSSSSSS!`,width/2,350);
-textSize(30);
-text(`I WILL I WILL I WILL I WILL!`, width/2,430);
-textSize(100);
-text(`AAAAHHHHHHHHHHH`,width/2,530);
-pop();
-}
-
+  push();
+  background(0);
+  fill(210,0,0);
+  textSize(25);
+  textAlign(CENTER,CENTER);
+  text(`Slept restlesssslyyy...`,width/2,100);
+  text(`and wake up to a loud yet familiar scream... `,width/2,150);
+  fill(219,73,172);
+  textSize(70);
+  text(`YESSSSSSSSSSSSS!`,width/2,350);
+  textSize(30);
+  text(`I WILL I WILL I WILL I WILL!`, width/2,430);
+  textSize(100);
+  text(`AAAAHHHHHHHHHHH`,width/2,530);
+  pop();
+  }
 function shesaysyes(){
-push();
-image(shesaysyesImage,0,0,1000,600);
-fill(0);
-textAlign(CENTER,CENTER);
-textSize(80);
-text(`shE- FOUND the RING`,width/2,400);
-textSize(30);
-text(`...you didn't HIDE it you IDIOT!`,width/2,450);
+  push();
+  image(shesaysyesImage,0,0,1000,600);
+  fill(0);
+  textAlign(CENTER,CENTER);
+  textSize(80);
+  text(`shE- FOUND the RING`,width/2,400);
+  textSize(30);
+  text(`...you didn't HIDE it you IDIOT!`,width/2,450);
 
-pop();
-}
-
+  pop();
+  }
 function askprice(){
   image(askpriceImage,0,0,1000,600);
   push();
@@ -1124,7 +1085,7 @@ function askprice(){
   telltruth();
   telllie();
 }
-
+//tell lie path (8 000 000$)
 function divorcetext(){
   push();
   background(214,8,32);
@@ -1139,7 +1100,6 @@ function divorcetext(){
   text(`3 years later`, width/2,350);
   pop();
 }
-
 function divorce(){
   push();
   image(divorceImage,0,0,1000,600);
@@ -1151,7 +1111,6 @@ function divorce(){
   text(`Instead, you got a McDivorce...`,width/2,120);
   pop();
 }
-
 function depression(){
   push();
   background(0);
@@ -1182,7 +1141,6 @@ function depression(){
   escape();
   playrussian();
 }
-
 function overdosetext(){
   push();
   background(mouseX,mouseY,0)
@@ -1194,10 +1152,8 @@ function overdosetext(){
   text(`Let your imagination run WILD`,width/2,height/2);
   textSize(30);
   text(`Give your mouse a lil shake ;)`,width/2,height/2+50);
-
   pop();
 }
-
 function russianroulette(){
   image(russianrImage,0,0,1000,600);
   push();
@@ -1211,17 +1167,16 @@ function russianroulette(){
   textSize(30);
   text(`Let's roll the dice`,width/2,100);
   textSize(40);
-  text(`1 out of 6 for fatality`,width/2,150);
+  text(`1 out of 6 chances for fatality`,width/2,150);
   textSize(60);
   text(`Pull the trigger`,width/2,500);
-
   pop();
+
   display();
   usercontrol();
 
   triggerbutton();
 }
-
 function regret(){
   push();
   background(255,0,0)
@@ -1238,7 +1193,7 @@ function rrmiss(){
   image(rrmissImage,0,0,1000,600);
 }
 
-
+//incomplete endings
 function avariceending (){
   push();
   image(avariceImage,0,0,1000,600);
@@ -1259,7 +1214,7 @@ function caughtending(){
   textSize(100);
   fill(50,18,122);
   textAlign(CENTER,CENTER);
-  text(`WASTED (the end)`,width/2,550);
+  text(`WASTED (THE END)`,width/2,550);
   textSize(50);
   text(`My guy. I know you. I'm her sister...`,width/2,200);
   pop();
@@ -1295,6 +1250,7 @@ function runawayending(){
   pop();
 }
 
+// 8 000 000 ring endings
 function happypoorending(){
   push();
   image(happypoorendingImage,0,0,1000,600);
@@ -1316,7 +1272,7 @@ function overdoseending(){
   image(overdoseendingImage,0,0,1000,600)
   push();
   textAlign(CENTER,CENTER);
-  fill(200);
+  fill(230);
   textSize(60);
   text(`MY TIME MACHINE...`,width/2,500);
   textSize(30);
@@ -1339,6 +1295,7 @@ function wildending(){
 }
 
 function rraliveending(){
+  push();
   image(rraliveendingImage,0,0,1000,600)
   push();
   textAlign(CENTER,CENTER);
@@ -1352,7 +1309,7 @@ function rraliveending(){
   fill(240);
   textSize(30);
   text(`THE END`,900,550);
-
+  pop();
 }
 
 function rrdeadending(){
@@ -1366,7 +1323,7 @@ function rrdeadending(){
   text(`THE END`,900,550);
   pop();
 }
-//8000 endings
+//8000$ ring endings
 function showerending(){
   image(showerendingImage,0,0,1000,600);
 
@@ -1416,7 +1373,6 @@ function banending(){
   push();
   fill(251,227,59);
   textAlign(CENTER,CENTER);
-  // fill(251,227,59);
   textSize(30);
   text(`You've been permanently banned from this game`,width/2, 250);
   text(`No refund will be granted`,width/2, 300);
@@ -1434,7 +1390,6 @@ function trueending(){
   textSize(40);
   text(`CONGRATULATIONS, YOU WON (HER)`,width/2, 550);
   pop();
-
 }
 
 function usercontrol(){
@@ -1467,7 +1422,6 @@ function display(){
   fill(255)
   ellipse(user.x, user.y, user.size);
 }
-
 function buyring(){
   if(user.x > 2*width/3 -150 && user.x < 2* width/3 +150 && user.y < 2*height/3+40 && user.y >2*height/3-40){
     state = `jewelrystore`;
@@ -1503,7 +1457,6 @@ function caroverlap(){
     state = `accidentending`;
   }
 }
-
 function caroffscreen(){
   if (carImage.x<0||carImage.y<0||carImage.y>height){
     state= `runawayending`;
@@ -1515,19 +1468,16 @@ function caroffscreen(){
     state=`gothometired`;
   }
 }
-
 function telltruth(){
   if(user.x > width/4 -175 && user.x < width/4 +175 && user.y < 550+40 && user.y >550-40){
     state = `happypoorending`;
   }
 }
-
 function telllie (){
   if(user.x > 3*width/4 -175 && user.x < 3*width/4 +175 && user.y < 550+40 && user.y >550-40){
     state = `divorcetext`;
   }
 }
-
 function build(){
   if(user.x > 200-125 && user.x < 200+125 && user.y < 350+30 && user.y >350-30){
     state = `overdosetext`;
@@ -1538,7 +1488,6 @@ function escape(){
     state = `wildending`;
   }
 }
-
 function playrussian(){
   if(user.x > 800-125 && user.x < 800+125 && user.y < 350+30 && user.y >350-30){
     state = `russianroulette`;
@@ -1560,19 +1509,16 @@ function pulltrigger(){
     state = `rrhit`;
   }
 }
-
 function takeashower(){
   if(user.x > width/3-150 && user.x < width/3+150 && user.y < 500+30 && user.y >500-30){
     state = `shower`;
   }
 }
-
 function hideringaway(){
   if(user.x > 2*width/3-150 && user.x < 2*width/3+150 && user.y < 500+30 && user.y >500-30){
     state = `hidering`;
   }
 }
-
 function compliment(){
   if(user.x > 3*width/4-150 && user.x <3*width/4+150 && user.y < 180+30 && user.y >180-30){
     state = `complimenttext`;
@@ -1593,7 +1539,6 @@ function chicken(){
       state = `chickenwingstext`;
     }
 }
-
 function popquestion(){
   if(user.x > width/4-170 && user.x < width/4+170 && user.y < 300+40 && user.y >300-40){
     state = `omelettedisaster`;
@@ -1604,7 +1549,6 @@ function takeout(){
     state = `parkwalk`;
   }
 }
-
 function fun(){
   if(user.x > width/4-210 && user.x < width/4+210 && user.y < 450+30 && user.y >450-30){
     state = `banending`;
@@ -1617,7 +1561,7 @@ function commit(){
 }
 function carmove(){
   if (state === `trafficfast`){
-    carImage.speed= 0.5;
+    carImage.speed= 0.05;
   }
   if (keyIsDown(LEFT_ARROW)) {
     carImage.vx += -carImage.speed;
