@@ -87,7 +87,6 @@ function displayUser() {
 function displayFood(food) {
   // Check if the food is still available to be eaten
   if (!food.eaten) {
-    console.log(food.x, food.y, food.size);
     // Display the food as its position and with its size
     push();
     fill(255, 100, 100);
