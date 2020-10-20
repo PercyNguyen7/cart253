@@ -11,9 +11,8 @@ let moon = {
   x:0,
   y:0,
   size:100,
-  vx:5,
-  vy:2,
-  speed:1,
+  vx:1,
+  vy:0.5,
 }
 
 let star1;
@@ -79,6 +78,8 @@ function moveStar(star) {
     star.vx = random(-star.speed, star.speed);
     star.vy = random(-star.speed, star.speed);
   }
+
+//Stars change direction if bumped against borders
   if (star.x === 0 || star.x === width || star.y === 0 || star.y === 600) {
     star.vx = random(-star.speed, star.speed);
     star.vy = random(-star.speed, star.speed);
@@ -97,16 +98,23 @@ function sparkleStar(star) {
   }
 }
 
+//move moon left to right
 function moveMoon(){
   if (moon.x < width/2){
     moon.x += moon.vx;
     moon.y += moon.vy;
+
+    moon.size +=0.1
   }
   if (moon.x >= width/2){
-  moon.x += moon.vx;
-  moon.y += -moon.vy;
+    moon.x += moon.vx;
+    moon.y += -moon.vy;
+
+    moon.size -=0.1
   }
 
+
+  moon.size= constrain(moon.size,100,200);
 }
 
 
