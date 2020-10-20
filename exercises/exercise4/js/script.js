@@ -14,9 +14,9 @@ let star3;
 function setup() {
   createCanvas(windowWidth, 750);
 
-  star1 = createStar(random(0, width), random(0, 600));
-  star2 = createStar(random(0, width), random(0, 600));
-  star3 = createStar(random(0, width), random(0, 600));
+  star1 = createStar(random(20, width - 20), random(0, 580));
+  star2 = createStar(random(20, width - 20), random(0, 580));
+  star3 = createStar(random(20, width - 20), random(0, 580));
 }
 function createStar(x, y) {
   let star = {
@@ -25,7 +25,7 @@ function createStar(x, y) {
     size: 15,
     vx: 0,
     vy: 0,
-    speed: 2,
+    speed: 5,
   };
   return star;
 }
@@ -43,11 +43,41 @@ function draw() {
   // Display the user and foods
   displayUser();
 
+  moveStar(star1);
+  moveStar(star2);
+  moveStar(star3);
+
+  sparkleStar(star1);
+  sparkleStar(star2);
+  sparkleStar(star3);
+
   displayStar(star1);
   displayStar(star2);
   displayStar(star3);
 
   displayGround();
+}
+
+//Move stars at random speed at random direction
+function moveStar(star) {
+  let change = random(0, 1);
+  if (change < 0.05) {
+    star.vx = random(-star.speed, star.speed);
+    star.vy = random(-star.speed, star.speed);
+  }
+  star.x += star.vx;
+  star.y += star.vy;
+
+  star.x = constrain(star.x, 20, width - 20);
+  star.y = constrain(star.y, 20, 580);
+}
+
+function sparkleStar(star) {
+  let change = random(0, 1);
+  if (change < 0.1) {
+    star.size = random(5, 20);
+  }
+  star.size = constrain(star.size, 7.5, 30);
 }
 
 // Sets the user position to the mouse position
