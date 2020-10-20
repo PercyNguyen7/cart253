@@ -5,7 +5,16 @@ let user = {
   x: 0,
   y: 0,
   size: 50,
+
 };
+let moon = {
+  x:0,
+  y:0,
+  size:100,
+  vx:5,
+  vy:2,
+  speed:1,
+}
 
 let star1;
 let star2;
@@ -34,17 +43,13 @@ function draw() {
 
   // Move the user (with the mouse)
   moveUser();
-  // moveStar(star1);
-  // moveStar(star2);
-  // moveStar(star3);
+
 
   // Check whether the user has eaten either food
 
-  // Display the user and foods
 
 
-
-
+//move stars
   moveStar(star1);
   moveStar(star2);
   moveStar(star3);
@@ -53,6 +58,10 @@ function draw() {
   sparkleStar(star2);
   sparkleStar(star3);
 
+//move moon
+  moveMoon();
+
+  // Display the user, stars, moon and ground
   displayMoon();
 
   displayStar(star1);
@@ -87,6 +96,17 @@ function sparkleStar(star) {
     star.size = random(4, 20);
   }
 }
+
+function moveMoon(){
+  if (moon.x < width/2){
+
+  moon.vy = -moon.vy;
+  }
+
+  moon.x += moon.vx;
+  moon.y += moon.vy;
+}
+
 
 // Sets the user position to the mouse position
 function moveUser() {
@@ -125,7 +145,7 @@ function displayStar(star) {
 function displayMoon(){
   push();
   fill(233);
-  ellipse(width/2, 200, 200);
+  ellipse(moon.x, moon.y, moon.size);
   pop();
 }
 
