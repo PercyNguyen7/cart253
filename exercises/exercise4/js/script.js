@@ -99,12 +99,14 @@ function sparkleStar(star) {
 
 function moveMoon(){
   if (moon.x < width/2){
-
-  moon.vy = -moon.vy;
+    moon.x += moon.vx;
+    moon.y += moon.vy;
+  }
+  if (moon.x >= width/2){
+  moon.x += moon.vx;
+  moon.y += -moon.vy;
   }
 
-  moon.x += moon.vx;
-  moon.y += moon.vy;
 }
 
 
