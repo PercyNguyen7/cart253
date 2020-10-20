@@ -25,7 +25,7 @@ function createStar(x, y) {
     size: 15,
     vx: 0,
     vy: 0,
-    speed: 5,
+    speed: 15,
   };
   return star;
 }
@@ -43,6 +43,10 @@ function draw() {
   // Display the user and foods
   displayUser();
 
+  displayStar(star1);
+  displayStar(star2);
+  displayStar(star3);
+
   moveStar(star1);
   moveStar(star2);
   moveStar(star3);
@@ -50,10 +54,6 @@ function draw() {
   sparkleStar(star1);
   sparkleStar(star2);
   sparkleStar(star3);
-
-  displayStar(star1);
-  displayStar(star2);
-  displayStar(star3);
 
   displayGround();
 }
@@ -74,10 +74,9 @@ function moveStar(star) {
 
 function sparkleStar(star) {
   let change = random(0, 1);
-  if (change < 0.1) {
-    star.size = random(5, 20);
+  if (change < 0.5) {
+    star.size = random(4, 20);
   }
-  star.size = constrain(star.size, 7.5, 30);
 }
 
 // Sets the user position to the mouse position
@@ -104,6 +103,13 @@ function displayStar(star) {
   stroke(253, 232, 85);
   strokeWeight(1);
   fill(253, 232, 85);
+
+  if (star.size >= 4 && star.size < 9) {
+    fill(255, 101, 138);
+  }
+  if (star.size >= 9 && star.size < 14) {
+    fill(255, 182, 171);
+  }
   ellipse(star.x, star.y, star.size);
   pop();
 }
