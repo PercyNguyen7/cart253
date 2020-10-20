@@ -14,9 +14,9 @@ let star3;
 function setup() {
   createCanvas(windowWidth, 750);
 
-  star1 = createStar(random(20, width - 20), random(0, 580));
-  star2 = createStar(random(20, width - 20), random(0, 580));
-  star3 = createStar(random(20, width - 20), random(0, 580));
+  star1 = createStar(random(0, width), random(0, 600));
+  star2 = createStar(random(0, width), random(0, 600));
+  star3 = createStar(random(0, width), random(0, 600));
 }
 function createStar(x, y) {
   let star = {
@@ -30,7 +30,7 @@ function createStar(x, y) {
   return star;
 }
 function draw() {
-  background(8, 43, 99);
+  background(34, 64, 123);
 
   // Move the user (with the mouse)
   moveUser();
@@ -41,11 +41,9 @@ function draw() {
   // Check whether the user has eaten either food
 
   // Display the user and foods
-  displayUser();
 
-  displayStar(star1);
-  displayStar(star2);
-  displayStar(star3);
+
+
 
   moveStar(star1);
   moveStar(star2);
@@ -55,6 +53,13 @@ function draw() {
   sparkleStar(star2);
   sparkleStar(star3);
 
+  displayMoon();
+
+  displayStar(star1);
+  displayStar(star2);
+  displayStar(star3);
+
+  displayUser();
   displayGround();
 }
 
@@ -65,11 +70,15 @@ function moveStar(star) {
     star.vx = random(-star.speed, star.speed);
     star.vy = random(-star.speed, star.speed);
   }
+  if (star.x === 0 || star.x === width || star.y === 0 || star.y === 600) {
+    star.vx = random(-star.speed, star.speed);
+    star.vy = random(-star.speed, star.speed);
+  }
   star.x += star.vx;
   star.y += star.vy;
 
-  star.x = constrain(star.x, 20, width - 20);
-  star.y = constrain(star.y, 20, 580);
+  star.x = constrain(star.x, 0, width);
+  star.y = constrain(star.y, 0, 600);
 }
 
 function sparkleStar(star) {
@@ -111,6 +120,12 @@ function displayStar(star) {
     fill(255, 182, 171);
   }
   ellipse(star.x, star.y, star.size);
+  pop();
+}
+function displayMoon(){
+  push();
+  fill(233);
+  ellipse(width/2, 200, 200);
   pop();
 }
 
