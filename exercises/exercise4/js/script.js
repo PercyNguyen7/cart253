@@ -13,10 +13,9 @@ let moon = {
   size:100,
   vx:1,
   vy:0.5,
-}
+};
 let school = [];
-let schoolSize = 5;
-
+let schoolSize = 6;
 let state = `title`;
 
 function setup() {
