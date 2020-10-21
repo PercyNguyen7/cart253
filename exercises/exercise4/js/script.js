@@ -4,7 +4,7 @@
 let user = {
   x: 0,
   y: 0,
-  size: 50,
+  size: 80,
 
 };
 let moon = {
@@ -15,7 +15,7 @@ let moon = {
   vy:0.5,
 }
 let school = [];
-let schoolSize = 40;
+let schoolSize = 5;
 
 let state = `title`;
 
@@ -34,7 +34,7 @@ function createStar(x, y) {
     size: 15,
     vx: 0,
     vy: 0,
-    speed: 15,
+    speed: 3,
     caught: false
   };
   return star;
@@ -78,10 +78,13 @@ function title(){
 
 
 function gameplay(){
+  displayMoon();
+  // displayGround();
+
 
     for (let i = 0; i < schoolSize; i++) {
         moveStar(school[i]);
-        sparkleStar(school[i]);
+        // sparkleStar(school[i]);
         displayStar(school[i]);
         checkStar(school[i])
       }
@@ -89,8 +92,7 @@ function gameplay(){
 
     moveMoon();
 
-    displayMoon();
-    displayGround();
+
 
     // Move and display the user (with the mouse)
     moveUser();
@@ -147,23 +149,23 @@ function moveStar(star) {
   }
 
 //Stars change direction if bumped against borders
-  if (star.x === 0 || star.x === width || star.y === 0 || star.y === 600) {
+  if (star.x === 20 || star.x === width-20 || star.y === 20 || star.y === 580) {
     star.vx = random(-star.speed, star.speed);
     star.vy = random(-star.speed, star.speed);
   }
   star.x += star.vx;
   star.y += star.vy;
 
-  star.x = constrain(star.x, 0, width);
-  star.y = constrain(star.y, 0, 600);
+  star.x = constrain(star.x, 20, width-20);
+  star.y = constrain(star.y, 20, 600-20);
 }
 
-function sparkleStar(star) {
-  let change = random(0, 1);
-  if (change < 0.5) {
-    star.size = random(4, 20);
-  }
-}
+// function sparkleStar(star) {
+//   let change = random(0, 1);
+//   if (change < 0.5) {
+//     star.size = random(4, 20);
+//   }
+// }
 
 //move moon left to right
 function moveMoon(){
