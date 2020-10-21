@@ -15,9 +15,9 @@ let moon = {
   vy: 0.7,
 };
 let school = [];
-let schoolSize = 20;
+let schoolSize = 22;
 let state = `title`;
-let starcounter = 20;
+let starcounter = 22;
 
 function setup() {
   createCanvas(windowWidth, 750);
@@ -54,7 +54,6 @@ function draw() {
     loseending();
   }
 }
-
 
 //                                     STATE FUNCTIONS
 function title() {
