@@ -17,9 +17,7 @@ let moon = {
 let school = [];
 let schoolSize = 30;
 
-// let star1;
-// let star2;
-// let star3;
+let state = `title`;
 
 function setup() {
   createCanvas(windowWidth, 750);
@@ -41,26 +39,60 @@ function createStar(x, y) {
   };
   return star;
 }
+
+
 function draw() {
   background(34, 64, 123);
 
-  for (let i = 0; i < schoolSize; i++) {
-      moveStar(school[i]);
-      sparkleStar(school[i]);
-      displayStar(school[i]);
-      checkStar(school[i])
-    }
+  if (state ===`title`){
+    title();
+  }
+  else if (state ===`gameplay`){
+    gameplay();
+  }
 
 
-  moveMoon();
-
-  displayMoon();
-  displayGround();
-
-  // Move and display the user (with the mouse)
-  moveUser();
-  displayUser();
 }
+
+
+function title(){
+  push();
+  textSize(64)
+  noFill();
+  stroke(253, 232, 85);
+  textAlign(CENTER,CENTER);
+  text(`CATCHING STARS!`,width/2,height/2)
+  pop();
+}
+
+
+function gameplay(){
+
+    for (let i = 0; i < schoolSize; i++) {
+        moveStar(school[i]);
+        sparkleStar(school[i]);
+        displayStar(school[i]);
+        checkStar(school[i])
+      }
+
+
+    moveMoon();
+
+    displayMoon();
+    displayGround();
+
+    // Move and display the user (with the mouse)
+    moveUser();
+    displayUser();
+}
+
+
+
+
+
+
+
+
 // Check if the user overlaps the Stars
 function checkStar(star){
   if (!star.caught){
@@ -166,4 +198,10 @@ function displayGround() {
   fill(9, 24, 20);
   rect(0, 600, width, 150);
   pop();
+}
+
+function mousePressed(){
+  if (state === `title`){
+    state = `gameplay`;
+  }
 }
