@@ -15,7 +15,7 @@ let moon = {
   vy:0.5,
 }
 let school = [];
-let schoolSize = 15;
+let schoolSize = 30;
 
 // let star1;
 // let star2;
@@ -44,10 +44,6 @@ function createStar(x, y) {
 function draw() {
   background(34, 64, 123);
 
-
-
-
-
   for (let i = 0; i < schoolSize; i++) {
       moveStar(school[i]);
       sparkleStar(school[i]);
@@ -55,16 +51,14 @@ function draw() {
       checkStar(school[i])
     }
 
-    //move moon
+
   moveMoon();
 
-  // Display the moon and ground
   displayMoon();
   displayGround();
 
-  // Move the user (with the mouse)
+  // Move and display the user (with the mouse)
   moveUser();
-  //Display the user
   displayUser();
 }
 // Check if the user overlaps the Stars
@@ -143,19 +137,22 @@ function displayUser() {
 }
 
 function displayStar(star) {
-  push();
-  stroke(253, 232, 85);
-  strokeWeight(1);
-  fill(253, 232, 85);
 
-  if (star.size >= 4 && star.size < 9) {
-    fill(255, 101, 138);
+  if (!star.caught){
+    push();
+    stroke(253, 232, 85);
+    strokeWeight(1);
+    fill(253, 232, 85);
+
+    if (star.size >= 4 && star.size < 9) {
+      fill(255, 101, 138);
+    }
+    if (star.size >= 9 && star.size < 14) {
+      fill(255, 182, 171);
+    }
+    ellipse(star.x, star.y, star.size);
+    pop();
   }
-  if (star.size >= 9 && star.size < 14) {
-    fill(255, 182, 171);
-  }
-  ellipse(star.x, star.y, star.size);
-  pop();
 }
 function displayMoon(){
   push();
