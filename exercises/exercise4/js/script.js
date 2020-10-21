@@ -15,7 +15,7 @@ let moon = {
   vy:0.5,
 }
 let school = [];
-let schoolSize = 30;
+let schoolSize = 40;
 
 let state = `title`;
 
@@ -50,7 +50,12 @@ function draw() {
   else if (state ===`gameplay`){
     gameplay();
   }
-
+  else if (state ===`winending`){
+    winending();
+  }
+  else if (state ===`loseending`){
+    loseending();
+  }
 
 }
 
@@ -61,7 +66,13 @@ function title(){
   noFill();
   stroke(253, 232, 85);
   textAlign(CENTER,CENTER);
-  text(`CATCHING STARS!`,width/2,height/2)
+  textSize(80);
+  text(`CATCH EVERY STAR`,width/2,200)
+  text(`Before they escape!`,width/2,300)
+  textSize(40);
+  text(`Fail and you shall witness the downfall of mankind`,width/2,400)
+  text(`Move your mouse to use your wand!`,width/2,450)
+  text(`Click to begin`,width/2,500)
   pop();
 }
 
@@ -86,9 +97,29 @@ function gameplay(){
     displayUser();
 }
 
+function winending(){
+  background(0);
+  push();
+  stroke(253, 232, 85);
+  textAlign(CENTER,CENTER);
+  strokeWeight(2);
+  textSize(80);
+  text(`THE NIGHT SHINED ON...`,width/2,250);
+  text(`After you auctioned them 50 billion $ each.`,width/2,350);
+  textSize(30);
+  text(`What a bloody greedy opportunistic bastard...`,width/2,450);
+  text(`Yet you're the hero they deserve... not the one they need...`,width/2,500);
+  pop();
+}
 
-
-
+function loseending(){
+  background(0);
+  textAlign(CENTER,CENTER);
+  stroke(253, 232, 85);
+  strokeWeight(2);
+  textSize(80);
+  text(`Starry Night was never painted... `,width/2,300);
+}
 
 
 
@@ -99,6 +130,10 @@ function checkStar(star){
     let d = dist(user.x,user.y,star.x, star.y);
     if (d < user.size/2 + star.size/2){
       star.caught=true;
+      schoolSize--;
+    }
+    if (schoolSize === 0) {
+      state = `winending`;
     }
   }
 }
@@ -145,6 +180,9 @@ function moveMoon(){
     moon.size -=0.1
   }
 
+  if (moon.x >= width){
+    state=`loseending`
+  }
   moon.size= constrain(moon.size,100,200);
 }
 
