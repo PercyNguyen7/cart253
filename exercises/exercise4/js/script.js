@@ -14,17 +14,20 @@ let moon = {
   vx:1,
   vy:0.5,
 }
+let school = [];
+let schoolSize = 15;
 
-let star1;
-let star2;
-let star3;
+// let star1;
+// let star2;
+// let star3;
 
 function setup() {
   createCanvas(windowWidth, 750);
 
-  star1 = createStar(random(0, width), random(0, 600));
-  star2 = createStar(random(0, width), random(0, 600));
-  star3 = createStar(random(0, width), random(0, 600));
+  for (let i = 0; i < schoolSize; i++) {
+    let star = createStar(random(0, width), random(0, 600));
+    school.push(star);
+  }
 }
 function createStar(x, y) {
   let star = {
@@ -34,41 +37,44 @@ function createStar(x, y) {
     vx: 0,
     vy: 0,
     speed: 15,
+    caught: false
   };
   return star;
 }
 function draw() {
   background(34, 64, 123);
 
-  // Move the user (with the mouse)
-  moveUser();
-
-
-  // Check whether the user has eaten either food
 
 
 
-//move stars
-  moveStar(star1);
-  moveStar(star2);
-  moveStar(star3);
 
-  sparkleStar(star1);
-  sparkleStar(star2);
-  sparkleStar(star3);
+  for (let i = 0; i < schoolSize; i++) {
+      moveStar(school[i]);
+      sparkleStar(school[i]);
+      displayStar(school[i]);
+      checkStar(school[i])
+    }
 
-//move moon
+    //move moon
   moveMoon();
 
-  // Display the user, stars, moon and ground
+  // Display the moon and ground
   displayMoon();
-
-  displayStar(star1);
-  displayStar(star2);
-  displayStar(star3);
-
-  displayUser();
   displayGround();
+
+  // Move the user (with the mouse)
+  moveUser();
+  //Display the user
+  displayUser();
+}
+// Check if the user overlaps the Stars
+function checkStar(star){
+  if (!star.caught){
+    let d = dist(user.x,user.y,star.x, star.y);
+    if (d < user.size/2 + star.size/2){
+      star.caught=true;
+    }
+  }
 }
 
 //Move stars at random speed at random direction
@@ -112,7 +118,6 @@ function moveMoon(){
 
     moon.size -=0.1
   }
-
 
   moon.size= constrain(moon.size,100,200);
 }
