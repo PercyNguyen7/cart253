@@ -1,17 +1,16 @@
 class Paddle {
-
-  constructor(w,h){
+  constructor(w, h) {
     this.width = w;
     this.height = h;
     this.x = 0;
-    this.y = height - this.height/2;
+    this.y = height - this.height / 2;
   }
 
-  move(){
+  move() {
     this.x = mouseX;
   }
 
-  display(){
+  display() {
     push();
     fill(255);
     noStroke();
