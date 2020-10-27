@@ -8,7 +8,7 @@ class Paddle {
 
   move() {
     this.x = mouseX;
-    this.x = constrain(mouseX, width / 2 + this.width / 2, width);
+    this.x = constrain(mouseX, width / 2 + this.width / 2, width - this.width / 2);
   }
 
   display() {

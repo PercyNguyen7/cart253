@@ -20,7 +20,7 @@ class Paddle2 {
     }
 
     this.x += this.vx;
-    this.x = constrain(this.x, 0, width / 2 - this.width / 2);
+    this.x = constrain(this.x, 0 + this.width / 2, width / 2 - this.width / 2);
   }
   display() {
     push();
