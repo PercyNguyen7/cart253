@@ -4,13 +4,17 @@
 let circles = [];
 let numCircles = 10;
 
-// NEW! A timer to count the number of frames in the game state
-let gameOverTimer = 0;
-// NEW! A variable to store how long our game is (in frames)
-let gameLength = 60 * 1; // 10 seconds
+// NEW! A variable to store how long our game is (in milliseconds)
+let gameLength = 10 * 1000; // 10 seconds
+
+
+// NEW! A timer for adding a new circle
+let newCircleTimer
+// NEW! A variable to store how long to wait before adding a circle (in milliseconds)
+let newCircleDelay = 2 * 1000; // 2 seconds
 
 // The current state
-let state = `game`; // game, win, lose
+let state = `title`; // title, game, win, lose
 
 // setup() creates the canvas and our initial circles
 function setup() {
@@ -50,39 +54,17 @@ function draw() {
   }
 }
 
-// title() displays the title
+// title() shows the game title and we click to continue
 function title() {
-  displayText(`title`);
+  displayText(`CIRCLE CLICKER`);
 }
 
 // game() displays all the circles in the array
 function game() {
-  // NEW! Increase the timer's count by one frame
-  gameOverTimer++;
-  // NEW! Check if we have reached the end of our timer
-  if (gameOverTimer >= gameLength) {
-    // The game is over! So we should check the win/lose state
-    gameOver();
-  }
-
   // Display all the circles
   for (let i = 0; i < circles.length; i++) {
     let circle = circles[i];
     displayCircle(circle);
-  }
-}
-
-// NEW! gameOver() checks whether the player has won or lost
-// and sets the state appropriately
-function gameOver() {
-  // Check if there are 0 circles left...
-  if (circles.length === 0) {
-    // There are no circles left, so the user won!
-    state = `win`;
-  }
-  else {
-    // Otherwise they lost
-    state = `lose`;
   }
 }
 
@@ -95,9 +77,16 @@ function displayCircle(circle) {
   pop();
 }
 
-// mousePressed() switches from title to game or checks all circles to see if they were clicked
+// mousePressed() checks all circles to see if they were clicked
+// and removes the first clicked circle in the array
 function mousePressed() {
   if (state === `title`) {
+    // NEW!  Start our gameover timer to call the gameOver() function
+    // when the game ends
+    setTimeout(gameOver, gameLength);
+    // NEW! Start our circle adding timer to run after two seconds
+    // Remember the ID so we can cancel it when the game ends
+    newCircleTimer = setTimeout(addCircle, newCircleDelay);
     state = `game`;
   }
   else if (state === `game`) {
@@ -105,7 +94,37 @@ function mousePressed() {
   }
 }
 
-// checkCircleClick() checks if any circle was clicked and removes it if so
+// gameOver() checks whether the player has won or lost
+// and sets the state appropriately
+function gameOver() {
+  // Check if there are 0 circles left...
+  if (circles.length === 0) {
+    // There are no circles left, so the user won!
+    state = `win`;
+  }
+  else {
+    // Otherwise they lost
+    state = `lose`;
+  }
+  // NEW! Cancel the circle adding timer since it shouldn't run
+  // when the game is over!
+  clearTimeout(newCircleTimer);
+}
+
+// NEW! addCircle() called by the new circle timer to add a circle
+// also starts the timer again so it will run again
+function addCircle() {
+  // Ad a circle
+  let circle = createCircle();
+  circles.push(circle);
+  // Start our circle adding timer to run after two seconds
+  // Remember the ID so we can cancel it when the game ends
+  // Note how this function is effectively CALLING ITSELF
+  // after a delay! (Quite a lot like how draw() works)
+  newCircleTimer = setTimeout(addCircle, newCircleDelay);
+}
+
+
 function checkCircleClick() {
   // Check all circles
   for (let i = 0; i < circles.length; i++) {
