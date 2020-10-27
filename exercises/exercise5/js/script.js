@@ -1,15 +1,17 @@
 "use strict";
 
+let gameLength = 10 * 1000;
+
 let gravityForce = 0.0020;
 
 let paddle;
 let paddle2;
 
 let balls = [];
-let numBalls = 100;
+let numBalls = 2;
 
 let balls2 = []
-let numBalls2 = 100;
+let numBalls2 = 2;
 
 let state = `title`;
 
@@ -35,16 +37,16 @@ function setup() {
 }
 
 function draw() {
-    background(0);
+    background(50);
   if (state === `title`) {
     title();
-  } else if (state === `gameplay`) {
-    gameplay();
+  } else if (state === `game`) {
+    game();
   }
-  else if (state === `winending`) {
-    winending();
-  } else if (state === `loseending`) {
-    loseending();
+  else if (state === `win`) {
+    win();
+  } else if (state === `lose`) {
+    lose();
   }
 }
 //                                     STATE FUNCTIONS
@@ -65,22 +67,26 @@ function title() {
   pop();
   }
 
-function gameplay(){
+function game(){
   paddle.move();
   paddle.display();
 
   paddle2.move();
   paddle2.display();
 
+//                                            BALLS
   for (let i = 0; i < balls.length; i++) {
     let ball = balls[i];
     if (ball.active) {
       ball.gravity(gravityForce);
       ball.move();
       ball.bounce(paddle,paddle2);
+
       ball.display();
     }
   }
+
+  //                                            BALLS 2
   for (let i = 0; i < balls2.length; i++) {
     let ball2 = balls2[i];
     if (ball2.active) {
@@ -88,12 +94,38 @@ function gameplay(){
       ball2.move();
       ball2.bounce(paddle,paddle2);
       ball2.display();
+      
     }
   }
 }
-
+//                                                MOUSE PRESED
 function mousePressed() {
   if (state === `title`) {
-    state = `gameplay`;
+    setTimeout(gameOver, gameLength);
+    state = `game`;
   }
+}
+function gameOver(){
+  if (balls2.length >= 1) {
+    state = `win`;
+  }
+  else {
+    state = `lose`;
+  }
+}
+function win() {
+  push();
+  textSize(64)
+  noFill();
+  stroke(255);
+  textAlign(CENTER, CENTER);
+  textSize(80);
+  text(`You Won`, width / 2, height/2);
+
+  pop();
+}
+
+// lose() shows YOU LOSE
+function lose() {
+
 }

@@ -54,6 +54,11 @@ class Ball2 {
       this.ay = 0;
     }
   }
+  check(){
+    if (this.y + this.y/2 < height || this.x - this.x/2 < 0 || this.x + thisx / 2 > width){
+
+      }
+    }
 
   display() {
     push();

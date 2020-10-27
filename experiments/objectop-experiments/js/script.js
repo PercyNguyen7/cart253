@@ -5,7 +5,7 @@ let circles = [];
 let numCircles = 10;
 
 // NEW! A variable to store how long our game is (in milliseconds)
-let gameLength = 10 * 1000; // 10 seconds
+let gameLength = 2 * 1000; // 10 seconds
 
 
 // NEW! A timer for adding a new circle
@@ -157,6 +157,6 @@ function displayText(message) {
   fill(255);
   textSize(32);
   textAlign(CENTER, CENTER);
-  text(message, width / 2, height / 2);
+  text(`You Won`, width / 2, height / 2);
   pop();
 }
