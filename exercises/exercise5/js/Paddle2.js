@@ -6,7 +6,7 @@ class Paddle2 {
     this.y = height - this.height / 2;
     this.vx = 0;
     this.vy = 0;
-    this.speed = 4;
+    this.speed = 8;
   }
 
   move() {
@@ -20,10 +20,11 @@ class Paddle2 {
     }
 
     this.x += this.vx;
+    this.x = constrain(this.x, 0, width / 2 - this.width / 2);
   }
   display() {
     push();
-    fill(255);
+    fill(200);
     noStroke();
     rectMode(CENTER);
     rect(this.x, this.y, this.width, this.height);
