@@ -10,9 +10,10 @@ class Paddle2 {
   }
 
   move() {
-    if (keyIsDown(LEFT_ARROW)) {
+    //a for left and d for right
+    if (keyIsDown(65)) {
       this.vx = -this.speed;
-    } else if (keyIsDown(RIGHT_ARROW)) {
+    } else if (keyIsDown(68)) {
       this.vx = this.speed;
     } else {
       this.vx = 0;

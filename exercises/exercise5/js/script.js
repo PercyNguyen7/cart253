@@ -1,6 +1,6 @@
 "use strict";
 
-let gravityForce = 0.0025;
+let gravityForce = 0.0020;
 
 let paddle;
 let paddle2;
