@@ -1,4 +1,4 @@
-class Ball {
+class Ball2 {
   constructor(x, y) {
     this.x = x;
     this.y = y;
@@ -57,9 +57,9 @@ class Ball {
 
   display() {
     push();
-    fill(255, 50, 50);
+    fill(80, 80, 80);
     stroke(0);
-    ellipse(this.x, this.y, this.size);
+    square(this.x, this.y, this.size);
     pop();
   }
 }

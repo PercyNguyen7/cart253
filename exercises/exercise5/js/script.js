@@ -8,6 +8,9 @@ let paddle2;
 let balls = [];
 let numBalls = 10;
 
+let balls2 = []
+let numBalls2 = 10;
+
 function setup() {
   createCanvas(1500, 700);
 
@@ -15,10 +18,17 @@ function setup() {
   paddle2 = new Paddle2(200, 20);
 
   for (let i = 0; i < numBalls; i++) {
-    let x = random(0, width);
+    let x = random(width/2 + 50, width);
     let y = random(-400, -100);
     let ball = new Ball(x, y);
     balls.push(ball);
+  }
+
+  for (let i = 0; i < numBalls2; i++) {
+    let x = random(0, width/2 - 50);
+    let y = random(-400, -100);
+    let ball2 = new Ball2(x, y);
+    balls2.push(ball2);
   }
 }
 
@@ -38,6 +48,15 @@ function draw() {
       ball.move();
       ball.bounce(paddle,paddle2);
       ball.display();
+    }
+  }
+  for (let i = 0; i < balls2.length; i++) {
+    let ball2 = balls2[i];
+    if (ball2.active) {
+      ball2.gravity(gravityForce);
+      ball2.move();
+      ball2.bounce(paddle,paddle2);
+      ball2.display();
     }
   }
 }
