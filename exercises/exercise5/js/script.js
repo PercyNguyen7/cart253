@@ -1,6 +1,6 @@
 "use strict";
 
-let gameLength = 12 * 1000;
+let gameLength = 13 * 1000;
 
 let gravityForce = 0.0020;
 
@@ -14,7 +14,7 @@ let balls2 = []
 let numBalls2 = 30;
 
 let state = `title`;
-
+//                                                SETUP
 function setup() {
   createCanvas(1500, 700);
 
@@ -35,9 +35,9 @@ function setup() {
     balls2.push(ball2);
   }
 }
-
+//                                            DRAW
 function draw() {
-    background(50);
+    background(100);
   if (state === `title`) {
     title();
   } else if (state === `game`) {
@@ -50,6 +50,7 @@ function draw() {
   }
 }
 //                                     STATE FUNCTIONS
+//                                      TITLE STATE
 function title() {
   push();
   textSize(64)
@@ -59,14 +60,23 @@ function title() {
   textSize(80);
   text(`Juggle or Struggle`, width / 2, height/2-50);
   textSize(40);
-  text(`Save 3 balls. Last 12 seconds`, width/2, height/2 +50)
+  stroke(255,50,50);
+  text(`Save 2 balls of each color. You've got 13 seconds`, width/2, height/2 +50)
   textSize(40);
-  text(`Controls`, width/2, height-100);
+  stroke(255);
+  text(`Controls`, width/2, height-150);
+  stroke(255,50,50);
+  text(`LEFT`, width/3, height - 100);
+  stroke(255);
   text(`A and D`, width/3, height - 50);
+  stroke(255,50,50);
+  text(`RIGHT`, 2*width/3, height -100);
+  stroke(255);
   text(`Mouse`, 2*width/3, height -50);
+
   pop();
   }
-
+//                                          GAMEPLAY
 function game(){
   paddle.move();
   paddle.display();
@@ -91,7 +101,7 @@ function game(){
     }
   }
 
-  //                                            BALLS 2
+  //                                           BALLS 2
   for (let i = 0; i < balls2.length; i++) {
     let ball2 = balls2[i];
     if (ball2.active) {
@@ -107,7 +117,7 @@ function game(){
     }
   }
 }
-//                                                MOUSE PRESED
+//                                               MOUSE PRESED
 function mousePressed() {
   if (state === `title`) {
     setTimeout(gameOver, gameLength);
@@ -115,7 +125,7 @@ function mousePressed() {
   }
 }
 
-//                                                  Game Over when time runs out!
+//                                              Game Over when time runs out!
 function gameOver(){
   if (balls2.length >= 2 && balls.length >= 2) {
     state = `win`;
@@ -126,12 +136,17 @@ function gameOver(){
 }
 //                                                     WIN ENDING
 function win() {
+  background(255);
   push();
   noFill();
-  stroke(255);
+  stroke(0);
   textAlign(CENTER, CENTER);
   textSize(80);
-  text(`You Won`, width / 2, height/2);
+  text(`You Won`, width / 2, height/2-50);
+  textSize(60);
+  text(`But don't feel too good about it`, width / 2, height/2+50);
+  textSize(40);
+  text(`The developper made this easy on purpose`, width / 2, height/2+150);
   pop();
 }
 
@@ -140,9 +155,13 @@ function lose() {
   background(0);
   push();
   noFill();
-  stroke(255);
+  stroke(255,0,0);
   textAlign(CENTER, CENTER);
-  textSize(80);
-  text(`You Lose`, width / 2, height/2);
+  textSize(120);
+  text(`You Lose`, width / 2, height/2-50);
+  textSize(40);
+  text(`Small Hint`, width / 2, height/2+50);
+  textSize(4);
+  text(`Play better next time`, width / 2, height/2+150);
   pop();
 }
