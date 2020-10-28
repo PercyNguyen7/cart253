@@ -1,6 +1,6 @@
 "use strict";
 //                                               VARIABLES
-let gameLength = 13 * 1000;
+let gameLength = 15 * 1000;
 
 let gravityForce = 0.0020;
 
@@ -63,7 +63,7 @@ function title() {
   text(`Juggle or Struggle`, width / 2, height/2-50);
   textSize(40);
   stroke(255,50,50);
-  text(`Save 2 balls of each color. You've got 13 seconds`, width/2, height/2 +50)
+  text(`Save 2 balls of each color after 15 seconds...`, width/2, height/2 +50)
   text(`Click to START`, width/2, height/2 +100)
   stroke(255);
   text(`Controls`, width/2, height-150);
@@ -156,7 +156,7 @@ function win() {
   textSize(40);
   text(`The developper made this pretty easy on purpose...`, width / 2, height/2+100);
   textSize(20);
-  text(`Click to play again...and potentially lose your honor`, width / 2, height/2+150);
+  text(`Click to PLAY AGAIN...and potentially have your pride be stripped away`, width / 2, height/2+150);
   pop();
 }
 
@@ -174,6 +174,6 @@ function lose() {
   textSize(4);
   text(`Play better next time`, width / 2, height/2+100);
   textSize(40);
-  text(`Click to try again...and redeem your honor`, width / 2, height/2+200);
+  text(`Click to TRY AGAIN...and redeem your honor`, width / 2, height/2+200);
   pop();
 }
