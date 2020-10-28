@@ -64,7 +64,7 @@ function title() {
   textSize(40);
   stroke(255,50,50);
   text(`Save 2 balls of each color. You've got 13 seconds`, width/2, height/2 +50)
-  text(`Click to continue`, width/2, height/2 +100)
+  text(`Click to START`, width/2, height/2 +100)
   stroke(255);
   text(`Controls`, width/2, height-150);
   stroke(255,50,50);
