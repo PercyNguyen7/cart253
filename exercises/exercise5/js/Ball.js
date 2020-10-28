@@ -38,7 +38,7 @@ class Ball {
       this.y - this.size / 2 < paddle.y + paddle.height / 2  ) {
       //bounce
       let dx = this.x - paddle.x;
-      this.vx += map(dx, -paddle.width / 2, paddle.width / 2, -2, 2);
+      this.vx += map(dx, -paddle.width / 2, paddle.width / 2, -1.5, 1.5);
       this.vy = -this.vy;
       this.ay = 0;
     }
@@ -49,7 +49,7 @@ class Ball {
       this.y - this.size / 2 < paddle2.y + paddle2.height / 2) {
       //bounce
       let dx = this.x - paddle2.x;
-      this.vx += map(dx, -paddle2.width / 2, paddle2.width / 2, -2, 2);
+      this.vx += map(dx, -paddle2.width / 2, paddle2.width / 2, -1.5, 1.5);
       this.vy = -this.vy;
       this.ay = 0;
     }

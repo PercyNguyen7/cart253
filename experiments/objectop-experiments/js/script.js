@@ -157,6 +157,6 @@ function displayText(message) {
   fill(255);
   textSize(32);
   textAlign(CENTER, CENTER);
-  text(`You Won`, width / 2, height / 2);
+  text(You Won`, width / 2, height / 2);
   pop();
 }

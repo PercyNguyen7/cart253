@@ -1,6 +1,6 @@
 "use strict";
 
-let gameLength = 10 * 1000;
+let gameLength = 12 * 1000;
 
 let gravityForce = 0.0020;
 
@@ -8,10 +8,10 @@ let paddle;
 let paddle2;
 
 let balls = [];
-let numBalls = 2;
+let numBalls = 30;
 
 let balls2 = []
-let numBalls2 = 2;
+let numBalls2 = 30;
 
 let state = `title`;
 
@@ -23,7 +23,7 @@ function setup() {
 
   for (let i = 0; i < numBalls; i++) {
     let x = random(width/2 + 50, width);
-    let y = random(-1300, -900);
+    let y = random(-901, -500);
     let ball = new Ball(x, y);
     balls.push(ball);
   }
@@ -81,8 +81,13 @@ function game(){
       ball.gravity(gravityForce);
       ball.move();
       ball.bounce(paddle,paddle2);
-
       ball.display();
+
+//                                          REMOVE BALL FROM ARRAY IF OUTSIDE OF DISPLAY
+      if (ball.y + ball.size/2  > height || ball.x - ball.size/2 < 0 || ball.x + ball.size/2 > width){
+        balls.splice(i, 1);
+        break;
+      }
     }
   }
 
@@ -94,7 +99,11 @@ function game(){
       ball2.move();
       ball2.bounce(paddle,paddle2);
       ball2.display();
-      
+//                                          REMOVE BALL 2 FROM ARRAY IF OUTSIDE OF DISPLAY
+      if (ball2.y + ball2.size/2  > height || ball2.x - ball2.size/2 < 0 || ball2.x + ball2.size/2 > width){
+        balls2.splice(i, 1);
+        break;
+      }
     }
   }
 }
@@ -105,27 +114,35 @@ function mousePressed() {
     state = `game`;
   }
 }
+
+//                                                  Game Over when time runs out!
 function gameOver(){
-  if (balls2.length >= 1) {
+  if (balls2.length >= 2 && balls.length >= 2) {
     state = `win`;
   }
   else {
     state = `lose`;
   }
 }
+//                                                     WIN ENDING
 function win() {
   push();
-  textSize(64)
   noFill();
   stroke(255);
   textAlign(CENTER, CENTER);
   textSize(80);
   text(`You Won`, width / 2, height/2);
-
   pop();
 }
 
-// lose() shows YOU LOSE
+//                                                      LOSE ENDING
 function lose() {
-
+  background(0);
+  push();
+  noFill();
+  stroke(255);
+  textAlign(CENTER, CENTER);
+  textSize(80);
+  text(`You Lose`, width / 2, height/2);
+  pop();
 }
