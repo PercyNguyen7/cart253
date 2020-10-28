@@ -6,7 +6,7 @@ class Paddle2 {
     this.y = height - this.height / 2;
     this.vx = 0;
     this.vy = 0;
-    this.speed = 8;
+    this.speed = 12;
   }
 
   move() {

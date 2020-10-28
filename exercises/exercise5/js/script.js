@@ -1,5 +1,5 @@
 "use strict";
-
+//                                               VARIABLES
 let gameLength = 13 * 1000;
 
 let gravityForce = 0.0020;
@@ -14,7 +14,7 @@ let balls2 = []
 let numBalls2 = 30;
 
 let state = `title`;
-//                                                SETUP
+//                                                 SETUP
 function setup() {
   createCanvas(1500, 700);
 
@@ -50,6 +50,7 @@ function draw() {
   }
 }
 //                                     STATE FUNCTIONS
+
 //                                      TITLE STATE
 function title() {
   push();
@@ -94,7 +95,7 @@ function game(){
       ball.display();
 
 //                                          REMOVE BALL FROM ARRAY IF OUTSIDE OF DISPLAY
-      if (ball.y + ball.size/2  > height || ball.x - ball.size/2 < 0 || ball.x + ball.size/2 > width){
+      if (ball.y  > height || ball.x  < 0 || ball.x> width){
         balls.splice(i, 1);
         break;
       }
@@ -110,7 +111,7 @@ function game(){
       ball2.bounce(paddle,paddle2);
       ball2.display();
 //                                          REMOVE BALL 2 FROM ARRAY IF OUTSIDE OF DISPLAY
-      if (ball2.y + ball2.size/2  > height || ball2.x - ball2.size/2 < 0 || ball2.x + ball2.size/2 > width){
+      if (ball2.y   > height || ball2.x - ball2.size/2 < 0 || ball2.x + ball2.size/2 > width){
         balls2.splice(i, 1);
         break;
       }
@@ -146,7 +147,7 @@ function win() {
   textSize(60);
   text(`But don't feel too good about it`, width / 2, height/2+50);
   textSize(40);
-  text(`The developper made this easy on purpose`, width / 2, height/2+150);
+  text(`The developper made this easy on purpose...`, width / 2, height/2+150);
   pop();
 }
 
