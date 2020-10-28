@@ -53,6 +53,7 @@ function draw() {
 
 //                                      TITLE STATE
 function title() {
+  textFont(`Syne Mono`)
   push();
   textSize(64)
   noFill();
@@ -63,7 +64,7 @@ function title() {
   textSize(40);
   stroke(255,50,50);
   text(`Save 2 balls of each color. You've got 13 seconds`, width/2, height/2 +50)
-  textSize(40);
+  text(`Click to continue`, width/2, height/2 +100)
   stroke(255);
   text(`Controls`, width/2, height-150);
   stroke(255,50,50);
@@ -73,7 +74,7 @@ function title() {
   stroke(255,50,50);
   text(`RIGHT`, 2*width/3, height -100);
   stroke(255);
-  text(`Mouse`, 2*width/3, height -50);
+  text(`Move Mouse`, 2*width/3, height -50);
 
   pop();
   }
@@ -124,6 +125,12 @@ function mousePressed() {
     setTimeout(gameOver, gameLength);
     state = `game`;
   }
+  if (state ===`win`){
+    location.reload();
+  }
+  if (state ===`lose`){
+    location.reload();
+  }
 }
 
 //                                              Game Over when time runs out!
@@ -143,11 +150,13 @@ function win() {
   stroke(0);
   textAlign(CENTER, CENTER);
   textSize(80);
-  text(`You Won`, width / 2, height/2-50);
+  text(`You Won`, width / 2, height/2-100);
   textSize(60);
-  text(`But don't feel too good about it`, width / 2, height/2+50);
+  text(`But don't feel too good about it`, width / 2, height/2);
   textSize(40);
-  text(`The developper made this easy on purpose...`, width / 2, height/2+150);
+  text(`The developper made this pretty easy on purpose...`, width / 2, height/2+100);
+  textSize(20);
+  text(`Click to play again...and potentially lose your honor`, width / 2, height/2+150);
   pop();
 }
 
@@ -159,10 +168,12 @@ function lose() {
   stroke(255,0,0);
   textAlign(CENTER, CENTER);
   textSize(120);
-  text(`You Lose`, width / 2, height/2-50);
+  text(`You Lose`, width / 2, height/2-100);
   textSize(40);
-  text(`Small Hint`, width / 2, height/2+50);
+  text(`Small Hint`, width / 2, height/2);
   textSize(4);
-  text(`Play better next time`, width / 2, height/2+150);
+  text(`Play better next time`, width / 2, height/2+100);
+  textSize(40);
+  text(`Click to try again...and redeem your honor`, width / 2, height/2+200);
   pop();
 }
