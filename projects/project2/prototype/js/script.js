@@ -133,7 +133,7 @@ for (let i = 0; i < numTiles; i++) {
     }
 }
 
-//                                            DRAW
+//                                                DRAW
 function draw() {
     background(50);
     if (state ===`title`){
@@ -167,7 +167,7 @@ textSize(40);
 text(`Control with Arrow Keys`, width / 2, height/2 + 150);
 pop();
 }
-//                                                 GAMEPLAY STATE
+//                                                GAMEPLAY STATE
 function gameplay(){
 //                                               TILE FUNCTIONS
   for (let i = 0; i < tiles.length; i++) {
@@ -186,7 +186,7 @@ function gameplay(){
   rect(1300, 0, 100, 700);
 }
 
-//                                                  ALL ENDINGS
+//                                                  ALL ENDING STATES
 //                                                   LOSE ENDING
 function loseEnding(){
   background(255,40,40);
@@ -211,7 +211,7 @@ function winEnding(){
   text(`YOU WON`, width / 2, height/2);
   pop();
 }
-
+//                                                     KEYPRESSEED
 function keyPressed(){
   if (state === `title`){
    state = `gameplay`;
