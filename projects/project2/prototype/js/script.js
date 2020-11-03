@@ -12,7 +12,7 @@ function setup() {
 
   user = new User;
 //                                                  RED TILES
-//                                                  0 COLUMN
+//                                                  1st COLUMN
 for (let i = 0; i < numTiles; i++) {
   let x = 200;
   let y = -100;
@@ -22,7 +22,7 @@ for (let i = 0; i < numTiles; i++) {
   tiles.push(tile);
   }
 }
-//                                                  FIRST COLUMN
+//                                                  2nd COLUMN
   for (let i = 0; i < numTiles; i++) {
     let x = 300;
     let y = -100;
@@ -33,7 +33,7 @@ for (let i = 0; i < numTiles; i++) {
     tiles.push(tile);
     }
   }
-//                                                    SECOND COLUMN
+//                                                    3rd COLUMN
   for (let i = 0; i < numTiles; i++) {
     let x = 400;
     let y = -100;
@@ -44,7 +44,7 @@ for (let i = 0; i < numTiles; i++) {
     tiles.push(tile);
     }
   }
-//                                                    THIRD COLUMN
+//                                                    4rd COLUMN
   for (let i = 0; i < numTiles; i++) {
     let x = 500;
     let y = -100;
@@ -55,7 +55,7 @@ for (let i = 0; i < numTiles; i++) {
     tiles.push(tile);
     }
   }
-//                                                       FOURTH COLUMN
+//                                                       5th COLUMN
   for (let i = 0; i < numTiles; i++) {
     let x = 600;
     let y = -100;
@@ -66,7 +66,7 @@ for (let i = 0; i < numTiles; i++) {
     tiles.push(tile);
     }
   }
-//                                                      FIFTH COLUMN
+//                                                      6th COLUMN
   for (let i = 0; i < numTiles; i++) {
     let x = 700;
     let y = -100;
@@ -77,7 +77,7 @@ for (let i = 0; i < numTiles; i++) {
     tiles.push(tile);
     }
   }
-//                                                    SIXTH COLUMN
+//                                                    7th COLUMN
   for (let i = 0; i < numTiles; i++) {
     let x = 800;
     let y = -100;
@@ -88,7 +88,7 @@ for (let i = 0; i < numTiles; i++) {
     tiles.push(tile);
     }
   }
-//                                                   SEVENTH COLUMN
+//                                                   8th COLUMN
   for (let i = 0; i < numTiles; i++) {
     let x = 900;
     let y = -100;
@@ -99,7 +99,7 @@ for (let i = 0; i < numTiles; i++) {
     tiles.push(tile);
     }
   }
-//                                                     EIGHT COLUMN
+//                                                     9th COLUMN
     for (let i = 0; i < numTiles; i++) {
       let x = 1000;
       let y = -100;
@@ -110,9 +110,19 @@ for (let i = 0; i < numTiles; i++) {
       tiles.push(tile);
       }
     }
-//                                                    NINTH COLUMN
+//                                                    10th COLUMN
     for (let i = 0; i < numTiles; i++) {
       let x = 1100;
+      let y = -100;
+      for (let j = 0; j < 7; j++) {
+        y = y + 100
+      let tile = new Tile(x, y,color);
+      tiles.push(tile);
+      }
+    }
+//                                                    11th COLUMN
+    for (let i = 0; i < numTiles; i++) {
+      let x = 1200;
       let y = -100;
       for (let j = 0; j < 7; j++) {
         y = y + 100
@@ -135,11 +145,23 @@ function draw() {
     let tile = tiles[i];
     if (tile.active) {
       tile.display();
+      tile.colorchange();
+
+      }
     }
-  }
+  
 //                                              USER
   user.move();
   user.display();
 
+
+// function keyPressed(){
+//    if (keyCode === LEFT_ARROW || keycode === UP_ARROW || keycode === DOWN_ARROW || keycode === RIGHT_ARROW){
+//      tile.color.r = 0;
+//      tile.color.b = 0;
+//      fill(0);
+//      rect(50,50,400);
+//   }
+// }
 
 }

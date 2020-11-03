@@ -12,7 +12,7 @@ class User {
     this.x += this.vx;
     this.y += this.vy;
 
-    if (keyIsDown(LEFT_ARROW)){
+  if (keyIsDown(LEFT_ARROW)){
   this.vx = -this.speed;
   }
   else if (keyIsDown(RIGHT_ARROW)){
@@ -23,16 +23,22 @@ class User {
   }
   if (keyIsDown(UP_ARROW)){
     this.vy = -this.speed;
+
   }
   else if (keyIsDown(DOWN_ARROW)){
     this.vy = this.speed;
+
   }
   else {
     this.vy = 0;
   }
   this.x = constrain(this.x,50,width-50);
   this.y = constrain(this.y,50,height-50);
+
+
+
   }
+
 
 
   display() {
