@@ -5,6 +5,7 @@ let user;
 let tiles = [];
 let numTiles = 100;
 
+let state =`gameplay`
 // let state = `title`;
 //                                                 SETUP
 function setup() {
@@ -138,30 +139,55 @@ for (let i = 0; i < numTiles; i++) {
 //                                            DRAW
 function draw() {
     background(100);
+    if (state ===`gameplay`){
+      gameplay();
+    }
+    if (state === `lose`){
+      loseEnding();
+    }
+    if(state ===`win`){
+      winEnding();
+    }
+}
 
-
+function gameplay(){
 //                                            BALLS
   for (let i = 0; i < tiles.length; i++) {
     let tile = tiles[i];
-    if (tile.active) {
       tile.display();
       tile.colorchange();
 
       }
-    }
-  
+
+
 //                                              USER
   user.move();
   user.display();
+  user.badpath();
+  user.goodpath();
 
 
-// function keyPressed(){
-//    if (keyCode === LEFT_ARROW || keycode === UP_ARROW || keycode === DOWN_ARROW || keycode === RIGHT_ARROW){
-//      tile.color.r = 0;
-//      tile.color.b = 0;
-//      fill(0);
-//      rect(50,50,400);
-//   }
-// }
+}
+function loseEnding(){
+  background(255,40,40);
+  push();
+  textSize(64)
+  noFill();
+  stroke(255);
+  textAlign(CENTER, CENTER);
+  textSize(80);
+  text(`You Lost`, width / 2, height/2);
+  pop();
+}
 
+function winEnding(){
+  background(125);
+  push();
+  textSize(64)
+  noFill();
+  stroke(255);
+  textAlign(CENTER, CENTER);
+  textSize(80);
+  text(`You Won`, width / 2, height/2);
+  pop();
 }
