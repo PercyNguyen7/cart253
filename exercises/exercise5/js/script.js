@@ -156,7 +156,7 @@ function win() {
   textSize(40);
   text(`The developper made this pretty easy on purpose...`, width / 2, height/2+100);
   textSize(20);
-  text(`Click to PLAY AGAIN...and potentially have your pride be stripped away`, width / 2, height/2+200);
+  text(`Click to PLAY AGAIN...and potentially have your pride be stripped away`, width / 2, height/2+150);
   pop();
 }
 
