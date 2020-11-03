@@ -5,8 +5,8 @@ let user;
 let tiles = [];
 let numTiles = 100;
 
-let state =`gameplay`
-// let state = `title`;
+
+let state = `title`;
 //                                                 SETUP
 function setup() {
   createCanvas(1500, 700);
@@ -131,14 +131,14 @@ for (let i = 0; i < numTiles; i++) {
       tiles.push(tile);
       }
     }
-//
-
 }
-
 
 //                                            DRAW
 function draw() {
-    background(100);
+    background(50);
+    if (state ===`title`){
+      title();
+    }
     if (state ===`gameplay`){
       gameplay();
     }
@@ -149,9 +149,27 @@ function draw() {
       winEnding();
     }
 }
-
+//                                                 TITLE STATE
+function title(){
+background(69,29,87);
+push();
+textSize(64)
+noFill();
+stroke(250,186,95);
+textAlign(CENTER, CENTER);
+textSize(80);
+text(`Go through`, width / 2, height/2 - 100);
+textSize(70);
+text(`Find the secret path`, width / 2, height/2 - 20);
+textSize(50);
+text(`Press any key to BEGIN`, width / 2, height/2 + 100);
+textSize(40);
+text(`Control with Arrow Keys`, width / 2, height/2 + 150);
+pop();
+}
+//                                                 GAMEPLAY STATE
 function gameplay(){
-//                                            BALLS
+//                                               TILE FUNCTIONS
   for (let i = 0; i < tiles.length; i++) {
     let tile = tiles[i];
       tile.display();
@@ -159,15 +177,17 @@ function gameplay(){
 
       }
 
-
-//                                              USER
+//                                              USER FUNCTIONS
   user.move();
   user.display();
   user.badpath();
   user.goodpath();
-
-
+//                                                DESTINATION RECTANGLES
+  rect(1300, 0, 100, 700);
 }
+
+//                                                  ALL ENDINGS
+//                                                   LOSE ENDING
 function loseEnding(){
   background(255,40,40);
   push();
@@ -179,7 +199,7 @@ function loseEnding(){
   text(`You Lost`, width / 2, height/2);
   pop();
 }
-
+//                                                    WIN ENDING
 function winEnding(){
   background(125);
   push();
@@ -187,7 +207,13 @@ function winEnding(){
   noFill();
   stroke(255);
   textAlign(CENTER, CENTER);
-  textSize(80);
-  text(`You Won`, width / 2, height/2);
+  textSize(120);
+  text(`YOU WON`, width / 2, height/2);
   pop();
+}
+
+function keyPressed(){
+  if (state === `title`){
+   state = `gameplay`;
+  }
 }

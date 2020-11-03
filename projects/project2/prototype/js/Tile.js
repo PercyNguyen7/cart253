@@ -5,9 +5,9 @@ class Tile {
     this.maxSpeed = 10;
     this.size = 100;
     this.color = {
-      r: random(130, 200),
+      r: 150,
       g: 0,
-      b: random(130, 200),
+      b: 150
     }
   }
 
