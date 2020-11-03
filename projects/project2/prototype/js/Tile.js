@@ -3,7 +3,7 @@ class Tile {
     this.x = x;
     this.y = y;
     this.maxSpeed = 10;
-    this.size = 70;
+    this.size = 100;
     this.active = true;
     this.color = {
       r:random(100,250),

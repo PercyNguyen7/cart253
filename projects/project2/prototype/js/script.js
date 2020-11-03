@@ -1,5 +1,6 @@
 "use strict";
 //                                               VARIABLES
+let user;
 
 let tiles = [];
 let numTiles = 100;
@@ -8,13 +9,25 @@ let numTiles = 100;
 //                                                 SETUP
 function setup() {
   createCanvas(1500, 700);
+
+  user = new User;
 //                                                  RED TILES
+//                                                  0 COLUMN
+for (let i = 0; i < numTiles; i++) {
+  let x = 200;
+  let y = -100;
+  for (let j = 0; j < 7; j++) {
+    y = y + 100
+  let tile = new Tile(x, y,color);
+  tiles.push(tile);
+  }
+}
 //                                                  FIRST COLUMN
   for (let i = 0; i < numTiles; i++) {
-    let x = 270;
-    let y = -70;
-    for (let j = 0; j < 10; j++) {
-      y = y + 70;
+    let x = 300;
+    let y = -100;
+    for (let j = 0; j < 7; j++) {
+      y = y + 100;
 
     let tile = new Tile(x, y,color);
     tiles.push(tile);
@@ -22,10 +35,10 @@ function setup() {
   }
 //                                                    SECOND COLUMN
   for (let i = 0; i < numTiles; i++) {
-    let x = 340;
-    let y = -70;
-    for (let j = 0; j < 10; j++) {
-      y = y + 70;
+    let x = 400;
+    let y = -100;
+    for (let j = 0; j < 7; j++) {
+      y = y + 100;
 
     let tile = new Tile(x, y,color);
     tiles.push(tile);
@@ -33,10 +46,10 @@ function setup() {
   }
 //                                                    THIRD COLUMN
   for (let i = 0; i < numTiles; i++) {
-    let x = 410;
-    let y = -70;
-    for (let j = 0; j < 10; j++) {
-      y = y + 70;
+    let x = 500;
+    let y = -100;
+    for (let j = 0; j < 7; j++) {
+      y = y + 100;
 
     let tile = new Tile(x, y,color);
     tiles.push(tile);
@@ -44,10 +57,10 @@ function setup() {
   }
 //                                                       FOURTH COLUMN
   for (let i = 0; i < numTiles; i++) {
-    let x = 480;
-    let y = -70;
-    for (let j = 0; j < 10; j++) {
-      y = y + 70;
+    let x = 600;
+    let y = -100;
+    for (let j = 0; j < 7; j++) {
+      y = y + 100;
 
     let tile = new Tile(x, y,color);
     tiles.push(tile);
@@ -55,10 +68,10 @@ function setup() {
   }
 //                                                      FIFTH COLUMN
   for (let i = 0; i < numTiles; i++) {
-    let x = 550;
-    let y = -70;
-    for (let j = 0; j < 10; j++) {
-      y = y + 70;
+    let x = 700;
+    let y = -100;
+    for (let j = 0; j < 7; j++) {
+      y = y + 100;
 
     let tile = new Tile(x, y,color);
     tiles.push(tile);
@@ -66,10 +79,10 @@ function setup() {
   }
 //                                                    SIXTH COLUMN
   for (let i = 0; i < numTiles; i++) {
-    let x = 620;
-    let y = -70;
-    for (let j = 0; j < 10; j++) {
-      y = y + 70;
+    let x = 800;
+    let y = -100;
+    for (let j = 0; j < 7; j++) {
+      y = y + 100;
 
     let tile = new Tile(x, y,color);
     tiles.push(tile);
@@ -77,10 +90,10 @@ function setup() {
   }
 //                                                   SEVENTH COLUMN
   for (let i = 0; i < numTiles; i++) {
-    let x = 690;
-    let y = -70;
-    for (let j = 0; j < 10; j++) {
-      y = y + 70;
+    let x = 900;
+    let y = -100;
+    for (let j = 0; j < 7; j++) {
+      y = y + 100;
 
     let tile = new Tile(x, y,color);
     tiles.push(tile);
@@ -88,10 +101,10 @@ function setup() {
   }
 //                                                     EIGHT COLUMN
     for (let i = 0; i < numTiles; i++) {
-      let x = 760;
-      let y = -70;
-      for (let j = 0; j < 10; j++) {
-        y = y + 70;
+      let x = 1000;
+      let y = -100;
+      for (let j = 0; j < 7; j++) {
+        y = y + 100;
 
       let tile = new Tile(x, y,color);
       tiles.push(tile);
@@ -99,52 +112,22 @@ function setup() {
     }
 //                                                    NINTH COLUMN
     for (let i = 0; i < numTiles; i++) {
-      let x = 830;
-      let y = -70;
-      for (let j = 0; j < 10; j++) {
-        y = y + 70
+      let x = 1100;
+      let y = -100;
+      for (let j = 0; j < 7; j++) {
+        y = y + 100
       let tile = new Tile(x, y,color);
       tiles.push(tile);
       }
     }
-//                                                     TENTH COLUMN
-  for (let i = 0; i < numTiles; i++) {
-    let x = 900;
-    let y = -70;
-    for (let j = 0; j < 10; j++) {
-      y = y + 70
-    let tile = new Tile(x, y,color);
-    tiles.push(tile);
-    }
-  }
-//                                                     ELEVENTH COLUMN
-  for (let i = 0; i < numTiles; i++) {
-    let x = 970;
-    let y = -70;
-    for (let j = 0; j < 10; j++) {
-      y = y + 70
-    let tile = new Tile(x, y,color);
-    tiles.push(tile);
-    }
-  }
-//                                                     TWELVETH COLUMN
-  for (let i = 0; i < numTiles; i++) {
-    let x = 1040;
-    let y = -70;
-    for (let j = 0; j < 10; j++) {
-      y = y + 70
-    let tile = new Tile(x, y,color);
-    tiles.push(tile);
-    }
-  }
 //
+
 }
 
 
 //                                            DRAW
 function draw() {
     background(100);
-
 
 
 //                                            BALLS
@@ -154,5 +137,9 @@ function draw() {
       tile.display();
     }
   }
+//                                              USER
+  user.move();
+  user.display();
+
 
 }
