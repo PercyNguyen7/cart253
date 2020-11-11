@@ -5,8 +5,15 @@ let balls = [];
 
 
 // F-minor
-let notes = [`D`,`G3`, `Ab4`, `Bb4`, `C4`, `Db4`,`Eb4`,`F4`];
-// let notes2 = [`F3`];
+let notes = [`D5`, `F5`, `D6`,`D5`, `F5`, `D6`,
+              `E6`, `F6`, `E6`, `F6`,`E6`, `C6`, `A6`,
+              `A6`, `D5`, `F5`,`G5`, `A6`,
+              `A6`, `D5`, `F5`,`G5`,`E5`,
+              `D5`, `F5`, `D6`,`D5`, `F5`, `D6`,
+              `E6`, `F6`, `E6`, `F6`,`E6`, `C6`, `A6`,
+              `A6`, `D5`, `F5`,`G5`, `A6`,
+              `A6`, `D5`];
+let currentNote = 0;
 function setup(){
   createCanvas(600,600);
 
@@ -19,8 +26,18 @@ function draw(){
   for (let i = 0; i < balls.length; i++){
       let ball = balls[i];
       ball.move();
-      // ball.bounce();
+      ball.bounce();
       ball.display();
+
+// remove ball if out of display
+      if (ball.y > 600){
+        balls.splice(i, 1);
+          break;
+      }
+  }
+
+
+  rect(0,410, width,10);
   }
   // for (let i = 0; i < balls2.length; i++){
   //     let ball2 = balls2[i];
@@ -28,7 +45,7 @@ function draw(){
   //     ball2.bounce();
   //     ball2.display();
   // }
-}
+
 
 function mousePressed(){
   createBall(mouseX,mouseY);
@@ -37,7 +54,11 @@ function mousePressed(){
 
 
 function createBall(x,y){
-  let note = random(notes);
+  let note = notes[currentNote];
+  currentNote += 1;
+  if(currentNote === notes.length){
+    currentNote = 0;
+}
   let ball = new Ball(x,y,note);
   balls.push(ball);
 }
