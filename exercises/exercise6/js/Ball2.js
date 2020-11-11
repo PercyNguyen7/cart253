@@ -1,6 +1,6 @@
-class Ball{
+class Ball2{
 
-  constructor(x,y,note){
+  constructor(x,y,note2){
   this.x=x;
   this.y=y;
   this.size=50;
@@ -9,19 +9,19 @@ class Ball{
     g: random(200,255),
     b:random(200,255),
     };
-  this.speed = 3;
-  this.vx=random(-this.speed,this.speed);
-  this.vy= random(-this.speed,this.speed);
+  this.speed = 5;
+  this.vx= this.speed;
+  this.vy= this.speed;
 
 //oscillator
-  this.oscillator = new p5.Oscillator();
-  this.nearFreq = 100;
-  this.farFreq = 250;
-  this.oscillator.amp(0.1);
-  this.oscillator.start();
+  this.oscillator2 = new p5.Oscillator();
+  this.nearFreq = 50;
+  this.farFreq = 100;
+  this.oscillator2.amp(0.1);
+  this.oscillator2.start();
 
   //synth
-  this.note = note;
+  this.note = note2;
   this.synth = new p5.PolySynth();
   }
 
@@ -37,24 +37,25 @@ class Ball{
   bounce(){
     if (this.x  - this.size/2 < 0 || this.x + this.size/2 >width){
       this.vx = -this.vx;
-      this.playNote();
+      this.playNote2();
     }
 
     if (this.y - this.size/2 < 0 || this.y + this.size/2 >height){
       this.vy = -this.vy;
-      this.playNote();
+      this.playNote2();
     }
   }
 
-  playNote(){
-    this.synth.play(this.note,0.2,0,0.1);
+  playNote2(){
+    this.synth.play(this.note,0,2,1.5);
   }
 
   display(){
    push();
    noStroke();
    fill(this.fill.r,this.fill.g,this.fill.b);
-   ellipse(this.x,this.y,this.size);
+   rectMode(CENTER);
+   rect(this.x,this.y,this.size);
    pop();
  }
 
