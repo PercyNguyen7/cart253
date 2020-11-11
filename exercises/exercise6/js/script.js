@@ -1,37 +1,31 @@
-
 "use strict";
-// Balls
-let balls = [];
 
+// The microphone
+let mic;
 
-// F-minor
-let notes = [`F3`,`G3`, `Ab4`, `Bb4`, `C4`, `Db4`,`Eb4`,`F4`];
+function setup() {
+  createCanvas(600, 600);
 
-function setup(){
-  createCanvas(600,600);
-
-  userStartAudio();
+  // Create our AudioIn object
+  mic = new p5.AudioIn();
+  // Try to connect to the user's microphone
+  mic.start();
 }
 
-function draw(){
+function draw() {
   background(0);
 
-  for (let i = 0; i < balls.length; i++){
-      let ball = balls[i];
-      ball.move();
-      ball.bounce();
-      ball.display();
+  // Get the current level of sound going into the microphone
+  let level = mic.getLevel();
 
-  }
-}
-
-function mousePressed(){
-  createBall(mouseX,mouseY);
-}
+  // Visualize the level as a circle's size
+  let size = map(level, 0, 1, 0, width);
+  push();
+  fill(255, 0, 0);
+  noStroke();
+  ellipse(width / 2, height / 2, size);
+  pop();
 
 
-function createBall(x,y){
-  let note = random(notes);
-  let ball = new Ball(x,y,note);
-  balls.push(ball);
+  console.log(level)
 }
