@@ -3,21 +3,14 @@ class Ball{
   constructor(x,y,note){
   this.x=x;
   this.y=y;
-  this.size=30;
+  this.size=10;
   this.fill={
-    r: 255,
-    g: 0,
-    b:0,
+    r: 0,
+    g: 120,
+    b:200,
     };
-  this.speed = 5;
+  this.speed = 10;
   this.vy= this.speed;
-
-//oscillator
-  // this.oscillator = new p5.Oscillator();
-  // this.nearFreq = 100;
-  // this.farFreq = 250;
-  // this.oscillator.amp(0.1);
-  // this.oscillator.start();
 
   //synth
   this.note = note;
@@ -27,39 +20,35 @@ class Ball{
   move(){
     this.y += this.vy;
 
-
   }
   bounce(){
     if (this.y + this.size/2 >= 410 && this.y + this.size/2 <=420 ){
       this.vy = 1;
 
-      circle.fill = map(this.fill.r,255,0,410,height);
-
-      this.playNote();
+      // this.playNote();
     }
   }
 
-  playNote(){
-    this.synth.play(this.note,5,0,0.1);
+//   playNote(){
+//     this.synth.play(this.note,1,0,0.5);
+// }
 
-}
   display(){
-
-
 
    noStroke();
    push();
    fill(this.fill.r,this.fill.g,this.fill.b);
-   if (this.y >= 410){
+   if (this.y >= 430){
 
-   let r = map(this.y,255,0,410,height+150);
-   fill(r,this.fill.g,this.fill.b);
+   let g = map(this.y,120,0,410,height);
+   let b = map(this.y,200,0,410,height);
+
+   fill(this.fill.r,g,b);
+
   }
 
-   ellipse(this.x,this.y,this.size);
+   ellipse(this.x,this.y,this.size,40);
    pop();
-
-
 
  }
 }
