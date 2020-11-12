@@ -19,25 +19,26 @@ class Ball{
 
   move(){
     this.y += this.vy;
-
   }
+
   bounce(){
     if (this.y + this.size/2 >= 410 && this.y + this.size/2 <=420 ){
       this.vy = 1;
 
-      // this.playNote();
+      this.playNote();
     }
   }
 
-//   playNote(){
-//     this.synth.play(this.note,1,0,0.5);
-// }
+  playNote(){
+    this.synth.play(this.note,0.5,0,0.5);
+}
 
   display(){
 
    noStroke();
    push();
    fill(this.fill.r,this.fill.g,this.fill.b);
+// change color
    if (this.y >= 430){
 
    let g = map(this.y,120,0,410,height);

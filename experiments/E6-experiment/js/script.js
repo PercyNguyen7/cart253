@@ -38,7 +38,7 @@ function draw(){
 
   if (state === `gameplay`) {
     gameplay();
-    stormSFX.play();
+
   }
 
   if (state === `storm`){
@@ -95,6 +95,7 @@ function gameplay(){
 //                                    STORM
 function storm(){
   image(stormImage,0,0,600,600);
+  stormSFX.play();
 }
 
 //                                        Mouse PRESSED
