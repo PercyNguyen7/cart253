@@ -3,22 +3,14 @@ class Ball{
   constructor(x,y,note){
   this.x=x;
   this.y=y;
-  this.size=50;
+  this.size=10;
   this.fill={
-    r: random(200,255),
-    g: random(200,255),
-    b:random(200,255),
+    r: 0,
+    g: 120,
+    b:200,
     };
-  this.speed = 3;
-  this.vx=random(-this.speed,this.speed);
-  this.vy= random(-this.speed,this.speed);
-
-//oscillator
-  this.oscillator = new p5.Oscillator();
-  this.nearFreq = 100;
-  this.farFreq = 250;
-  this.oscillator.amp(0.1);
-  this.oscillator.start();
+  this.speed = 10;
+  this.vy= this.speed;
 
   //synth
   this.note = note;
@@ -26,36 +18,38 @@ class Ball{
   }
 
   move(){
-    this.x += this.vx;
     this.y += this.vy;
-
-    let d = dist(this.x,this.y,width/2,height/2);
-    let maxDist = dist(0,0,width/2,height/2);
-    let newFreq = map(d,0,maxDist,this.nearFreq,this.farFreq);
-    this.oscillator.freq(newFreq);
   }
-  bounce(){
-    if (this.x  - this.size/2 < 0 || this.x + this.size/2 >width){
-      this.vx = -this.vx;
-      this.playNote();
-    }
 
-    if (this.y - this.size/2 < 0 || this.y + this.size/2 >height){
-      this.vy = -this.vy;
+  bounce(){
+    if (this.y + this.size/2 >= 410 && this.y + this.size/2 <=420 ){
+      this.vy = 1;
+
       this.playNote();
     }
   }
 
   playNote(){
-    this.synth.play(this.note,0.2,0,0.1);
-  }
+    this.synth.play(this.note,0.5,0,0.5);
+}
 
   display(){
-   push();
-   noStroke();
-   fill(this.fill.r,this.fill.g,this.fill.b);
-   ellipse(this.x,this.y,this.size);
-   pop();
- }
 
+   noStroke();
+   push();
+   fill(this.fill.r,this.fill.g,this.fill.b);
+// change color
+   if (this.y >= 430){
+
+   let g = map(this.y,120,0,410,height);
+   let b = map(this.y,200,0,410,height);
+
+   fill(this.fill.r,g,b);
+
+  }
+
+   ellipse(this.x,this.y,this.size,40);
+   pop();
+
+ }
 }
