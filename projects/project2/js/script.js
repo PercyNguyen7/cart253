@@ -9,7 +9,7 @@ let tiles = [];
 let numTiles = 100;
 
 //                                                STATE
-let state = `title`;
+let state = `clickbegin`;
 
 //                                          PRELOAD
 function preload(){
@@ -17,10 +17,10 @@ function preload(){
 }
 
 
-//                                                 SETUP
+//                                                     SETUP
 function setup() {
   createCanvas(1500, 700);
-
+//                                                 REJECTION PATH
   userreject = new UserReject(userrejectImage);
 //                                                  RED TILES
 //                                                  1st COLUMN
@@ -44,7 +44,7 @@ for (let i = 0; i < numTiles; i++) {
     tiles.push(tile);
     }
   }
-//                                                    3rd COLUMN
+//                                                  3rd COLUMN
   for (let i = 0; i < numTiles; i++) {
     let x = 400;
     let y = -100;
@@ -55,7 +55,7 @@ for (let i = 0; i < numTiles; i++) {
     tiles.push(tile);
     }
   }
-//                                                    4rd COLUMN
+//                                                  4rd COLUMN
   for (let i = 0; i < numTiles; i++) {
     let x = 500;
     let y = -100;
@@ -66,7 +66,7 @@ for (let i = 0; i < numTiles; i++) {
     tiles.push(tile);
     }
   }
-//                                                       5th COLUMN
+//                                                  5th COLUMN
   for (let i = 0; i < numTiles; i++) {
     let x = 600;
     let y = -100;
@@ -77,7 +77,7 @@ for (let i = 0; i < numTiles; i++) {
     tiles.push(tile);
     }
   }
-//                                                      6th COLUMN
+//                                                  6th COLUMN
   for (let i = 0; i < numTiles; i++) {
     let x = 700;
     let y = -100;
@@ -88,7 +88,7 @@ for (let i = 0; i < numTiles; i++) {
     tiles.push(tile);
     }
   }
-//                                                    7th COLUMN
+//                                                  7th COLUMN
   for (let i = 0; i < numTiles; i++) {
     let x = 800;
     let y = -100;
@@ -99,7 +99,7 @@ for (let i = 0; i < numTiles; i++) {
     tiles.push(tile);
     }
   }
-//                                                   8th COLUMN
+//                                                  8th COLUMN
   for (let i = 0; i < numTiles; i++) {
     let x = 900;
     let y = -100;
@@ -110,7 +110,7 @@ for (let i = 0; i < numTiles; i++) {
     tiles.push(tile);
     }
   }
-//                                                     9th COLUMN
+//                                                  9th COLUMN
     for (let i = 0; i < numTiles; i++) {
       let x = 1000;
       let y = -100;
@@ -121,7 +121,7 @@ for (let i = 0; i < numTiles; i++) {
       tiles.push(tile);
       }
     }
-//                                                    10th COLUMN
+//                                                  10th COLUMN
     for (let i = 0; i < numTiles; i++) {
       let x = 1100;
       let y = -100;
@@ -131,7 +131,7 @@ for (let i = 0; i < numTiles; i++) {
       tiles.push(tile);
       }
     }
-//                                                    11th COLUMN
+//                                                  11th COLUMN
     for (let i = 0; i < numTiles; i++) {
       let x = 1200;
       let y = -100;
@@ -146,11 +146,20 @@ for (let i = 0; i < numTiles; i++) {
 //                                                DRAW
 function draw() {
     background(50);
+    if (state ===`clickbegin`){
+      clickbegin();
+    }
     if (state ===`title`){
       title();
     }
-    if (state ===`gameplay`){
-      gameplay();
+    if (state === `instructions`){
+      instructions();
+    }
+    if (state ===`rejectionintro`){
+      rejectionintro();
+    }
+    if (state ===`rejminigame`){
+      rejminigame();
     }
     if (state === `lose`){
       loseEnding();
@@ -159,8 +168,43 @@ function draw() {
       winEnding();
     }
 }
-//                                                 TITLE STATE
+//                                                  GAME INTRO
+function clickbegin(){
+  background(0);
+  push();
+  textSize(64)
+  noFill();
+  stroke(255);
+  textAlign(CENTER, CENTER);
+  textSize(80);
+  text(`Press any key to begin`, width / 2, height/2);
+  pop();
+}
 function title(){
+  background(50);
+  push();
+  textSize(64)
+  noFill();
+  stroke(255);
+  textAlign(CENTER, CENTER);
+  textSize(80);
+  text(`Proposal Day`, width / 2, height/2);
+  pop();
+}
+function instructions(){
+  background(100);
+  push();
+  textSize(64)
+  noFill();
+  stroke(255);
+  textAlign(CENTER, CENTER);
+  textSize(80);
+  text(`Instructions`, width / 2, height/2);
+  pop();
+}
+
+//                                                 rejectionintro STATE
+function rejectionintro(){
 background(69,29,87);
 push();
 textSize(64)
@@ -177,17 +221,16 @@ textSize(40);
 text(`Control with Arrow Keys`, width / 2, height/2 + 150);
 pop();
 }
-//                                                GAMEPLAY STATE
-function gameplay(){
+//                                                rejminigame STATE
+function rejminigame(){
+//                                          REJECTIOn MINIGAME FUNCTIONS
 //                                               TILE FUNCTIONS
   for (let i = 0; i < tiles.length; i++) {
     let tile = tiles[i];
       tile.display();
       tile.colorchange();
-
       }
-
-//                                              userreject FUNCTIONS
+//                                                USERREJECT FUNCTIONS
   userreject.move();
   userreject.display();
   userreject.badpath();
@@ -223,7 +266,13 @@ function winEnding(){
 }
 //                                                     KEYPRESSEED
 function keyPressed(){
-  if (state === `title`){
-   state = `gameplay`;
+  if (state === `rejectionintro`){
+    state = `rejminigame`;
+  }
+  else if (state ===`clickbegin`){
+    state = `title`;
+  }
+  else if (state === `title`){
+    state = `instructions`;
   }
 }
