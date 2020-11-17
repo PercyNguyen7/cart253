@@ -1,17 +1,27 @@
 "use strict";
 //                                               VARIABLES
-let user;
+let userreject;
+
+//                                               IMAGE
+let userrejectImage;
 
 let tiles = [];
 let numTiles = 100;
 
-
+//                                                STATE
 let state = `title`;
+
+//                                          PRELOAD
+function preload(){
+  userrejectImage = loadImage(`assets/images/userreject.png`);
+}
+
+
 //                                                 SETUP
 function setup() {
   createCanvas(1500, 700);
 
-  user = new User;
+  userreject = new UserReject(userrejectImage);
 //                                                  RED TILES
 //                                                  1st COLUMN
 for (let i = 0; i < numTiles; i++) {
@@ -177,11 +187,11 @@ function gameplay(){
 
       }
 
-//                                              USER FUNCTIONS
-  user.move();
-  user.display();
-  user.badpath();
-  user.goodpath();
+//                                              userreject FUNCTIONS
+  userreject.move();
+  userreject.display();
+  userreject.badpath();
+  userreject.goodpath();
 //                                                DESTINATION RECTANGLES
   rect(1300, 0, 100, 700);
 }

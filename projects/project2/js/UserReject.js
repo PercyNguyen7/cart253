@@ -1,11 +1,12 @@
-class User {
-  constructor() {
+class UserReject {
+  constructor(userrejectImage) {
     this.x = 50;
     this.y = height / 2;
     this.vx = 0;
     this.vy = 0;
     this.speed = 100;
-    this.size = 50;
+    this.size = 70;
+    this.image = userrejectImage;
   }
   //                                            MOVE
   move() {
@@ -63,8 +64,8 @@ class User {
   display() {
     push();
     fill(255);
-    rectMode(CENTER);
-    rect(this.x, this.y, this.size);
+    imageMode(CENTER);
+    image(this.image,this.x, this.y, this.size, this.size);
     pop();
   }
 }
