@@ -306,7 +306,7 @@ function heartattackEnd(){
   stroke(255);
   textSize(50);
   textAlign(CENTER, CENTER);
-  text(`How do you mend a heart attack`, 100, height/2);
+  text(`How do you mend a heart attack`, width/2, height/2);
   pop();
 }
 //                                                    REJECTION PATH
