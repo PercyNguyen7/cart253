@@ -50,14 +50,14 @@ class UserReject {
       pop();
 
       if (keyIsDown(LEFT_ARROW) || keyIsDown(RIGHT_ARROW) || keyIsDown(UP_ARROW) || keyIsDown(DOWN_ARROW)){
-      state = `badrejectionEnd`
+      state = `lose`
       }
     }
   }
-//                                                WIN
+
   goodpath(){
     if (this.x > 1300){
-    state = `goodrejectionEnd`
+    state = `win`
     }
   }
   //                                                  DISPLAY

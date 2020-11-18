@@ -95,7 +95,7 @@ function gameplay(){
 //                                    STORM
 function storm(){
   image(stormImage,0,0,600,600);
-
+  stormSFX.play();
 }
 
 //                                        Mouse PRESSED
@@ -114,7 +114,6 @@ function createBall(x,y){
   currentNote += 1;
   if(currentNote === notes.length){
     state = `storm`
-    stormSFX.play();
 }
   let ball = new Ball(x,y,note);
   balls.push(ball);

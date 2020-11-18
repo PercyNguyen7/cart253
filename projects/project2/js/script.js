@@ -1,31 +1,23 @@
 "use strict";
-//                                           VARIABLES
+//                                               VARIABLES
 let userreject;
-let userHeart;
-let chain1;
+
 //                                               IMAGE
 let userrejectImage;
-let userHeartImage;
-let chain1Image;
-//                                               TILES
+
 let tiles = [];
 let numTiles = 100;
+
 //                                                STATE
 let state = `clickbegin`;
-//                                                IMAGE PRELOAD
+//                                          PRELOAD
 function preload() {
   userrejectImage = loadImage(`assets/images/userreject.png`);
-  userHeartImage = loadImage(`assets/images/heart.png`);
-  chain1Image = loadImage(`assets/images/chain.png`);
 }
 
 //                                                     SETUP
 function setup() {
   createCanvas(1500, 700);
-  //                                                 ACCEPT PATH
-  userHeart = new UserHeart(userHeartImage);
-
-  chain1 = new Chain1(chain1Image);
   //                                                 REJECTION PATH
   userreject = new UserReject(userrejectImage);
   //                                                  RED TILES
@@ -166,20 +158,9 @@ function draw() {
   if (state === `decision`) {
     decision();
   }
-  //                                          ACCEPT PATH
   if (state === `acceptp`) {
     acceptp();
   }
-  if (state === `acceptintro1`) {
-    acceptintro1();
-  }
-  if (state === `acpminigame1`) {
-    acpminigame1();
-  }
-  if (state === `heartattackEnd`){
-    heartattackEnd();
-  }
-  //                                          REJECT PATH
   if (state === `rejectp`) {
     rejectp();
   }
@@ -189,10 +170,10 @@ function draw() {
   if (state === `rejminigame`) {
     rejminigame();
   }
-  if (state === `badrejectionEnd`) {
+  if (state === `lose`) {
     badrejectionEnd();
   }
-  if (state === `goodrejectionEnd`) {
+  if (state === `win`) {
     goodrejectionEnd();
   }
 }
@@ -244,7 +225,7 @@ function context() {
   text(`context`, width / 2, height / 2);
   pop();
 }
-//                                                      DECISION
+//                                                       DECISION
 function decision() {
   background(0);
   push();
@@ -255,13 +236,13 @@ function decision() {
   textSize(100);
   text(`Decision`, width / 2, height / 2);
   textSize(40);
-  text(`A. Accept`, width / 3, 3 * height / 4);
-  text(`R. Reject`, 2 * width / 3, 3 * height / 4);
+  text(`A. Accept`, width / 3, 3*height / 4);
+  text(`R. Reject`, 2*width / 3, 3*height / 4);
   pop();
 }
-//                                                   ACCEPT PATH
-function acceptp() {
-  background(0, 0, 255);
+//                                                ACCEPT PATH
+function acceptp(){
+  background(0,0,255);
   push();
   textSize(64);
   noFill();
@@ -271,47 +252,9 @@ function acceptp() {
   text(`ACCEPTED`, width / 2, height / 2);
   pop();
 }
-function acceptintro1(){
-  background(69, 29, 87);
-  push();
-  textSize(64)
-  noFill();
-  stroke(250, 186, 95);
-  textAlign(CENTER, CENTER);
-  textSize(80);
-  text(`Contain your heart`, width / 2, height / 2 - 100);
-  textSize(70);
-  text(`Don't break the chains`, width / 2, height / 2 - 20);
-  textSize(50);
-  text(`Press Spacebar to BEGIN`, width / 2, height / 2 + 100);
-  textSize(40);
-  text(`Control with Arrow Keys`, width / 2, height / 2 + 150);
-  pop();
-}
-
-function acpminigame1(){
-  background(160,1,7);
-//                                        USER HEART
-  userHeart.display();
-  userHeart.move();
-  userHeart.touchchain(chain1);
-//                                        Chain1
-  chain1.display();
-}
-//                                                     HEART ATTACK ENDING
-function heartattackEnd(){
-  background(100);
-  push();
-  noFill();
-  stroke(255);
-  textSize(50);
-  textAlign(CENTER, CENTER);
-  text(`How do you mend a heart attack`, width/2, height/2);
-  pop();
-}
-//                                                    REJECTION PATH
-function rejectp() {
-  background(255, 0, 0);
+//                                                  REJECTION PATH
+function rejectp(){
+  background(255,0,0);
   push();
   textSize(64);
   noFill();
@@ -321,7 +264,6 @@ function rejectp() {
   text(`REJECTED`, width / 2, height / 2);
   pop();
 }
-
 function rejectionintro() {
   background(69, 29, 87);
   push();
@@ -334,13 +276,14 @@ function rejectionintro() {
   textSize(70);
   text(`Find the secret path`, width / 2, height / 2 - 20);
   textSize(50);
-  text(`Tap Spacebar to BEGIN`, width / 2, height / 2 + 100);
+  text(`Press any key to BEGIN`, width / 2, height / 2 + 100);
   textSize(40);
-  text(`Control by tapping Arrow Keys`, width / 2, height / 2 + 150);
+  text(`Control with Arrow Keys`, width / 2, height / 2 + 150);
   pop();
 }
 //                                                   rejminigame STATE
 function rejminigame() {
+  //                                                REJECTIOn MINIGAME FUNCTIONS
   //                                                   TILE FUNCTIONS
   for (let i = 0; i < tiles.length; i++) {
     let tile = tiles[i];
@@ -356,8 +299,11 @@ function rejminigame() {
   rect(1300, 0, 100, 700);
 }
 
-//                                                   TWO REJECTIOn ENDING STATES
-//                                                   BAD REJECTION ENDING
+//                                                  ALL ENDING STATES
+//                                                 REJECTION ENDINGS
+
+
+//                                                   BAD REJECTIOn ENDING
 function badrejectionEnd() {
   background(255, 40, 40);
   push();
@@ -366,10 +312,10 @@ function badrejectionEnd() {
   stroke(255);
   textAlign(CENTER, CENTER);
   textSize(80);
-  text(`He never found love again`, width / 2, height / 2);
+  text(`You Lost`, width / 2, height / 2);
   pop();
 }
-//                                                    GOOD REJECTION ENDING
+//                                                    GOOD REJECTIOn ENDING
 function goodrejectionEnd() {
   background(125);
   push();
@@ -377,14 +323,15 @@ function goodrejectionEnd() {
   noFill();
   stroke(255);
   textAlign(CENTER, CENTER);
-  textSize(50);
-  text(`A painful truth`, width / 2, height / 2);
-  text(`But a well handled one`, width / 2, 440);
+  textSize(120);
+  text(`YOU WON`, width / 2, height / 2);
   pop();
 }
 //                                                     KEYPRESSED FUNCTION
 function keyPressed() {
-  if (state === `clickbegin`) {
+  if (state === `rejectionintro`) {
+    state = `rejminigame`;
+  } else if (state === `clickbegin`) {
     state = `title`;
   } else if (state === `title`) {
     state = `instructions`;
@@ -392,22 +339,11 @@ function keyPressed() {
     state = `context`;
   } else if (state === `context`) {
     state = `decision`;
-  }
-//                                                ACCEPT PATH
-  else if (state === `decision` && keyCode === 65) {
+  } else if (state === `decision` && keyCode === 65) {
     state = `acceptp`;
-  } else if (state === `acceptp`) {
-    state = `acceptintro1`;
-  } else if (state ===`acceptintro1`&& keyCode === 32) {
-    state = `acpminigame1`
-  }
-
-//                                                 REJECT PATH
-  else if (state === `decision` && keyCode === 82) {
+  } else if (state === `decision` && keyCode === 82) {
     state = `rejectp`;
-  } else if (state === `rejectp`) {
+  } else if (state === `rejectp`){
     state = `rejectionintro`;
-  } else if (state === `rejectionintro` && keyCode === 32) {
-      state = `rejminigame`;
   }
 }
