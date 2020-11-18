@@ -230,8 +230,6 @@ function instructions() {
   textAlign(CENTER, CENTER);
   textSize(80);
   text(`Instructions`, width / 2, height / 2);
-  textSize(40);
-  text(`Tap any key to advance throughout the game`, width / 2, height / 2 + 100);
   pop();
 }
 //                                                     CONTEXT
