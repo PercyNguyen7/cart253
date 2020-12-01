@@ -11,6 +11,7 @@ class UserHeart{
     this.image = userHeartImage;
   }
   //                                            MOVE
+  //          CONTROL
   move() {
     this.x += this.vx;
     this.y += this.vy;

@@ -297,7 +297,7 @@ function acpminigame1(){
   userHeart.display();
   userHeart.move();
   userHeart.touchchain(chain1);
-//                                        Chain1
+  //                                        Chain1
   chain1.display();
 }
 //                                                     HEART ATTACK ENDING
