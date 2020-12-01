@@ -15,6 +15,7 @@ class Tile {
     if (keyIsDown(LEFT_ARROW) || keyIsDown(RIGHT_ARROW) || keyIsDown(UP_ARROW) || keyIsDown(DOWN_ARROW)) {
       this.color.r = random(130, 200);
       this.color.b = random(130, 200);
+    
     }
   }
   display() {

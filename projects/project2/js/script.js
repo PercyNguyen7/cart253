@@ -3,6 +3,11 @@
 let userreject;
 let userHeart;
 let chain1;
+//                                            SOUND
+let upSFX;
+let downSFX;
+let rightSFX;
+let leftSFX;
 //                                               IMAGE
 let userrejectImage;
 let userHeartImage;
@@ -14,6 +19,12 @@ let numTiles = 100;
 let state = `clickbegin`;
 //                                                IMAGE PRELOAD
 function preload() {
+  // SOUND
+  upSFX = loadSound(`assets/sounds/go_up.m4a`);
+  downSFX = loadSound(`assets/sounds/head_down.m4a`);
+  rightSFX = loadSound(`assets/sounds/go_right.m4a`);
+  leftSFX = loadSound(`assets/sounds/go_left.m4a`)
+  // IMAGE
   userrejectImage = loadImage(`assets/images/userreject.png`);
   userHeartImage = loadImage(`assets/images/heart.png`);
   chain1Image = loadImage(`assets/images/chain.png`);
@@ -22,6 +33,7 @@ function preload() {
 //                                                     SETUP
 function setup() {
   createCanvas(1500, 700);
+  userStartAudio()
   //                                                 ACCEPT PATH
   userHeart = new UserHeart(userHeartImage);
 
@@ -156,6 +168,7 @@ function draw() {
   }
   if (state === `title`) {
     title();
+
   }
   if (state === `instructions`) {
     instructions();
@@ -352,8 +365,10 @@ function rejminigame() {
   //                                                USERREJECT FUNCTIONS
   userreject.move();
   userreject.display();
+  userreject.sfxguide();
   userreject.badpath();
   userreject.goodpath();
+
   //                                                DESTINATION RECTANGLES
   rect(1300, 0, 100, 700);
 }
