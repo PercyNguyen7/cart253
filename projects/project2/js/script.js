@@ -2,6 +2,7 @@
 //                                           VARIABLES
 let userreject;
 let userHeart;
+let timer1;
 let chain1;
 //                                            SOUND
 let upSFX;
@@ -35,6 +36,9 @@ function setup() {
   createCanvas(1500, 700);
   userStartAudio()
   //                                                 ACCEPT PATH
+
+  timer1 = new Timer1();
+
   userHeart = new UserHeart(userHeartImage);
 
   chain1 = new Chain1(chain1Image);
@@ -309,9 +313,14 @@ function acpminigame1(){
 //                                        USER HEART
   userHeart.display();
   userHeart.move();
-  userHeart.touchchain(chain1);
+  userHeart.touchchain();
+
+
   //                                        Chain1
   chain1.display();
+  //                                         TIMER
+  timer1.display();
+  timer1.move();
 }
 //                                                     HEART ATTACK ENDING
 function heartattackEnd(){
@@ -399,6 +408,8 @@ function goodrejectionEnd() {
   text(`But a well handled one`, width / 2, 440);
   pop();
 }
+
+
 //                                                     KEYPRESSED FUNCTION
 function keyPressed() {
   if (state === `clickbegin`) {

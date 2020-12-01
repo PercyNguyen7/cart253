@@ -32,6 +32,10 @@ class UserReject {
   }
 
 sfxguide(){
+  if (this.x > 100 && this.x <200 && this.y > 600 && this.y <700 && !rightSFX.isPlaying()){
+
+    rightSFX.play();
+  }
   if (this.x > 600 && this.x <700 && this.y > 600 && this.y <700 && !upSFX.isPlaying()){
 
     upSFX.play();
@@ -52,7 +56,6 @@ sfxguide(){
   if (this.x > 600 && this.x <700 && this.y > 200 && this.y <300 && !upSFX.isPlaying()){
     upSFX.play();
   }
-
   if (this.x > 600 && this.x <700 && this.y > 0 && this.y <100 && !rightSFX.isPlaying()){
     rightSFX.play();
   }

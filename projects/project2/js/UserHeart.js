@@ -4,8 +4,9 @@ class UserHeart{
     this.y = height / 2;
     this.vx = 0;
     this.vy = 0;
-    this.speed = 9;
-    this.rspeed = 6;
+    //speeed 9 rspeed 6
+    this.speed = 0;
+    this.rspeed = 0;
     this.height = 75;
     this.width = 75;
     this.image = userHeartImage;
