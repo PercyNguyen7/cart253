@@ -48,19 +48,27 @@ class Timer1{
     if (this.x3 >= 400 && this.x3 <= 600){
       this.vy3 = -40;
     }
-    if (this.x3 > 600 && this.x3 <=900){
+    else if (this.x3 > 600 && this.x3 <=900){
       this.vy3 = 60;
     }
-    if (this.x3 >900 && this.x3 <=1100){
+    else if (this.x3 >900 && this.x3 <=1100){
       this.vy3 = -40;
     }
-    if (this.x3 > 1100 && this.x3 <= 1500){
+    else if (this.x3 > 1100 && this.x3 <= 1500){
       this.vy3 = 0;
     }
-    if (this.x3 > width){
+    else if (this.x3 > width){
       this.x3 =-15;
       this.y3 = height/2;
       this.counter += 1;
+    }
+    if (this.x3 >= 730 && this.x3 <= 735){
+      oscillator.amp(0.1);
+      oscillator.start();
+      }
+
+    if (this.vy3 === 0){
+      oscillator.stop();
     }
     if (this.counter > 1){
       this.fill ={

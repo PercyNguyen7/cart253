@@ -4,11 +4,13 @@ let userreject;
 let userHeart;
 let timer1;
 let chain1;
-//                                            SOUND
+//                                            SFX/ MUSIC
 let upSFX;
 let downSFX;
 let rightSFX;
 let leftSFX;
+//                                          OSCILLATOR
+let oscillator;
 
 //                                               IMAGE
 let userrejectImage;
@@ -36,6 +38,8 @@ function preload() {
 function setup() {
   createCanvas(1500, 700);
   userStartAudio()
+   oscillator = new p5.Oscillator(880, `sine`);
+   oscillator.amp(0.1);
   //                                                 ACCEPT PATH
 
   timer1 = new Timer1();
