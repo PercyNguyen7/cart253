@@ -192,6 +192,9 @@ sfxguide(){
       if (keyIsDown(LEFT_ARROW) || keyIsDown(RIGHT_ARROW) || keyIsDown(UP_ARROW) || keyIsDown(DOWN_ARROW)){
       state = `badrejectionEnd`
 
+      if (rejectmusic.isPlaying()){
+        rejectmusic.stop();}
+        loseSFX.play();
       }
     }
   }
