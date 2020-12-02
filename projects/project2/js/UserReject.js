@@ -193,8 +193,9 @@ sfxguide(){
       state = `badrejectionEnd`
 
       if (rejectmusic.isPlaying()){
-        rejectmusic.stop();}
-        loseSFX.play();
+        rejectmusic.stop()
+        loseSFX.play()}
+
       }
     }
   }
