@@ -7,6 +7,7 @@ class UserReject {
     this.speed = 100;
     this.size = 70;
     this.image = userrejectImage;
+    this.lastSFXplayed;
   }
   //                                            MOVE
   move() {
@@ -31,54 +32,129 @@ class UserReject {
     this.y = constrain(this.y, 50, height - 50);
   }
 
+//                                        SFX AND SQUARE GUIDE
 sfxguide(){
-  if (this.x > 100 && this.x <200 && this.y > 600 && this.y <700 && !rightSFX.isPlaying()){
-
+  if (this.x > 100 && this.x <200 && this.y > 600 && this.y <700 && this.lastSFXplayed!=0){;
     rightSFX.play();
+    this.lastSFXplayed = 0;
   }
-  if (this.x > 600 && this.x <700 && this.y > 600 && this.y <700 && !upSFX.isPlaying()){
-
+  if (this.x > 600 && this.x <700 && this.y > 600 && this.y <700 && this.lastSFXplayed!=1){
     upSFX.play();
-    // if (upSFX.isLooping()){
-    //   upSFX.pause();
-    // }
+    push();
+    rectMode(CENTER);
+    fill(255);
+    rect(150,650,80);
+    pop();
+    this.lastSFXplayed = 1;
   }
-
-  if (this.x > 600 && this.x <700 && this.y > 400 && this.y <500 && !leftSFX.isPlaying()){
+  if (this.x > 600 && this.x <700 && this.y > 400 && this.y <500 && this.lastSFXplayed!=2){
     leftSFX.play();
+    this.lastSFXplayed = 2;
+    push();
+    rectMode(CENTER);
+    fill(255);
+    rect(650,650,80);
+    pop();
   }
-  if (this.x > 400 && this.x <500 && this.y > 400 && this.y <500 && !upSFX.isPlaying()){
+  if (this.x > 400 && this.x <500 && this.y > 400 && this.y <500 && this.lastSFXplayed!=3){
     upSFX.play();
+    this.lastSFXplayed = 3;
+    push();
+    rectMode(CENTER);
+    fill(255);
+    rect(650,450,80);
+    pop();
+
   }
-  if (this.x > 400 && this.x <500 && this.y > 200 && this.y <300 && !rightSFX.isPlaying()){
+  if (this.x > 400 && this.x <500 && this.y > 200 && this.y <300 && this.lastSFXplayed!=4){
     rightSFX.play();
+    this.lastSFXplayed = 4;
+    push();
+    rectMode(CENTER);
+    fill(255);
+    rect(450,450,80);
+    pop();
   }
-  if (this.x > 600 && this.x <700 && this.y > 200 && this.y <300 && !upSFX.isPlaying()){
+  if (this.x > 600 && this.x <700 && this.y > 200 && this.y <300 && this.lastSFXplayed!=5){
     upSFX.play();
+    this.lastSFXplayed = 5;
+    push();
+    rectMode(CENTER);
+    fill(255);
+    rect(450,250,80);
+    pop();
   }
-  if (this.x > 600 && this.x <700 && this.y > 0 && this.y <100 && !rightSFX.isPlaying()){
+  if (this.x > 600 && this.x <700 && this.y > 0 && this.y <100 && this.lastSFXplayed!=6){
     rightSFX.play();
+    this.lastSFXplayed = 6;
+    push();
+    rectMode(CENTER);
+    fill(255);
+    rect(650,250,80);
+    pop();
   }
-  if (this.x > 800 && this.x <900 && this.y > 0 && this.y <100 && !downSFX.isPlaying()){
+  if (this.x > 800 && this.x <900 && this.y > 0 && this.y <100 && this.lastSFXplayed!=7){
     downSFX.play();
+    this.lastSFXplayed = 7;
+    push();
+    rectMode(CENTER);
+    fill(255);
+    rect(650,50,80);
+    pop();
   }
-  if (this.x > 800 && this.x <900 && this.y > 200 && this.y <300 && !rightSFX.isPlaying()){
+  if (this.x > 800 && this.x <900 && this.y > 200 && this.y <300 && this.lastSFXplayed!=8){
     rightSFX.play();
+    this.lastSFXplayed = 8;
+    push();
+    rectMode(CENTER);
+    fill(255);
+    rect(850,50,80);
+    pop();
   }
-  if (this.x > 1000 && this.x <1100 && this.y > 200 && this.y <300 && !downSFX.isPlaying()){
+  if (this.x > 1000 && this.x <1100 && this.y > 200 && this.y <300 && this.lastSFXplayed!=9){
     downSFX.play();
+    this.lastSFXplayed = 9;
+    push();
+    rectMode(CENTER);
+    fill(255);
+    rect(850,250,80);
+    pop();
   }
-  if (this.x > 1000 && this.x <1100 && this.y > 400 && this.y <500 && !leftSFX.isPlaying()){
+  if (this.x > 1000 && this.x <1100 && this.y > 400 && this.y <500 && this.lastSFXplayed!=10){
     leftSFX.play();
+    this.lastSFXplayed = 10;
+    push();
+    rectMode(CENTER);
+    fill(255);
+    rect(1050,250,80);
+    pop();
   }
-  if (this.x > 800 && this.x <900 && this.y > 400 && this.y <500 && !downSFX.isPlaying()){
+  if (this.x > 800 && this.x <900 && this.y > 400 && this.y <500 && this.lastSFXplayed!=11){
     downSFX.play();
+    this.lastSFXplayed = 11;
+    push();
+    rectMode(CENTER);
+    fill(255);
+    rect(1050,450,80);
+    pop();
   }
-  if (this.x > 800 && this.x <900 && this.y > 600 && this.y <700 && !rightSFX.isPlaying()){
+  if (this.x > 800 && this.x <900 && this.y > 600 && this.y <700 && this.lastSFXplayed!=12){
     rightSFX.play();
+    this.lastSFXplayed = 12;
+    push();
+    rectMode(CENTER);
+    fill(255);
+    rect(850,450,80);
+    pop();
+  }
+  if (this.x > 800 && this.x <1400 && this.y > 600 && this.y <700){
+    push();
+    rectMode(CENTER);
+    fill(255);
+    rect(850,650,80);
+    pop();
   }
 }
-
 
 //                                                LOSE
   badpath(){

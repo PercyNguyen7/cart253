@@ -9,6 +9,7 @@ let upSFX;
 let downSFX;
 let rightSFX;
 let leftSFX;
+
 //                                               IMAGE
 let userrejectImage;
 let userHeartImage;
@@ -196,6 +197,9 @@ function draw() {
   if (state === `heartattackEnd`){
     heartattackEnd();
   }
+  if (state === `acpminiwin1`){
+    acpminiwin1();
+  }
   //                                          REJECT PATH
   if (state === `rejectp`) {
     rejectp();
@@ -310,6 +314,17 @@ function acceptintro1(){
 
 function acpminigame1(){
   background(160,1,7);
+  //                                         TIMER
+  timer1.display();
+  timer1.ballsmove();
+  if (timer1.counter === 5 || timer1.counter >=7 && timer1.counter <=9 ){
+    background(0);
+    push();
+    fill(255);
+    text(`BLACK OUT`, width / 2, height / 2);
+    pop();
+  }
+
 //                                        USER HEART
   userHeart.display();
   userHeart.move();
@@ -318,9 +333,7 @@ function acpminigame1(){
 
   //                                        Chain1
   chain1.display();
-  //                                         TIMER
-  timer1.display();
-  timer1.move();
+
 }
 //                                                     HEART ATTACK ENDING
 function heartattackEnd(){
@@ -331,6 +344,17 @@ function heartattackEnd(){
   textSize(50);
   textAlign(CENTER, CENTER);
   text(`How do you mend a heart attack`, width/2, height/2);
+  pop();
+}
+
+function acpminiwin1(){
+  background(100);
+  push();
+  noFill(210, 10,30);
+  stroke(255);
+  textSize(50);
+  textAlign(CENTER, CENTER);
+  text(`You survived the first trial of love!`, width/2, height/2);
   pop();
 }
 //                                                    REJECTION PATH
