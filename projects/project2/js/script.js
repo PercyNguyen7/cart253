@@ -70,7 +70,7 @@ function setup() {
     let x = 200;
     let y = -100;
     for (let j = 0; j < 7; j++) {
-      y = y + 100
+      y +=  100
       let tile = new Tile(x, y, color);
       tiles.push(tile);
     }
@@ -80,7 +80,7 @@ function setup() {
     let x = 300;
     let y = -100;
     for (let j = 0; j < 7; j++) {
-      y = y + 100;
+      y += 100;
 
       let tile = new Tile(x, y, color);
       tiles.push(tile);
@@ -91,7 +91,7 @@ function setup() {
     let x = 400;
     let y = -100;
     for (let j = 0; j < 7; j++) {
-      y = y + 100;
+      y += 100;
 
       let tile = new Tile(x, y, color);
       tiles.push(tile);
@@ -102,7 +102,7 @@ function setup() {
     let x = 500;
     let y = -100;
     for (let j = 0; j < 7; j++) {
-      y = y + 100;
+      y += 100;
 
       let tile = new Tile(x, y, color);
       tiles.push(tile);
@@ -113,7 +113,7 @@ function setup() {
     let x = 600;
     let y = -100;
     for (let j = 0; j < 7; j++) {
-      y = y + 100;
+      y += 100;
 
       let tile = new Tile(x, y, color);
       tiles.push(tile);
@@ -124,7 +124,7 @@ function setup() {
     let x = 700;
     let y = -100;
     for (let j = 0; j < 7; j++) {
-      y = y + 100;
+      y += 100;
 
       let tile = new Tile(x, y, color);
       tiles.push(tile);
@@ -135,7 +135,7 @@ function setup() {
     let x = 800;
     let y = -100;
     for (let j = 0; j < 7; j++) {
-      y = y + 100;
+      y += 100;
 
       let tile = new Tile(x, y, color);
       tiles.push(tile);
@@ -146,7 +146,7 @@ function setup() {
     let x = 900;
     let y = -100;
     for (let j = 0; j < 7; j++) {
-      y = y + 100;
+      y += 100;
 
       let tile = new Tile(x, y, color);
       tiles.push(tile);
@@ -157,7 +157,7 @@ function setup() {
     let x = 1000;
     let y = -100;
     for (let j = 0; j < 7; j++) {
-      y = y + 100;
+      y += 100;
 
       let tile = new Tile(x, y, color);
       tiles.push(tile);
@@ -168,7 +168,7 @@ function setup() {
     let x = 1100;
     let y = -100;
     for (let j = 0; j < 7; j++) {
-      y = y + 100
+      y += 100
       let tile = new Tile(x, y, color);
       tiles.push(tile);
     }
@@ -178,7 +178,7 @@ function setup() {
     let x = 1200;
     let y = -100;
     for (let j = 0; j < 7; j++) {
-      y = y + 100
+      y += 100
       let tile = new Tile(x, y, color);
       tiles.push(tile);
     }

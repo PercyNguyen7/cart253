@@ -10,7 +10,7 @@ class UserHeart{
     this.height = 75;
     this.width = 75;
     this.image = userHeartImage;
-// let loose variable so that its width & height can be enlarged overtime. See more in Timer1.js
+// let loose variable so that its width & height can be enlarged overtime see more in TIMER1.
     this.letloose = true;
   }
   //                                            MOVE

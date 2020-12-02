@@ -86,8 +86,8 @@ class Timer1{
         g:1,
         b:6,
       }
-      this.vy = this.vy*1.2;
-      this.vy2 = this.vy2*1.2;
+      this.vy *= 1.2;
+      this.vy2 *= 1.2;
       // 12 and 9
       userHeart.speed = 0;
       userHeart.rspeed = 0;
