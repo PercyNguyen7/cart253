@@ -34,8 +34,8 @@ class UserHeart{
   }
 
 // constrain to inside canvas
-    this.x = constrain(this.x, 50, width - 50);
-    this.y = constrain(this.y, 50, height - 50);
+    // this.x = constrain(this.x, 50, width - 50);
+    // this.y = constrain(this.y, 50, height - 50);
   }
 
   touchchain(chain1){
@@ -44,6 +44,10 @@ class UserHeart{
     //     state = `clickbegin`;
     if (this.x - this.width/2 <325 || this.x - this.width/2 > width-325 || this.y - this.height/2 < 75 || this.y - this.height/2 > height- 75){
       state = `heartattackEnd`;
+      if(acceptmusic.isPlaying()){
+        acceptmusic.stop();
+        loseSFX.play();
+      }
     }
   }
 //                                                  DISPLAY
@@ -64,10 +68,10 @@ class UserHeart{
     // }
       let change = random(0, 1);
     if (change < 0.1) {
-      this.height = random(30,70);
-      this.width = random(30,70);
+      this.height = random(50,90);
+      this.width = random(50,90);
     }
-    if (timer1.counter >=15){
+    if (timer1.counter >= 20){
       let change = random(0,4);
         this.height = random(20,50);
         this.width = random(20,50);

@@ -37,6 +37,7 @@ sfxguide(){
   if (this.x > 100 && this.x <200 && this.y > 600 && this.y <700 && this.lastSFXplayed!=0){;
     rightSFX.play();
     this.lastSFXplayed = 0;
+
   }
   if (this.x > 600 && this.x <700 && this.y > 600 && this.y <700 && this.lastSFXplayed!=1){
     upSFX.play();

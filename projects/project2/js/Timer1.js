@@ -71,35 +71,14 @@ class Timer1{
       oscillator.stop();
     }
     //                                          COUNTER CONDITIONS
-    if (this.counter >= 3){
+    if (this.counter >= 4){
       this.fill ={
         r:40,
         g:0,
         b:2,
       }
     }
-    if (this.counter >= 6){
-      this.fill ={
-        r:70,
-        g:0,
-        b:4,
-      }
-    }
-    if (this.counter >= 9){
-      this.fill ={
-        r:90,
-        g:0,
-        b:4,
-      }
-    }
-    if (this.counter >= 12){
-      this.fill ={
-        r:110,
-        g:1,
-        b:5,
-      }
-    }
-    if (this.counter >= 15){
+    if (this.counter >= 20){
       this.fill ={
         r:140,
         g:1,
@@ -111,10 +90,27 @@ class Timer1{
 
     }
 
-    if (this.counter >= 25){
+    if (this.counter >= 41){
       state = `acpminiwin1`;
     }
 
+    if (this.counter === 5 || this.counter ===12 || this.counter === 16 || this.counter === 18 || this.counter >= 20 && this.counter <=34|| this.counter >= 36
+      && this.counter <=40 && keyIsDown(UP_ARROW)){
+      push();
+      fill(0);
+      rect(0,0,1500,700);
+      fill(255);
+      textSize(50);
+      textAlign(CENTER, CENTER);
+      text(`BLACK OUT`, width / 2, height / 2);
+
+      this.fill = {
+        r:200,
+        g:1,
+        b:6,
+      }
+        pop();
+    }
 
 
   }

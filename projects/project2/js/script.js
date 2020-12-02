@@ -8,6 +8,7 @@ let chain1;
 let acceptmusic;
 let rejectmusic;
 
+let loseSFX;
 let upSFX;
 let downSFX;
 let rightSFX;
@@ -29,6 +30,9 @@ let state = `clickbegin`;
 function preload() {
   // SOUND
   acceptmusic = loadSound(`assets/sounds/posin.mp3`);
+  rejectmusic = loadSound(`assets/sounds/HTRJ.mp3`)
+
+  loseSFX= loadSound(`assets/sounds/loseSFX.m4a`)
   upSFX = loadSound(`assets/sounds/go_up.m4a`);
   downSFX = loadSound(`assets/sounds/head_down.m4a`);
   rightSFX = loadSound(`assets/sounds/go_right.m4a`);
@@ -44,8 +48,13 @@ function setup() {
   createCanvas(1500, 700);
   userStartAudio()
    oscillator = new p5.Oscillator(880, `sine`);
-   oscillator.amp(0.2);
-   acceptmusic.amp(0.6);
+   rightSFX.amp(2.5);
+   leftSFX.amp(3.5);
+   downSFX.amp(2.5);
+   upSFX.amp(2.5);
+   oscillator.amp(0.3);
+   acceptmusic.amp(0.4);
+   rejectmusic.amp(0.3);
   //                                                 ACCEPT PATH
 
   timer1 = new Timer1();
@@ -325,27 +334,17 @@ function acceptintro1(){
 function acpminigame1(){
   background(160,1,7);
   //                                         TIMER
-  timer1.display();
+
   timer1.ballsmove();
-  if (timer1.counter === 5 || timer1.counter ===12 || timer1.counter >= 15 && timer1.counter <=22){
-    background(0);
-    push();
-    fill(255);
-    textSize(50);
-    textAlign(CENTER, CENTER);
-    text(`BLACK OUT`, width / 2, height / 2);
-    pop();
-  }
+  timer1.display();
 
 //                                        USER HEART
   userHeart.display();
   userHeart.move();
   userHeart.touchchain();
 
-
   //                                        Chain1
   chain1.display();
-
 }
 //                                                     HEART ATTACK ENDING
 function heartattackEnd(){
@@ -356,18 +355,20 @@ function heartattackEnd(){
   textSize(50);
   textAlign(CENTER, CENTER);
   text(`How do you mend a heart attack`, width/2, height/2);
-  text(`:(`, width/2, height/2 +100);
+  textSize(70);
+  text(`Stephanie sucks :')`, width/2, height/2 +100);
   pop();
 }
 
 function acpminiwin1(){
-  background(100);
+  background(200,2,10);
   push();
-  noFill(210, 10,30);
+  noFill();
   stroke(255);
   textSize(50);
   textAlign(CENTER, CENTER);
   text(`You survived the first trial of love!`, width/2, height/2);
+  text(`Now face the 2nd :)`, width/2, height/2 +100);
   pop();
 }
 //                                                    REJECTION PATH
@@ -409,9 +410,9 @@ function rejminigame() {
     tile.colorchange();
   }
   //                                                USERREJECT FUNCTIONS
+  userreject.sfxguide();
   userreject.move();
   userreject.display();
-  userreject.sfxguide();
   userreject.badpath();
   userreject.goodpath();
 
@@ -440,9 +441,10 @@ function goodrejectionEnd() {
   noFill();
   stroke(255);
   textAlign(CENTER, CENTER);
-  textSize(50);
+  textSize(70);
   text(`A painful truth`, width / 2, height / 2);
-  text(`But a well handled one`, width / 2, 440);
+  textSize(90);
+  text(`But he hit the road in peace... nevertheless`, width / 2, 440);
   pop();
 }
 
@@ -472,6 +474,7 @@ function keyPressed() {
 //                                                 REJECT PATH
   else if (state === `decision` && keyCode === 82) {
     state = `rejectp`;
+    rejectmusic.loop();
   } else if (state === `rejectp`) {
     state = `rejectionintro`;
   } else if (state === `rejectionintro` && keyCode === 32) {
