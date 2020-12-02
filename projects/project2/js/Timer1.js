@@ -67,7 +67,7 @@ class Timer1{
       oscillator.start();
       }
 
-    if (this.x3 > 800){
+    if (this.x3 > 780){
       oscillator.stop();
     }
     //                                          COUNTER CONDITIONS
@@ -78,24 +78,47 @@ class Timer1{
         b:2,
       }
     }
-    if (this.counter >= 20){
+
+//                                  BLACKOUT PERIOD 20th - 34th HEARTBEAT
+    if (this.counter >= 20 && this.counter <=34){
       this.fill ={
         r:140,
         g:1,
         b:6,
       }
-      userHeart.speed = 13;
-      userHeart.rspeed = 10;
+      this.vy = this.vy*1.2;
+      this.vy2 = this.vy2*1.2;
+      // 12 and 9
+      userHeart.speed = 0;
+      userHeart.rspeed = 0;
       this.vx3 = 70;
-
+      let change = random(0,4);
+        userHeart.height = random(20,50);
+        userHeart.width = random(20,50);
     }
+    if (this.counter === 37){
+      this.fill ={
+        r:140,
+        g:1,
+        b:6,
+      }
+      userHeart.speed = 3;
+      userHeart.rspeed = 1.5;
 
-    if (this.counter >= 41){
+      userHeart.letloose = false;
+      userHeart.height += 1.6;
+      userHeart.width += 1.6;
+
+
+      this.vx3 = 6;
+      }
+
+    if (this.counter == 38){
       state = `acpminiwin1`;
     }
 
-    if (this.counter === 5 || this.counter ===12 || this.counter === 16 || this.counter === 18 || this.counter >= 20 && this.counter <=34|| this.counter >= 36
-      && this.counter <=40 && keyIsDown(UP_ARROW)){
+    if (this.counter === 5 || this.counter ===12 || this.counter === 16 || this.counter === 18 || this.counter >= 20 && this.counter <=34|| this.counter >= 35
+      && this.counter <=37 && keyIsDown(UP_ARROW)){
       push();
       fill(0);
       rect(0,0,1500,700);
@@ -114,7 +137,6 @@ class Timer1{
 
 
   }
-
   display(){
     push();
     noStroke();

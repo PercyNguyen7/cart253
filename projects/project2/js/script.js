@@ -32,7 +32,7 @@ function preload() {
   acceptmusic = loadSound(`assets/sounds/POSING.mp3`);
   rejectmusic = loadSound(`assets/sounds/HTRJ.mp3`)
 
-  loseSFX= loadSound(`assets/sounds/loseSFX.m4a`)
+  loseSFX= loadSound(`assets/sounds/loseSFX.mp3`)
   upSFX = loadSound(`assets/sounds/go_up.m4a`);
   downSFX = loadSound(`assets/sounds/head_down.m4a`);
   rightSFX = loadSound(`assets/sounds/go_right.m4a`);

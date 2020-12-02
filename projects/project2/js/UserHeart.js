@@ -4,12 +4,14 @@ class UserHeart{
     this.y = height / 2;
     this.vx = 0;
     this.vy = 0;
-    //speeed 9 rspeed 6
-    this.speed = 8;
-    this.rspeed = 5;
+    //speeed 8 and 5
+    this.speed = 0;
+    this.rspeed = 0;
     this.height = 75;
     this.width = 75;
     this.image = userHeartImage;
+// let loose variable so that its width & height can be enlarged overtime. See more in Timer1.js
+    this.letloose = true;
   }
   //                                            MOVE
   //          CONTROL
@@ -42,12 +44,12 @@ class UserHeart{
     // let d = dist(this.x,this.y,chain1.x,chain1.y);
     //   if (d < this.width /2 + chain1.width/ 2 || d < this.height / 2 + chain1.height/2 ) {
     //     state = `clickbegin`;
-    if (this.x - this.width/2 <325 || this.x - this.width/2 > width-325 || this.y - this.height/2 < 75 || this.y - this.height/2 > height- 75){
+    if (this.x - this.width/2 <280 || this.x + this.width/2 > width-280 || this.y - this.height/2 < 50 || this.y + this.height/2 > height- 50){
       state = `heartattackEnd`;
-      if(acceptmusic.isPlaying()){
         acceptmusic.stop();
         loseSFX.play();
-      }
+        oscillator.stop();
+
     }
   }
 //                                                  DISPLAY
@@ -66,16 +68,13 @@ class UserHeart{
     // else if (this.size ===100){
     //   this.size = 50
     // }
+
       let change = random(0, 1);
-    if (change < 0.1) {
+
+    if (change < 0.1 & this.letloose === true) {
       this.height = random(50,90);
       this.width = random(50,90);
     }
-    if (timer1.counter >= 20){
-      let change = random(0,4);
-        this.height = random(20,50);
-        this.width = random(20,50);
 
-    }
   }
 }
