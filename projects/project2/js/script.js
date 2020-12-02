@@ -5,10 +5,14 @@ let userHeart;
 let timer1;
 let chain1;
 //                                            SFX/ MUSIC
+let acceptmusic;
+let rejectmusic;
+
 let upSFX;
 let downSFX;
 let rightSFX;
 let leftSFX;
+
 //                                          OSCILLATOR
 let oscillator;
 
@@ -24,6 +28,7 @@ let state = `clickbegin`;
 //                                                IMAGE PRELOAD
 function preload() {
   // SOUND
+  acceptmusic = loadSound(`assets/sounds/posin.mp3`);
   upSFX = loadSound(`assets/sounds/go_up.m4a`);
   downSFX = loadSound(`assets/sounds/head_down.m4a`);
   rightSFX = loadSound(`assets/sounds/go_right.m4a`);
@@ -39,7 +44,8 @@ function setup() {
   createCanvas(1500, 700);
   userStartAudio()
    oscillator = new p5.Oscillator(880, `sine`);
-   oscillator.amp(0.1);
+   oscillator.amp(0.2);
+   acceptmusic.amp(0.6);
   //                                                 ACCEPT PATH
 
   timer1 = new Timer1();
@@ -321,10 +327,12 @@ function acpminigame1(){
   //                                         TIMER
   timer1.display();
   timer1.ballsmove();
-  if (timer1.counter === 5 || timer1.counter >=7 && timer1.counter <=9 ){
+  if (timer1.counter === 5 || timer1.counter ===12 || timer1.counter >= 15 && timer1.counter <=22){
     background(0);
     push();
     fill(255);
+    textSize(50);
+    textAlign(CENTER, CENTER);
     text(`BLACK OUT`, width / 2, height / 2);
     pop();
   }
@@ -341,13 +349,14 @@ function acpminigame1(){
 }
 //                                                     HEART ATTACK ENDING
 function heartattackEnd(){
-  background(100);
+  background(0);
   push();
   noFill();
   stroke(255);
   textSize(50);
   textAlign(CENTER, CENTER);
   text(`How do you mend a heart attack`, width/2, height/2);
+  text(`:(`, width/2, height/2 +100);
   pop();
 }
 
@@ -452,6 +461,8 @@ function keyPressed() {
 //                                                ACCEPT PATH
   else if (state === `decision` && keyCode === 65) {
     state = `acceptp`;
+    acceptmusic.loop();
+
   } else if (state === `acceptp`) {
     state = `acceptintro1`;
   } else if (state ===`acceptintro1`&& keyCode === 32) {

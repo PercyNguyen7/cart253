@@ -62,55 +62,61 @@ class Timer1{
       this.y3 = height/2;
       this.counter += 1;
     }
-    if (this.x3 >= 730 && this.x3 <= 735){
-      oscillator.amp(0.1);
+  //                                          OSCILLATOR CONDITIONS
+    if (this.x3 > 730 && this.x3 < 740){
       oscillator.start();
       }
 
-    if (this.vy3 === 0){
+    if (this.x3 > 800){
       oscillator.stop();
     }
-    if (this.counter > 1){
+    //                                          COUNTER CONDITIONS
+    if (this.counter >= 3){
       this.fill ={
         r:40,
         g:0,
         b:2,
       }
     }
-    if (this.counter > 2){
+    if (this.counter >= 6){
       this.fill ={
         r:70,
         g:0,
         b:4,
       }
     }
-    if (this.counter > 3){
+    if (this.counter >= 9){
       this.fill ={
         r:90,
         g:0,
         b:4,
       }
     }
-    if (this.counter > 4){
+    if (this.counter >= 12){
       this.fill ={
         r:110,
         g:1,
         b:5,
       }
     }
-    if (this.counter > 5){
+    if (this.counter >= 15){
       this.fill ={
         r:140,
         g:1,
         b:6,
       }
-      userHeart.speed = 14;
-      userHeart.rspeed = 9;
+      userHeart.speed = 13;
+      userHeart.rspeed = 10;
+      this.vx3 = 70;
+
     }
 
-    if (this.counter >= 6){
+    if (this.counter >= 25){
       state = `acpminiwin1`;
     }
+
+
+
   }
 
   display(){

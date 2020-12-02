@@ -5,8 +5,8 @@ class UserHeart{
     this.vx = 0;
     this.vy = 0;
     //speeed 9 rspeed 6
-    this.speed = 0;
-    this.rspeed = 0;
+    this.speed = 8;
+    this.rspeed = 5;
     this.height = 75;
     this.width = 75;
     this.image = userHeartImage;
@@ -66,6 +66,12 @@ class UserHeart{
     if (change < 0.1) {
       this.height = random(30,70);
       this.width = random(30,70);
+    }
+    if (timer1.counter >=15){
+      let change = random(0,4);
+        this.height = random(20,50);
+        this.width = random(20,50);
+
     }
   }
 }
