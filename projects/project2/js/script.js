@@ -29,7 +29,7 @@ let state = `clickbegin`;
 //                                                IMAGE PRELOAD
 function preload() {
   // SOUND
-  acceptmusic = loadSound(`assets/sounds/posin.mp3`);
+  acceptmusic = loadSound(`assets/sounds/POSING.mp3`);
   rejectmusic = loadSound(`assets/sounds/HTRJ.mp3`)
 
   loseSFX= loadSound(`assets/sounds/loseSFX.m4a`)
