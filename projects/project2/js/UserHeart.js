@@ -23,10 +23,16 @@ class UserHeart{
       this.vx = -this.speed;
     } else if (keyIsDown(RIGHT_ARROW)) {
       this.vx = this.speed;
-    } else if (keyIsDown(UP_ARROW)) {
+    } else {
+      this.vx = 0;
+    }
+
+     if (keyIsDown(UP_ARROW)) {
       this.vy = -this.speed;
     } else if (keyIsDown(DOWN_ARROW)) {
       this.vy = this.speed;
+    } else {
+      this.vy = 0;
     }
 // change direction and move around
       let change = random(0, 1);

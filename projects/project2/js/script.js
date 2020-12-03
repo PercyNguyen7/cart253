@@ -2,8 +2,12 @@
 //                                           VARIABLES
 let userreject;
 let userHeart;
+let userHeart2;
 let timer1;
 let chain1;
+let memos = [];
+let numMemos = 3;
+
 //                                            SFX/ MUSIC
 let acceptmusic;
 let rejectmusic;
@@ -56,12 +60,21 @@ function setup() {
    acceptmusic.amp(0.4);
    rejectmusic.amp(0.3);
   //                                                 ACCEPT PATH
+  userHeart2 = new UserHeart2(userHeartImage);
 
   timer1 = new Timer1();
 
   userHeart = new UserHeart(userHeartImage);
 
   chain1 = new Chain1(chain1Image);
+
+  for (let i = 0; i < numMemos; i++) {
+    let x = random(50, width - 50);
+    let y = random(50, height - 50);
+    let memo = new Memo(x, y);
+    memos.push(memo);
+
+  }
   //                                                 REJECTION PATH
   userreject = new UserReject(userrejectImage);
   //                                                  RED TILES
@@ -219,6 +232,12 @@ function draw() {
   if (state === `acpminiwin1`){
     acpminiwin1();
   }
+  if (state === `acceptintro2`){
+    acceptintro2();
+  }
+  if (state === `acpminigame2`){
+    acpminigame2();
+  }
   //                                          REJECT PATH
   if (state === `rejectp`) {
     rejectp();
@@ -356,7 +375,6 @@ function heartattackEnd(){
   textAlign(CENTER, CENTER);
   text(`How do you mend a heart attack`, width/2, height/2);
   textSize(70);
-  text(`Stephanie sucks :')`, width/2, height/2 +100);
   pop();
 }
 
@@ -370,6 +388,52 @@ function acpminiwin1(){
   text(`You survived the first trial of love!`, width/2, height/2);
   text(`Now face the 2nd :)`, width/2, height/2 +100);
   pop();
+}
+
+function acceptintro2(){
+  background(100);
+  push();
+  noFill();
+  stroke(255);
+  textSize(50);
+  textAlign(CENTER, CENTER);
+  text(`Collect your memories`, width/2, height/2);
+  pop();
+}
+
+function acpminigame2(){
+  background(160,1,7);
+//  memos
+  for (let i = 0; i < memos.length; i++) {
+      let memo = memos[i];
+
+      if (memo.active) {
+
+    memo.display();
+    memo.move();
+    memo.bounce();
+
+    let d = dist(memo.x, memo.y, userHeart2.x, userHeart2.y);
+    if (d < memo.size/2 + userHeart2.size/2){
+       memos.splice(i, 1);
+       break;
+     }
+    }
+  }
+
+
+    userHeart2.display();
+    userHeart2.move();
+    userHeart2.displaypursuit();
+    userHeart2.movepursuit1();
+    userHeart2.caught();
+//                                                  WIN GAME
+    check();
+}
+
+function check(){
+  if (nemos.length <= 0);
+  ellipse(0,0,300);
 }
 //                                                    REJECTION PATH
 function rejectp() {
@@ -420,8 +484,8 @@ function rejminigame() {
   rect(1300, 0, 100, 700);
 }
 
-//                                                   TWO REJECTIOn ENDING STATES
-//                                                   BAD REJECTION ENDING
+//                                                              TWO REJECTIOn ENDING STATES
+//                                                               BAD REJECTION ENDING
 function badrejectionEnd() {
   background(255, 40, 40);
   push();
@@ -433,7 +497,7 @@ function badrejectionEnd() {
   text(`He never found love again`, width / 2, height / 2);
   pop();
 }
-//                                                    GOOD REJECTION ENDING
+//                                                                GOOD REJECTION ENDING
 function goodrejectionEnd() {
   background(125);
   push();
@@ -469,7 +533,22 @@ function keyPressed() {
     state = `acceptintro1`;
   } else if (state ===`acceptintro1`&& keyCode === 32) {
     state = `acpminigame1`
-  }
+  } else if (state === `acpminiwin1`) {
+    state = `acceptintro2`;
+  } else if (state === `acceptintro2` && keyCode === 32) {
+    state = `acpminigame2`;
+  } else if (state === `acpminigame2` && keyCode === 65) {
+      for (let i = 0; i < memos.length; i++) {
+          let memo = memos[i];
+          memo.tstop = true;
+      }
+  } else if (state === `acpminigame2` && keyCode === 83 &&
+    userHeart2.size === 30) {
+        for (let i = 0; i < memos.length; i++) {
+            let memo = memos[i];
+            memo.tstop = false;
+        }
+      }
 
 //                                                 REJECT PATH
   else if (state === `decision` && keyCode === 82) {

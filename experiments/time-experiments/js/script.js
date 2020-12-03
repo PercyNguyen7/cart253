@@ -1,175 +1,240 @@
 "use strict";
 
-// An array of circles with a starting length
-let circles = [];
-let numCircles = 10;
+// Our user, to move with the mouse
+let user = {
+  x: 0,
+  y: 0,
+  size: 50,
 
-// NEW! A variable to store how long our game is (in milliseconds)
-let gameLength = 10 * 1000; // 10 seconds
+};
+let moon = {
+  x: 0,
+  y: 0,
+  size: 100,
+  vx: 1.4,
+  vy: 0.7,
+};
+let school = [];
+let schoolSize = 22;
+let state = `title`;
+let starcounter = 22;
 
-
-// NEW! A timer for adding a new circle
-let newCircleTimer;
-// NEW! A variable to store how long to wait before adding a circle (in milliseconds)
-let newCircleDelay = 2 * 1000; // 2 seconds
-
-// The current state
-let state = `title`; // title, game, win, lose
-
-// setup() creates the canvas and our initial circles
 function setup() {
-  createCanvas(windowWidth, windowHeight);
+  createCanvas(windowWidth, 750);
 
-  for (let i = 0; i < numCircles; i++) {
-    let circle = createCircle();
-    circles.push(circle);
+  for (let i = 0; i < schoolSize; i++) {
+    let star = createStar(random(0, width), random(0, 600));
+    school.push(star);
   }
 }
 
-// createCircle() creates a simple circle object with position and size
-function createCircle() {
-  let circle = {
-    x: random(0, width),
-    y: random(0, height),
+function createStar(x, y) {
+  let star = {
+    x: x,
+    y: y,
+    size: 15,
     vx: 0,
-    vy:0,
-    size: random(50, 100)
+    vy: 0,
+    speed: 25,
+    caught: false,
   };
-  return circle;
+  return star;
 }
 
-// draw() checks the state and runs the appropriate state function
-function draw() {
-  background(0);
 
+function draw() {
+  background(34, 64, 123);
   if (state === `title`) {
     title();
-  }
-  else if (state === `game`) {
-    game();
-  }
-  else if (state === `win`) {
-    win();
-  }
-  else if (state === `lose`) {
-    lose();
+  } else if (state === `gameplay`) {
+    gameplay();
+  } else if (state === `winending`) {
+    winending();
+  } else if (state === `loseending`) {
+    loseending();
   }
 }
 
-// title() shows the game title and we click to continue
+//                                     STATE FUNCTIONS
 function title() {
-  displayText(`CIRCLE CLICKER`);
-}
-
-// game() displays all the circles in the array
-function game() {
-    move();
-  // Display all the circles
-  for (let i = 0; i < circles.length; i++) {
-    let circle = circles[i];
-    displayCircle(circle);
-
-  }
-}
-
-function move(){
-  circle.x += 3;
-  circle.y += 3;
-  // let change = random(0, 1);
-  //   if (change < 0.1) {
-  //     this.vx = random(1,5);
-  //     this.vy = random(1,5);
-  //   }
-}
-// displayCircle() displays the circle provided as a parameter
-function displayCircle(circle) {
   push();
-  fill(255);
-  noStroke();
-  ellipse(circle.x, circle.y, circle.size);
+  textSize(64)
+  noFill();
+  stroke(253, 232, 85);
+  textAlign(CENTER, CENTER);
+  textSize(80);
+  text(`SORCERERS! CATCH THESE STARS`, width / 2, 200)
+  textSize(60);
+  text(`OR THEY SHALL FLEE BY THE MOONLIGHT`, width / 2, 300)
+  textSize(40);
+  text(`Fail and you shall witness the downfall of mankind`, width / 2, 400)
+  text(`Move your mouse (STRATEGICALLY) to seize them all!`, width / 2, 450)
+  text(`Click to begin`, width / 2, 500)
   pop();
 }
 
-// mousePressed() checks all circles to see if they were clicked
-// and removes the first clicked circle in the array
-function mousePressed() {
-  if (state === `title`) {
-    // NEW!  Start our gameover timer to call the gameOver() function
-    // when the game ends
-    setTimeout(gameOver, gameLength);
-    // NEW! Start our circle adding timer to run after two seconds
-    // Remember the ID so we can cancel it when the game ends
-    newCircleTimer = setTimeout(addCircle, newCircleDelay);
-    state = `game`;
+function gameplay() {
+  moveMoon();
+  displayMoon();
+  displayGround();
+
+  for (let i = 0; i < schoolSize; i++) {
+    moveStar(school[i]);
+    sparkleStar(school[i]);
+    displayStar(school[i]);
+    checkStar(school[i])
   }
-  else if (state === `game`) {
-    checkCircleClick();
-  }
+
+  moveUser();
+  displayUser();
+}
+//                          ENDINGS FUNCTIONS
+function winending() {
+  background(89,125,198);
+  push();
+  noFill();
+  stroke(253, 232, 85);
+  textAlign(CENTER, CENTER);
+  strokeWeight(2);
+  textSize(80);
+  text(`THE NIGHT SHINED ON...`, width / 2, 250);
+  textSize(75);
+  text(`After you sold them 50 billion $ each.`, width / 2, 350);
+  textSize(30);
+  strokeWeight(1.5);
+  text(`"What a bloody greedy opportunistic bastard..." the king murmurs.`, width / 2, 450);
+  text(`Well, you're not the hero they need...but the hero they deserve... `, width / 2, 500);
+  pop();
 }
 
-// gameOver() checks whether the player has won or lost
-// and sets the state appropriately
-function gameOver() {
-  // Check if there are 0 circles left...
-  if (circles.length === 0) {
-    // There are no circles left, so the user won!
-    state = `win`;
-  }
-  else {
-    // Otherwise they lost
-    state = `lose`;
-  }
-  // NEW! Cancel the circle adding timer since it shouldn't run
-  // when the game is over!
-  clearTimeout(newCircleTimer);
+function loseending() {
+  background(0);
+  textAlign(CENTER, CENTER);
+  stroke(255,0,0);
+  strokeWeight(2);
+  textSize(80);
+  text(`Starry Night was never painted... `, width / 2, 350);
 }
 
-// NEW! addCircle() called by the new circle timer to add a circle
-// also starts the timer again so it will run again
-function addCircle() {
-  // Ad a circle
-  let circle = createCircle();
-  circles.push(circle);
-  // Start our circle adding timer to run after two seconds
-  // Remember the ID so we can cancel it when the game ends
-  // Note how this function is effectively CALLING ITSELF
-  // after a delay! (Quite a lot like how draw() works)
-  newCircleTimer = setTimeout(addCircle, newCircleDelay);
-}
+//                            STARS FUNCTIONS
+// Check if the user overlaps the Stars
+function checkStar(star) {
+  if (!star.caught) {
+    let d = dist(user.x, user.y, star.x, star.y);
+    if (d < user.size / 2 + star.size / 2) {
+      star.caught = true;
+      starcounter+=-1;
+    }
 
-
-function checkCircleClick() {
-  // Check all circles
-  for (let i = 0; i < circles.length; i++) {
-    let circle = circles[i];
-    // Check the distance to the circle from the mouse
-    let d = dist(mouseX, mouseY, circle.x, circle.y);
-    // If the mouse was clicked inside the circle
-    if (d < circle.size / 2) {
-      // Remove the circle from the array with splice()
-      circles.splice(i, 1);
-      // Break out of the for-loop after removing the circle
-      break;
+    if (starcounter === 0) {
+      state = `winending`;
     }
   }
 }
+//Move stars at random speed at random direction
+function moveStar(star) {
+  let change = random(0, 1);
+  if (change < 0.05) {
+    star.vx = random(-star.speed, star.speed);
+    star.vy = random(-star.speed, star.speed);
+  }
+  //Stars change direction if bumped against borders
+  if (star.x === 20 || star.x === width - 20 || star.y === 20 || star.y === 580) {
+    star.vx = random(-star.speed, star.speed);
+    star.vy = random(-star.speed, star.speed);
+  }
+  star.x += star.vx;
+  star.y += star.vy;
 
-// win() shows YOU WIN
-function win() {
-  displayText(`YOU WIN!`);
+  star.x = constrain(star.x, 20, width - 20);
+  star.y = constrain(star.y, 20, 580);
 }
 
-// lose() shows YOU LOSE
-function lose() {
-  displayText(`YOU LOSE!`);
+//Stars change size at random
+function sparkleStar(star) {
+  let change = random(0, 1);
+  if (change < 0.5) {
+    star.size = random(4, 20);
+  }
 }
 
-// displayText() displays the provided message in the center of the canvas
-function displayText(message) {
+// Display stars
+function displayStar(star) {
+  if (!star.caught) {
+    push();
+    stroke(253, 232, 85);
+    strokeWeight(1);
+    fill(253, 232, 85);
+
+    if (star.size >= 4 && star.size < 9) {
+      fill(255, 101, 138);
+    }
+    if (star.size >= 9 && star.size < 14) {
+      fill(255, 182, 171);
+    }
+    ellipse(star.x, star.y, star.size);
+    pop();
+  }
+}
+
+//                                                USER FUNCTIONS
+// Sets the user position to the mouse position
+function moveUser() {
+  user.x = mouseX;
+  user.y = mouseY;
+
+  user.x = constrain(user.x, 0, width);
+  user.y = constrain(user.y, 0, 600);
+}
+
+// Draw the user as a circle
+function displayUser() {
   push();
-  fill(255);
-  textSize(32);
-  textAlign(CENTER, CENTER);
-  text(message, width / 2, height / 2);
+  stroke(253, 232, 85);
+  strokeWeight(3);
+  noFill();
+  ellipse(user.x, user.y, user.size);
   pop();
+}
+
+//                                                   MOON FUNCTIONS
+//move moon left to right
+function moveMoon() {
+  if (moon.x < width / 2) {
+    moon.x += moon.vx;
+    moon.y += moon.vy;
+
+    moon.size += 0.1
+  }
+  if (moon.x >= width / 2) {
+    moon.x += moon.vx;
+    moon.y += -moon.vy;
+
+    moon.size -= 0.1
+  }
+
+  if (moon.x >= width) {
+    state = `loseending`
+  }
+  moon.size = constrain(moon.size, 100, 200);
+}
+
+function displayMoon() {
+  push();
+  fill(233);
+  ellipse(moon.x, moon.y, moon.size);
+  pop();
+}
+//                                               DISPLAY GROUND FUNCTION
+function displayGround() {
+  push();
+  fill(9, 24, 20);
+  rect(0, 600, width, 150);
+  pop();
+}
+//                                                mousePressed FUNCTION
+function mousePressed() {
+  if (state === `title`) {
+    state = `gameplay`;
+  }
 }

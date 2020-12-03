@@ -112,8 +112,8 @@ class Timer1{
 
       this.vx3 = 6;
       }
-
-    if (this.counter == 38){
+// 38th 
+    if (this.counter == 1){
       state = `acpminiwin1`;
     }
 
