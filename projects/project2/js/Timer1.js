@@ -22,6 +22,7 @@ class Timer1{
       g : 0,
       b : 0,
     }
+
   }
 
   ballsmove(){

@@ -15,8 +15,6 @@ class UserHeart2{
     this.speed2 = 3;
     this.size2 = 50;
 
-
-
 // let loose variable so that its width & height can be enlarged overtime see more in TIMER1.
   }
   move(){
@@ -65,6 +63,10 @@ caught(){
       state = 'panicEnd'
     }
 }
+
+
+
+
   display(){
     push();
     fill(255);

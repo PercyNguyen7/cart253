@@ -1,5 +1,7 @@
 "use strict";
 //                                           VARIABLES
+let enlarged = true;
+
 let userreject;
 let userHeart;
 let userHeart2;
@@ -50,6 +52,9 @@ function preload() {
 //                                                     SETUP
 function setup() {
   createCanvas(1500, 700);
+
+  setInterval(shrink, 500);
+
   userStartAudio()
    oscillator = new p5.Oscillator(880, `sine`);
    rightSFX.amp(2.5);
@@ -196,6 +201,8 @@ function setup() {
       tiles.push(tile);
     }
   }
+
+
 }
 //                                                DRAW
 function draw() {
@@ -410,6 +417,8 @@ function acceptintro2(){
 
 function acpminigame2(){
   background(160,1,7);
+  shrinkog();
+
 //  memos
   for (let i = 0; i < memos.length; i++) {
       let memo = memos[i];
@@ -437,7 +446,23 @@ function acpminigame2(){
     userHeart2.displaypursuit();
     userHeart2.movepursuit1();
     userHeart2.caught();
+
+
 }
+function shrinkog(){
+  push();
+
+  if (enlarged && userHeart2.size === 30){
+    fill(0);
+    rectMode(CENTER);
+    rect(width/2,height/2,500);
+  }
+  pop();
+}
+function shrink(){
+  enlarged = !enlarged;
+}
+
 function panicEnd(){
   background(0);
   push();
@@ -447,6 +472,7 @@ function panicEnd(){
   textAlign(CENTER, CENTER);
   text(`Steph ngo`, width/2, height/2);
   pop();
+
 }
 function acpminiwin2(){
   background(200);
@@ -575,7 +601,6 @@ function keyPressed() {
             memo.tstop = false;
         }
       }
-
 //                                                 REJECT PATH
   else if (state === `decision` && keyCode === 82) {
     state = `rejectp`;

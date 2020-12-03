@@ -13,8 +13,9 @@ move(){
 //                              TIME STOP FALSE
   if (this.tstop === false){
     this.size = 20;
-    this.speed =20;
 
+    this.speed =20;
+//  Heart and Chaser speed 20 & 3,6
     userHeart2.size = 200;
     userHeart2.speed = 7;
     userHeart2.size2 = 50;
@@ -30,10 +31,11 @@ move(){
     this.size = 50;
     this.speed =3;
 
+//  Heart and Chaser speed 20 & 3,6
     userHeart2.size = 30;
     userHeart2.speed = 20;
     userHeart2.size2 = 450;
-    userHeart2.speed2 = 3.6;
+    userHeart2.speed2 = 0;
 
      let change = random(0, 1);
        if (change < 1) {
