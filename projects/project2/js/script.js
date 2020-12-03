@@ -6,7 +6,7 @@ let userHeart2;
 let timer1;
 let chain1;
 let memos = [];
-let numMemos = 20;
+let numMemos = 60;
 
 //                                            SFX/ MUSIC
 let acceptmusic;
@@ -270,7 +270,7 @@ function clickbegin() {
   stroke(255);
   textAlign(CENTER, CENTER);
   textSize(80);
-  text(`Press any key to begin`, width / 2, height / 2);
+  text(`Press Spacebar to begin`, width / 2, height / 2);
   pop();
 }
 //                                                     TITLE
@@ -359,9 +359,10 @@ function acceptintro1(){
 function acpminigame1(){
   background(160,1,7);
   //                                         TIMER
-
+  timer1.blackout();
   timer1.ballsmove();
   timer1.display();
+
 
 //                                        USER HEART
   userHeart.display();
@@ -439,9 +440,23 @@ function acpminigame2(){
 }
 function panicEnd(){
   background(0);
+  push();
+  noFill();
+  stroke(255);
+  textSize(50);
+  textAlign(CENTER, CENTER);
+  text(`Steph ngo`, width/2, height/2);
+  pop();
 }
 function acpminiwin2(){
   background(200);
+  push();
+  noFill();
+  stroke(255);
+  textSize(50);
+  textAlign(CENTER, CENTER);
+  text(`Good job stephie`, width/2, height/2);
+  pop();
 }
 // function check(){
 //
@@ -526,13 +541,13 @@ function goodrejectionEnd() {
 
 //                                                     KEYPRESSED FUNCTION
 function keyPressed() {
-  if (state === `clickbegin`) {
+  if (state === `clickbegin`&& keyCode === 32) {
     state = `title`;
-  } else if (state === `title`) {
+  } else if (state === `title`&& keyCode === 32) {
     state = `instructions`;
-  } else if (state === `instructions`) {
+  } else if (state === `instructions`&& keyCode === 32) {
     state = `context`;
-  } else if (state === `context`) {
+  } else if (state === `context`&& keyCode === 32) {
     state = `decision`;
   }
 //                                                ACCEPT PATH
@@ -540,11 +555,11 @@ function keyPressed() {
     state = `acceptp`;
     acceptmusic.loop();
 
-  } else if (state === `acceptp`) {
+  } else if (state === `acceptp`&& keyCode === 32) {
     state = `acceptintro1`;
   } else if (state ===`acceptintro1`&& keyCode === 32) {
     state = `acpminigame1`
-  } else if (state === `acpminiwin1`) {
+  } else if (state === `acpminiwin1` && keyCode === 32) {
     state = `acceptintro2`;
   } else if (state === `acceptintro2` && keyCode === 32) {
     state = `acpminigame2`;

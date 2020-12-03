@@ -5,8 +5,8 @@ class UserHeart{
     this.vx = 0;
     this.vy = 0;
     //speeed 8 and 5
-    this.speed = 0;
-    this.rspeed = 0;
+    this.speed = 8;
+    this.rspeed = 5;
     this.height = 75;
     this.width = 75;
     this.image = userHeartImage;
@@ -23,16 +23,12 @@ class UserHeart{
       this.vx = -this.speed;
     } else if (keyIsDown(RIGHT_ARROW)) {
       this.vx = this.speed;
-    } else {
-      this.vx = 0;
     }
 
      if (keyIsDown(UP_ARROW)) {
       this.vy = -this.speed;
     } else if (keyIsDown(DOWN_ARROW)) {
       this.vy = this.speed;
-    } else {
-      this.vy = 0;
     }
 // change direction and move around
       let change = random(0, 1);
@@ -81,6 +77,5 @@ class UserHeart{
       this.height = random(50,90);
       this.width = random(50,90);
     }
-
   }
 }

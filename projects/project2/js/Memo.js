@@ -16,7 +16,7 @@ move(){
     this.speed =20;
 
     userHeart2.size = 200;
-    userHeart2.speed = 7.5;
+    userHeart2.speed = 7;
     userHeart2.size2 = 50;
     userHeart2.speed2 = 3;
     let change = random(0, 1);
@@ -33,7 +33,7 @@ move(){
     userHeart2.size = 30;
     userHeart2.speed = 20;
     userHeart2.size2 = 450;
-    userHeart2.speed2 = 3.5;
+    userHeart2.speed2 = 3.6;
 
      let change = random(0, 1);
        if (change < 1) {

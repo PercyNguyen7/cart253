@@ -1,5 +1,6 @@
 class Timer1{
   constructor() {
+// 2 SIDE BALLS VARIABLES
     this.x = 130;
     this.y = height;
     this.vy = 0;
@@ -8,7 +9,7 @@ class Timer1{
     this.y2 = 0;
     this.vy2 = 0;
 
-
+// TIMER BALL VARIABLES
     this.x3 = -15;
     this.y3 = height/2 ;
     this.vx3= 30;
@@ -71,37 +72,21 @@ class Timer1{
       oscillator.stop();
     }
     //                                          COUNTER CONDITIONS
-    if (this.counter >= 4){
-      this.fill ={
-        r:40,
-        g:0,
-        b:2,
-      }
-    }
 
-//                                  BLACKOUT PERIOD 20th - 34th HEARTBEAT
+//   2nd STAGE:
     if (this.counter >= 20 && this.counter <=34){
-      this.fill ={
-        r:140,
-        g:1,
-        b:6,
-      }
       this.vy *= 1.2;
       this.vy2 *= 1.2;
       // 12 and 9
-      userHeart.speed = 0;
-      userHeart.rspeed = 0;
+      userHeart.speed = 12;
+      userHeart.rspeed = 9;
       this.vx3 = 70;
       let change = random(0,4);
         userHeart.height = random(20,50);
         userHeart.width = random(20,50);
     }
-    if (this.counter === 37){
-      this.fill ={
-        r:140,
-        g:1,
-        b:6,
-      }
+// 3rd STAGE: HEART EXPANDS in 1 SLOW HEARTBEAT
+    else if (this.counter === 37){
       userHeart.speed = 3;
       userHeart.rspeed = 1.5;
 
@@ -109,16 +94,19 @@ class Timer1{
       userHeart.height += 1.6;
       userHeart.width += 1.6;
 
-
       this.vx3 = 6;
       }
-// 38th 
-    if (this.counter == 1){
+// SURVIVE TO 38th HEARTBEAT TO WIN
+    else if (this.counter === 0){
       state = `acpminiwin1`;
     }
+  }
 
-    if (this.counter === 5 || this.counter ===12 || this.counter === 16 || this.counter === 18 || this.counter >= 20 && this.counter <=34|| this.counter >= 35
+//                  BLACK OUT counts: 2, 12, 16, 18, 20 - 34, 35 - 37 if press DOWN ARROW
+    blackout(){
+     if (this.counter === 2 || this.counter ===12 || this.counter === 16 || this.counter === 18 || this.counter >= 20 && this.counter <=34|| this.counter >= 35
       && this.counter <=37 && keyIsDown(UP_ARROW)){
+
       push();
       fill(0);
       rect(0,0,1500,700);
@@ -126,17 +114,26 @@ class Timer1{
       textSize(50);
       textAlign(CENTER, CENTER);
       text(`BLACK OUT`, width / 2, height / 2);
-
-      this.fill = {
-        r:200,
-        g:1,
-        b:6,
+      pop();
+      this.fill= {
+        r : 200,
+        g : 1,
+        b : 6,
       }
-        pop();
     }
-
+      else {
+        this.fill= {
+          r : 0,
+          g : 0,
+          b : 0,
+        }
+      }
 
   }
+
+
+
+
   display(){
     push();
     noStroke();
