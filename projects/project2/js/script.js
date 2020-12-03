@@ -6,7 +6,7 @@ let userHeart2;
 let timer1;
 let chain1;
 let memos = [];
-let numMemos = 3;
+let numMemos = 20;
 
 //                                            SFX/ MUSIC
 let acceptmusic;
@@ -238,6 +238,12 @@ function draw() {
   if (state === `acpminigame2`){
     acpminigame2();
   }
+  if (state === `panicEnd`){
+    panicEnd();
+  }
+  if (state === `acpminiwin2`){
+    acpminiwin2();
+  }
   //                                          REJECT PATH
   if (state === `rejectp`) {
     rejectp();
@@ -418,23 +424,28 @@ function acpminigame2(){
        memos.splice(i, 1);
        break;
      }
-    }
+   }
+ }
+  //                                                  WIN GAME CONDITIOn
+    if (memos.length <= 0){
+    state = `acpminiwin2`
   }
-
 
     userHeart2.display();
     userHeart2.move();
     userHeart2.displaypursuit();
     userHeart2.movepursuit1();
     userHeart2.caught();
-//                                                  WIN GAME
-    check();
 }
-
-function check(){
-  if (nemos.length <= 0);
-  ellipse(0,0,300);
+function panicEnd(){
+  background(0);
 }
+function acpminiwin2(){
+  background(200);
+}
+// function check(){
+//
+// }
 //                                                    REJECTION PATH
 function rejectp() {
   background(255, 0, 0);

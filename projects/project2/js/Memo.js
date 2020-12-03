@@ -4,7 +4,7 @@ class Memo {
     this.y = y;
     this.vx = 0;
     this.vy = 0;
-    this.speed = 20;
+    this.speed = 40;
     this.size = 20;
     this.active = true;
     this.tstop = false;
@@ -28,7 +28,7 @@ move(){
 //                                 TIME STOP TRUE
    if (this.tstop === true){
     this.size = 50;
-    this.speed =1;
+    this.speed =3;
 
     userHeart2.size = 30;
     userHeart2.speed = 20;

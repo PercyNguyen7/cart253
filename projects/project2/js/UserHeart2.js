@@ -62,7 +62,7 @@ class UserHeart2{
 caught(){
   let d = dist(this.x, this.y, this.x2, this.y2);
     if (d < this.size/2 + this.size2/2){
-      rect(0,0,500);
+      state = 'panicEnd'
     }
 }
   display(){
