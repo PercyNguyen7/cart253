@@ -14,6 +14,11 @@ class UserHeart2{
     this.vy2 = 0;
     this.speed2 = 3;
     this.size2 = 50;
+    this.fill2 ={
+      r:0,
+      g:0,
+      b:0
+    }
 
 // let loose variable so that its width & height can be enlarged overtime see more in TIMER1.
   }
@@ -64,12 +69,8 @@ caught(){
     }
 }
 
-
-
-
   display(){
     push();
-    fill(255);
     imageMode(CENTER);
     image(this.image,this.x, this.y, this.size, this.size);
     pop();
@@ -77,7 +78,20 @@ caught(){
 
   displaypursuit(){
     push();
-    fill(200);
+    noStroke();
+    fill(this.fill2.r,this.fill2.g,this.fill2.b);
+    if (this.size2 === 450){
+    let d = dist(this.x, this.y, this.x2, this.y2);
+      this.fill2.r = map(d,0,600,255,0);
+      this.fill2.g = 0;
+      this.fill2.b = 0;
+    }
+    else if (this.size2 <= 100){
+    let d = dist(this.x, this.y, this.x2, this.y2);
+      this.fill2.r = map(d,0,400,60,0);
+      this.fill2.g = map(d,0,400,90,0);
+      this.fill2.b = map(d,0,400,160,0);
+    }
     ellipse(this.x2,this.y2,this.size2);
     pop();
   }

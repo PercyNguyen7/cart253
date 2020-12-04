@@ -51,7 +51,6 @@ class UserHeart{
         acceptmusic.stop();
         loseSFX.play();
         oscillator.stop();
-
     }
   }
 //                                                  DISPLAY
@@ -61,15 +60,6 @@ class UserHeart{
     imageMode(CENTER);
     image(this.image,this.x, this.y, this.height, this.width);
     pop();
-
-//  HEART BEAT
-    // this.size = 50;
-    // if (this.size === 50){
-    //   this.size =10
-    // }
-    // else if (this.size ===100){
-    //   this.size = 50
-    // }
 
       let change = random(0, 1);
 

@@ -1,14 +1,18 @@
 "use strict";
 //                                           VARIABLES
-let enlarged = true;
-
+let visible = true;
+let fillbg = {
+  r:176,
+  g:31,
+  b:44,
+}
 let userreject;
 let userHeart;
 let userHeart2;
 let timer1;
 let chain1;
 let memos = [];
-let numMemos = 60;
+let numMemos = 100;
 
 //                                            SFX/ MUSIC
 let acceptmusic;
@@ -53,7 +57,7 @@ function preload() {
 function setup() {
   createCanvas(1500, 700);
 
-  setInterval(shrink, 500);
+  setInterval(blink, 1000);
 
   userStartAudio()
    oscillator = new p5.Oscillator(880, `sine`);
@@ -227,8 +231,8 @@ function draw() {
   if (state === `acceptp`) {
     acceptp();
   }
-  if (state === `acceptintro1`) {
-    acceptintro1();
+  if (state === `acpintro1`) {
+    acpintro1();
   }
   if (state === `acpminigame1`) {
     acpminigame1();
@@ -239,8 +243,8 @@ function draw() {
   if (state === `acpminiwin1`){
     acpminiwin1();
   }
-  if (state === `acceptintro2`){
-    acceptintro2();
+  if (state === `acpintro2`){
+    acpintro2();
   }
   if (state === `acpminigame2`){
     acpminigame2();
@@ -251,6 +255,11 @@ function draw() {
   if (state === `acpminiwin2`){
     acpminiwin2();
   }
+  if (state === `acpintro3`){
+    acpintro3();
+  }
+
+
   //                                          REJECT PATH
   if (state === `rejectp`) {
     rejectp();
@@ -267,6 +276,7 @@ function draw() {
   if (state === `goodrejectionEnd`) {
     goodrejectionEnd();
   }
+
 }
 //                                                  GAME INTRO
 function clickbegin() {
@@ -345,7 +355,7 @@ function acceptp() {
   text(`ACCEPTED`, width / 2, height / 2);
   pop();
 }
-function acceptintro1(){
+function acpintro1(){
   background(69, 29, 87);
   push();
   textSize(64)
@@ -404,7 +414,7 @@ function acpminiwin1(){
   pop();
 }
 
-function acceptintro2(){
+function acpintro2(){
   background(100);
   push();
   noFill();
@@ -416,26 +426,41 @@ function acceptintro2(){
 }
 
 function acpminigame2(){
-  background(160,1,7);
-  shrinkog();
+  background(fillbg.r,fillbg.g,fillbg.b);
+
+  blinkog();
 
 //  memos
   for (let i = 0; i < memos.length; i++) {
       let memo = memos[i];
 
       if (memo.active) {
-
-    memo.display();
+        if (memo.tstop === true){
+          fillbg ={
+            r:34,
+            g:64,
+            b:123
+          }
+        }
+        else {
+          fillbg ={
+            r:152,
+            g:35,
+            b:43,
+          }
+        }
     memo.move();
     memo.bounce();
-
+    memo.display();
     let d = dist(memo.x, memo.y, userHeart2.x, userHeart2.y);
     if (d < memo.size/2 + userHeart2.size/2){
        memos.splice(i, 1);
        break;
      }
+
+     }
    }
- }
+
   //                                                  WIN GAME CONDITIOn
     if (memos.length <= 0){
     state = `acpminiwin2`
@@ -449,18 +474,19 @@ function acpminigame2(){
 
 
 }
-function shrinkog(){
+function blinkog(){
   push();
 
-  if (enlarged && userHeart2.size === 30){
+  if (visible && userHeart2.size === 30){
     fill(0);
     rectMode(CENTER);
-    rect(width/2,height/2,500);
+    rect(width/2 - 150,height/2,200, 500);
+    rect(width/2 + 150,height/2,200, 500);
   }
   pop();
 }
-function shrink(){
-  enlarged = !enlarged;
+function blink(){
+  visible = !visible;
 }
 
 function panicEnd(){
@@ -470,7 +496,7 @@ function panicEnd(){
   stroke(255);
   textSize(50);
   textAlign(CENTER, CENTER);
-  text(`Steph ngo`, width/2, height/2);
+  text(`Panic Attac`, width/2, height/2);
   pop();
 
 }
@@ -481,12 +507,23 @@ function acpminiwin2(){
   stroke(255);
   textSize(50);
   textAlign(CENTER, CENTER);
-  text(`Good job stephie`, width/2, height/2);
+  text(`You gathered your thoughts`, width/2, height/2);
   pop();
 }
-// function check(){
-//
-// }
+
+function acpintro3(){
+  background(250);
+  push();
+  noFill();
+  stroke(255);
+  textSize(50);
+  textAlign(CENTER, CENTER);
+  text(`You gathered your thoughts`, width/2, height/2);
+  pop();
+}
+
+
+
 //                                                    REJECTION PATH
 function rejectp() {
   background(255, 0, 0);
@@ -582,12 +619,12 @@ function keyPressed() {
     acceptmusic.loop();
 
   } else if (state === `acceptp`&& keyCode === 32) {
-    state = `acceptintro1`;
-  } else if (state ===`acceptintro1`&& keyCode === 32) {
+    state = `acpintro1`;
+  } else if (state ===`acpintro1`&& keyCode === 32) {
     state = `acpminigame1`
   } else if (state === `acpminiwin1` && keyCode === 32) {
-    state = `acceptintro2`;
-  } else if (state === `acceptintro2` && keyCode === 32) {
+    state = `acpintro2`;
+  } else if (state === `acpintro2` && keyCode === 32) {
     state = `acpminigame2`;
   } else if (state === `acpminigame2` && keyCode === 65) {
       for (let i = 0; i < memos.length; i++) {
@@ -595,7 +632,7 @@ function keyPressed() {
           memo.tstop = true;
       }
   } else if (state === `acpminigame2` && keyCode === 83 &&
-    userHeart2.size === 30) {
+    userHeart2.size2 === 450) {
         for (let i = 0; i < memos.length; i++) {
             let memo = memos[i];
             memo.tstop = false;
