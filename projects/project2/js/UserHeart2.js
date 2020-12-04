@@ -1,5 +1,6 @@
 class UserHeart2{
   constructor(userHeartImage) {
+//  VARIABLES FOR HEART
     this.x = width/2;
     this.y = height/2;
     this.vx = 0;
@@ -7,7 +8,7 @@ class UserHeart2{
     this.speed = 7;
     this.size = 200;
     this.image = userHeartImage;
-
+// VARIABLLES FOR PURSUER
     this.x2 = 0;
     this.y2 = 0;
     this.vx2 = 0;
@@ -19,7 +20,6 @@ class UserHeart2{
       g:0,
       b:0
     }
-
 // let loose variable so that its width & height can be enlarged overtime see more in TIMER1.
   }
   move(){
@@ -66,6 +66,8 @@ caught(){
   let d = dist(this.x, this.y, this.x2, this.y2);
     if (d < this.size/2 + this.size2/2){
       state = 'panicEnd'
+      acceptmusic.stop();
+      loseSFX.play();
     }
 }
 

@@ -12,13 +12,15 @@ let userHeart2;
 let timer1;
 let chain1;
 let memos = [];
-let numMemos = 100;
+let numMemos = 1;
 
 //                                            SFX/ MUSIC
+let menumusic;
 let acceptmusic;
 let rejectmusic;
 
 let loseSFX;
+let winSFX;
 let upSFX;
 let downSFX;
 let rightSFX;
@@ -39,9 +41,11 @@ let state = `clickbegin`;
 //                                                IMAGE PRELOAD
 function preload() {
   // SOUND
+  menumusic = loadSound(`assets/sounds/menu.mp3`)
   acceptmusic = loadSound(`assets/sounds/POSING.mp3`);
   rejectmusic = loadSound(`assets/sounds/HTRJ.mp3`)
 
+  winSFX = loadSound(`assets/sounds/winSFX.mp3`)
   loseSFX= loadSound(`assets/sounds/loseSFX.mp3`)
   upSFX = loadSound(`assets/sounds/go_up.m4a`);
   downSFX = loadSound(`assets/sounds/head_down.m4a`);
@@ -56,18 +60,20 @@ function preload() {
 //                                                     SETUP
 function setup() {
   createCanvas(1500, 700);
-
-  setInterval(blink, 1000);
-
+  textAlign(CENTER,CENTER);
+//                                                  AUDIO
   userStartAudio()
    oscillator = new p5.Oscillator(880, `sine`);
+   winSFX.amp(0.4);
    rightSFX.amp(2.5);
    leftSFX.amp(3.5);
    downSFX.amp(2.5);
    upSFX.amp(2.5);
    oscillator.amp(0.3);
+
+   menumusic.amp(0.4);
    acceptmusic.amp(0.4);
-   rejectmusic.amp(0.3);
+   rejectmusic.amp(0.25);
   //                                                 ACCEPT PATH
   userHeart2 = new UserHeart2(userHeartImage);
 
@@ -83,10 +89,12 @@ function setup() {
     let memo = new Memo(x, y);
     memos.push(memo);
 
+  // BLINK AT minigame 2 accept route
+    setInterval(blink, 1000);
   }
   //                                                 REJECTION PATH
   userreject = new UserReject(userrejectImage);
-  //                                                  RED TILES
+  //                                                  PURPLE? TILES
   //                                                  1st COLUMN
   for (let i = 0; i < numTiles; i++) {
     let x = 200;
@@ -206,7 +214,6 @@ function setup() {
     }
   }
 
-
 }
 //                                                DRAW
 function draw() {
@@ -216,7 +223,6 @@ function draw() {
   }
   if (state === `title`) {
     title();
-
   }
   if (state === `instructions`) {
     instructions();
@@ -259,7 +265,6 @@ function draw() {
     acpintro3();
   }
 
-
   //                                          REJECT PATH
   if (state === `rejectp`) {
     rejectp();
@@ -285,7 +290,6 @@ function clickbegin() {
   textSize(64)
   noFill();
   stroke(255);
-  textAlign(CENTER, CENTER);
   textSize(80);
   text(`Press Spacebar to begin`, width / 2, height / 2);
   pop();
@@ -297,7 +301,6 @@ function title() {
   textSize(64)
   noFill();
   stroke(255);
-  textAlign(CENTER, CENTER);
   textSize(80);
   text(`Proposal Day`, width / 2, height / 2);
   pop();
@@ -309,7 +312,6 @@ function instructions() {
   textSize(64)
   noFill();
   stroke(255);
-  textAlign(CENTER, CENTER);
   textSize(80);
   text(`Instructions`, width / 2, height / 2);
   textSize(40);
@@ -323,7 +325,6 @@ function context() {
   textSize(64);
   noFill();
   stroke(255);
-  textAlign(CENTER, CENTER);
   textSize(100);
   text(`context`, width / 2, height / 2);
   pop();
@@ -335,7 +336,6 @@ function decision() {
   textSize(64);
   noFill();
   stroke(255);
-  textAlign(CENTER, CENTER);
   textSize(100);
   text(`Decision`, width / 2, height / 2);
   textSize(40);
@@ -350,7 +350,6 @@ function acceptp() {
   textSize(64);
   noFill();
   stroke(255);
-  textAlign(CENTER, CENTER);
   textSize(100);
   text(`ACCEPTED`, width / 2, height / 2);
   pop();
@@ -361,7 +360,6 @@ function acpintro1(){
   textSize(64)
   noFill();
   stroke(250, 186, 95);
-  textAlign(CENTER, CENTER);
   textSize(80);
   text(`Contain your heart`, width / 2, height / 2 - 100);
   textSize(70);
@@ -396,7 +394,6 @@ function heartattackEnd(){
   noFill();
   stroke(255);
   textSize(50);
-  textAlign(CENTER, CENTER);
   text(`How do you mend a heart attack`, width/2, height/2);
   textSize(70);
   pop();
@@ -408,7 +405,6 @@ function acpminiwin1(){
   noFill();
   stroke(255);
   textSize(50);
-  textAlign(CENTER, CENTER);
   text(`You survived the first trial of love!`, width/2, height/2);
   text(`Now face the 2nd :)`, width/2, height/2 +100);
   pop();
@@ -420,7 +416,6 @@ function acpintro2(){
   noFill();
   stroke(255);
   textSize(50);
-  textAlign(CENTER, CENTER);
   text(`Collect your memories`, width/2, height/2);
   pop();
 }
@@ -453,27 +448,27 @@ function acpminigame2(){
     memo.bounce();
     memo.display();
     let d = dist(memo.x, memo.y, userHeart2.x, userHeart2.y);
-    if (d < memo.size/2 + userHeart2.size/2){
-       memos.splice(i, 1);
-       break;
-     }
-
+      if (d < memo.size/2 + userHeart2.size/2){
+         memos.splice(i, 1);
+         break;
+       }
      }
    }
 
-  //                                                  WIN GAME CONDITIOn
+  //                                                  WIN GAME CONDITION
     if (memos.length <= 0){
     state = `acpminiwin2`
+    winSFX.play();
   }
-
+//                                               HEART AND PURSUER
     userHeart2.display();
     userHeart2.move();
     userHeart2.displaypursuit();
     userHeart2.movepursuit1();
     userHeart2.caught();
-
-
 }
+
+//                          BLINK FUNCTIONS
 function blinkog(){
   push();
 
@@ -495,7 +490,6 @@ function panicEnd(){
   noFill();
   stroke(255);
   textSize(50);
-  textAlign(CENTER, CENTER);
   text(`Panic Attac`, width/2, height/2);
   pop();
 
@@ -506,7 +500,6 @@ function acpminiwin2(){
   noFill();
   stroke(255);
   textSize(50);
-  textAlign(CENTER, CENTER);
   text(`You gathered your thoughts`, width/2, height/2);
   pop();
 }
@@ -517,8 +510,7 @@ function acpintro3(){
   noFill();
   stroke(255);
   textSize(50);
-  textAlign(CENTER, CENTER);
-  text(`You gathered your thoughts`, width/2, height/2);
+  text(`Final Challenge`, width/2, height/2);
   pop();
 }
 
@@ -531,7 +523,6 @@ function rejectp() {
   textSize(64);
   noFill();
   stroke(255);
-  textAlign(CENTER, CENTER);
   textSize(100);
   text(`REJECTED`, width / 2, height / 2);
   pop();
@@ -543,7 +534,6 @@ function rejectionintro() {
   textSize(64)
   noFill();
   stroke(250, 186, 95);
-  textAlign(CENTER, CENTER);
   textSize(80);
   text(`Go through`, width / 2, height / 2 - 100);
   textSize(70);
@@ -581,7 +571,6 @@ function badrejectionEnd() {
   textSize(64)
   noFill();
   stroke(255);
-  textAlign(CENTER, CENTER);
   textSize(80);
   text(`He never found love again`, width / 2, height / 2);
   pop();
@@ -593,7 +582,6 @@ function goodrejectionEnd() {
   textSize(64)
   noFill();
   stroke(255);
-  textAlign(CENTER, CENTER);
   textSize(70);
   text(`A painful truth`, width / 2, height / 2);
   textSize(90);
@@ -606,18 +594,22 @@ function goodrejectionEnd() {
 function keyPressed() {
   if (state === `clickbegin`&& keyCode === 32) {
     state = `title`;
+    menumusic.loop();
   } else if (state === `title`&& keyCode === 32) {
     state = `instructions`;
   } else if (state === `instructions`&& keyCode === 32) {
     state = `context`;
+    menumusic.amp(0.05);
   } else if (state === `context`&& keyCode === 32) {
     state = `decision`;
+    if (menumusic.isPlaying()){
+     menumusic.stop();
+   }
   }
 //                                                ACCEPT PATH
   else if (state === `decision` && keyCode === 65) {
     state = `acceptp`;
     acceptmusic.loop();
-
   } else if (state === `acceptp`&& keyCode === 32) {
     state = `acpintro1`;
   } else if (state ===`acpintro1`&& keyCode === 32) {
@@ -626,18 +618,24 @@ function keyPressed() {
     state = `acpintro2`;
   } else if (state === `acpintro2` && keyCode === 32) {
     state = `acpminigame2`;
-  } else if (state === `acpminigame2` && keyCode === 65) {
+  }
+// TURN TSTOP TO TRUE IF A key is PRESSED
+  else if (state === `acpminigame2` && keyCode === 65) {
       for (let i = 0; i < memos.length; i++) {
           let memo = memos[i];
           memo.tstop = true;
       }
+  // TURN TSTOP MODE TO FALSE IF S KEY IS PRESSED
   } else if (state === `acpminigame2` && keyCode === 83 &&
     userHeart2.size2 === 450) {
         for (let i = 0; i < memos.length; i++) {
             let memo = memos[i];
             memo.tstop = false;
         }
-      }
+  }  else if (state === `acpminiwin2`&& keyCode === 32){
+        state = `acpintro3`;
+  }
+
 //                                                 REJECT PATH
   else if (state === `decision` && keyCode === 82) {
     state = `rejectp`;
