@@ -411,7 +411,6 @@ function acpintro1() {
   textFont(tradegothicFont);
   textSize(50);
   text(`Press Spacebar to BEGIN`, width / 2, height / 2 + 100);
-  textSize(50);
   text(`Control with Arrow Keys`, width / 2, height / 2 + 150);
   pop();
 }
@@ -465,7 +464,7 @@ function acpintro2() {
   textFont(onyxFont);
   text(`Collect your memories`, width / 2, height / 2 - 120);
   textSize(70);
-  text(`Don't break the chains`, width / 2, height / 2 - 20);
+  text(`Before you forgot`, width / 2, height / 2 - 20);
   textFont(tradegothicFont);
   text(`Control with Arrow Keys`, width / 2, height / 2);
   text(``, width / 2, height / 2);
