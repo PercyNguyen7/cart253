@@ -49,7 +49,7 @@ let state = `clickbegin`;
 //                                                IMAGE PRELOAD
 function preload() {
   //FONTS
-  onyxFont = loadFont(`assets/fonts/onyx.ttf`);
+  onyxFont = loadFont(`assets/fonts/ONYX.TTF`);
   tradegothicFont = loadFont(`assets/fonts/Trade Gothic LT Condensed No. 18.ttf`);
 
   // SOUND
