@@ -42,9 +42,8 @@ sfxguide(){
   if (this.x > 600 && this.x <700 && this.y > 600 && this.y <700 && this.lastSFXplayed!=1){
     upSFX.play();
     push();
-    rectMode(CENTER);
-    fill(255);
-    rect(150,650,80);
+    fill(250, 186, 95);
+    ellipse(150,650,80);
     pop();
     this.lastSFXplayed = 1;
   }
@@ -52,18 +51,16 @@ sfxguide(){
     leftSFX.play();
     this.lastSFXplayed = 2;
     push();
-    rectMode(CENTER);
-    fill(255);
-    rect(650,650,80);
+    fill(250, 186, 95);
+    ellipse(650,650,80);
     pop();
   }
   if (this.x > 400 && this.x <500 && this.y > 400 && this.y <500 && this.lastSFXplayed!=3){
     upSFX.play();
     this.lastSFXplayed = 3;
     push();
-    rectMode(CENTER);
-    fill(255);
-    rect(650,450,80);
+    fill(250, 186, 95);
+    ellipse(650,450,80);
     pop();
 
   }
@@ -71,88 +68,78 @@ sfxguide(){
     rightSFX.play();
     this.lastSFXplayed = 4;
     push();
-    rectMode(CENTER);
-    fill(255);
-    rect(450,450,80);
+    fill(250, 186, 95);
+    ellipse(450,450,80);
     pop();
   }
   if (this.x > 600 && this.x <700 && this.y > 200 && this.y <300 && this.lastSFXplayed!=5){
     upSFX.play();
     this.lastSFXplayed = 5;
     push();
-    rectMode(CENTER);
-    fill(255);
-    rect(450,250,80);
+    fill(250, 186, 95);
+    ellipse(450,250,80);
     pop();
   }
   if (this.x > 600 && this.x <700 && this.y > 0 && this.y <100 && this.lastSFXplayed!=6){
     rightSFX.play();
     this.lastSFXplayed = 6;
     push();
-    rectMode(CENTER);
-    fill(255);
-    rect(650,250,80);
+    fill(250, 186, 95);
+    ellipse(650,250,80);
     pop();
   }
   if (this.x > 800 && this.x <900 && this.y > 0 && this.y <100 && this.lastSFXplayed!=7){
     downSFX.play();
     this.lastSFXplayed = 7;
     push();
-    rectMode(CENTER);
-    fill(255);
-    rect(650,50,80);
+    fill(250, 186, 95);
+    ellipse(650,50,80);
     pop();
   }
   if (this.x > 800 && this.x <900 && this.y > 200 && this.y <300 && this.lastSFXplayed!=8){
     rightSFX.play();
     this.lastSFXplayed = 8;
     push();
-    rectMode(CENTER);
-    fill(255);
-    rect(850,50,80);
+    fill(250, 186, 95);
+    ellipse(850,50,80);
     pop();
   }
   if (this.x > 1000 && this.x <1100 && this.y > 200 && this.y <300 && this.lastSFXplayed!=9){
     downSFX.play();
     this.lastSFXplayed = 9;
     push();
-    rectMode(CENTER);
-    fill(255);
-    rect(850,250,80);
+    fill(250, 186, 95);
+    ellipse(850,250,80);
     pop();
   }
   if (this.x > 1000 && this.x <1100 && this.y > 400 && this.y <500 && this.lastSFXplayed!=10){
     leftSFX.play();
     this.lastSFXplayed = 10;
     push();
-    rectMode(CENTER);
-    fill(255);
-    rect(1050,250,80);
+    fill(250, 186, 95);
+    ellipse(1050,250,80);
     pop();
   }
   if (this.x > 800 && this.x <900 && this.y > 400 && this.y <500 && this.lastSFXplayed!=11){
     downSFX.play();
     this.lastSFXplayed = 11;
     push();
-    rectMode(CENTER);
-    fill(255);
-    rect(1050,450,80);
+    fill(250, 186, 95);
+    ellipse(1050,450,80);
     pop();
   }
   if (this.x > 800 && this.x <900 && this.y > 600 && this.y <700 && this.lastSFXplayed!=12){
     rightSFX.play();
     this.lastSFXplayed = 12;
     push();
-    rectMode(CENTER);
-    fill(255);
-    rect(850,450,80);
+    fill(250, 186, 95);
+    ellipse(850,450,80);
     pop();
   }
   if (this.x > 800 && this.x <1400 && this.y > 600 && this.y <700){
     push();
-    rectMode(CENTER);
-    fill(255);
-    rect(850,650,80);
+    fill(250, 186, 95);
+    ellipse(850,650,80);
     pop();
   }
 }
@@ -181,15 +168,15 @@ sfxguide(){
         this.x > 900 && this.x <1100 && this.y > 500 && this.y <600
         )  {
       push();
-      textSize(64)
-      noFill();
-      stroke(255);
+      strokeWeight(2);
+      stroke(0);
+      fill(200,3,7)
       textAlign(CENTER, CENTER);
-      textSize(80);
-      text(`You Lost`, width / 2, height/2);
+      textSize(120);
+      text(`WRONG STEP BUDDY...`, width / 2, height/2);
       pop();
 
-      if (keyIsDown(LEFT_ARROW) || keyIsDown(RIGHT_ARROW) || keyIsDown(UP_ARROW) || keyIsDown(DOWN_ARROW)){
+      if (keyIsDown(LEFT_ARROW) || keyIsDown(RIGHT_ARROW) || keyIsDown(UP_ARROW) || keyIsDown(DOWN_ARROW) || keyIsDown(32)){
       state = `badrejectionEnd`
           if (rejectmusic.isPlaying()){
           rejectmusic.stop()

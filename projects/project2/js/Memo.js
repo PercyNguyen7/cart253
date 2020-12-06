@@ -16,7 +16,7 @@ class Memo {
     if (this.tstop === false){
       let change1 = random(0, 1);
       if (change1 < 0.3) {
-        this.size = random(15, 20);
+        this.size = random(12, 20);
       }
       this.speed =20;
       // CHANGE DIRECTION MORE
@@ -28,7 +28,7 @@ class Memo {
     //  HEART AND CHASER MOVEMENT
     //Heart and Chaser speed 7 & 3,6
         userHeart2.size = 160;
-        userHeart2.speed = 3.6;
+        userHeart2.speed = 3.5;
         userHeart2.size2 = 50;
         userHeart2.speed2 = 2;
         }
@@ -76,16 +76,20 @@ class Memo {
   display(){
     // if (this.active === true)
     push();
-   stroke(200);
-   strokeWeight(1);
-   fill(50);
+   stroke(225,170,18);
+   strokeWeight(3);
+   fill(237,201,81);
      if (this.size >= 16 && this.size <= 17) {
-     fill(100);
+     fill(247,142,20);
+     }
+     else if (this.size >= 18 && this.size <= 19){
+       fill(204,35,35);
      }
      else if (this.size >= 45) {
      stroke(237,201,81);
      fill(0);
      }
+
    ellipse(this.x,this.y,this.size);
 
    pop();

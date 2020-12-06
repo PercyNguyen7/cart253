@@ -43,7 +43,7 @@ class UserHeart2{
     this.x = constrain(this.x, 0+ this.size/2, width - this.size/2);
     this.y = constrain(this.y, 0 +this.size/2, height - this.size/2);
 }
-  movepursuit1(){
+  movepursuer(){
   //first pursuer
     if (this.x > this.x2) {
       this.vx2 = this.speed2;
@@ -78,21 +78,21 @@ caught(){
     pop();
   }
 
-  displaypursuit(){
+  displaypursuer(){
     push();
     noStroke();
     fill(this.fill2.r,this.fill2.g,this.fill2.b);
     if (this.size2 === 450){
     let d = dist(this.x, this.y, this.x2, this.y2);
-      this.fill2.r = map(d,0,600,255,0);
+      this.fill2.r = map(d,0,800,230,0);
       this.fill2.g = 0;
       this.fill2.b = 0;
     }
     else if (this.size2 <= 100){
     let d = dist(this.x, this.y, this.x2, this.y2);
-      this.fill2.r = map(d,0,400,60,0);
-      this.fill2.g = map(d,0,400,90,0);
-      this.fill2.b = map(d,0,400,160,0);
+      this.fill2.r = map(d,0,400,230,0);
+      this.fill2.g = map(d,0,400,0,0);
+      this.fill2.b = map(d,0,400,0,0);
     }
     ellipse(this.x2,this.y2,this.size2);
     pop();

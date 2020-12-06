@@ -6,7 +6,7 @@ class Timer2{
     this.x = width/4 - 100;
     this.y = 0-this.size/2;
     this.vx = 0;
-    this.vy = 0.5;
+    this.vy = 0.8;
 
 
     this.fill= {
@@ -18,7 +18,7 @@ class Timer2{
     this.x2 = 3*width/4 + 100;
     this.y2 = 0-this.size2/2;
     this.vx2 = 0;
-    this.vy2 = 0.5;
+    this.vy2 = 0.8;
 
   }
 touchbottom(){
