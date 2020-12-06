@@ -19,7 +19,7 @@ let userHeart2;
 let timer1;
 let chain1;
 let memos = [];
-let numMemos = 140;
+let numMemos = 120;
 let timer2;
 
 //                                            SFX/ MUSIC
@@ -646,9 +646,9 @@ function acpsuccess() {
   background(255);
   push();
   fill(225,170,18);
-  textSize(80);
-  text(`And the two live happily ever after!`, width / 2, height / 2);
+  textSize(100);
   textFont(onyxFont);
+  text(`And the two live happily ever after!`, width / 2, height / 2);
   text(`THE END`, width / 2, height / 2 + 200);
   pop();
 }
