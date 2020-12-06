@@ -286,8 +286,8 @@ function draw() {
   if (state === `acpminigame3`) {
     acpminigame3();
   }
-  if (state === `acpsuccess`) {
-    acpsuccess();
+  if (state === `trueEnd`) {
+    trueEnd();
   }
   if (state === `heleftEnd`) {
     heleftEnd();
@@ -348,7 +348,8 @@ function instructions() {
   textSize(60);
   text(`Control with Keyboard`, width / 2, height / 2 +50);
   textSize(50);
-  text(`Stay on this slide to enjoy the lovely background lounge jazz`, width/2, height / 2 + 120)
+  text(`Press Space on Endings to play again`, width/2, height / 2 + 120)
+  text(`Stay on Instructions to enjoy the lovely background lounge jazz`, width/2, height / 2 + 190)
   pop();
 }
 //                                                     CONTEXT
@@ -599,7 +600,7 @@ function acpminigame3() {
   let correct = checkInput();
   background(0);
   if (correct) {
-    state = `acpsuccess`;
+    state = `trueEnd`;
     winSFX.play();
   }
   push();
@@ -642,7 +643,7 @@ function heleftEnd() {
   pop();
 }
 
-function acpsuccess() {
+function trueEnd() {
   background(255);
   push();
   fill(225,170,18);
@@ -742,7 +743,6 @@ function goodrejectionEnd() {
   pop();
 }
 
-
 //                                                     KEYPRESSED FUNCTION
 function keyPressed() {
   if (state === `clickbegin` && keyCode === 32) {
@@ -809,6 +809,18 @@ function keyPressed() {
     state = `rejectionintro`;
   } else if (state === `rejectionintro` && keyCode === 32) {
     state = `rejminigame`;
+  } else if (state === `heartattackEnd` && keyCode === 32) {
+    location.reload();
+  } else if (state === `panicEnd` && keyCode === 32) {
+    location.reload();
+  } else if (state === `heleftEnd` && keyCode === 32) {
+    location.reload();
+  } else if (state === `trueEnd` && keyCode === 32) {
+    location.reload();
+  } else if (state === `badrejectionEnd` && keyCode === 32) {
+    location.reload();
+  } else if (state === `goodrejectionEnd` && keyCode === 32) {
+    location.reload();
   }
 }
 
