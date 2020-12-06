@@ -78,8 +78,8 @@ class Timer1{
       this.vy *= 1.2;
       this.vy2 *= 1.2;
       // 12 and 9 or 11.5 and 8.5
-      userHeart.speed = 11.5;
-      userHeart.rspeed = 8.5;
+      userHeart.speed = 11;
+      userHeart.rspeed = 8;
       this.vx3 = 70;
       let change = random(0,4);
         userHeart.height = random(20,50);
