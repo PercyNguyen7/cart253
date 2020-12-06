@@ -27,6 +27,7 @@ let menumusic;
 let acceptmusic;
 let rejectmusic;
 
+let fastforwardSFX;
 let stopSFX;
 let loseSFX;
 let winSFX;
@@ -58,6 +59,7 @@ function preload() {
   acceptmusic = loadSound(`assets/sounds/POSING.mp3`);
   rejectmusic = loadSound(`assets/sounds/HTRJ.mp3`);
 
+  fastforwardSFX = loadSound(`assets/sounds/fastforward.mp3`);
   stopSFX = loadSound(`assets/sounds/stopSFX.mp3`);
   winSFX = loadSound(`assets/sounds/winSFX.mp3`);
   loseSFX = loadSound(`assets/sounds/loseSFX.mp3`);
@@ -79,7 +81,7 @@ function setup() {
   //                                                  AUDIO
   userStartAudio()
   oscillator = new p5.Oscillator(880, `sine`);
-  stopSFX.amp(2);
+  // fastforwardSFX.amp(0.5);
   winSFX.amp(0.4);
   rightSFX.amp(4);
   leftSFX.amp(5.5);
@@ -776,7 +778,7 @@ function keyPressed() {
       let memo = memos[i];
       memo.tstop = true;
     }
-      stopSFX.play();
+      stopSFX.play(0,1,1.5);
       acceptmusic.rate(0.5);
     // TURN TSTOP MODE TO FALSE IF S KEY IS PRESSED
   } else if (state === `acpminigame2` && keyCode === 83 &&
@@ -787,6 +789,7 @@ function keyPressed() {
     }
     if (acceptmusic.rate(0.6)){
       acceptmusic.rate(1);
+      fastforwardSFX.play(0,1,0.2,0,1.3);
     }
   } else if (state === `acpminiwin2` && keyCode === 32) {
     state = `acpintro3`;

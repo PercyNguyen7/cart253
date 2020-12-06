@@ -22,7 +22,6 @@ class Timer1{
       g : 0,
       b : 0,
     }
-
   }
 
   ballsmove(){
@@ -78,9 +77,9 @@ class Timer1{
     if (this.counter >= 20 && this.counter <=34){
       this.vy *= 1.2;
       this.vy2 *= 1.2;
-      // 12 and 9
-      userHeart.speed = 12;
-      userHeart.rspeed = 9;
+      // 12 and 9 or 11.5 and 8.5
+      userHeart.speed = 11.5;
+      userHeart.rspeed = 8.5;
       this.vx3 = 70;
       let change = random(0,4);
         userHeart.height = random(20,50);
@@ -98,7 +97,7 @@ class Timer1{
       this.vx3 = 6;
       }
 // SURVIVE TO 38th HEARTBEAT TO WIN
-    else if (this.counter === 0){
+    else if (this.counter === 38){
       state = `acpminiwin1`;
       winSFX.play();
     }

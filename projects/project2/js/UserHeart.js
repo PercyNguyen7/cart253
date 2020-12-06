@@ -4,7 +4,7 @@ class UserHeart{
     this.y = height / 2;
     this.vx = 0;
     this.vy = 0;
-    //speeed 8 and 5
+    //speeed 8 and random speed 5
     this.speed = 8;
     this.rspeed = 5;
     this.height = 75;
@@ -37,9 +37,6 @@ class UserHeart{
       this.vy = random(-this.rspeed, this.rspeed);
   }
 
-// constrain to inside canvas
-    // this.x = constrain(this.x, 50, width - 50);
-    // this.y = constrain(this.y, 50, height - 50);
   }
 
   touchchain(chain1){
