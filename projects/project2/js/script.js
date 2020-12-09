@@ -21,7 +21,7 @@ let userHeart2;
 let timer1;
 let chain1;
 let memos = [];
-let numMemos = 0;
+let numMemos = 120;
 let timer2;
 //                                            SFX/ MUSIC
 let menumusic;

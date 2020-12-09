@@ -98,7 +98,7 @@ class Timer1{
       this.vx3 = 6;
       }
 // SURVIVE TO 38th HEARTBEAT TO WIN MINIGAME 1
-    else if (this.counter === 0){
+    else if (this.counter === 38){
       state = `acpminiwin1`;
       winSFX.play();
     }
