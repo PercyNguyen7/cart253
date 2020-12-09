@@ -1,5 +1,7 @@
 "use strict";
 //                                           VARIABLES
+// rotating square (like the lighthouse effect)
+var x = 0;
 //FONTS
 let onyxFont;
 let tradegothicFont;
@@ -21,7 +23,6 @@ let chain1;
 let memos = [];
 let numMemos = 120;
 let timer2;
-
 //                                            SFX/ MUSIC
 let menumusic;
 let acceptmusic;
@@ -38,12 +39,11 @@ let leftSFX;
 
 //                                          OSCILLATOR
 let oscillator;
-
 //                                               IMAGE
 let userrejectImage;
 let userHeartImage;
 let chain1Image;
-//                                               TILES
+//                                               TILES for Reject Phase
 let tiles = [];
 let numTiles = 100;
 //                                                STATE
@@ -317,51 +317,67 @@ function clickbegin() {
   noFill();
   textSize(50);
   strokeWeight(1);
-  stroke(254,204,23);
+  stroke(254, 204, 23);
   text(`Press Spacebar to navigate through the game`, width / 2, height / 2);
   pop();
 }
 //                                                     TITLE
 function title() {
-  background(6,53,110);
+
+  background(0);
+  squarerotate();
   push();
   textFont(onyxFont);
   strokeWeight(2);
-  stroke(0);
-  fill(254,204,23);
-  textSize(120);
-  text(`PROPOSAL DAY 2`, width / 2, height / 2);
+  stroke(254, 204, 23);
+  noFill(0);
+  textSize(170);
+  text(`PROPOSAL NIGHT`, width / 2, height / 2);
+  pop();
+}
+function squarerotate(){
+  push();
+  x+= 0.02;
+  translate (width/2 - 10, height/2);
+  rotate(x);
+  fill(214, 170, 10);
+	rect(0, 0, 1000);
   pop();
 }
 //                                                    INTRODUCTION
 function instructions() {
-  background(37,25,9);
-
+  background(37, 25, 9);
   push();
   strokeWeight(3);
   stroke(0);
-  fill(246,199,93);
+  fill(246, 199, 93);
   textSize(120);
   textFont(onyxFont);
-  text(`Instructions`, width / 2, height/2 - 100);
+  text(`Instructions`, width / 2, height / 2 - 100);
   textFont(tradegothicFont);
   textSize(60);
-  text(`Control with Keyboard`, width / 2, height / 2 +50);
+  text(`Control with Keyboard`, width / 2, height / 2 + 50);
   textSize(50);
-  text(`Press Space on Endings to play again`, width/2, height / 2 + 120)
-  text(`Stay on Instructions to enjoy the lovely background lounge jazz`, width/2, height / 2 + 190)
+  text(`Press Space on Endings to play again`, width / 2, height / 2 + 120)
+  text(`Stay on Instructions to enjoy the lovely background lounge jazz`, width / 2, height / 2 + 190)
   pop();
 }
 //                                                     CONTEXT
 function context() {
-  background(6,53,110);
+  background(6, 53, 110);
   push();
+  fill(255);
+  ellipse(width/2,height/2,600);
   strokeWeight(2);
   stroke(0);
-  fill(255);
-  textSize(50);
-  text(`You watch as the man of your life kneels down`, width / 2, 50);
-  text(`and propose...`, width / 2, 100);
+  fill(254, 204, 23);
+  textSize(40);
+  text(`You watch as your new boyfriend kneels down in the moonlight`, width / 2, 100);
+  text(`and propose...`, width / 2, 150);
+  textFont(onyxFont);
+  textSize(170);
+  text(`Will you marry me?`, width / 2, height/2 );
+
   pop();
 }
 //                                                      DECISION
@@ -375,24 +391,24 @@ function decision() {
   text(`So what is it going to be, chief?`, width / 2, height / 2 - 100);
   textFont(tradegothicFont);
   textSize(120);
-  stroke(180,1,7);
-  text(`A. Accept!`, width / 4,  2*height / 3 );
-  stroke(36,69,150);
+  stroke(180, 1, 7);
+  text(`A. Accept!`, width / 4, 2 * height / 3);
+  stroke(36, 69, 150);
   // fill(36,69,150);
   textSize(120);
-  text(`R. Reject...`, 3 * width / 4, 2* height / 3);
+  text(`R. Reject...`, 3 * width / 4, 2 * height / 3);
   pop();
 }
 //                                                   ACCEPT PATH
 function acceptp() {
-  background(6,53,110);
+  background(6, 53, 110);
   push();
   strokeWeight(3);
-  stroke(68,57,17);
+  stroke(68, 57, 17);
   textSize(64);
-  fill(250,186,95);
+  fill(250, 186, 95);
   textSize(50);
-  text(`...but of course`, width/2, height/ 2 -200);
+  text(`...but of course`, width / 2, height / 2 - 200);
   textSize(100);
   text(`BUT OF COURSEEEEE!!!!`, width / 2, height / 2 - 100);
   textSize(50);
@@ -405,11 +421,11 @@ function acceptp() {
 }
 
 function acpintro1() {
-  background(189,29,29);
+  background(189, 29, 29);
   push();
   stroke(0);
   strokeWeight(3);
-  fill(255,192,183);
+  fill(255, 192, 183);
   textSize(130);
   textFont(onyxFont);
   text(`CONTAIN YOUR HEART`, width / 2, height / 2 - 120);
@@ -441,7 +457,7 @@ function acpminigame1() {
 function heartattackEnd() {
   background(0);
   push();
-  fill(166,1,7);
+  fill(166, 1, 7);
   textSize(50);
   text(`You DIED`, width / 2, height / 2 - 80);
   text(`...from a heart attack`, width / 2, height / 2);
@@ -452,24 +468,24 @@ function heartattackEnd() {
 }
 
 function acpminiwin1() {
-  background(255,192,183);
+  background(255, 192, 183);
   push();
   stroke(255);
   strokeWeight(3);
-  fill(189,29,29);
+  fill(189, 29, 29);
   textSize(40);
-  text(`You contained your emotions and survived the first trial of love!`, width / 2, height/2 - 80);
+  text(`You contained your emotions and survived the first trial of love!`, width / 2, height / 2 - 80);
   textSize(80);
   text(`NOW FACE THE SECOND`, width / 2, height / 2);
   pop();
 }
 
 function acpintro2() {
-  background(0,70,124);
+  background(0, 70, 124);
   push();
   stroke(0);
   strokeWeight(3);
-  fill(247,193,44);
+  fill(247, 193, 44);
   textSize(130);
   textFont(onyxFont);
   text(`COLLECT YOUR THOUGHTS`, width / 2, height / 2 - 120);
@@ -478,7 +494,7 @@ function acpintro2() {
   textFont(tradegothicFont);
   textSize(50);
   text(`Control with Arrow Keys`, width / 2, height / 2 + 100);
-  text(`Switch play mode with A & S `, width / 2, height / 2 + 150);
+  text(`Switch PLAY MODE with A & S `, width / 2, height / 2 + 150);
   text(`Press Spacebar to BEGIN`, width / 2, height / 2 + 200);
   pop();
 }
@@ -521,7 +537,7 @@ function acpminigame2() {
   if (memos.length <= 0) {
     state = `acpminiwin2`
     winSFX.play();
-    if (acceptmusic.rate(0.5)){
+    if (acceptmusic.rate(0.5)) {
       acceptmusic.rate(1);
     }
   }
@@ -537,8 +553,8 @@ function acpminigame2() {
 function blinkog() {
   push();
 
-  if (visible && userHeart2.size2 ===450) {
-    fill(180,3,8);
+  if (visible && userHeart2.size2 === 450) {
+    fill(180, 3, 8);
     rectMode(CENTER);
     rect(width / 2 - 150, height / 2, 200, 500);
     rect(width / 2 + 150, height / 2, 200, 500);
@@ -553,7 +569,7 @@ function blink() {
 function panicEnd() {
   background(0);
   push();
-  fill(166,1,7);
+  fill(166, 1, 7);
   textSize(50);
   text(`Flustered with thoughts and emotions,`, width / 2, height / 2 - 100);
   text(`You blurted out NO and ran away in embarassment`, width / 2, height / 2);
@@ -564,24 +580,24 @@ function panicEnd() {
 }
 
 function acpminiwin2() {
-  background(247,193,44);
+  background(247, 193, 44);
   push();
   stroke(255);
   strokeWeight(3);
-  fill(3,82,144);
+  fill(3, 82, 144);
   textSize(40);
   text(`You gathered your thoughts!`, width / 2, height / 2 - 100);
   textSize(80);
-  text(`But one obstacle remains...`, width / 2, height / 2 );
+  text(`But one obstacle remains...`, width / 2, height / 2);
   pop();
 }
 
 function acpintro3() {
-  background(16,27,44);
+  background(16, 27, 44);
   push();
   stroke(0);
   strokeWeight(2);
-  fill(240,189,40);
+  fill(240, 189, 40);
   textFont(onyxFont);
   textSize(170);
   text(`SAY THE PHRASE!`, width / 2, height / 2 - 150);
@@ -606,7 +622,7 @@ function acpminigame3() {
   push();
   // stroke(255);
   // strokeWeight(2)
-  fill(225,170,18);
+  fill(225, 170, 18);
   textSize(130);
   textFont(onyxFont);
   // Display the riddle
@@ -645,11 +661,16 @@ function heleftEnd() {
 
 function trueEnd() {
   background(255);
+
   push();
-  fill(225,170,18);
+  fill(0);
   textSize(100);
   textFont(onyxFont);
-  text(`And the two live happily ever after!`, width / 2, height / 2);
+  text(`It is a bearable marriage at best...`, width / 2, height / 2-150);
+  text(`At least the divorce papers don't come flying through`, width / 2, height / 2 - 50);
+  textSize(80);
+  text(`You wonder if it was a good decision that night...`, width / 2, height / 2+ 50);
+  textSize(100);
   text(`THE END`, width / 2, height / 2 + 200);
   pop();
 }
@@ -661,13 +682,13 @@ function rejectp() {
   textSize(130);
   stroke(250, 186, 95);
   textFont(onyxFont);
-  text(`F*CK...`, width / 2, height / 2 -100);
+  text(`F*CK...`, width / 2, height / 2 - 100);
   textFont(tradegothicFont);
-  stroke(5,101,177);
+  stroke(5, 101, 177);
   textSize(70);
-  text(`You never thought about this...`, width / 2, height / 2 );
-  stroke(5,101,177);
-  text(`If only there was a way to tell him and not break his heart`, width / 2, height / 2 +70 )
+  text(`You never thought about this...`, width / 2, height / 2);
+  stroke(5, 101, 177);
+  text(`If only there was a way to tell him and not break his heart`, width / 2, height / 2 + 70)
   pop();
 }
 
@@ -681,7 +702,7 @@ function rejectionintro() {
   textFont(onyxFont);
   text(`WALK THE RIGHT PATH TO REJECTION`, width / 2, height / 2 - 120);
   textSize(70);
-  text(`But one wrong step and his heart will be shattered`, width / 2, height / 2 -20)
+  text(`But one wrong step and his heart will be shattered`, width / 2, height / 2 - 20)
   textFont(tradegothicFont);
   textSize(50);
   text(`Control by TAPPING Arrow Keys`, width / 2, height / 2 + 100);
@@ -690,7 +711,7 @@ function rejectionintro() {
 }
 //                                                   rejminigame STATE
 function rejminigame() {
-  background(176,128,59);
+  background(176, 128, 59);
   //                                                   TILE FUNCTIONS
   for (let i = 0; i < tiles.length; i++) {
     let tile = tiles[i];
@@ -716,30 +737,37 @@ function badrejectionEnd() {
   background(0);
   push();
   textSize(64);
-  fill(166,1,7);
+  fill(166, 1, 7);
   textSize(50);
-  text(`3 days later`, width / 2, height / 2 - 100);
+  text(`3 days later`, width / 2, height / 2 - 50);
   text(`You were fine, but he didn't quite... survive the breakup`, width / 2, height / 2);
-  text(`Perhaps you took a wrong turn somewhere.`, width / 2, height / 2 +50);
+  text(`Perhaps you took a wrong turn somewhere.`, width / 2, height / 2 + 50);
   textSize(80);
   textFont(onyxFont);
-  text(`THE END`, width / 2, height / 2 +200 )
+  text(`THE END`, width / 2, height / 2 + 200)
   pop();
 }
 //                                                                GOOD REJECTION ENDING
 function goodrejectionEnd() {
-  background(125);
+  background(0);
   push();
-  textSize(64)
   fill(255);
+  ellipse(width/2,height/2,700);
+  stroke(0);
+  strokeWeight(2)
+  fill(254, 204, 23)
   textSize(90);
-  text(`A painful truth`, width / 2, height / 2 -150);
-  textSize(50);
-  text(`But he hit the road in peace... nevertheless`, width / 2, height/2 -50 );
-  text(`After all, that was our 2nd date...`, width / 2, height/2+ 50 );
+  textFont(onyxFont);
+  text(`A PAINFUL TRUTH`, width / 2, height / 2 - 160);
+  textFont(tradegothicFont);
+  textSize(40);
+  text(`But he hit the road in peace... nevertheless`, width / 2, height / 2 - 80);
+  text(`After all, that was our 2nd date...`, width / 2, height / 2 - 20);
+  textSize(40);
+  text(`You saved us both from a dead end.`, width / 2, height / 2 + 40);
   textSize(80);
   textFont(onyxFont);
-  text(`THE END`, width / 2, height / 2 +200 )
+  text(`TRUE ENDING`, width / 2, height / 2 + 200)
   pop();
 }
 
@@ -778,8 +806,8 @@ function keyPressed() {
       let memo = memos[i];
       memo.tstop = true;
     }
-      stopSFX.play(0,1,1.5);
-      acceptmusic.rate(0.5);
+    stopSFX.play(0, 1, 1.5);
+    acceptmusic.rate(0.5);
     // TURN TSTOP MODE TO FALSE IF S KEY IS PRESSED
   } else if (state === `acpminigame2` && keyCode === 83 &&
     userHeart2.size2 === 450) {
@@ -787,9 +815,9 @@ function keyPressed() {
       let memo = memos[i];
       memo.tstop = false;
     }
-    if (acceptmusic.rate(0.6)){
+    if (acceptmusic.rate(0.6)) {
       acceptmusic.rate(1);
-      fastforwardSFX.play(0,1,0.2,0,1.3);
+      fastforwardSFX.play(0, 1, 0.2, 0, 1.3);
     }
   } else if (state === `acpminiwin2` && keyCode === 32) {
     state = `acpintro3`;

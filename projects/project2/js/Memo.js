@@ -30,7 +30,7 @@ class Memo {
         userHeart2.size = 160;
         userHeart2.speed = 3.5;
         userHeart2.size2 = 50;
-        userHeart2.speed2 = 2;
+        userHeart2.speed2 = 2.2;
         }
     }
   //                                 TIME STOP MODE: TRUE (ON)
@@ -91,7 +91,6 @@ class Memo {
      }
 
    ellipse(this.x,this.y,this.size);
-
    pop();
   }
 }

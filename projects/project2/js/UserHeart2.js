@@ -20,7 +20,7 @@ class UserHeart2{
       g:0,
       b:0
     }
-// let loose variable so that its width & height can be enlarged overtime see more in TIMER1.
+
   }
   move(){
     this.x += this.vx;
@@ -62,6 +62,7 @@ class UserHeart2{
     this.y2 += this.vy2;
 }
 
+// if pursuer catches player, PANIC ENDING
 caught(){
   let d = dist(this.x, this.y, this.x2, this.y2);
     if (d < this.size/2 + this.size2/2){

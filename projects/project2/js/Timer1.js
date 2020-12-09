@@ -24,8 +24,9 @@ class Timer1{
     }
   }
 
+
   ballsmove(){
-                              // 2 BALLS
+                              // 2 BALLS MOVE UP AND DOWN
     this.y2 += this.vy2;
     this.y += this.vy;
     //LEFT BALL
@@ -42,7 +43,7 @@ class Timer1{
     if (this.y2 <= 0 + this.size/2){
       this.vy2 = 40;
     }
-                            //TIMER BALL
+                            //TIMER BALL MOVES IN SHAPE OF A HEARTBEAT
     this.x3 += this.vx3;
     this.y3 += this.vy3;
 
@@ -63,7 +64,7 @@ class Timer1{
       this.y3 = height/2;
       this.counter += 1;
     }
-  //                                          OSCILLATOR CONDITIONS
+  //                                          OSCILLATOR PLAYING CONDITION
     if (this.x3 > 730 && this.x3 < 740){
       oscillator.start();
       }
@@ -77,7 +78,7 @@ class Timer1{
     if (this.counter >= 20 && this.counter <=34){
       this.vy *= 1.2;
       this.vy2 *= 1.2;
-      // 12 and 9 or 11.5 and 8.5
+      // 12 and 9 or 11.5 and 8.5 for hard difficulty
       userHeart.speed = 11;
       userHeart.rspeed = 8;
       this.vx3 = 70;
@@ -96,14 +97,14 @@ class Timer1{
 
       this.vx3 = 6;
       }
-// SURVIVE TO 38th HEARTBEAT TO WIN
-    else if (this.counter === 38){
+// SURVIVE TO 38th HEARTBEAT TO WIN MINIGAME 1
+    else if (this.counter === 0){
       state = `acpminiwin1`;
       winSFX.play();
     }
   }
 
-//                  BLACK OUT counts: 2, 12, 16, 18, 20 - 34, 35 - 37 if press DOWN ARROW
+//                  BLACK OUT counts: 2, 12, 16, 18, 20 - 34, 35 - 37 if press UP ARROW
     blackout(){
      if (this.counter === 2 || this.counter ===12 || this.counter === 16 || this.counter === 18 || this.counter >= 20 && this.counter <=34|| this.counter >= 35
       && this.counter <=37 && keyIsDown(UP_ARROW)){
@@ -130,11 +131,12 @@ class Timer1{
         }
       }
   }
-
+// DISPLAY 2 SIDE and TIMER BALLS
   display(){
     push();
     noStroke();
     fill(this.fill.r,this.fill.g,this.fill.b);
+    //2 balls
     ellipse(this.x, this.y, this.size);
     ellipse(this.x2, this.y2, this.size);
     // timer ball
