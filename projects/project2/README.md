@@ -6,4 +6,4 @@ One of the goal was to balance out the difficulty to provide a fun and challengi
 
 Due to time constraint, I unfortunately do not have the opportunity to create silly illustrations for Proposal Day 2 as in Proposal Day 1 which would have given more characters to the story. 
 
-However, on the good side, I have managed to focus more on the coding aspect of the game and improved my codes comparing to project 1. The sound design was also taken into great consideration given the overall aesthetic design of the story is based around jazz music. Multiple color palettes and fonts were considered and tested to make up for the lack of illustrations. 
+However, on the good side, I have managed to focus more on the coding aspect of the game and improved my codes comparing to project 1. For time measurements, I opted for object movements and if statements over SetTimeout() to give users a visual timer.The sound design was also taken into great consideration given the overall aesthetic design of the story is based around jazz music. Multiple color palettes fonts were considered and tested to make up for the lack of illustrations. 
