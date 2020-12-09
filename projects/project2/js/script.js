@@ -21,7 +21,7 @@ let userHeart2;
 let timer1;
 let chain1;
 let memos = [];
-let numMemos = 120;
+let numMemos = 0;
 let timer2;
 //                                            SFX/ MUSIC
 let menumusic;
@@ -286,8 +286,8 @@ function draw() {
   if (state === `acpminigame3`) {
     acpminigame3();
   }
-  if (state === `trueEnd`) {
-    trueEnd();
+  if (state === `sadmarriageEnd`) {
+    sadmarriageEnd();
   }
   if (state === `heleftEnd`) {
     heleftEnd();
@@ -616,8 +616,9 @@ function acpminigame3() {
   let correct = checkInput();
   background(0);
   if (correct) {
-    state = `trueEnd`;
+    state = `sadmarriageEnd`;
     winSFX.play();
+    acceptmusic.rate(-1);
   }
   push();
   // stroke(255);
@@ -659,17 +660,17 @@ function heleftEnd() {
   pop();
 }
 
-function trueEnd() {
+function sadmarriageEnd() {
   background(255);
 
   push();
   fill(0);
-  textSize(100);
+  textSize(120);
   textFont(onyxFont);
-  text(`It is a bearable marriage at best...`, width / 2, height / 2-150);
-  text(`At least the divorce papers don't come flying through`, width / 2, height / 2 - 50);
+  text(`A Bearable Marriage At Best...`, width / 2, height / 2-200);
   textSize(80);
-  text(`You wonder if it was a good decision that night...`, width / 2, height / 2+ 50);
+  text(`At least the divorce papers don't come flying through`, width / 2, height / 2 - 50);
+  text(`Only if you could rewind time...`, width / 2, height / 2+ 50);
   textSize(100);
   text(`THE END`, width / 2, height / 2 + 200);
   pop();
@@ -843,7 +844,7 @@ function keyPressed() {
     location.reload();
   } else if (state === `heleftEnd` && keyCode === 32) {
     location.reload();
-  } else if (state === `trueEnd` && keyCode === 32) {
+  } else if (state === `sadmarriageEnd` && keyCode === 32) {
     location.reload();
   } else if (state === `badrejectionEnd` && keyCode === 32) {
     location.reload();
